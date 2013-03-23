@@ -1,0 +1,6 @@
+dataSourceHost=localhost
+dataSourcePassword=root
+dataSourcePort=3306
+dataSourceUser=root
+eclipse.preferences.version=1
+platform=Silverlight
