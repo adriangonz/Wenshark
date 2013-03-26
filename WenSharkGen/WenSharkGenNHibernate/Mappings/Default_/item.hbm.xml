@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="WenSharkGenNHibernate"
+		                   namespace="WenSharkGenNHibernate.EN.Default_">
+			<class name="ItemEN" table="[Item]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Name" type="string"> 
+						<column name="[name]"  not-null="true"/>
+					</property>
+					<property name="Created" type="date"> 
+						<column name="[created]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<bag name="Genre" table="[ItemGenre]" inverse="true" >
+							<key>
+									<column name="[FK_id_item]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.GenreEN">
+									<column name="[FK_id_genre]"/>
+      						</many-to-many>
+    					</bag>
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="ItemENReadAllHQL">from ItemEN</query>
+		  <query name="ItemENsearchHQL"><![CDATA[FROM ItemEN
+																							WHERE lower(:p_filter) LIKE %lower(name)%]]></query>
+		</hibernate-mapping>
+	

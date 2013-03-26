@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="WenSharkGenNHibernate"
+		                   namespace="WenSharkGenNHibernate.EN.Default_">
+				
+<joined-subclass name="AlbumEN" extends="WenSharkGenNHibernate.EN.Default_.ItemEN" table="[Album]">
+	<key>
+    		<column name="[id]"/>
+   	</key>
+
+					<property name="Published" type="date"> 
+						<column name="[published]"  not-null="true"/>
+					</property>
+			
+			
+		  			
+						<many-to-one name="Artist" class="WenSharkGenNHibernate.EN.Default_.ArtistEN" >	
+								<column name="[FK_id_artist]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Songs" >
+							<key>
+								<column name="[FK_id_album]"/>
+					      	</key>
+							<one-to-many class="WenSharkGenNHibernate.EN.Default_.SongEN"/>
+					    </bag>
+					
+					
+					
+					
+		
+		  </joined-subclass>	
+		  
+		  <query name="AlbumENReadAllHQL">from AlbumEN</query>
+		</hibernate-mapping>
+	

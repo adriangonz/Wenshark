@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="WenSharkGenNHibernate"
+		                   namespace="WenSharkGenNHibernate.EN.Default_">
+				
+<joined-subclass name="OAuthUserEN" extends="WenSharkGenNHibernate.EN.Default_.UserEN" table="[OAuthUser]">
+	<key>
+    		<column name="[id]"/>
+   	</key>
+
+					<property name="Token_oauth" type="string"> 
+						<column name="[token_oauth]"  not-null="true"/>
+					</property>
+			
+			
+		  			
+						<many-to-one name="Provider" class="WenSharkGenNHibernate.EN.Default_.OAuthProviderEN" >	
+								<column name="[FK_id_provider]"/>
+						</many-to-one>
+											 					
+					
+					
+		
+		  </joined-subclass>	
+		  
+		  <query name="OAuthUserENReadAllHQL">from OAuthUserEN</query>
+		</hibernate-mapping>
+	
