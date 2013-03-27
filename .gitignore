@@ -149,3 +149,8 @@ $RECYCLE.BIN/
 
 # Eclipse metadata
 .metadata*
+
+# Allow some files
+/*
+!*Antlr3.Runtime.dll
+!*Castle.DynamicProxy2.dll*/

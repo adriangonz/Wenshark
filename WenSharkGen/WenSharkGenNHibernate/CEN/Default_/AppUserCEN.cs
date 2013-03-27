@@ -32,7 +32,7 @@ public IAppUserCAD get_IAppUserCAD ()
         return this._IAppUserCAD;
 }
 
-public int New_ (string p_password, string p_name, string p_username, string p_email, Nullable<DateTime> p_created)
+public int New_ (string p_password, string p_name, string p_username, string p_email)
 {
         AppUserEN appUserEN = null;
         int oid;
@@ -46,8 +46,6 @@ public int New_ (string p_password, string p_name, string p_username, string p_e
         appUserEN.Username = p_username;
 
         appUserEN.Email = p_email;
-
-        appUserEN.Created = p_created;
 
         //Call to AppUserCAD
 

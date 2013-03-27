@@ -32,7 +32,7 @@ public IUserCAD get_IUserCAD ()
         return this._IUserCAD;
 }
 
-public int New_ (string p_name, string p_username, string p_email, Nullable<DateTime> p_created)
+public int New_ (string p_name, string p_username, string p_email)
 {
         UserEN userEN = null;
         int oid;
@@ -44,8 +44,6 @@ public int New_ (string p_name, string p_username, string p_email, Nullable<Date
         userEN.Username = p_username;
 
         userEN.Email = p_email;
-
-        userEN.Created = p_created;
 
         //Call to UserCAD
 

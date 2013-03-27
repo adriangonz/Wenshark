@@ -77,43 +77,20 @@ public static void InitializeData ()
         /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
         try
         {
-                /*List<WenSharkGenNHibernate.EN.Mediaplayer.MusicTrackEN> musicTracks = new List<WenSharkGenNHibernate.EN.Mediaplayer.MusicTrackEN>();
-                 * WenSharkGenNHibernate.EN.Mediaplayer.UserEN userEN = new WenSharkGenNHibernate.EN.Mediaplayer.UserEN();
-                 * WenSharkGenNHibernate.EN.Mediaplayer.ArtistEN artistEN = new WenSharkGenNHibernate.EN.Mediaplayer.ArtistEN();
-                 * WenSharkGenNHibernate.EN.Mediaplayer.MusicTrackEN musicTrackEN = new WenSharkGenNHibernate.EN.Mediaplayer.MusicTrackEN();
-                 * WenSharkGenNHibernate.CEN.Mediaplayer.ArtistCEN artistCEN = new WenSharkGenNHibernate.CEN.Mediaplayer.ArtistCEN();
-                 * WenSharkGenNHibernate.CEN.Mediaplayer.UserCEN userCEN = new WenSharkGenNHibernate.CEN.Mediaplayer.UserCEN();
-                 * WenSharkGenNHibernate.CEN.Mediaplayer.MusicTrackCEN musicTrackCEN = new WenSharkGenNHibernate.CEN.Mediaplayer.MusicTrackCEN();
-                 * WenSharkGenNHibernate.CEN.Mediaplayer.PlayListCEN playListCEN = new WenSharkGenNHibernate.CEN.Mediaplayer.PlayListCEN();
-                 *
-                 *              //Add Users
-                 * userEN.Email = "user@user.com";
-                 * userEN.Name = "user";
-                 * userEN.Surname = "userSurname";
-                 * userEN.Password = "user";
-                 * userCEN.New_(userEN.Name, userEN.Surname, userEN.Email, userEN.Password);
-                 *
-                 * //Add Music Track1
-                 * musicTrackEN.Id = "http://www2.b3ta.com/mp3/Beer Beer Beer (YOB mix).mp3";
-                 * musicTrackEN.Format = "mp3";
-                 * musicTrackEN.Lyrics = "Beer Beer Beer Beer Beer Beer ..";
-                 * musicTrackEN.Name = "Beer Beer Beer";
-                 * musicTrackEN.Company = "Company";
-                 * musicTrackEN.Cover = "http://www.tomasabraham.com.ar/cajadig/2007/images/nro18-2/beer1.jpg";
-                 * musicTrackEN.Price = 20;
-                 * musicTrackEN.Rating = 5;
-                 * musicTrackEN.CommunityRating = 5;
-                 * musicTrackEN.Duration = 200;
-                 * musicTrackCEN.New_(musicTrackEN.Id, musicTrackEN.Format, musicTrackEN.Lyrics, musicTrackEN.Name,
-                 *  musicTrackEN.Company, musicTrackEN.Cover, musicTrackEN.CommunityRating, musicTrackEN.Rating,
-                 *  musicTrackEN.Price, musicTrackEN.Duration);
-                 * musicTracks.Add(musicTrackEN);
-                 * musicTrackCEN.AsignUser(musicTrackEN.Id,userEN.Email);
-                 *
-                 * //Define Album
-                 * //WenSharkGenNHibernate.CEN.Mediaplayer.AlbumCEN albumCEN = new WenSharkGenNHibernate.CEN.Mediaplayer.AlbumCEN();
-                 * //albumCEN.New_("Album 1", "This is a Album 1", artists, musicTracks);*/
-                /*PROTECTED REGION END*/
+            //Creo el CEN
+            AppUserCEN userCEN = new AppUserCEN ();
+
+            //Creo algunos usuarios de ejemplo (para buscarlos)
+            AppUserEN userEjemplo1 = new AppUserEN ();
+            userEjemplo1.Email = "test@example.com";
+            userEjemplo1.Name = "Señor de prueba";
+            userEjemplo1.Username = "test1";
+            userEjemplo1.Password = "test1";
+            userEjemplo1.Created = DateTime.Now;
+
+            userCEN.New_(userEjemplo1.Password, userEjemplo1.Name, userEjemplo1.Username, userEjemplo1.Email);
+
+        /*PROTECTED REGION END*/
         }
         catch (Exception ex)
         {
