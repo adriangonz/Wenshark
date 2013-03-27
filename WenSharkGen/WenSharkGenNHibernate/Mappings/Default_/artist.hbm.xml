@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="WenSharkGenNHibernate"
+		                   namespace="WenSharkGenNHibernate.EN.Default_">
+				
+<joined-subclass name="ArtistEN" extends="WenSharkGenNHibernate.EN.Default_.ItemEN" table="[Artist]">
+	<key>
+    		<column name="[id]"/>
+   	</key>
+
+					<property name="Bio" type="string"> 
+						<column name="[bio]"  not-null="true"/>
+					</property>
+			
+			
+		  			
+						<bag name="Songs" >
+							<key>
+								<column name="[FK_id_artist]"/>
+					      	</key>
+							<one-to-many class="WenSharkGenNHibernate.EN.Default_.SongEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Albums" >
+							<key>
+								<column name="[FK_id_artist]"/>
+					      	</key>
+							<one-to-many class="WenSharkGenNHibernate.EN.Default_.AlbumEN"/>
+					    </bag>
+					
+					
+					
+					
+		
+		  </joined-subclass>	
+		  
+		  <query name="ArtistENReadAllHQL">from ArtistEN</query>
+		</hibernate-mapping>
+	

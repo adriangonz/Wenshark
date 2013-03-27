@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:es.ua.dlsi.ooh="http://www.dlsi.ua.es/ooh/conceptualView/1.0.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
-  <es.ua.dlsi.ooh:ConceptualModel xmi:id="_v4_y8JPXEeKYKdZmZZptPg" name="WenShark"/>
-  <notation:Diagram xmi:id="_v-2jUJPXEeKYKdZmZZptPg" type="ConceptualView" element="_v4_y8JPXEeKYKdZmZZptPg" name="default.domainModel" measurementUnit="Pixel">
-    <styles xmi:type="notation:DiagramStyle" xmi:id="_v-2jUZPXEeKYKdZmZZptPg"/>
-  </notation:Diagram>
-</xmi:XMI>

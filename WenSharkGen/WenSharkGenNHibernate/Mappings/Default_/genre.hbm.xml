@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="WenSharkGenNHibernate"
+		                   namespace="WenSharkGenNHibernate.EN.Default_">
+			<class name="GenreEN" table="[Genre]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Name" type="string"> 
+						<column name="[name]"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<bag name="Item" table="[ItemGenre]"  >
+							<key>
+									<column name="[FK_id_genre]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.ItemEN">
+									<column name="[FK_id_item]"/>
+      						</many-to-many>
+    					</bag>
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="GenreENReadAllHQL">from GenreEN</query>
+		</hibernate-mapping>
+	

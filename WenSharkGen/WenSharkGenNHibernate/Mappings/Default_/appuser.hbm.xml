@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="WenSharkGenNHibernate"
+		                   namespace="WenSharkGenNHibernate.EN.Default_">
+				
+<joined-subclass name="AppUserEN" extends="WenSharkGenNHibernate.EN.Default_.UserEN" table="[AppUser]">
+	<key>
+    		<column name="[id]"/>
+   	</key>
+
+					<property name="Password" type="string"> 
+						<column name="[password]"  not-null="true"/>
+					</property>
+			
+					
+		
+		  </joined-subclass>	
+		  
+		  <query name="AppUserENReadAllHQL">from AppUserEN</query>
+		</hibernate-mapping>
+	
