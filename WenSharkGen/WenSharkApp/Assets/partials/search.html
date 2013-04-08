@@ -2,12 +2,14 @@
 <div class="panel">
 	<h1>Resultados de <span class="subheader">{{query}}</span></h1>
 
-	<ul class="items-list">
-		<li class="song-thumb" ng-repeat="song in dummyArr">
+	<ul class="items-list" ui-if="songs.length">
+		<li class="song-thumb" ng-repeat="song in songs">
 			<a class="th" href="/play/{{song.id}}">
 				<p class="name">{{song.name}}</p>
 				<p class="subname">{{song.album.name}} · {{song.artist.name}}</p>
 			</a>
 		</li>
 	</ul>
+
+	<h2 ui-if="!songs.length">No se han encontrado canciones :(</h2>
 </div>

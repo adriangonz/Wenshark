@@ -12,9 +12,12 @@ function SearchCtrl ($scope, $routeParams, $http) {
 	$http
 		.get('/api/search?name=' + $scope.query)
 		.success(function (data) {
-			console.log(data);
+			$scope.songs = data.songs;
+			$scope.albums = data.albums;
+			$scope.artists = data.artists;
+			console.log($scope.songs);
 		});
-
+	
 	$scope.dummyArr = [];
 	for(var i = 0; i < 10; i++) {
 		var dummy = {
@@ -32,4 +35,5 @@ function SearchCtrl ($scope, $routeParams, $http) {
 		};
 		$scope.dummyArr.push(dummy);
 	}
+	
 }
