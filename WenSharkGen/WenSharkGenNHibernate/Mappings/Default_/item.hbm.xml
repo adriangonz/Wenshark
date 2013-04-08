@@ -22,7 +22,7 @@
 							<key>
 									<column name="[FK_id_item]"/>
 							</key>
-      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.GenreEN" fetch="join">
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.GenreEN">
 									<column name="[FK_id_genre]"/>
       						</many-to-many>
     					</bag>
@@ -34,6 +34,6 @@
 		  </class>
 		  
 		  <query name="ItemENReadAllHQL">from ItemEN</query>
-		  <query name="ItemENsearchHQL"><![CDATA[FROM ItemEN WHERE lower(:p_filter) LIKE %lower(name)%]]></query>
+		  <query name="ItemENsearchHQL"><![CDATA[FROM Item WHERE lower(:p_filter) LIKE %lower(name)%]]></query>
 		</hibernate-mapping>
 	

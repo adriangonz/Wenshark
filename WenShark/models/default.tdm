@@ -116,7 +116,7 @@ ConceptualModel default {
  			public getAll::ReadAll (/* No arguments */) : List<Object->Item>;
  			
  			/* Busqueda por nombre */
- 			public search::ReadFilter (p_filter : String) : List<Object->Item> { filter = "FROM ItemEN WHERE lower(:p_filter) LIKE %lower(name)%" };
+ 			public search::ReadFilter (p_filter : String) : List<Object->Item> { filter = "FROM Item WHERE lower(:p_filter) LIKE %lower(name)%" };
  		}
  	};
  	

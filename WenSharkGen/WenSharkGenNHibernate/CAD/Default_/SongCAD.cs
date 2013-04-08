@@ -154,7 +154,6 @@ public System.Collections.Generic.IList<SongEN> ReadAll (int first, int size)
                                  SetFirstResult (first).SetMaxResults (size).List<SongEN>();
                 else
                         result = session.CreateCriteria (typeof(SongEN)).List<SongEN>();
-                
                 SessionCommit ();
         }
 

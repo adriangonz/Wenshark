@@ -23,28 +23,7 @@ namespace WenSharkApp.Controllers
             return result;
         }
 
-        public List<ItemEN> getAll()
-        {
-            ItemCEN itemCEN = new ItemCEN();
 
-            return itemCEN.GetAll(0,10).ToList();
-        }
-/*
-        public List<SongEN> getCanciones()
-        {
-            SongCEN cen = new SongCEN();
-            List<SongEN> canciones = cen.ReadAll(0, 10).ToList();
-
-            foreach (var song in canciones)
-            {
-                song.Genre = null;
-                song.Album = null;
-                song.Artist = null;
-            }
-
-            return canciones;
-        }
-*/
     }
 
 }

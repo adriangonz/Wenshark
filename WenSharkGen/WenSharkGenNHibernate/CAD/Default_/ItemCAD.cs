@@ -193,7 +193,7 @@ public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM ItemEN self where FROM ItemEN WHERE lower(:p_filter) LIKE %lower(name)%";
+                //String sql = @"FROM ItemEN self where FROM Item WHERE lower(:p_filter) LIKE %lower(name)%";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("ItemENsearchHQL");
                 query.SetParameter ("p_filter", p_filter);
