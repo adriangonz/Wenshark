@@ -34,6 +34,6 @@
 		  </class>
 		  
 		  <query name="ItemENReadAllHQL">from ItemEN</query>
-		  <query name="ItemENsearchHQL"><![CDATA[FROM Item WHERE lower(:p_filter) LIKE %lower(name)%]]></query>
+		  <query name="ItemENsearchHQL"><![CDATA[FROM ItemEN WHERE name LIKE '%' || :p_filter || '%' ]]></query>
 		</hibernate-mapping>
 	

@@ -6,6 +6,7 @@ using System.Text;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using WenSharkGenNHibernate.EN.Default_;
+using WenSharkGenNHibernate.CEN.Default_;
 
 
 namespace InitializeDB
@@ -40,6 +41,20 @@ static void Main (string[] args)
                         System.Console.WriteLine ("-----------------------------------------");
                         System.Console.WriteLine ("The data has been inserted successfully!!");
                         System.Console.WriteLine ("-----------------------------------------");
+                }
+
+                System.Console.Write ("Do you want to test functions?(Y/N) ");
+                ans = System.Console.ReadLine ();
+                if (ans.ToLower () == "y") {
+                        System.Console.WriteLine ("Testing ItemEN Search");
+                        ItemCEN itemCEN = new ItemCEN ();
+                        List<ItemEN> resulquery = itemCEN.Search ("artista").ToList ();
+
+                        System.Console.WriteLine ("Numero de elementos en la query: " + resulquery.Count);
+
+                        System.Console.WriteLine ("------------------------------------------------");
+                        System.Console.WriteLine ("            END OF TEST");
+                        System.Console.WriteLine ("------------------------------------------------");
                 }
                 /*PROTECTED REGION END*/
         }
