@@ -1,0 +1,20 @@
+/* Some styling for lists of items, etc */
+
+ul.items-list {
+	list-style: none;
+}
+
+ul.items-list li .subname{
+	color: rgb(111, 111, 111);
+	margin: 0;
+}
+
+ul.items-list li .name {
+	color: #76b400;
+	margin-bottom: 0.2em;
+	font-weight: bold;
+}
+
+ul.items-list li a {
+	width: 100%;
+}

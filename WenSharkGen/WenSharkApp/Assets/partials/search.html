@@ -1,0 +1,13 @@
+<!-- Partial view for the items' search -->
+<div class="panel">
+	<h1>Resultados de <span class="subheader">{{query}}</span></h1>
+
+	<ul class="items-list">
+		<li class="song-thumb" ng-repeat="song in dummyArr">
+			<a class="th" href="/play/{{song.id}}">
+				<p class="name">{{song.name}}</p>
+				<p class="subname">{{song.album.name}} · {{song.artist.name}}</p>
+			</a>
+		</li>
+	</ul>
+</div>
