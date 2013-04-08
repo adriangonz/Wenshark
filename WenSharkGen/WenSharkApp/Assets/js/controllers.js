@@ -6,8 +6,14 @@ function MainCtrl ($scope) {
 }
 
 //Controller for the search
-function SearchCtrl ($scope, $routeParams) {
+function SearchCtrl ($scope, $routeParams, $http) {
 	$scope.query = $routeParams.query;
+
+	$http
+		.get('/api/search?name=' + $scope.query)
+		.success(function (data) {
+			console.log(data);
+		});
 
 	$scope.dummyArr = [];
 	for(var i = 0; i < 10; i++) {
