@@ -2,9 +2,7 @@
 
 //Main controller of the app
 function MainCtrl ($scope) {
-	$scope.search = function () {
-		//Search from the 
-	}
+	
 }
 
 //Controller for the search
