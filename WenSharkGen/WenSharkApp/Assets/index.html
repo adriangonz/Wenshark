@@ -3,17 +3,23 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
 <head>
+	<!-- Some meta tags -->
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
+
+	<!-- Title -->
 	<title>Foundation 4</title>
 	
+	<!-- General CSSs-->
 	<link rel="stylesheet" href="css/normalize.css" />
-
 	<link rel="stylesheet" href="css/foundation.css" />
-  <link rel="stylesheet" href="css/general_foundicons.css">
+  	<link rel="stylesheet" href="css/general_foundicons.css">
 
+  	<!-- General JS references -->
 	<script src="js/vendor/custom.modernizr.js"></script>
+	<script src="js/vendor/angular.min.js"></script>
 
+	<!-- Etiqueta semi-inline de estilo que MARTIN QUITARA EN BREVE... -->
 	<style>
 		.top-bar {
 			height: 55px;
@@ -66,180 +72,164 @@
 </head>
 <body>
 
-<nav class="top-bar">
-	
-    <div class="large-12 columns">
-    	<div class="row">
-			<ul class="title-area">
-			<!-- Title Area -->
-				<li class="name">
-					<h1><!--img src="img/logo_verde_trans.png" alt="Wenshark" --><a href="#">Wenshark</a></h1>
-				</li>
-			</ul>
-
-			<section class="top-bar-section">
-			<!-- Right Nav Section -->
-
-				<ul class="right">
-					<li class="has-form">
-						<form action="">
-						<div class="row collapse">
-				        <div class="small-10 columns">
-				          <input type="text" placeholder="Buscar Musica">
-				        </div>
-				        <div class="small-2 columns">
-				          <a href="#" class="button prefix"><i class="foundicon-search"></i></a>
-				        </div>
-				      </div>
-				      </form>
+	<nav class="top-bar">
+	    <div class="large-12 columns">
+	    	<div class="row">
+				<ul class="title-area">
+				<!-- Title Area -->
+					<li class="name">
+						<h1><!--img src="img/logo_verde_trans.png" alt="Wenshark" /--><a href="#">Wenshark</a></h1>
 					</li>
-					<li class="divider"></li>
-
-					<li><a href="#">Log In</a></li>
-					<li class="divider"></li>
-					<li><a href="#">Sign Up</a></li>
-					<li class="divider"></li>
 				</ul>
-			</section>
-		</div>
-	</div>
-</nav>
- 
-  <!-- End Top Bar -->
 
-  <div class="row content"> 
-  	<br>
-    <div class="large-12 columns">
- 
-    <!-- Content Slider -->
- 
-		<div class="row">
-			<div id="featured">
-				<img src="img/1200x500.Slide_Image.gif" alt="slide image">
+				<section class="top-bar-section">
+				<!-- Right Nav Section -->
+
+					<ul class="right">
+						<li class="has-form">
+							<form action="">
+							<div class="row collapse">
+					        <div class="small-10 columns">
+					          <input type="text" placeholder="Buscar Musica">
+					        </div>
+					        <div class="small-2 columns">
+					          <a href="#" class="button prefix"><i class="foundicon-search"></i></a>
+					        </div>
+					      </div>
+					      </form>
+						</li>
+						<li class="divider"></li>
+
+						<li><a href="#">Log In</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Sign Up</a></li>
+						<li class="divider"></li>
+					</ul>
+				</section>
 			</div>
 		</div>
- 
-    <!-- End Content Slider -->
- 
-      <br>
-      <div class="row">
-        <div class="large-12 columns">
-          <div class="row">
-            <!-- Shows -->
-            <div class="large-4 small-6 columns">
- 
-              <h4>Upcoming Shows</h4><hr>
- 
-              <div class="hide-for-small">
-                <div class="row">
-                  <div class="large-1 column">
-                    <img src="img/50x50.Img.gif">
-                  </div>
- 
-                  <div class="large-9 columns">
-                    <h5 class="subheader"><a href="#">Venue Name</a></h5>
-                  </div>
-                </div><hr>
- 
-                <div class="row">
-                  <div class="large-1 column">
-                    <img src="img/50x50.Img.gif">
-                  </div>
- 
-                  <div class="large-9 columns">
-                    <h5 class="subheader"><a href="#">Venue Name</a></h5>
-                  </div>
-                </div><hr>
- 
-                <div class="row">
-                  <div class="large-1 column">
-                    <img src="img/50x50.Img.gif">
-                  </div>
- 
-                  <div class="large-9 columns">
-                    <h5 class="subheader"><a href="#">Venue Name</a></h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Shows -->
- 
- 
-            <!-- Image -->
- 
-            <div class="large-4 small-6 columns">
-              <img src="img/300x465.Slide_Image.gif">
-            </div>
- 
-            <!-- End Image -->
- 
- 
-            <!-- Feed -->
- 
-            <div class="large-4 small-12 columns">
- 
-              <h4>Blog</h4><hr>
-              <div class="panel">
-                <h5><a href="#">Post Title 1</a></h5>
- 
-                <h6 class="subheader">
-                  Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
-                </h6>
- 
-                <h6><a href="#">Read More »</a></h6>
-              </div>
- 
-              <div class="panel hide-for-small">
-                <h5><a href="#">Post Title 2 »</a></h5>
-              </div>
- 
-              <div class="panel hide-for-small">
-                <h5><a href="#">Post Title 3 »</a></h5>
-              </div>
- 
-              <a href="#" class="right">Go To Blog »</a>
- 
-            </div>
- 
-            <!-- End Feed -->
- 
-          </div>
-        </div>
-      </div>
- 
-        <br>
-    <!-- End Content -->
- 
- 
-    <!-- Footer -->
- 
-		<!--div class="small-12 columns">
+	</nav>
+	<!-- End Top Bar -->
+
+	<div class="row content"> 
+		<br />
+		<div class="large-12 columns">
+
+			<!-- Content Slider -->
+
 			<div class="row">
-				<div class="small-12 columns controls">
-					Now Playing: [Controls]
+				<div id="featured">
+					<img src="img/1200x500.Slide_Image.gif" alt="slide image" />
 				</div>
 			</div>
-			<div class="row">
-				<div class="small-2 columns song-info">Song Info</div>
-				<div class="small-10 columns song-list">Song List</div>
+
+			<!-- End Content Slider -->
+
+			<br />
+  			<div class="row">
+			    <div class="large-12 columns">
+			      	<div class="row">
+			        	<!-- Shows -->
+			        	<div class="large-4 small-6 columns">
+			        		<h4>Upcoming Shows</h4><hr>
+
+					        <div class="hide-for-small">
+					            <div class="row">
+					              	<div class="large-1 column">
+					                	<img src="img/50x50.Img.gif">
+					              	</div>
+
+					              	<div class="large-9 columns">
+					                	<h5 class="subheader"><a href="#">Venue Name</a></h5>
+					              	</div>
+					            </div><hr />
+
+					            <div class="row">
+					              	<div class="large-1 column">
+					                	<img src="img/50x50.Img.gif" />
+					              	</div>
+
+					              	<div class="large-9 columns">
+					                	<h5 class="subheader"><a href="#">Venue Name</a></h5>
+					              	</div>
+					            </div><hr>
+
+					            <div class="row">
+					              	<div class="large-1 column">
+					                	<img src="img/50x50.Img.gif" />
+					              	</div>
+
+					              	<div class="large-9 columns">
+					                	<h5 class="subheader"><a href="#">Venue Name</a></h5>
+					              	</div>
+					            </div>
+					        </div>
+			    		</div>
+			        	<!-- End Shows -->
+
+
+			        	<!-- Image -->
+			        	<div class="large-4 small-6 columns">
+			        		<img src="img/300x465.Slide_Image.gif" />
+			        	</div>
+						<!-- End Image -->
+
+			        	<!-- Feed -->
+			        	<div class="large-4 small-12 columns">
+			          		<h4>Blog</h4><hr>
+			          		<div class="panel">
+			            		<h5><a href="#">Post Title 1</a></h5>
+
+			            		<h6 class="subheader">
+			              			Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
+			            		</h6>
+
+			            		<h6><a href="#">Read More »</a></h6>
+			          		</div>
+
+			          		<div class="panel hide-for-small">
+			            		<h5><a href="#">Post Title 2 »</a></h5>
+			          		</div>
+
+			          		<div class="panel hide-for-small">
+			            		<h5><a href="#">Post Title 3 »</a></h5>
+			          		</div>
+
+			          		<a href="#" class="right">Go To Blog »</a>
+			        	</div>
+			        	<!-- End Feed -->
+			      	</div>
+			    </div>
 			</div>
-		</div-->    
-	</div>
- 
-	<div class="row player">
-		<div class="small-2 columns now-playing">Now playing</div>
-		<div class="small-10 columns">
-			<div class="row">
-				<div class="small-12 columns controls">Controles</div>
-			</div>
-			<div class="row">
-				<div class="small-12 columns song-list">Lista</div>
+
+			<br />
+		</div>
+		<!-- End Content -->
+
+		<!-- Footer -->
+			<!--div class="small-12 columns">
+				<div class="row">
+					<div class="small-12 columns controls">
+						Now Playing: [Controls]
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-2 columns song-info">Song Info</div>
+					<div class="small-10 columns song-list">Song List</div>
+				</div>
+			</div-->
+		<div class="row player">
+			<div class="small-2 columns now-playing">Now playing</div>
+			<div class="small-10 columns">
+				<div class="row">
+					<div class="small-12 columns controls">Controles</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns song-list">Lista</div>
+				</div>
 			</div>
 		</div>
-    <!-- End Footer -->
- 
-    </div>
-  </div>
-  
+		<!-- End Footer -->
+	</div>
 </body>
 </html>
