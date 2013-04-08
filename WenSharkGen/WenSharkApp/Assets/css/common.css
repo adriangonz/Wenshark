@@ -1,0 +1,5 @@
+/* Common styles for some things */
+img.center {
+	display: block;
+	margin: 1% auto;
+}

@@ -8,10 +8,12 @@ function MainCtrl ($scope) {
 //Controller for the search
 function SearchCtrl ($scope, $routeParams, $http) {
 	$scope.query = $routeParams.query;
-
+	$scope.loading = true;
 	$http
 		.get('/api/search?name=' + $scope.query)
 		.success(function (data) {
+			$scope.loading = false;
+			console.log('Acabo de cargar: ' + $scope.loading);
 			$scope.songs = data.songs;
 			$scope.albums = data.albums;
 			$scope.artists = data.artists;

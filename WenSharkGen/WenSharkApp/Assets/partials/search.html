@@ -2,7 +2,9 @@
 <div class="panel">
 	<h1>Resultados de <span class="subheader">{{query}}</span></h1>
 
-	<ul class="items-list" ui-if="songs.length">
+	<div ng-show="loading"><img class="center" src="/Assets/img/spinner.gif" width="200" height="30" /></div>
+
+	<ul class="items-list" ng-show="songs.length && !loading">
 		<li class="song-thumb" ng-repeat="song in songs">
 			<a class="th" href="/play/{{song.id}}">
 				<p class="name">{{song.name}}</p>
@@ -11,5 +13,5 @@
 		</li>
 	</ul>
 
-	<h2 ui-if="!songs.length">No se han encontrado canciones :(</h2>
+	<h2 ng-show="!songs.length && !loading">No se han encontrado canciones :(</h2>
 </div>
