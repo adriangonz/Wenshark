@@ -90,13 +90,13 @@
 
 					<ul class="right">
 						<li class="has-form">
-							<form action="">
+							<form ng-submit="search(query)" action="">
 							<div class="row collapse">
 					        <div class="small-10 columns">
-					          <input type="text" placeholder="Buscar Musica" ng-model="query">
+					        	<input type="text" placeholder="Buscar Musica" ng-model="query">
 					        </div>
 					        <div class="small-2 columns">
-					          <a href="#/search/{{query}}" class="button prefix"><i class="foundicon-search"></i></a>
+					          	<a ng-href="#/search/{{query}}" class="button prefix"><i class="foundicon-search"></i></a>
 					        </div>
 					      </div>
 					      </form>

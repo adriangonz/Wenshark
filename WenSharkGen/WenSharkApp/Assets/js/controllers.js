@@ -2,7 +2,9 @@
 
 //Main controller of the app
 function MainCtrl ($scope) {
-	
+	$scope.search = function (query) {
+		window.location.href = "/#/search/" + query;	
+	}
 }
 
 //Controller for the search
