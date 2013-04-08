@@ -113,6 +113,36 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Assets\css\foundation.css" />
+    <Content Include="Assets\css\foundation.min.css" />
+    <Content Include="Assets\css\general_foundicons.css" />
+    <Content Include="Assets\css\normalize.css" />
+    <Content Include="Assets\fonts\general_foundicons.svg" />
+    <Content Include="Assets\humans.txt" />
+    <Content Include="Assets\img\1200x500.Slide_Image.gif" />
+    <Content Include="Assets\img\300x465.Slide_Image.gif" />
+    <Content Include="Assets\img\50x50.Img.gif" />
+    <Content Include="Assets\img\logo_verde_trans.png" />
+    <Content Include="Assets\index.html" />
+    <Content Include="Assets\js\foundation.min.js" />
+    <Content Include="Assets\js\foundation\foundation.alerts.js" />
+    <Content Include="Assets\js\foundation\foundation.clearing.js" />
+    <Content Include="Assets\js\foundation\foundation.cookie.js" />
+    <Content Include="Assets\js\foundation\foundation.dropdown.js" />
+    <Content Include="Assets\js\foundation\foundation.forms.js" />
+    <Content Include="Assets\js\foundation\foundation.joyride.js" />
+    <Content Include="Assets\js\foundation\foundation.js" />
+    <Content Include="Assets\js\foundation\foundation.magellan.js" />
+    <Content Include="Assets\js\foundation\foundation.orbit.js" />
+    <Content Include="Assets\js\foundation\foundation.placeholder.js" />
+    <Content Include="Assets\js\foundation\foundation.reveal.js" />
+    <Content Include="Assets\js\foundation\foundation.section.js" />
+    <Content Include="Assets\js\foundation\foundation.tooltips.js" />
+    <Content Include="Assets\js\foundation\foundation.topbar.js" />
+    <Content Include="Assets\js\vendor\custom.modernizr.js" />
+    <Content Include="Assets\js\vendor\jquery.js" />
+    <Content Include="Assets\js\vendor\zepto.js" />
+    <Content Include="Assets\robots.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -130,6 +160,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\fonts\.DS_Store" />
+    <Content Include="Assets\fonts\general_foundicons.eot" />
+    <Content Include="Assets\fonts\general_foundicons.ttf" />
+    <Content Include="Assets\fonts\general_foundicons.woff" />
+    <Content Include="Assets\img\.gitkeep" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
