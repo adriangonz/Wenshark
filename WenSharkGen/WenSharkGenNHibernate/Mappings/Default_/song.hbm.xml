@@ -14,13 +14,13 @@
 			
 			
 		  			
-						<many-to-one name="Artist" class="WenSharkGenNHibernate.EN.Default_.ArtistEN" >	
+						<many-to-one name="Artist" class="WenSharkGenNHibernate.EN.Default_.ArtistEN" fetch="join">	
 								<column name="[FK_id_artist]"/>
 						</many-to-one>
 											 					
 			
 		  			
-						<many-to-one name="Album" class="WenSharkGenNHibernate.EN.Default_.AlbumEN" >	
+						<many-to-one name="Album" class="WenSharkGenNHibernate.EN.Default_.AlbumEN" fetch="join">	
 								<column name="[FK_id_album]"/>
 						</many-to-one>
 											 					

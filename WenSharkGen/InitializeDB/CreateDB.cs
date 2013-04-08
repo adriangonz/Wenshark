@@ -89,45 +89,42 @@ public static void InitializeData ()
                 userEjemplo1.Created = DateTime.Now;
                 userCEN.New_ (userEjemplo1.Password, userEjemplo1.Name, userEjemplo1.Username, userEjemplo1.Email, userEjemplo1.Created);
 
-                AppUserEN userEjemplo2 = new AppUserEN();
+                AppUserEN userEjemplo2 = new AppUserEN ();
                 userEjemplo2.Email = "test2@example.com";
                 userEjemplo2.Name = "Otro señor";
                 userEjemplo2.Username = "test2";
                 userEjemplo2.Password = "test2";
                 userEjemplo2.Created = DateTime.Now;
-                userCEN.New_(userEjemplo2.Password, userEjemplo2.Name, userEjemplo2.Username, userEjemplo2.Email, userEjemplo2.Created);
-                
-                //Creo algo de contenido
-                ArtistCEN artistCEN = new ArtistCEN();
-                AlbumCEN albumCEN = new AlbumCEN();
-                SongCEN songCEN = new SongCEN();
-                for (int i = 0; i < 5; i++)
-                {
-                    ArtistEN newArtist = new ArtistEN();
-                    newArtist.Name = "Artista-" + i;
-                    newArtist.Bio = "El señor " + i + " ha tenido una vida muy interesante...";
-                    newArtist.Created = DateTime.Now;
-                    int a_id = artistCEN.New_(newArtist.Bio, newArtist.Name, newArtist.Created);
+                userCEN.New_ (userEjemplo2.Password, userEjemplo2.Name, userEjemplo2.Username, userEjemplo2.Email, userEjemplo2.Created);
 
-                    //Creo algunos albumes para el caballero
-                    for (int j = 0; j < 5; j++)
-                    {
-                        AlbumEN newAlbum = new AlbumEN();
-                        newAlbum.Created = DateTime.Now;
-                        newAlbum.Published = DateTime.Now;
-                        newAlbum.Name = "Album-" + i + "," + j;
-                        int alb_id = albumCEN.New_(newAlbum.Published, newAlbum.Name, newAlbum.Created, a_id);
-                        
-                        //Y algunas canciones
-                        for (int k = 0; k < 5; k++)
-                        {
-                            SongEN newSong = new SongEN();
-                            newSong.Name = "Cancion muy bonita del señor " + a_id + " y el album " + alb_id;
-                            newSong.Fname = "music.mp3";
-                            newSong.Created = DateTime.Now;
-                            songCEN.New_(newSong.Fname, newSong.Name, newSong.Created, a_id, alb_id);
+                //Creo algo de contenido
+                ArtistCEN artistCEN = new ArtistCEN ();
+                AlbumCEN albumCEN = new AlbumCEN ();
+                SongCEN songCEN = new SongCEN ();
+                for (int i = 0; i < 5; i++) {
+                        ArtistEN newArtist = new ArtistEN ();
+                        newArtist.Name = "Artista-" + i;
+                        newArtist.Bio = "El señor " + i + " ha tenido una vida muy interesante...";
+                        newArtist.Created = DateTime.Now;
+                        int a_id = artistCEN.New_ (newArtist.Bio, newArtist.Name, newArtist.Created);
+
+                        //Creo algunos albumes para el caballero
+                        for (int j = 0; j < 5; j++) {
+                                AlbumEN newAlbum = new AlbumEN ();
+                                newAlbum.Created = DateTime.Now;
+                                newAlbum.Published = DateTime.Now;
+                                newAlbum.Name = "Album-" + i + "," + j;
+                                int alb_id = albumCEN.New_ (newAlbum.Published, newAlbum.Name, newAlbum.Created, a_id);
+
+                                //Y algunas canciones
+                                for (int k = 0; k < 5; k++) {
+                                        SongEN newSong = new SongEN ();
+                                        newSong.Name = "Cancion muy bonita del señor " + a_id + " y el album " + alb_id;
+                                        newSong.Fname = "music.mp3";
+                                        newSong.Created = DateTime.Now;
+                                        songCEN.New_ (newSong.Fname, newSong.Name, newSong.Created, a_id, alb_id);
+                                }
                         }
-                    }
                 }
 
                 /*PROTECTED REGION END*/

@@ -14,5 +14,8 @@ void Destroy (int id);
 
 
 void Modify (SongEN song);
+
+
+System.Collections.Generic.IList<SongEN> ReadAll (int first, int size);
 }
 }

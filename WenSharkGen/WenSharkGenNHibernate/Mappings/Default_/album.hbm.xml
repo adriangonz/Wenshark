@@ -14,7 +14,7 @@
 			
 			
 		  			
-						<many-to-one name="Artist" class="WenSharkGenNHibernate.EN.Default_.ArtistEN" >	
+						<many-to-one name="Artist" class="WenSharkGenNHibernate.EN.Default_.ArtistEN" fetch="join">	
 								<column name="[FK_id_artist]"/>
 						</many-to-one>
 											 					
