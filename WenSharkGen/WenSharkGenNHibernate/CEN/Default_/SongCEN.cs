@@ -82,5 +82,13 @@ public void Modify (int p_oid, string p_fname, string p_name, Nullable<DateTime>
 
         _ISongCAD.Modify (songEN);
 }
+
+public System.Collections.Generic.IList<SongEN> ReadAll (int first, int size)
+{
+        System.Collections.Generic.IList<SongEN> list = null;
+
+        list = _ISongCAD.ReadAll (first, size);
+        return list;
+}
 }
 }

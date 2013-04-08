@@ -158,6 +158,7 @@
         <arguments name="p_name" isOrdered="true"/>
         <arguments name="p_created" type="Date" isOrdered="true"/>
       </operations>
+      <operations name="readAll" operationType="ReadAll" type="Object" collectionType="List" typeObject="/0/@elements.6"/>
       <attributes alias="fname" navigable="false" name="fname"/>
       <attributes alias="artist" visibility="Public" associationTarget="/0/@elements.15" name="artist" type="Object"/>
       <attributes alias="album" visibility="Public" associationTarget="/0/@elements.18" name="album" type="Object"/>

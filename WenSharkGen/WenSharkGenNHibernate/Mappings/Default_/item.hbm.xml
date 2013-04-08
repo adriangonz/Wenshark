@@ -22,7 +22,7 @@
 							<key>
 									<column name="[FK_id_item]"/>
 							</key>
-      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.GenreEN">
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.GenreEN" fetch="join">
 									<column name="[FK_id_genre]"/>
       						</many-to-many>
     					</bag>

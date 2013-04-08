@@ -143,5 +143,35 @@ public void Modify (SongEN song)
                 SessionClose ();
         }
 }
+public System.Collections.Generic.IList<SongEN> ReadAll (int first, int size)
+{
+        System.Collections.Generic.IList<SongEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                if (size > 0)
+                        result = session.CreateCriteria (typeof(SongEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<SongEN>();
+                else
+                        result = session.CreateCriteria (typeof(SongEN)).List<SongEN>();
+                
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in SongCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }
