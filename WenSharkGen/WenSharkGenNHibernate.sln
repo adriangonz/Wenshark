@@ -36,6 +36,8 @@ Global
 		{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}.Release|x86.ActiveCfg = Release|Any CPU
+<<<<<<< HEAD
+=======
 		{6D0518EE-1EE7-4AB1-8F0A-EF1B42DFE03F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6D0518EE-1EE7-4AB1-8F0A-EF1B42DFE03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D0518EE-1EE7-4AB1-8F0A-EF1B42DFE03F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -46,6 +48,7 @@ Global
 		{6D0518EE-1EE7-4AB1-8F0A-EF1B42DFE03F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6D0518EE-1EE7-4AB1-8F0A-EF1B42DFE03F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6D0518EE-1EE7-4AB1-8F0A-EF1B42DFE03F}.Release|x86.ActiveCfg = Release|Any CPU
+>>>>>>> ba64c42c96cd71fdb6ae462093493539ff7e3c47
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
