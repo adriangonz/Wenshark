@@ -1,7 +1,13 @@
 /* Some styling for lists of items, etc */
 
+.section-container div.content {
+	z-index: 0 !important;
+	margin-top: 0 !important;
+}
+
 ul.items-list {
 	list-style: none;
+	z-index: 0;
 }
 
 ul.items-list li .subname{

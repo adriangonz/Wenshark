@@ -4,14 +4,51 @@
 
 	<div ng-show="loading"><img class="center" src="/Assets/img/spinner.gif" width="200" height="30" /></div>
 
-	<ul class="items-list" ng-show="songs.length && !loading">
-		<li class="song-thumb" ng-repeat="song in songs">
-			<a class="th" href="/play/{{song.id}}">
-				<p class="name">{{song.name}}</p>
-				<p class="subname">{{song.album.name}} · {{song.artist.name}}</p>
-			</a>
-		</li>
-	</ul>
+	<div class="section-container auto" data-section ng-show="!loading">
+		<section class="section active">
+			<p class="title"><a href="">Canciones</a></p>
+			<div class="content">
+				<ul class="items-list" ng-show="songs.length">
+					<li class="song-thumb" ng-repeat="song in songs">
+						<a class="th" href="/play/{{song.id}}">
+							<p class="name">{{song.name}}</p>
+							<p class="subname">{{song.album.name}} · {{song.artist.name}}</p>
+						</a>
+					</li>
+				</ul>
 
-	<h2 ng-show="!songs.length && !loading">No se han encontrado canciones :(</h2>
+				<h2 class="subheader" ng-show="!songs.length">No se han encontrado canciones :(</h2>
+			</div>
+		</section>
+
+		<section class="section">
+			<p class="title"><a href="">Artistas</a></p>
+			<div class="content">
+				<ul class="items-list" ng-show="artists.length">
+					<li class="art-thumb" ng-repeat="art in artists">
+						<a class="th" href="/artist/{{art.id}}">
+							<p class="name">{{art.name}}</p>
+						</a>
+					</li>
+				</ul>
+
+				<h2 class="subheader" ng-show="!artists.length">No se han encontrado canciones :(</h2>
+			</div>
+		</section>
+
+		<section class="section active">
+			<p class="title"><a href="">Albumes</a></p>
+			<div class="content">
+				<ul class="items-list" ng-show="albums.length">
+					<li class="alb-thumb" ng-repeat="alb in albums">
+						<a class="th" href="/album/{{alb.id}}">
+							<p class="name">{{alb.name}}</p>
+						</a>
+					</li>
+				</ul>
+
+				<h2 class="subheader" ng-show="!albums.length">No se han encontrado canciones :(</h2>
+			</div>
+		</section>
+	</div>
 </div>

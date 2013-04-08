@@ -15,11 +15,12 @@ function SearchCtrl ($scope, $routeParams, $http) {
 		.get('/api/search?name=' + $scope.query)
 		.success(function (data) {
 			$scope.loading = false;
-			console.log('Acabo de cargar: ' + $scope.loading);
+
 			$scope.songs = data.songs;
 			$scope.albums = data.albums;
 			$scope.artists = data.artists;
-			console.log($scope.songs);
+
+			$(document).foundation('section');
 		});
 	
 	$scope.dummyArr = [];
