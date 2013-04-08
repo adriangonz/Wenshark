@@ -8,4 +8,5 @@
   <property name="projectName" value="'WenSharkGen'"/>
   <property name="dataSourceHost" value=""/>
   <cartridge file="es::ua::dlsi::ooh::conceptualview::generator::xtext::m2m::generatorXtext.mwe" inheritAll="true"/>
+  <cartridge file="es::ua::dlsi::ooh::conceptualview::generator::xtext::m2m::generatorXtext.mwe" inheritAll="true" es.ua.dlsi.ooh.conceptual.model.debug="models/temp.domainModel"/>
 </workflow>
