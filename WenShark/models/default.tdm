@@ -14,7 +14,7 @@ ConceptualModel default {
 		operations
 		{
 			/* Metodos basicos */
-			public new::New (p_name : String, p_username : String, p_email : String) : Object->User;
+			public new::New (p_name : String, p_username : String, p_email : String, p_created : Date) : Object->User;
 			public destroy::Destroy (p_oid : OID -> User) : Void;
 			public modify::Modifier (p_oid : OID -> User, p_name : String, p_username : String, p_email : String, p_created : Date) : Void;
 			
@@ -38,7 +38,7 @@ ConceptualModel default {
 		operations
 		{
 			/* Metodos basicos */
-			public new::New (p_password : String, p_name : String, p_username : String, p_email : String) : Object->AppUser;
+			public new::New (p_password : String, p_name : String, p_username : String, p_email : String, p_created : Date) : Object->AppUser;
 			public destroy::Destroy (p_oid : OID -> AppUser) : Void;
 			public modify::Modifier (p_oid : OID -> AppUser, p_password : String, p_name : String, p_username : String, p_email : String, p_created : Date) : Void;
 		}
@@ -55,7 +55,7 @@ ConceptualModel default {
 		operations
 		{
 			/* Metodos basicos */
-			public new::New (p_token_oauth : String, p_name : String, p_username : String, p_email : String, p_provider : OID -> OAuthProvider) : Object->OAuthUser;
+			public new::New (p_token_oauth : String, p_name : String, p_username : String, p_email : String, p_created : Date, p_provider : OID -> OAuthProvider) : Object->OAuthUser;
 			public destroy::Destroy (p_oid : OID -> OAuthUser) : Void;
 			public modify::Modifier (p_oid : OID -> OAuthUser, p_token_oauth : String, p_name : String, p_username : String, p_email : String, p_created : Date) : Void;
 		}

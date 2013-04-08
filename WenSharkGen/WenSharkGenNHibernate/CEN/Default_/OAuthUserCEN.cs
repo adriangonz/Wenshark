@@ -32,7 +32,7 @@ public IOAuthUserCAD get_IOAuthUserCAD ()
         return this._IOAuthUserCAD;
 }
 
-public int New_ (string p_token_oauth, string p_name, string p_username, string p_email, int p_provider)
+public int New_ (string p_token_oauth, string p_name, string p_username, string p_email, Nullable<DateTime> p_created, int p_provider)
 {
         OAuthUserEN oAuthUserEN = null;
         int oid;
@@ -46,6 +46,8 @@ public int New_ (string p_token_oauth, string p_name, string p_username, string 
         oAuthUserEN.Username = p_username;
 
         oAuthUserEN.Email = p_email;
+
+        oAuthUserEN.Created = p_created;
 
 
         if (p_provider != -1) {
