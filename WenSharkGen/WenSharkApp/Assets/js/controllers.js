@@ -14,13 +14,13 @@ function SearchCtrl ($scope, $routeParams, $http) {
 	$http
 		.get('/api/search?name=' + $scope.query)
 		.success(function (data) {
-			$scope.loading = false;
-
 			$scope.songs = data.songs;
 			$scope.albums = data.albums;
 			$scope.artists = data.artists;
 
-			$(document).foundation('section');
+			$(document).foundation('section', function () {
+				$scope.loading = false;
+			});
 		});
 	
 	$scope.dummyArr = [];
