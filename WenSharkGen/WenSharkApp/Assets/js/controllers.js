@@ -22,7 +22,7 @@ function SearchCtrl ($scope, $routeParams, $http) {
 				$scope.loading = false;
 			});
 		});
-	
+	/*
 	$scope.dummyArr = [];
 	for(var i = 0; i < 10; i++) {
 		var dummy = {
@@ -39,5 +39,5 @@ function SearchCtrl ($scope, $routeParams, $http) {
 			}
 		};
 		$scope.dummyArr.push(dummy);
-	}
+	}*/
 }
