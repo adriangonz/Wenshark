@@ -26,9 +26,24 @@
 	<script src="/Assets/js/foundation.min.js"></script>
 	<script src="/Assets/js/controllers.js"></script>
 	<script src="/Assets/js/routes.js"></script>
+    <!-- si no no va el dropDown -->
+    <script>
+        $(document).foundation();
+    </script>
 
 	<!-- Etiqueta semi-inline de estilo que MARTIN QUITARA EN BREVE... -->
 	<style>
+        /* TODO: Esto hay que ponerlo en el css luego */
+        #dropDownSignIn, #dropDownSignUp {
+            margin-top: -50px;
+            top: 0;
+            z-index: 1000;
+        }
+
+		#dropDownSignIn input, #dropDownSignUp input {
+			margin-bottom: 10px;
+		}
+
 		.top-bar {
 			height: 55px;
 			padding-top: 5px;
@@ -109,16 +124,21 @@
 						</li>
 						<li class="divider"></li>
 
-						<li><a href="#">Log In</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Sign Up</a></li>
-						<li class="divider"></li>
+						<li class="has-dropdown">
+                            <a href="#" class="" data-dropdown="dropDownSignIn">Sign In</a>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="#" class="" data-dropdown="dropDownSignUp">Sign up</a>
+
+                        </li>
 					</ul>
 				</section>
 			</div>
 		</div>
 	</nav>
 	<!-- End Top Bar -->
+    <div id="dropDownSignUp" class="f-dropdown content small" ng-include src="'/Assets/partials/register.html'"></div>
+    <div id="dropDownSignIn" class="f-dropdown content small" ng-include src="'/Assets/partials/login.html'"></div>
 
 	<div class="row content"> 
 		<!-- Main content -->
