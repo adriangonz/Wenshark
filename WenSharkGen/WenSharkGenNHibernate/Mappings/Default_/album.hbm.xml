@@ -11,6 +11,10 @@
 					<property name="Published" type="date"> 
 						<column name="[published]"  not-null="true"/>
 					</property>
+					<property name="Image" type="string"> 
+						<column name="[image]"  not-null="true"/>
+					</property>
+			
 			
 			
 		  			
@@ -26,6 +30,7 @@
 					      	</key>
 							<one-to-many class="WenSharkGenNHibernate.EN.Default_.SongEN"/>
 					    </bag>
+					
 					
 					
 					

@@ -166,6 +166,7 @@
     <elements xsi:type="es.ua.dlsi.ooh:Class" name="Artist" alias="Artist" stereotyped="" inheritFathers="/0/@elements.14" associationOrigin="/0/@elements.15 /0/@elements.17">
       <operations name="new" operationType="New" type="Object" typeObject="/0/@elements.7">
         <arguments name="p_bio" isOrdered="true"/>
+        <arguments name="p_image" isOrdered="true"/>
         <arguments name="p_name" isOrdered="true"/>
         <arguments name="p_created" type="Date" isOrdered="true"/>
       </operations>
@@ -179,12 +180,14 @@
         <arguments name="p_created" type="Date" isOrdered="true"/>
       </operations>
       <attributes alias="bio" navigable="false" name="bio"/>
+      <attributes alias="image" navigable="false" name="image"/>
       <attributes alias="songs" visibility="Public" lower="0" upper="*" associationOrigin="/0/@elements.15" name="songs" type="Object" collectionType="List"/>
       <attributes alias="albums" visibility="Public" lower="0" upper="*" associationOrigin="/0/@elements.17" name="albums" type="Object" collectionType="List"/>
     </elements>
     <elements xsi:type="es.ua.dlsi.ooh:Class" name="Album" alias="Album" stereotyped="" inheritFathers="/0/@elements.16" asociationTarget="/0/@elements.17" associationOrigin="/0/@elements.18">
       <operations name="new" operationType="New" type="Object" typeObject="/0/@elements.8">
         <arguments name="p_published" type="Date" isOrdered="true"/>
+        <arguments name="p_image" isOrdered="true"/>
         <arguments name="p_name" isOrdered="true"/>
         <arguments name="p_created" type="Date" isOrdered="true"/>
         <arguments name="p_artist" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
@@ -199,6 +202,7 @@
         <arguments name="p_created" type="Date" isOrdered="true"/>
       </operations>
       <attributes alias="published" navigable="false" name="published" type="Date"/>
+      <attributes alias="image" navigable="false" name="image"/>
       <attributes alias="artist" visibility="Public" associationTarget="/0/@elements.17" name="artist" type="Object"/>
       <attributes alias="songs" visibility="Public" lower="0" upper="*" associationOrigin="/0/@elements.18" name="songs" type="Object" collectionType="List"/>
     </elements>
@@ -208,10 +212,10 @@
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="ItemGenre" description="ItemGenre" alias="ItemGenre" rolOrigin="/0/@elements.4/@attributes.3" rolTarget="/0/@elements.5/@attributes.2" visibility="Public" classTarget="/0/@elements.5" classOrigin="/0/@elements.4" rolOriginName="genre" rolTargetName="item" rolOriginMultiplicity="0..*" rolTargetMultiplicity="0..*"/>
     <elements xsi:type="es.ua.dlsi.ooh:Inheritance" name="inh_Song_Item" son="/0/@elements.6" father="/0/@elements.4" strategy="TablePerClass"/>
     <elements xsi:type="es.ua.dlsi.ooh:Inheritance" name="inh_Artist_Item" son="/0/@elements.7" father="/0/@elements.4" strategy="TablePerClass"/>
-    <elements xsi:type="es.ua.dlsi.ooh:Association" name="ArtistSong" description="ArtistSong" alias="ArtistSong" rolOrigin="/0/@elements.7/@attributes.1" rolTarget="/0/@elements.6/@attributes.1" visibility="Public" classTarget="/0/@elements.6" classOrigin="/0/@elements.7" rolOriginName="songs" rolTargetName="artist" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
+    <elements xsi:type="es.ua.dlsi.ooh:Association" name="ArtistSong" description="ArtistSong" alias="ArtistSong" rolOrigin="/0/@elements.7/@attributes.2" rolTarget="/0/@elements.6/@attributes.1" visibility="Public" classTarget="/0/@elements.6" classOrigin="/0/@elements.7" rolOriginName="songs" rolTargetName="artist" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
     <elements xsi:type="es.ua.dlsi.ooh:Inheritance" name="inh_Album_Item" son="/0/@elements.8" father="/0/@elements.4" strategy="TablePerClass"/>
-    <elements xsi:type="es.ua.dlsi.ooh:Association" name="ArtistAlbum" description="ArtistAlbum" alias="ArtistAlbum" rolOrigin="/0/@elements.7/@attributes.2" rolTarget="/0/@elements.8/@attributes.1" visibility="Public" classTarget="/0/@elements.8" classOrigin="/0/@elements.7" rolOriginName="albums" rolTargetName="artist" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
-    <elements xsi:type="es.ua.dlsi.ooh:Association" name="AlbumSong" description="AlbumSong" alias="AlbumSong" rolOrigin="/0/@elements.8/@attributes.2" rolTarget="/0/@elements.6/@attributes.2" visibility="Public" classTarget="/0/@elements.6" classOrigin="/0/@elements.8" rolOriginName="songs" rolTargetName="album" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
+    <elements xsi:type="es.ua.dlsi.ooh:Association" name="ArtistAlbum" description="ArtistAlbum" alias="ArtistAlbum" rolOrigin="/0/@elements.7/@attributes.3" rolTarget="/0/@elements.8/@attributes.2" visibility="Public" classTarget="/0/@elements.8" classOrigin="/0/@elements.7" rolOriginName="albums" rolTargetName="artist" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
+    <elements xsi:type="es.ua.dlsi.ooh:Association" name="AlbumSong" description="AlbumSong" alias="AlbumSong" rolOrigin="/0/@elements.8/@attributes.3" rolTarget="/0/@elements.6/@attributes.2" visibility="Public" classTarget="/0/@elements.6" classOrigin="/0/@elements.8" rolOriginName="songs" rolTargetName="album" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
   </es.ua.dlsi.ooh:ConceptualModel>
   <notation:Diagram type="ConceptualView" element="/0" name="temp.domainModel" measurementUnit="Pixel">
     <styles xsi:type="notation:DiagramStyle"/>

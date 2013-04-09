@@ -11,6 +11,10 @@
 					<property name="Bio" type="string"> 
 						<column name="[bio]"  not-null="true"/>
 					</property>
+					<property name="Image" type="string"> 
+						<column name="[image]"  not-null="true"/>
+					</property>
+			
 			
 			
 		  			
@@ -29,6 +33,7 @@
 					      	</key>
 							<one-to-many class="WenSharkGenNHibernate.EN.Default_.AlbumEN"/>
 					    </bag>
+					
 					
 					
 					
