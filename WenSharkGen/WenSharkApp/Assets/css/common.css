@@ -8,3 +8,9 @@ img.center {
 h2.subheader {
 	color: rgb(111, 111, 111);
 }
+
+/* Branding style */
+li.name h1 {
+	display: inline-block !important;
+	vertical-align: top;
+}

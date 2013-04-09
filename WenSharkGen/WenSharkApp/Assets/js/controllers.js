@@ -40,5 +40,4 @@ function SearchCtrl ($scope, $routeParams, $http) {
 		};
 		$scope.dummyArr.push(dummy);
 	}
-	
 }
