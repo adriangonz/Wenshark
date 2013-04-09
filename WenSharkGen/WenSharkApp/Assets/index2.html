@@ -18,6 +18,7 @@
   	<link rel="stylesheet" href="/Assets/css/general_foundicons.css" />
   	<link rel="stylesheet" href="/Assets/css/common.css" />
   	<link rel="stylesheet" href="/Assets/css/lists.css" />
+  	<link rel="stylesheet" href="/Assets/css/uploader.css" />
 
   	<!-- General JS references -->
 	<script src="/Assets/js/vendor/custom.modernizr.js"></script>
@@ -112,15 +113,15 @@
 					<ul class="right">
 						<li class="has-form">
 							<form ng-submit="search(query)" action="">
-							<div class="row collapse">
-					        <div class="small-10 columns">
-					        	<input type="text" placeholder="Buscar Musica" ng-model="query">
-					        </div>
-					        <div class="small-2 columns">
-					          	<a ng-href="#/search/{{query}}" class="button prefix"><i class="foundicon-search"></i></a>
-					        </div>
-					      </div>
-					      </form>
+								<div class="row collapse">
+					        		<div class="small-10 columns">
+					        			<input type="text" placeholder="Buscar Musica" ng-model="query">
+					        		</div>
+					        		<div class="small-2 columns">
+					          			<a ng-href="#/search/{{query}}" class="button prefix"><i class="foundicon-search"></i></a>
+					        		</div>
+					      		</div>
+					      	</form>
 						</li>
 						<li class="divider"></li>
 
@@ -131,6 +132,7 @@
                             <a href="#" class="" data-dropdown="dropDownSignUp">Sign up</a>
 
                         </li>
+						<li title="Sube tus canciones" class="upload"><a href="#/upload"><i class="foundicon-cloud"></i></a></li>
 					</ul>
 				</section>
 			</div>

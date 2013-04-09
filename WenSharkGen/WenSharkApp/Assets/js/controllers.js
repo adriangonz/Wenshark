@@ -22,22 +22,32 @@ function SearchCtrl ($scope, $routeParams, $http) {
 				$scope.loading = false;
 			});
 		});
-	/*
-	$scope.dummyArr = [];
-	for(var i = 0; i < 10; i++) {
+}
+
+//Controller for the upload
+function UploadCtrl ($scope) {
+	$scope.songsToUpload = [];
+	$scope.selected = null;
+	$scope.select = function (song) {
+		if($scope.selected != null)
+			$('#upl-song-' + $scope.selected.id).removeClass('active');
+
+		$scope.selected = song;
+		$('#upl-song-' + song.id).addClass('active');
+	};
+	for(var i = 0; i < 5; i++) {
 		var dummy = {
-			name: 'Test song - ' + i,
-			fname: 'song_file.mp3',
-			id: '900' + i,
-			album: {
-				id: '0',
-				name: 'Album wapo'
+			id : i,
+			name : 'ola ke ase ' + i,
+			file : 'olakease_' + i + '.mp3',
+			album : {
+				name: ''
 			},
-			artist: {
-				id: '0',
-				name: 'Artista wapo'
+			artist : {
+				name: ''
 			}
-		};
-		$scope.dummyArr.push(dummy);
-	}*/
+		}
+
+		$scope.songsToUpload.push(dummy);
+	}
 }

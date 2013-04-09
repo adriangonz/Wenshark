@@ -1,0 +1,9 @@
+/* Styles for the uploader */
+
+.uploader {
+	/*border: solid 1px rgb(217,217,217);*/
+}
+
+.uploader .upl-data {
+	border-left: solid 1px rgb(217, 217, 217);
+}

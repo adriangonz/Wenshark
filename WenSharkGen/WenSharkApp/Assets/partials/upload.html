@@ -1,0 +1,31 @@
+<div class="panel">
+	<h1>Sube tus canciones</h1>
+
+	<div class="row uploader">
+		<section class="small-5 columns upl-songs">
+			<ul class="items-list">
+				<li id="upl-song-{{song.id}}" class="th" ng-repeat="song in songsToUpload" ng-click="select(song)">
+					<p class="name">{{song.name}}</p>
+				</li>
+			</ul>
+			<div class="button upl-add-song">Añadir canciones</div>
+		</section>
+		<section class="small-6 columns upl-data">
+			<form ng-show="selected">
+				<label for="upl-song-name">Nombre de la cancion</label>
+				<input id="upl-song-name" type="text" placeholder="Nombre de la cancion" ng-model="selected.name"/>
+
+				<label for="upl-song-artist">Artista</label>
+				<input id="upl-song-artist" type="text" placeholder="Nombre del artista" ng-model="selected.artist.name"/>
+
+				<label for="upl-song-album">Album</label>
+				<input id="upl-song-album" type="text" placeholder="Nombre del artista" ng-model="selected.album.name"/>
+
+				<label for="upl-song-genre">Generos</label>
+				<input id="upl-song-genre" type="text" placeholder="Generos de la cancion" />
+			</form>
+
+			<h2 class="subheader" ng-show="!selected">Selecciona una cancion para modificar sus datos</h2>
+		</section>
+	</div>
+</div>
