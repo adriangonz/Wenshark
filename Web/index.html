@@ -8,61 +8,12 @@
 	<title>Foundation 4</title>
 	
 	<link rel="stylesheet" href="css/normalize.css" />
-
 	<link rel="stylesheet" href="css/foundation.css" />
-  <link rel="stylesheet" href="css/general_foundicons.css">
+	<link rel="stylesheet" href="css/general_foundicons.css">
+	<link rel="stylesheet" href="css/style.css" />
 
 	<script src="js/vendor/custom.modernizr.js"></script>
 
-	<style>
-		.top-bar {
-			height: 55px;
-			padding-top: 5px;
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			z-index: 400;
-		}
-
-		[class*="foundicon-"]:after { position: relative; top: -8px; left: 10px; color: #888; font-size: 60%; font-style: normal; }
-
-		.content {
-			margin-top: 55px;
-			margin-bottom: 120px;
-		}
-
-		.player {
-			height: 120px;
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			background-color: #111111;
-
-			color: white;
-		}
-
-		.player .now-playing {
-			height: 120px;
-			background-color: #333333;
-		}
-
-		.player .controls {
-			height: 25px;
-			background-color: #222222;
-		}
-
-		.player .song-info {
-			height: 95px;
-			background-color: #333333;
-		}
-
-		.player .song-list {
-			height: 95px;
-			background-color: #444444;
-		}
-	</style>
 </head>
 <body>
 
@@ -211,26 +162,39 @@
     <!-- End Content -->
  
  
-    <!-- Footer -->
- 
-		<!--div class="small-12 columns">
-			<div class="row">
-				<div class="small-12 columns controls">
-					Now Playing: [Controls]
-				</div>
-			</div>
-			<div class="row">
-				<div class="small-2 columns song-info">Song Info</div>
-				<div class="small-10 columns song-list">Song List</div>
-			</div>
-		</div-->    
+    <!-- Footer -->  
 	</div>
  
 	<div class="row player">
 		<div class="small-2 columns now-playing">Now playing</div>
 		<div class="small-10 columns">
 			<div class="row">
-				<div class="small-12 columns controls">Controles</div>
+				<div class="small-12 columns controls">
+					<div class="row">
+						<div class="small-2 columns" >
+							<div class="buttons">
+								<a class="backward"></a>
+								<a class="play"></a>
+								<a class="pause"></a>
+								<a class="forward"></a>
+							</div>
+						</div>
+						<div class="small-8 columns left" style="padding-top:1px;">
+							<div class="row">
+								<div class="small-1 columns time-elapsed">
+									99:99
+								</div>
+								<div class="small-8 columns progress-bar">&nbsp;
+			                        <div id="buffered" style="width: 45%;"></div>
+			                        <div id="elapsed" style="width: 35%;"></div>
+								</div>
+								<div class="small-1 columns left time-total">
+									99:99
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="small-12 columns song-list">Lista</div>
