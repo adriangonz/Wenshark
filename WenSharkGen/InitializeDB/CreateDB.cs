@@ -105,8 +105,9 @@ public static void InitializeData ()
                         ArtistEN newArtist = new ArtistEN ();
                         newArtist.Name = "Artista-" + i;
                         newArtist.Bio = "El señor " + i + " ha tenido una vida muy interesante...";
+                        newArtist.Image = "Imagen-" + i;
                         newArtist.Created = DateTime.Now;
-                        int a_id = artistCEN.New_ (newArtist.Bio, newArtist.Name, newArtist.Created);
+                        int a_id = artistCEN.New_(newArtist.Bio,newArtist.Image,newArtist.Name,newArtist.Created);
 
                         //Creo algunos albumes para el caballero
                         for (int j = 0; j < 5; j++) {
@@ -114,7 +115,9 @@ public static void InitializeData ()
                                 newAlbum.Created = DateTime.Now;
                                 newAlbum.Published = DateTime.Now;
                                 newAlbum.Name = "Album-" + i + "," + j;
-                                int alb_id = albumCEN.New_ (newAlbum.Published, newAlbum.Name, newAlbum.Created, a_id);
+                                newAlbum.Image = "Image-" + i + ","+j;
+
+                                int alb_id = albumCEN.New_(newAlbum.Published,newAlbum.Image,newAlbum.Name,newAlbum.Created,a_id);
 
                                 //Y algunas canciones
                                 for (int k = 0; k < 5; k++) {

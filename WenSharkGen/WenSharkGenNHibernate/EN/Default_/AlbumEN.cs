@@ -17,6 +17,12 @@ private Nullable<DateTime> published;
  *
  */
 
+private string image;
+
+/**
+ *
+ */
+
 private WenSharkGenNHibernate.EN.Default_.ArtistEN artist;
 
 /**
@@ -31,6 +37,11 @@ private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongE
 
 public virtual Nullable<DateTime> Published {
         get { return published; } set { published = value;  }
+}
+
+
+public virtual string Image {
+        get { return image; } set { image = value;  }
 }
 
 
@@ -54,23 +65,25 @@ public AlbumEN() : base ()
 
 
 
-public AlbumEN(int id, Nullable<DateTime> published, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+public AlbumEN(int id, Nullable<DateTime> published, string image, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
 {
-        this.init (id, published, artist, songs, name, created, genre);
+        this.init (id, published, image, artist, songs, name, created, genre);
 }
 
 
 public AlbumEN(AlbumEN album)
 {
-        this.init (album.Id, album.Published, album.Artist, album.Songs, album.Name, album.Created, album.Genre);
+        this.init (album.Id, album.Published, album.Image, album.Artist, album.Songs, album.Name, album.Created, album.Genre);
 }
 
-private void init (int id, Nullable<DateTime> published, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+private void init (int id, Nullable<DateTime> published, string image, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
 {
         this.Id = id;
 
 
         this.Published = published;
+
+        this.Image = image;
 
         this.Artist = artist;
 

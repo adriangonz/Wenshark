@@ -41,29 +41,6 @@ namespace WenSharkApp.Controllers
             return result;
         }
 
-        /*
-                public List<Song> getSongs(string cancion)
-                {
-                    ItemCEN itemCEN = new ItemCEN();
-                    List<Song> result = new List<Song>();
-
-                    List<ItemEN> searchElement = itemCEN.Search(cancion).ToList();
-                    foreach (var item in searchElement)
-                    {
-                        if (item.GetType() == typeof(SongEN))
-                        {
-                           // Song s = new Song();
-                           // s.id = item.Id;
-                           // s.name = item.Name;
-                           // result.Add(s);
-                            result.Add(new Song((SongEN)item));
-                        }
-                    }
-
-        
-                    return result;
-                }
-          */
     }
 
 

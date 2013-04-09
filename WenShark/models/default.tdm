@@ -171,6 +171,7 @@ ConceptualModel default {
  		attributes
  		{
  			private bio: String; /* Biografia/Descripcion del artista */
+ 			private image: String; /* ruta a la imagen del artista */
  			//pais
  			//web oficials
  		}
@@ -178,7 +179,7 @@ ConceptualModel default {
  		operations
  		{
  			/* Metodos basicos */
- 			public new::New (p_bio : String, p_name : String, p_created : Date) : Object->Artist;
+ 			public new::New (p_bio : String, p_image : String, p_name : String, p_created : Date) : Object->Artist;
  			public destroy::Destroy (p_oid : OID -> Artist) : Void;
  			public modify::Modifier (p_oid : OID -> Artist, p_bio : String, p_name : String, p_created : Date) : Void;
  		}
@@ -196,12 +197,13 @@ ConceptualModel default {
  		attributes
  		{
  			private published:  Date; /* Fecha de publicacion del disco original */
+ 			private image: String; /* ruta a la imagen del album */
  		}
  		
  		operations
  		{
  			/* Metodos basicos */
- 			public new::New (p_published : Date, p_name : String, p_created : Date, p_artist : OID -> Artist) : Object->Album;
+			public new::New (p_published : Date, p_image : String, p_name : String, p_created : Date, p_artist : OID -> Artist) : Object->Album;
  			public destroy::Destroy (p_oid : OID -> Album) : Void;
  			public modify::Modifier (p_oid : OID -> Album, p_published : Date, p_name : String, p_created : Date) : Void;
  		}

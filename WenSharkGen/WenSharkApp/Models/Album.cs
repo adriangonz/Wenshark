@@ -14,6 +14,9 @@ namespace WenSharkApp.Models
         {
             id = aEN.Id;
             name = aEN.Name;
+            image = aEN.Image;
+
+
         }
 
         [DataMember]
@@ -21,5 +24,10 @@ namespace WenSharkApp.Models
 
         [DataMember]
         String name;
+
+        [DataMember]
+        String image;
+
+
     }
 }

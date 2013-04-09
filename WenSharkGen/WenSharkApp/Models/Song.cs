@@ -17,19 +17,33 @@ namespace WenSharkApp.Models
             id = sEN.Id;
             name = sEN.Name;
             created = sEN.Created;
-            artist = null;//new Artist(sEN.Artist);
-            album = null;// new Album(sEN.Album);
+
+            if (sEN.Artist != null)
+                artist = sEN.Artist.Id;
+            
+            if (sEN.Album != null)
+                album = sEN.Album.Id;
+
+       /*     
+            genre = new List<int>();
+            foreach (var item in sEN.Genre)
+            {
+                genre.Add(item.Id);
+            }
+        */ 
         }
         
         [DataMember]
         public int id;
         [DataMember]
-        public String name;
+        public String name = "";
         [DataMember]
-        public DateTime? created;
+        public DateTime? created = null;
         [DataMember]
-        public Artist artist;
+        public int? artist = null;
         [DataMember]
-        public Album album;
+        public int? album = null;
+        [DataMember]
+        List<int> genre = null;
     }
 }

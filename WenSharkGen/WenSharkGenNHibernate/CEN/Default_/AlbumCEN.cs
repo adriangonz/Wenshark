@@ -32,7 +32,7 @@ public IAlbumCAD get_IAlbumCAD ()
         return this._IAlbumCAD;
 }
 
-public int New_ (Nullable<DateTime> p_published, string p_name, Nullable<DateTime> p_created, int p_artist)
+public int New_ (Nullable<DateTime> p_published, string p_image, string p_name, Nullable<DateTime> p_created, int p_artist)
 {
         AlbumEN albumEN = null;
         int oid;
@@ -40,6 +40,8 @@ public int New_ (Nullable<DateTime> p_published, string p_name, Nullable<DateTim
         //Initialized AlbumEN
         albumEN = new AlbumEN ();
         albumEN.Published = p_published;
+
+        albumEN.Image = p_image;
 
         albumEN.Name = p_name;
 
