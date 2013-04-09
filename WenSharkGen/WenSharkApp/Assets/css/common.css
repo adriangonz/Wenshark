@@ -14,3 +14,8 @@ li.name h1 {
 	display: inline-block !important;
 	vertical-align: top;
 }
+
+/* Styles on topbar for buttons */
+li.upload {
+	font-size: x-large;
+}
