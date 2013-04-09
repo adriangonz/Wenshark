@@ -136,6 +136,8 @@
     <Content Include="Assets\img\50x50.Img.gif" />
     <Content Include="Assets\img\logo_verde_trans.png" />
     <Content Include="Assets\index.html" />
+    <Content Include="Assets\index2.html" />
+    <Content Include="Assets\js\controllers.js" />
     <Content Include="Assets\js\foundation.min.js" />
     <Content Include="Assets\js\foundation\foundation.alerts.js" />
     <Content Include="Assets\js\foundation\foundation.clearing.js" />
@@ -151,9 +153,11 @@
     <Content Include="Assets\js\foundation\foundation.section.js" />
     <Content Include="Assets\js\foundation\foundation.tooltips.js" />
     <Content Include="Assets\js\foundation\foundation.topbar.js" />
+    <Content Include="Assets\js\routes.js" />
     <Content Include="Assets\js\vendor\custom.modernizr.js" />
     <Content Include="Assets\js\vendor\jquery.js" />
     <Content Include="Assets\js\vendor\zepto.js" />
+    <Content Include="Assets\partials\login.html" />
     <Content Include="Assets\partials\main.html" />
     <Content Include="Assets\partials\register.html" />
     <Content Include="Assets\partials\search.html" />
