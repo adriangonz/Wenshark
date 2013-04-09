@@ -154,6 +154,8 @@
     <Content Include="Assets\js\vendor\custom.modernizr.js" />
     <Content Include="Assets\js\vendor\jquery.js" />
     <Content Include="Assets\js\vendor\zepto.js" />
+    <Content Include="Assets\partials\main.html" />
+    <Content Include="Assets\partials\search.html" />
     <Content Include="Assets\robots.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
