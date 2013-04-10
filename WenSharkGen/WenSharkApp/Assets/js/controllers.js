@@ -33,7 +33,15 @@ function SignUpCtrl($scope, $routeParams, $http) {
         email : ''
     }
     $scope.signup = function () {
-        
+        $http
+		.post('/api/signup', JSON.stringify($scope.user))
+		.success(function (data) {
+		    if (data) {
+
+		    } else {
+
+		    }
+		});
     }
 }
 

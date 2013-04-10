@@ -111,6 +111,7 @@
   <ItemGroup>
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\SongController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -158,10 +159,12 @@
     <Content Include="Assets\js\vendor\custom.modernizr.js" />
     <Content Include="Assets\js\vendor\jquery.js" />
     <Content Include="Assets\js\vendor\zepto.js" />
+    <Content Include="Assets\partials\error.html" />
     <Content Include="Assets\partials\login.html" />
     <Content Include="Assets\partials\main.html" />
     <Content Include="Assets\partials\register.html" />
     <Content Include="Assets\partials\search.html" />
+    <Content Include="Assets\partials\upload.html" />
     <Content Include="Assets\robots.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
