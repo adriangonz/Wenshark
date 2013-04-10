@@ -6,7 +6,7 @@
 		
         var OAUTHURL    =   'https://accounts.google.com/o/oauth2/auth?';
         var VALIDURL    =   'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=';
-        var SCOPE       =   'https://www.googleapis.com/auth/userinfo.profile';
+        var SCOPE       =   "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email";
         var CLIENTID    =   '86668688312.apps.googleusercontent.com';
         var REDIRECT    =   'http://localhost/'
         var TYPE        =   'token';
@@ -62,6 +62,7 @@
                     user    =   resp;
                     console.log(user);
                     $('#uName').text('Welcome ' + user.name);
+					$('#uMail').text(user.email);
                     $('#imgHolder').attr('src', user.picture);
                 },
                 dataType: "jsonp"
@@ -97,6 +98,7 @@
     <a href="#" style="display:none" id="logoutText" target='myIFrame' onclick="myIFrame.location='https://www.google.com/accounts/Logout'; startLogoutPolling();return false;"> Click here to logout </a>
     <iframe name='myIFrame' id="myIFrame" style='display:none'></iframe>
     <div id='uName'></div>
+	<div id='uMail'></div>
     <img src='' id='imgHolder'/>
 </body>
 </html>

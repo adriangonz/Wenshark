@@ -10,6 +10,7 @@ ArtistEN ReadOIDDefault (int id);
 
 int New_ (ArtistEN artist);
 
+
 void Destroy (int id);
 
 

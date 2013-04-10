@@ -117,14 +117,23 @@
 	<Compile Include="CEN\Default_\SongCEN.cs" />
 	<Compile Include="CAD\Default_\ISongCAD.cs" />
 	<Compile Include="CAD\Default_\SongCAD.cs" />
+			<Compile Include="CEN\Default_\SongCEN_Create.cs" />
+			<Compile Include="CEN\Default_\SongCEN_GetAlbum.cs" />
+			<Compile Include="CEN\Default_\SongCEN_GetArtist.cs" />
+			<Compile Include="CEN\Default_\SongCEN_GetGenre.cs" />
 	<Compile Include="EN\Default_\ArtistEN.cs" />
 	<Compile Include="CEN\Default_\ArtistCEN.cs" />
 	<Compile Include="CAD\Default_\IArtistCAD.cs" />
 	<Compile Include="CAD\Default_\ArtistCAD.cs" />
+			<Compile Include="CEN\Default_\ArtistCEN_Create.cs" />
+			<Compile Include="CEN\Default_\ArtistCEN_GetAlbums.cs" />
 	<Compile Include="EN\Default_\AlbumEN.cs" />
 	<Compile Include="CEN\Default_\AlbumCEN.cs" />
 	<Compile Include="CAD\Default_\IAlbumCAD.cs" />
 	<Compile Include="CAD\Default_\AlbumCAD.cs" />
+			<Compile Include="CEN\Default_\AlbumCEN_Create.cs" />
+			<Compile Include="CEN\Default_\AlbumCEN_GetSongs.cs" />
+			<Compile Include="CEN\Default_\AlbumCEN_GetArtist.cs" />
 	
 	
 

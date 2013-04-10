@@ -32,7 +32,7 @@ public ISongCAD get_ISongCAD ()
         return this._ISongCAD;
 }
 
-public int New_ (string p_fname, string p_name, Nullable<DateTime> p_created, int p_artist, int p_album)
+public int New_ (string p_fname, string p_name, Nullable<DateTime> p_created, string p_type, int p_artist, int p_album)
 {
         SongEN songEN = null;
         int oid;
@@ -44,6 +44,8 @@ public int New_ (string p_fname, string p_name, Nullable<DateTime> p_created, in
         songEN.Name = p_name;
 
         songEN.Created = p_created;
+
+        songEN.Type = p_type;
 
 
         if (p_artist != -1) {
@@ -83,11 +85,11 @@ public void Modify (int p_oid, string p_fname, string p_name, Nullable<DateTime>
         _ISongCAD.Modify (songEN);
 }
 
-public System.Collections.Generic.IList<SongEN> ReadAll (int first, int size)
+public System.Collections.Generic.IList<SongEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<SongEN> list = null;
 
-        list = _ISongCAD.ReadAll (first, size);
+        list = _ISongCAD.GetAll (first, size);
         return list;
 }
 }

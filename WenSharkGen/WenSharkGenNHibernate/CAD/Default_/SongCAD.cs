@@ -143,7 +143,7 @@ public void Modify (SongEN song)
                 SessionClose ();
         }
 }
-public System.Collections.Generic.IList<SongEN> ReadAll (int first, int size)
+public System.Collections.Generic.IList<SongEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<SongEN> result = null;
         try

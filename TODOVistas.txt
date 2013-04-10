@@ -1,0 +1,2 @@
+DropDown multiple boton: Que cuando se abra un dropdown se cierre el otro
+Oauth: Añadir los botones de Oauth al login y registro

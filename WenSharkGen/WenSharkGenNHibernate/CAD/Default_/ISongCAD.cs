@@ -10,12 +10,13 @@ SongEN ReadOIDDefault (int id);
 
 int New_ (SongEN song);
 
+
 void Destroy (int id);
 
 
 void Modify (SongEN song);
 
 
-System.Collections.Generic.IList<SongEN> ReadAll (int first, int size);
+System.Collections.Generic.IList<SongEN> GetAll (int first, int size);
 }
 }

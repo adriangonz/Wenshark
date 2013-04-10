@@ -32,42 +32,6 @@ public IItemCAD get_IItemCAD ()
         return this._IItemCAD;
 }
 
-public int New_ (string p_name, Nullable<DateTime> p_created)
-{
-        ItemEN itemEN = null;
-        int oid;
-
-        //Initialized ItemEN
-        itemEN = new ItemEN ();
-        itemEN.Name = p_name;
-
-        itemEN.Created = p_created;
-
-        //Call to ItemCAD
-
-        oid = _IItemCAD.New_ (itemEN);
-        return oid;
-}
-
-public void Destroy (int id)
-{
-        _IItemCAD.Destroy (id);
-}
-
-public void Modify (int p_oid, string p_name, Nullable<DateTime> p_created)
-{
-        ItemEN itemEN = null;
-
-        //Initialized ItemEN
-        itemEN = new ItemEN ();
-        itemEN.Id = p_oid;
-        itemEN.Name = p_name;
-        itemEN.Created = p_created;
-        //Call to ItemCAD
-
-        _IItemCAD.Modify (itemEN);
-}
-
 public ItemEN GetByID (int id)
 {
         ItemEN itemEN = null;
