@@ -1,21 +1,21 @@
 ﻿<!-- Formulario de registro -->
 
-<form>
+<form ng-controller="SignInCtrl" ng-submit="signin()">
 
     <div class="row">
       <div class="large-12 columns">
         <label>User name</label>
-        <input type="text" placeholder="User name">
+        <input type="text" placeholder="User name" ng-model="user.username">
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
         <label>Password</label>
-        <input type="password" placeholder="password">
+        <input type="password" placeholder="password" ng-model="user.passw">
       </div>
     </div>
     <div class="row">
-        <a href="#" class="button succes small right">Login</a>
+        <input class="button small right" type="submit" value="Login"/>
     </div>
 </form>

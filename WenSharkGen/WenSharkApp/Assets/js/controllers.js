@@ -37,11 +37,21 @@ function SignUpCtrl($scope, $routeParams, $http) {
 		.post('/api/signup', JSON.stringify($scope.user))
 		.success(function (data) {
 		    if (data) {
-
+		        console.log(data);
 		    } else {
-
+		        console.log("No hay nada");
 		    }
 		});
+    }
+}
+
+function SignInCtrl($scope, $routeParams, $http) {
+    $scope.user = {
+        username: '',
+        passw: ''
+    }
+    $scope.signin = function () {
+        console.log($scope.user);
     }
 }
 
