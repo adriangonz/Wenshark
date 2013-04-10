@@ -3,7 +3,7 @@
 //Main controller of the app
 function MainCtrl ($scope) {
 	$scope.search = function (query) {
-		window.location.href = "/#/search/" + query;	
+	    window.location.href = "/#/search/" + query;	
 	}
 }
 
@@ -23,6 +23,20 @@ function SearchCtrl ($scope, $routeParams, $http) {
 			});
 		});
 }
+
+function SignUpCtrl($scope, $routeParams, $http) {
+    $scope.user = {
+        name : '',
+        username : '',
+        passw : '',
+        confPass: '',
+        email : ''
+    }
+    $scope.signup = function () {
+        
+    }
+}
+
 
 //Controller for the upload
 function UploadCtrl ($scope) {

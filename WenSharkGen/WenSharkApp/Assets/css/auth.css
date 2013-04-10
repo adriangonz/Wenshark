@@ -1,0 +1,17 @@
+#dropDownSignIn, #dropDownSignUp {
+    margin-top: -50px;
+    top: 0;
+    z-index: 1000;
+}
+
+#dropDownSignIn input, #dropDownSignUp input {
+    margin-bottom: 10px;
+}
+
+input.ng-invalid.ng-dirty {
+    background-color: #F1787E;
+}
+
+input.ng-valid.ng-dirty {
+    background-color: #78FA89;
+}
