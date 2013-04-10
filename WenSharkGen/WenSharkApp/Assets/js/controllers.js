@@ -35,19 +35,29 @@ function UploadCtrl ($scope) {
 		$scope.selected = song;
 		$('#upl-song-' + song.id).addClass('active');
 	};
-	for(var i = 0; i < 5; i++) {
-		var dummy = {
-			id : i,
-			name : 'ola ke ase ' + i,
-			file : 'olakease_' + i + '.mp3',
-			album : {
-				name: ''
-			},
-			artist : {
-				name: ''
-			}
-		}
-
-		$scope.songsToUpload.push(dummy);
+	$scope.addFileToUpload = function () {
+		$('.hidden-file-input').click();
 	}
+
+	//Add some handlers for adding files to view
+	$('.hidden-file-input').change(function (e) {
+		var filesToAdd = $('.hidden-file-input')[0].files;
+		var size = $scope.songsToUpload.length;
+
+		for (var i = 0; i < filesToAdd.length; i++) {
+			$scope.songsToUpload.push( {
+				id: size + i,
+				name: filesToAdd[i].name,
+				file: filesToAdd[i],
+				album : {
+					name: ''
+				},
+				artist : {
+					name: ''
+				}
+			});
+		};
+		$scope.$apply();
+		console.log($scope.songsToUpload);
+	});
 }

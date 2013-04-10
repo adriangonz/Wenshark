@@ -19,3 +19,7 @@ li.name h1 {
 li.upload {
 	font-size: x-large;
 }
+
+.hidden {
+	display: none;
+}
