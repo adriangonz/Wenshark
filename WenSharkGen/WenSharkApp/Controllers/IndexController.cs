@@ -14,7 +14,7 @@ namespace WenSharkApp.Controllers
         public ActionResult Index()
         {
             //return Redirect(Url.Content("/Assets/index2.html"));
-            Server.Transfer("/Assets/index2.html", true);
+            Server.Transfer("/Assets/index.html", true);
 
             return null;
         }

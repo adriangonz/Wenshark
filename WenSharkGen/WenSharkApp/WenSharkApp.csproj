@@ -136,7 +136,6 @@
     <Content Include="Assets\img\50x50.Img.gif" />
     <Content Include="Assets\img\logo_verde_trans.png" />
     <Content Include="Assets\index.html" />
-    <Content Include="Assets\index2.html" />
     <Content Include="Assets\js\controllers.js" />
     <Content Include="Assets\js\foundation.min.js" />
     <Content Include="Assets\js\foundation\foundation.alerts.js" />
