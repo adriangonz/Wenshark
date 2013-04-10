@@ -19,3 +19,20 @@ li.name h1 {
 li.upload {
 	font-size: x-large;
 }
+
+.top-bar {
+	height: 55px;
+	padding-top: 5px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 400;
+}
+
+[class*="foundicon-"]:after { position: relative; top: -8px; left: 10px; color: #888; font-size: 60%; font-style: normal; }
+
+.content {
+	margin-top: 55px;
+	margin-bottom: 120px;
+}

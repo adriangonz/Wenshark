@@ -1,0 +1,115 @@
+.player {
+	height: 120px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #111111;
+
+	color: white;
+}
+
+.player .now-playing {
+	height: 120px;
+	background-color: #333333;
+}
+
+.player .controls {
+	height: 24px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #222222;
+}
+
+.player .song-info {
+	height: 96px;
+	background-color: #333333;
+}
+
+.player .song-list {
+	height: 96px;
+	background-color: #444444;
+}
+
+
+/* Controles */
+
+.controls .buttons {
+	text-align: right;
+}
+
+.backward {
+	width: 14px;
+	height: 18px;
+	display: inline-block;
+	background: transparent url('/Assets/img/player/backward.png') center top no-repeat;
+}
+.backward:hover {
+	background: url('/Assets/img/player/backward_active.png');	
+}
+
+.play {
+	width: 16px;
+	height: 18px;
+	display: inline-block;
+	background: transparent url('/Assets/img/player/play.png') center top no-repeat;
+}
+.play:hover {
+	background: url('/Assets/img/player/play_active.png');	
+}
+
+.pause {
+	margin-top: 1px;
+	margin-bottom: 1px;
+	width: 10px;
+	height: 16px;
+	display: inline-block;
+	background: transparent url('/Assets/img/player/pause.png') center top no-repeat;
+}
+.pause:hover {
+	background: url('/Assets/img/player/pause_active.png');	
+}
+
+.forward {
+	width: 14px;
+	height: 18px;
+	display: inline-block;
+	background: transparent url('/Assets/img/player/forward.png') center top no-repeat;
+}
+.forward:hover {
+	background: url('/Assets/img/player/forward_active.png');	
+}
+
+/* Barra de progreso */
+
+.time-elapsed {
+	text-align: right;
+}
+
+.progress-bar {
+	background-color: white;
+	border-color: white;
+	border-style: solid;
+	border-width: 1px;
+	width: 400px;
+}
+
+.time-total {
+
+}
+
+#buffered {
+	top: 0px;
+	left: 0px;
+	height: 16px;
+	position: absolute;
+	background-color: red;
+}
+
+#elapsed {
+	top: 0px;
+	left: 0px;
+	height: 16px;
+	position: absolute;
+	background-color: green;
+}
