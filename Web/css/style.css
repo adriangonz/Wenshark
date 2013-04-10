@@ -1,132 +1,132 @@
 .top-bar {
-			height: 55px;
-			padding-top: 5px;
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			z-index: 400;
-		}
+	height: 55px;
+	padding-top: 5px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 400;
+}
 
-		[class*="foundicon-"]:after { position: relative; top: -8px; left: 10px; color: #888; font-size: 60%; font-style: normal; }
+[class*="foundicon-"]:after { position: relative; top: -8px; left: 10px; color: #888; font-size: 60%; font-style: normal; }
 
-		.content {
-			margin-top: 55px;
-			margin-bottom: 120px;
-		}
+.content {
+	margin-top: 55px;
+	margin-bottom: 120px;
+}
 
-		.player {
-			height: 120px;
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			background-color: #111111;
+.player {
+	height: 120px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #111111;
 
-			color: white;
-		}
+	color: white;
+}
 
-		.player .now-playing {
-			height: 120px;
-			background-color: #333333;
-		}
+.player .now-playing {
+	height: 120px;
+	background-color: #333333;
+}
 
-		.player .controls {
-			height: 24px;
-			padding-top: 3px;
-			padding-bottom: 3px;
-			background-color: #222222;
-		}
+.player .controls {
+	height: 24px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #222222;
+}
 
-		.player .song-info {
-			height: 96px;
-			background-color: #333333;
-		}
+.player .song-info {
+	height: 96px;
+	background-color: #333333;
+}
 
-		.player .song-list {
-			height: 96px;
-			background-color: #444444;
-		}
+.player .song-list {
+	height: 96px;
+	background-color: #444444;
+}
 
 
-		/* Controles */
+/* Controles */
 
-		.controls .buttons {
-			text-align: right;
-		}
+.controls .buttons {
+	text-align: right;
+}
 
-		.backward {
-			width: 14px;
-			height: 18px;
-			display: inline-block;
-			background: transparent url('../img/backward.png') center top no-repeat;
-		}
-		.backward:hover {
-			background: url('../img/backward_active.png');	
-		}
+.backward {
+	width: 14px;
+	height: 18px;
+	display: inline-block;
+	background: transparent url('../img/backward.png') center top no-repeat;
+}
+.backward:hover {
+	background: url('../img/backward_active.png');	
+}
 
-		.play {
-			width: 16px;
-			height: 18px;
-			display: inline-block;
-			background: transparent url('../img/play.png') center top no-repeat;
-		}
-		.play:hover {
-			background: url('../img/play_active.png');	
-		}
+.play {
+	width: 16px;
+	height: 18px;
+	display: inline-block;
+	background: transparent url('../img/play.png') center top no-repeat;
+}
+.play:hover {
+	background: url('../img/play_active.png');	
+}
 
-		.pause {
-			margin-top: 1px;
-			margin-bottom: 1px;
-			width: 10px;
-			height: 16px;
-			display: inline-block;
-			background: transparent url('../img/pause.png') center top no-repeat;
-		}
-		.pause:hover {
-			background: url('../img/pause_active.png');	
-		}
+.pause {
+	margin-top: 1px;
+	margin-bottom: 1px;
+	width: 10px;
+	height: 16px;
+	display: inline-block;
+	background: transparent url('../img/pause.png') center top no-repeat;
+}
+.pause:hover {
+	background: url('../img/pause_active.png');	
+}
 
-		.forward {
-			width: 14px;
-			height: 18px;
-			display: inline-block;
-			background: transparent url('../img/forward.png') center top no-repeat;
-		}
-		.forward:hover {
-			background: url('../img/forward_active.png');	
-		}
+.forward {
+	width: 14px;
+	height: 18px;
+	display: inline-block;
+	background: transparent url('../img/forward.png') center top no-repeat;
+}
+.forward:hover {
+	background: url('../img/forward_active.png');	
+}
 
-		/* Barra de progreso */
+/* Barra de progreso */
 
-		.time-elapsed {
-			text-align: right;
-		}
+.time-elapsed {
+	text-align: right;
+}
 
-		.progress-bar {
-			background-color: white;
-			border-color: white;
-			border-style: solid;
-			border-width: 1px;
-			width: 400px;
-		}
+.progress-bar {
+	background-color: white;
+	border-color: white;
+	border-style: solid;
+	border-width: 1px;
+	width: 400px;
+}
 
-		.time-total {
+.time-total {
 
-		}
+}
 
-		#buffered {
-			top: 0px;
-			left: 0px;
-			height: 16px;
-			position: absolute;
-			background-color: red;
-		}
+#buffered {
+	top: 0px;
+	left: 0px;
+	height: 16px;
+	position: absolute;
+	background-color: red;
+}
 
-		#elapsed {
-			top: 0px;
-			left: 0px;
-			height: 16px;
-			position: absolute;
-			background-color: green;
-		}
+#elapsed {
+	top: 0px;
+	left: 0px;
+	height: 16px;
+	position: absolute;
+	background-color: green;
+}
