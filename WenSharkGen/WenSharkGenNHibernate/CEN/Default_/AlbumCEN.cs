@@ -61,6 +61,14 @@ public int New_ (Nullable<DateTime> p_published, string p_image, string p_name, 
         return oid;
 }
 
+public AlbumEN ReadOID (int id)
+{
+        AlbumEN albumEN = null;
+
+        albumEN = _IAlbumCAD.ReadOID (id);
+        return albumEN;
+}
+
 public void Destroy (int id)
 {
         _IAlbumCAD.Destroy (id);
@@ -79,6 +87,11 @@ public void Modify (int p_oid, Nullable<DateTime> p_published, string p_name, Nu
         //Call to AlbumCAD
 
         _IAlbumCAD.Modify (albumEN);
+}
+
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AlbumEN> Search (string p_filter)
+{
+        return _IAlbumCAD.Search (p_filter);
 }
 }
 }

@@ -42,5 +42,6 @@
 		  </joined-subclass>	
 		  
 		  <query name="ArtistENReadAllHQL">from ArtistEN</query>
+		  <query name="ArtistENsearchHQL"><![CDATA[FROM ArtistEN WHERE name LIKE '%' || :p_filter || '%']]></query>
 		</hibernate-mapping>
 	

@@ -14,13 +14,24 @@ namespace WenSharkGenNHibernate.CEN.Default_
 {
 public partial class AlbumCEN
 {
-public WenSharkGenNHibernate.EN.Default_.ArtistEN GetArtist (int p_oid)
+public WenSharkGenNHibernate.EN.Default_.ArtistEN GetArtist (WenSharkGenNHibernate.EN.Default_.AlbumEN album)
 {
         /*PROTECTED REGION ID(WenSharkGenNHibernate.CEN.Default__Album_getArtist) ENABLED START*/
 
         // Write here your custom code...
+        ArtistEN artistaEN = null;
 
-        throw new NotImplementedException ("Method GetArtist() not yet implemented.");
+        if (album.Artist != null) {
+                ArtistCEN artistCEN = new ArtistCEN ();
+                artistaEN = artistCEN.ReadOID (album.Artist.Id);
+                if (artistaEN != null) {
+                        artistaEN.Albums = null;
+                        artistaEN.Songs = null;
+                        artistaEN.Genre = null;
+                }
+        }
+
+        return artistaEN;
 
         /*PROTECTED REGION END*/
 }

@@ -158,14 +158,17 @@ ConceptualModel default {
  		{
  			/* Metodos basicos */
  			public new::New (p_fname : String, p_name : String, p_created : Date, p_type : String, p_artist : OID -> Artist, p_album : OID -> Album) : Object->Song;
+ 			public readOID::ReadOID (p_oid : OID -> Song) : Object -> Song;
  			public create (name: String, fname: String, artist : OID -> Artist, album : OID -> Album) : Object->Song;
  			public destroy::Destroy (p_oid : OID -> Song) : Void;
  			public modify::Modifier (p_oid : OID -> Song, p_fname : String, p_name : String, p_created : Date) : Void;
  			public getAll::ReadAll (/* No arguments */) : List<Object->Song>;
  			
- 			public getAlbum (p_oid : OID -> Song) : Object -> Album;
- 			public getArtist (p_oid : OID -> Song) : Object->Artist;
- 			public getGenre (p_oid : OID -> Song) : List<Object -> Genre>;
+ 			public getAlbum (song : Object->Song) : Object -> Album;
+ 			public getArtist (song : Object->Song) : Object->Artist;
+ 			public getGenre (song : Object->Song) : List<Object -> Genre>;
+ 			
+ 			public search::ReadFilter (p_filter : String) : List<Object->Song> { filter = "FROM SongEN WHERE name LIKE '%' || :p_filter || '%'" };
  		}
  	};
  	
@@ -183,11 +186,14 @@ ConceptualModel default {
  		{
  			/* Metodos basicos */
  			public new::New (p_bio : String, p_image : String, p_name : String, p_created : Date, p_type : String) : Object->Artist;
+ 			public readOID::ReadOID (p_oid : OID -> Artist) : Object -> Artist;
  			public create (name : String, bio : String, image : String) : Object->Artist;
  			public destroy::Destroy (p_oid : OID -> Artist) : Void;
  			public modify::Modifier (p_oid : OID -> Artist, p_bio : String, p_name : String, p_created : Date) : Void;
  			
- 			public getAlbums (p_oid : OID -> Artist) : List<Object->Album>;
+ 			public getAlbums (album : Object->Artist) : List<Object->Album>;
+ 			
+ 			public search::ReadFilter (p_filter : String) : List<Object->Artist> { filter = "FROM ArtistEN WHERE name LIKE '%' || :p_filter || '%'" };
  		}
  	};
  	
@@ -211,12 +217,15 @@ ConceptualModel default {
  		{
  			/* Metodos basicos */
  			public new::New (p_published : Date, p_image : String, p_name : String, p_created : Date, p_type : String, p_artist : OID -> Artist) : Object->Album;
+			public readOID::ReadOID (p_oid : OID -> Album) : Object -> Album;
 			public create (name : String, published : Date, image : String, artist : OID->Artist) : Object->Album;
  			public destroy::Destroy (p_oid : OID -> Album) : Void;
  			public modify::Modifier (p_oid : OID -> Album, p_published : Date, p_name : String, p_created : Date) : Void;
  			
- 			public getSongs  (p_oid : OID -> Album) : List<Object->Song>;
- 			public getArtist (p_oid : OID -> Album) : Object->Artist;
+ 			public getSongs  (album : Object->Album) : List<Object->Song>;
+ 			public getArtist (album : Object->Album) : Object->Artist;
+ 			
+ 			public search::ReadFilter (p_filter : String) : List<Object->Album> { filter = "FROM AlbumEN WHERE name LIKE '%' || :p_filter || '%'" };
  		}
  	};
  	

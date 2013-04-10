@@ -87,6 +87,33 @@ public int New_ (SongEN song)
         return song.Id;
 }
 
+public SongEN ReadOID (int id)
+{
+        SongEN songEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                songEN = (SongEN)session.Get (typeof(SongEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in SongCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return songEN;
+}
+
 public void Destroy (int id)
 {
         try
@@ -154,6 +181,37 @@ public System.Collections.Generic.IList<SongEN> GetAll (int first, int size)
                                  SetFirstResult (first).SetMaxResults (size).List<SongEN>();
                 else
                         result = session.CreateCriteria (typeof(SongEN)).List<SongEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in SongCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> Search (string p_filter)
+{
+        System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM SongEN self where FROM SongEN WHERE name LIKE '%' || :p_filter || '%'";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("SongENsearchHQL");
+                query.SetParameter ("p_filter", p_filter);
+
+                result = query.List<WenSharkGenNHibernate.EN.Default_.SongEN>();
                 SessionCommit ();
         }
 

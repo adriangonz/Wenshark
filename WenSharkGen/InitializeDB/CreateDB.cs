@@ -107,7 +107,7 @@ public static void InitializeData ()
                         newArtist.Bio = "El señor " + i + " ha tenido una vida muy interesante...";
                         newArtist.Image = "Imagen-" + i;
                         newArtist.Created = DateTime.Now;
-                        int a_id = artistCEN.Create(newArtist.Name, newArtist.Bio, newArtist.Image).Id;
+                        int a_id = artistCEN.Create (newArtist.Name, newArtist.Bio, newArtist.Image).Id;
 
                         //Creo algunos albumes para el caballero
                         for (int j = 0; j < 5; j++) {
@@ -117,7 +117,7 @@ public static void InitializeData ()
                                 newAlbum.Name = "Album-" + i + "," + j;
                                 newAlbum.Image = "Image-" + i + "," + j;
 
-                                int alb_id = albumCEN.Create(newAlbum.Name, newAlbum.Published, newAlbum.Image, a_id).Id;
+                                int alb_id = albumCEN.Create (newAlbum.Name, newAlbum.Published, newAlbum.Image, a_id).Id;
 
                                 //Y algunas canciones
                                 for (int k = 0; k < 5; k++) {
@@ -125,7 +125,7 @@ public static void InitializeData ()
                                         newSong.Name = "Cancion muy bonita del señor " + a_id + " y el album " + alb_id;
                                         newSong.Fname = "music.mp3";
                                         newSong.Created = DateTime.Now;
-                                        songCEN.Create(newSong.Name, newSong.Fname, a_id, alb_id);
+                                        songCEN.Create (newSong.Name, newSong.Fname, a_id, alb_id);
                                 }
                         }
                 }

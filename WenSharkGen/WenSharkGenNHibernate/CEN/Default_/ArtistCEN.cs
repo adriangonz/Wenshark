@@ -55,6 +55,14 @@ public int New_ (string p_bio, string p_image, string p_name, Nullable<DateTime>
         return oid;
 }
 
+public ArtistEN ReadOID (int id)
+{
+        ArtistEN artistEN = null;
+
+        artistEN = _IArtistCAD.ReadOID (id);
+        return artistEN;
+}
+
 public void Destroy (int id)
 {
         _IArtistCAD.Destroy (id);
@@ -73,6 +81,11 @@ public void Modify (int p_oid, string p_bio, string p_name, Nullable<DateTime> p
         //Call to ArtistCAD
 
         _IArtistCAD.Modify (artistEN);
+}
+
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ArtistEN> Search (string p_filter)
+{
+        return _IArtistCAD.Search (p_filter);
 }
 }
 }
