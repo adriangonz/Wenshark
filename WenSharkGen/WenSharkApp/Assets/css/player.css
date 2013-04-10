@@ -1,20 +1,3 @@
-.top-bar {
-	height: 55px;
-	padding-top: 5px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 400;
-}
-
-[class*="foundicon-"]:after { position: relative; top: -8px; left: 10px; color: #888; font-size: 60%; font-style: normal; }
-
-.content {
-	margin-top: 55px;
-	margin-bottom: 120px;
-}
-
 .player {
 	height: 120px;
 	position: fixed;
@@ -59,20 +42,20 @@
 	width: 14px;
 	height: 18px;
 	display: inline-block;
-	background: transparent url('../img/backward.png') center top no-repeat;
+	background: transparent url('/Assets/img/player/backward.png') center top no-repeat;
 }
 .backward:hover {
-	background: url('../img/backward_active.png');	
+	background: url('/Assets/img/player/backward_active.png');	
 }
 
 .play {
 	width: 16px;
 	height: 18px;
 	display: inline-block;
-	background: transparent url('../img/play.png') center top no-repeat;
+	background: transparent url('/Assets/img/player/play.png') center top no-repeat;
 }
 .play:hover {
-	background: url('../img/play_active.png');	
+	background: url('/Assets/img/player/play_active.png');	
 }
 
 .pause {
@@ -81,20 +64,20 @@
 	width: 10px;
 	height: 16px;
 	display: inline-block;
-	background: transparent url('../img/pause.png') center top no-repeat;
+	background: transparent url('/Assets/img/player/pause.png') center top no-repeat;
 }
 .pause:hover {
-	background: url('../img/pause_active.png');	
+	background: url('/Assets/img/player/pause_active.png');	
 }
 
 .forward {
 	width: 14px;
 	height: 18px;
 	display: inline-block;
-	background: transparent url('../img/forward.png') center top no-repeat;
+	background: transparent url('/Assets/img/player/forward.png') center top no-repeat;
 }
 .forward:hover {
-	background: url('../img/forward_active.png');	
+	background: url('/Assets/img/player/forward_active.png');	
 }
 
 /* Barra de progreso */

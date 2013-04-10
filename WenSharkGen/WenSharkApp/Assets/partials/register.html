@@ -1,42 +1,41 @@
 ﻿<!-- Formulario de registro -->
 
-<form>
-
+<form ng-controller="SignUpCtrl" ng-submit="signup()">
     <div class="row">
       <div class="large-12 columns">
-        <label>Full namen</label>
-        <input type="text" placeholder="Full Name">
+        <label>Full name</label>
+        <input type="text" placeholder="Full Name" ng-model="user.name" required>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
         <label>User name</label>
-        <input type="text" placeholder="User name">
+        <input type="text" placeholder="User name" ng-model="user.username" required>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
         <label>Password</label>
-        <input type="password" placeholder="password">
+        <input type="password" placeholder="password" ng-model="user.passw" ng-minlength="6" required>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
         <label>Confirm password</label>
-        <input type="password" placeholder="password">
+        <input type="password" placeholder="password" ui-validate-equals="user.passw" ng-model="user.confPass" required>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
         <label>Email</label>
-        <input type="email" placeholder="email@example.com">
+        <input type="email" placeholder="email@example.com" ng-model="user.email" required>
       </div>
     </div>
     <div class="row">
-        <a href="#" class="button small right">Register</a>
+        <input class="button small right" type="submit" value="Sign up"/>
     </div>
 </form>

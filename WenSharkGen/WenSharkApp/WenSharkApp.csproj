@@ -121,10 +121,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Assets\css\common.css" />
+    <Content Include="Assets\css\auth.css" />
     <Content Include="Assets\css\foundation.css" />
     <Content Include="Assets\css\foundation.min.css" />
     <Content Include="Assets\css\general_foundicons.css" />
+    <Content Include="Assets\css\lists.css" />
     <Content Include="Assets\css\normalize.css" />
+    <Content Include="Assets\css\player.css" />
+    <Content Include="Assets\css\uploader.css" />
     <Content Include="Assets\fonts\general_foundicons.svg" />
     <Content Include="Assets\humans.txt" />
     <Content Include="Assets\img\1200x500.Slide_Image.gif" />
@@ -132,8 +137,8 @@
     <Content Include="Assets\img\50x50.Img.gif" />
     <Content Include="Assets\img\logo_verde_trans.png" />
     <Content Include="Assets\index.html" />
-    <Content Include="Assets\index2.html" />
     <Content Include="Assets\js\controllers.js" />
+    <Content Include="Assets\js\directives.js" />
     <Content Include="Assets\js\foundation.min.js" />
     <Content Include="Assets\js\foundation\foundation.alerts.js" />
     <Content Include="Assets\js\foundation\foundation.clearing.js" />
