@@ -1,4 +1,4 @@
-﻿var myApp = angular.module('wenshark', []).directive('uiValidateEquals', function () {
+﻿angular.module('wenshark', []).directive('uiValidateEquals', function () {
 
     return {
         restrict: 'A',
