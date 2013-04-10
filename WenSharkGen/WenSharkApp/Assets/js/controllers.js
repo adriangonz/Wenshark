@@ -14,6 +14,7 @@ function SearchCtrl ($scope, $routeParams, $http) {
 	$http
 		.get('/api/search?name=' + $scope.query)
 		.success(function (data) {
+			console.log(data);
 			$scope.songs = data.songs;
 			$scope.albums = data.albums;
 			$scope.artists = data.artists;

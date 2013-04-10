@@ -10,9 +10,9 @@
 			<div class="content">
 				<ul class="items-list" ng-show="songs.length">
 					<li class="song-thumb" ng-repeat="song in songs">
-						<a class="th" href="/play/{{song.id}}">
-							<p class="name">{{song.name}}</p>
-							<p class="subname">{{song.album.name}} · {{song.artist.name}}</p>
+						<a class="th" href="/play/{{song.Id}}">
+							<p class="name">{{song.Name}}</p>
+							<p class="subname">{{song.Artist.Name}} · {{song.Album.name}}</p>
 						</a>
 					</li>
 				</ul>
@@ -26,8 +26,8 @@
 			<div class="content">
 				<ul class="items-list" ng-show="artists.length">
 					<li class="art-thumb" ng-repeat="art in artists">
-						<a class="th" href="/artist/{{art.id}}">
-							<p class="name">{{art.name}}</p>
+						<a class="th" href="/artist/{{art.Id}}">
+							<p class="name">{{art.Name}}</p>
 						</a>
 					</li>
 				</ul>
@@ -41,8 +41,8 @@
 			<div class="content">
 				<ul class="items-list" ng-show="albums.length">
 					<li class="alb-thumb" ng-repeat="alb in albums">
-						<a class="th" href="/album/{{alb.id}}">
-							<p class="name">{{alb.name}}</p>
+						<a class="th" href="/album/{{alb.Id}}">
+							<p class="name">{{alb.Name}}</p>
 						</a>
 					</li>
 				</ul>
