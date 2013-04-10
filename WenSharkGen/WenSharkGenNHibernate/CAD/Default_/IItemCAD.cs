@@ -8,14 +8,6 @@ public partial interface IItemCAD
 {
 ItemEN ReadOIDDefault (int id);
 
-int New_ (ItemEN item);
-
-void Destroy (int id);
-
-
-void Modify (ItemEN item);
-
-
 ItemEN GetByID (int id);
 
 

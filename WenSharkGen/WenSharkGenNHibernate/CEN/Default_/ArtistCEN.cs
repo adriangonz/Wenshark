@@ -32,7 +32,7 @@ public IArtistCAD get_IArtistCAD ()
         return this._IArtistCAD;
 }
 
-public int New_ (string p_bio, string p_image, string p_name, Nullable<DateTime> p_created)
+public int New_ (string p_bio, string p_image, string p_name, Nullable<DateTime> p_created, string p_type)
 {
         ArtistEN artistEN = null;
         int oid;
@@ -46,6 +46,8 @@ public int New_ (string p_bio, string p_image, string p_name, Nullable<DateTime>
         artistEN.Name = p_name;
 
         artistEN.Created = p_created;
+
+        artistEN.Type = p_type;
 
         //Call to ArtistCAD
 

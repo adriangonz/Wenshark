@@ -10,6 +10,7 @@ AlbumEN ReadOIDDefault (int id);
 
 int New_ (AlbumEN album);
 
+
 void Destroy (int id);
 
 

@@ -13,6 +13,10 @@
 					<property name="Created" type="date"> 
 						<column name="[created]"  not-null="true"/>
 					</property>
+					<property name="Type" type="string"> 
+						<column name="[type]"  not-null="true"/>
+					</property>
+			
 			
 			
 			
@@ -26,6 +30,7 @@
 									<column name="[FK_id_genre]"/>
       						</many-to-many>
     					</bag>
+					
 					
 					
 					
