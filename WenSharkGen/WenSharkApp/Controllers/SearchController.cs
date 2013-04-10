@@ -15,39 +15,36 @@ namespace WenSharkApp.Controllers
     {
         public HttpResponseMessage getSearch(string name)
         {
-            ItemCEN itemCEN = new ItemCEN();
-            
-            List<ItemEN> itemList = itemCEN.Search(name).ToList();
-            List<SongEN> lsongs = new List<SongEN>();
-            List<AlbumEN> lalbums = new List<AlbumEN>();
-            List<ArtistEN> lartists = new List<ArtistEN>();
+            SongCEN songCEN = new SongCEN();
+            AlbumCEN albumCEN = new AlbumCEN();
+            ArtistCEN artistCEN = new ArtistCEN();
 
+            List<SongEN> lsongs = songCEN.Search(name).ToList();
+            List<AlbumEN> lalbums = albumCEN.Search(name).ToList();
+            List<ArtistEN> lartists = artistCEN.Search(name).ToList();
 
-            foreach (var item in itemList)
+            foreach (var item in lsongs)
             {
                 item.Genre = null;
-
-                if (item.GetType() == typeof(SongEN))
-                {
-                    ((SongEN)item).Artist = null;
-                    ((SongEN)item).Album = null;
-                    lsongs.Add((SongEN)item);
-                }
-                else if (item.GetType() == typeof(AlbumEN))
-                {
-                    ((AlbumEN)item).Artist = null;
-                    ((AlbumEN)item).Songs = null;
-                    lalbums.Add((AlbumEN)item);
-                }
-                else if (item.GetType() == typeof(ArtistEN))
-                {
-                    ((ArtistEN)item).Songs = null;
-                    ((ArtistEN)item).Albums = null;
-                    lartists.Add((ArtistEN)item);
-                }
+                item.Artist = songCEN.GetArtist(item);
+                item.Album = songCEN.GetAlbum(item);
             }
 
-            return this.Request.CreateResponse(HttpStatusCode.OK, new { songs = lsongs, albums = lalbums, artits = lartists });
+            foreach (var item in lalbums)
+            {
+                item.Genre = null;
+                item.Artist = albumCEN.GetArtist(item);
+                item.Songs = null;
+            }
+
+            foreach (var item in lartists)
+            {
+                item.Genre = null;
+                item.Songs = null;
+                item.Albums = null;
+            }
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, new { songs = lsongs, albums = lalbums, artists = lartists });
         }
 
         public HttpResponseMessage getSearch()
