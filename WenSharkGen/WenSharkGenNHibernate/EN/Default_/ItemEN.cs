@@ -27,6 +27,12 @@ private Nullable<DateTime> created;
  *
  */
 
+private string type;
+
+/**
+ *
+ */
+
 private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre;
 
 
@@ -48,6 +54,11 @@ public virtual Nullable<DateTime> Created {
 }
 
 
+public virtual string Type {
+        get { return type; } set { type = value;  }
+}
+
+
 public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> Genre {
         get { return genre; } set { genre = value;  }
 }
@@ -63,18 +74,18 @@ public ItemEN()
 
 
 
-public ItemEN(int id, string name, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+public ItemEN(int id, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
 {
-        this.init (id, name, created, genre);
+        this.init (id, name, created, type, genre);
 }
 
 
 public ItemEN(ItemEN item)
 {
-        this.init (item.Id, item.Name, item.Created, item.Genre);
+        this.init (item.Id, item.Name, item.Created, item.Type, item.Genre);
 }
 
-private void init (int id, string name, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+private void init (int id, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
 {
         this.Id = id;
 
@@ -82,6 +93,8 @@ private void init (int id, string name, Nullable<DateTime> created, System.Colle
         this.Name = name;
 
         this.Created = created;
+
+        this.Type = type;
 
         this.Genre = genre;
 }

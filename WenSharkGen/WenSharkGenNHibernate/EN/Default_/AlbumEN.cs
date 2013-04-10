@@ -65,18 +65,18 @@ public AlbumEN() : base ()
 
 
 
-public AlbumEN(int id, Nullable<DateTime> published, string image, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+public AlbumEN(int id, Nullable<DateTime> published, string image, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
 {
-        this.init (id, published, image, artist, songs, name, created, genre);
+        this.init (id, published, image, artist, songs, name, created, type, genre);
 }
 
 
 public AlbumEN(AlbumEN album)
 {
-        this.init (album.Id, album.Published, album.Image, album.Artist, album.Songs, album.Name, album.Created, album.Genre);
+        this.init (album.Id, album.Published, album.Image, album.Artist, album.Songs, album.Name, album.Created, album.Type, album.Genre);
 }
 
-private void init (int id, Nullable<DateTime> published, string image, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+private void init (int id, Nullable<DateTime> published, string image, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
 {
         this.Id = id;
 
@@ -92,6 +92,8 @@ private void init (int id, Nullable<DateTime> published, string image, WenSharkG
         this.Name = name;
 
         this.Created = created;
+
+        this.Type = type;
 
         this.Genre = genre;
 }

@@ -16,7 +16,7 @@ namespace WenSharkApp.Controllers
         public List<SongEN> getAll()
         {
             SongCEN songCEN = new SongCEN();
-            List<SongEN> resul = songCEN.ReadAll(0, 10).ToList();
+            List<SongEN> resul = songCEN.GetAll(0, 10).ToList();
 
 
             foreach (var song in resul)
