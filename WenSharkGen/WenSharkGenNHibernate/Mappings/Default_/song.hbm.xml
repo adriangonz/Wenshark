@@ -11,6 +11,10 @@
 					<property name="Fname" type="string"> 
 						<column name="[fname]"  not-null="true"/>
 					</property>
+					<property name="Mime" type="string"> 
+						<column name="[mime]"  not-null="true"/>
+					</property>
+			
 			
 			
 		  			
@@ -24,6 +28,7 @@
 								<column name="[FK_id_album]"/>
 						</many-to-one>
 											 					
+					
 					
 					
 					

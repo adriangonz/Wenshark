@@ -21,12 +21,6 @@ private string name;
  *
  */
 
-private string username;
-
-/**
- *
- */
-
 private string email;
 
 /**
@@ -49,11 +43,6 @@ public virtual string Name {
 }
 
 
-public virtual string Username {
-        get { return username; } set { username = value;  }
-}
-
-
 public virtual string Email {
         get { return email; } set { email = value;  }
 }
@@ -73,25 +62,23 @@ public UserEN()
 
 
 
-public UserEN(int id, string name, string username, string email, Nullable<DateTime> created)
+public UserEN(int id, string name, string email, Nullable<DateTime> created)
 {
-        this.init (id, name, username, email, created);
+        this.init (id, name, email, created);
 }
 
 
 public UserEN(UserEN user)
 {
-        this.init (user.Id, user.Name, user.Username, user.Email, user.Created);
+        this.init (user.Id, user.Name, user.Email, user.Created);
 }
 
-private void init (int id, string name, string username, string email, Nullable<DateTime> created)
+private void init (int id, string name, string email, Nullable<DateTime> created)
 {
         this.Id = id;
 
 
         this.Name = name;
-
-        this.Username = username;
 
         this.Email = email;
 

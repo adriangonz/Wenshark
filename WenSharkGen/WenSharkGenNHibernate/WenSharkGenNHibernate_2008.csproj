@@ -97,6 +97,7 @@
 	<Compile Include="CEN\Default_\AppUserCEN.cs" />
 	<Compile Include="CAD\Default_\IAppUserCAD.cs" />
 	<Compile Include="CAD\Default_\AppUserCAD.cs" />
+			<Compile Include="CEN\Default_\AppUserCEN_Custom.cs" />
 	<Compile Include="EN\Default_\OAuthUserEN.cs" />
 	<Compile Include="CEN\Default_\OAuthUserCEN.cs" />
 	<Compile Include="CAD\Default_\IOAuthUserCAD.cs" />

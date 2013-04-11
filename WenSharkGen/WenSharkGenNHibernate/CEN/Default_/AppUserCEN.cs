@@ -76,5 +76,10 @@ public void Modify (int p_oid, string p_password, string p_name, string p_userna
 
         _IAppUserCAD.Modify (appUserEN);
 }
+
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AppUserEN> GetByUsername (string p_filter)
+{
+        return _IAppUserCAD.GetByUsername (p_filter);
+}
 }
 }

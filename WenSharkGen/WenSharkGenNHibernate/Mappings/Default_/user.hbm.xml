@@ -10,9 +10,6 @@
 					<property name="Name" type="string"> 
 						<column name="[name]"  not-null="true"/>
 					</property>
-					<property name="Username" type="string"> 
-						<column name="[username]"  not-null="true"/>
-					</property>
 					<property name="Email" type="string"> 
 						<column name="[email]"  not-null="true"/>
 					</property>
@@ -23,8 +20,6 @@
 			
 			
 			
-			
-					
 					
 					
 					

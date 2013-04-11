@@ -11,10 +11,21 @@ public partial class AppUserEN                  :                           WenS
  *
  */
 
+private string username;
+
+/**
+ *
+ */
+
 private string password;
 
 
 
+
+
+public virtual string Username {
+        get { return username; } set { username = value;  }
+}
 
 
 public virtual string Password {
@@ -31,27 +42,27 @@ public AppUserEN() : base ()
 
 
 
-public AppUserEN(int id, string password, string name, string username, string email, Nullable<DateTime> created)
+public AppUserEN(int id, string username, string password, string name, string email, Nullable<DateTime> created)
 {
-        this.init (id, password, name, username, email, created);
+        this.init (id, username, password, name, email, created);
 }
 
 
 public AppUserEN(AppUserEN appUser)
 {
-        this.init (appUser.Id, appUser.Password, appUser.Name, appUser.Username, appUser.Email, appUser.Created);
+        this.init (appUser.Id, appUser.Username, appUser.Password, appUser.Name, appUser.Email, appUser.Created);
 }
 
-private void init (int id, string password, string name, string username, string email, Nullable<DateTime> created)
+private void init (int id, string username, string password, string name, string email, Nullable<DateTime> created)
 {
         this.Id = id;
 
 
+        this.Username = username;
+
         this.Password = password;
 
         this.Name = name;
-
-        this.Username = username;
 
         this.Email = email;
 

@@ -14,5 +14,8 @@ void Destroy (int id);
 
 
 void Modify (AppUserEN appUser);
+
+
+System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AppUserEN> GetByUsername (string p_filter);
 }
 }
