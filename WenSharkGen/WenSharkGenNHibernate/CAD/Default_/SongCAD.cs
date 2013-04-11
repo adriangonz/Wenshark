@@ -148,10 +148,13 @@ public void Modify (SongEN song)
                 songEN.Fname = song.Fname;
 
 
+                songEN.Mime = song.Mime;
+
+
                 songEN.Name = song.Name;
 
 
-                songEN.Created = song.Created;
+                songEN.Type = song.Type;
 
                 session.Update (songEN);
                 SessionCommit ();

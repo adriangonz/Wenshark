@@ -24,9 +24,9 @@ public WenSharkGenNHibernate.EN.Default_.AlbumEN GetAlbum (WenSharkGenNHibernate
                 AlbumCEN albumCEN = new AlbumCEN ();
                 albumEN = albumCEN.ReadOID (song.Album.Id);
                 if (albumEN != null) {
-                    albumEN.Genre = null;
-                    albumEN.Artist = null;
-                    albumEN.Songs = null;
+                        albumEN.Genre = null;
+                        albumEN.Artist = null;
+                        albumEN.Songs = null;
                 }
         }
 

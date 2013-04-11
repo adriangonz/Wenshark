@@ -42,18 +42,18 @@ public OAuthUserEN() : base ()
 
 
 
-public OAuthUserEN(int id, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string username, string email, Nullable<DateTime> created)
+public OAuthUserEN(int id, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created)
 {
-        this.init (id, token_oauth, provider, name, username, email, created);
+        this.init (id, token_oauth, provider, name, email, created);
 }
 
 
 public OAuthUserEN(OAuthUserEN oAuthUser)
 {
-        this.init (oAuthUser.Id, oAuthUser.Token_oauth, oAuthUser.Provider, oAuthUser.Name, oAuthUser.Username, oAuthUser.Email, oAuthUser.Created);
+        this.init (oAuthUser.Id, oAuthUser.Token_oauth, oAuthUser.Provider, oAuthUser.Name, oAuthUser.Email, oAuthUser.Created);
 }
 
-private void init (int id, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string username, string email, Nullable<DateTime> created)
+private void init (int id, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created)
 {
         this.Id = id;
 
@@ -63,8 +63,6 @@ private void init (int id, string token_oauth, WenSharkGenNHibernate.EN.Default_
         this.Provider = provider;
 
         this.Name = name;
-
-        this.Username = username;
 
         this.Email = email;
 

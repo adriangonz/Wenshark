@@ -14,7 +14,7 @@ namespace WenSharkGenNHibernate.CEN.Default_
 {
 public partial class SongCEN
 {
-public WenSharkGenNHibernate.EN.Default_.SongEN Create (string name, string fname, int artist, int album)
+public WenSharkGenNHibernate.EN.Default_.SongEN Create (string name, string fname, string mime, int artist, int album)
 {
         /*PROTECTED REGION ID(WenSharkGenNHibernate.CEN.Default__Song_create) ENABLED START*/
 
@@ -24,7 +24,7 @@ public WenSharkGenNHibernate.EN.Default_.SongEN Create (string name, string fnam
 
         songEN.Name = name;
         songEN.Fname = fname;
-
+        songEN.Mime = mime;
         songEN.Created = DateTime.Now;
 
         if (artist != -1) {
