@@ -7,8 +7,9 @@
 					<p class="name">{{song.name}}</p>
 				</li>
 			</ul>
-			<button class="button upl-add-song" ng-disabled="uploading" ng-click="addFileToUpload()">Añadir canciones</button>
-			<button class="button success" ng-disabled="uploading" ng-click="upload()" ng-show="songsToUpload.length">Subir canciones</button>
+			<button class="button upl-add-song" ng-show="!uploading" ng-click="addFileToUpload()">Añadir canciones</button>
+			<button class="button success" ng-click="upload()" ng-show="songsToUpload.length && !uploading">Subir canciones</button>
+			<div ng-show="uploading"><img class="center" src="/Assets/img/spinner.gif" width="200" height="30" /></div>
 			<input type="file" multiple class="hidden hidden-file-input" />
 		</section>
 		<section class="small-6 columns upl-data">
