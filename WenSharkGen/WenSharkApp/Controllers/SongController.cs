@@ -54,7 +54,7 @@ namespace WenSharkApp.Controllers
                         int artist = int.Parse(provider.FormData["artist-" + i]);
 
                         //Guardo la nueva cancion en la BD
-                        SongEN new_song = songcen.Create(name, "mierdas.ogg", artist, album);
+                        SongEN new_song = songcen.Create(name, "temp", "temp", artist, album);
                         
                         //Sobrescribo el nombre del fichero
                         var old_path = file.LocalFileName;
@@ -67,8 +67,7 @@ namespace WenSharkApp.Controllers
                         var new_path = old_path.Replace(old_name, new_name);
                         File.Move(old_path, new_path);
                         new_song.Fname = new_name;
-                        //TODO: save the mime type on the model
-                        songcen.Modify(new_song.Id, new_song.Fname, new_song.Name, new_song.Created);
+                        songcen.Modify(new_song.Id, new_name, file.Headers.ContentType.MediaType, new_song.Name, new_song.Type);
 
                         //Devuelvo 200 (OK)
                         return new HttpResponseMessage(HttpStatusCode.OK);
