@@ -8,11 +8,37 @@ using WenSharkGenNHibernate;
 using WenSharkGenNHibernate.EN.Default_;
 using WenSharkGenNHibernate.CEN.Default_;
 using NHibernate;
+using System.Net.Http.Formatting;
+using System.Web;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace WenSharkApp.Controllers
 {
     public class SongController : ApiController
     {
+        public async Task<IEnumerable<HttpResponseMessage>> postNewSong()
+        {
+            //Si no es FormData... Exception
+            if (!Request.Content.IsMimeMultipartContent())
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+            
+            string root = HttpContext.Current.Server.MapPath("~/App_Data");
+            var provider = new MultipartFormDataStreamProvider(root);
+
+            //Leo el form data y magia
+            await Request.Content.ReadAsMultipartAsync(provider);
+            
+            return provider.FileData.Select((file, i) =>
+                {
+                    string name = provider.FormData["name-" + i];
+                    string album = provider.FormData["album-" + i];
+                    string artist = provider.FormData["artist-" + i];
+
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                });
+        }
+
         public List<SongEN> getAll()
         {
             SongCEN songCEN = new SongCEN();

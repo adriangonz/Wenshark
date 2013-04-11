@@ -61,6 +61,28 @@ function UploadCtrl ($scope) {
 	$scope.addFileToUpload = function () {
 		$('.hidden-file-input').click();
 	}
+	$scope.upload = function () {
+		//We upload the songs with the data
+		var formdata = new FormData();
+		for(var i = 0; i < $scope.songsToUpload.length; i++) {
+			formdata.append("file-" + i, $scope.songsToUpload[i].file);
+			formdata.append("name-" + i, $scope.songsToUpload[i].name);
+			formdata.append("album-" + i, 2);
+			formdata.append("artist-" + i, 3);
+		}
+		console.log('Lo que subo: ');
+		console.log(formdata);
+		$.ajax({
+			url: '/api/song',
+			type: 'POST',
+			data: formdata,
+			processData: false,
+			contentType: false,
+			success: function (res) {
+				alert('Yiiieba!');
+			}
+		});
+	}
 
 	//Add some handlers for adding files to view
 	$('.hidden-file-input').change(function (e) {
