@@ -14,7 +14,7 @@ namespace WenSharkGenNHibernate.CEN.Default_
 {
 public partial class SongCEN
 {
-public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> GetGenre (int p_oid)
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> GetGenre (WenSharkGenNHibernate.EN.Default_.SongEN song)
 {
         /*PROTECTED REGION ID(WenSharkGenNHibernate.CEN.Default__Song_getGenre) ENABLED START*/
 

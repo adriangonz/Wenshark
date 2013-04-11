@@ -39,5 +39,6 @@
 		  </joined-subclass>	
 		  
 		  <query name="AlbumENReadAllHQL">from AlbumEN</query>
+		  <query name="AlbumENsearchHQL"><![CDATA[FROM AlbumEN WHERE name LIKE '%' || :p_filter || '%']]></query>
 		</hibernate-mapping>
 	

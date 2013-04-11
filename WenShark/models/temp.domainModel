@@ -139,6 +139,9 @@
         <arguments name="p_artist" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
         <arguments name="p_album" type="OID" typeObject="/0/@elements.8" isOrdered="true"/>
       </operations>
+      <operations name="readOID" operationType="ReadOID" type="Object" typeObject="/0/@elements.6">
+        <arguments name="p_oid" type="OID" typeObject="/0/@elements.6" isOrdered="true"/>
+      </operations>
       <operations name="create" type="Object" typeObject="/0/@elements.6">
         <arguments name="name" isOrdered="true"/>
         <arguments name="fname" isOrdered="true"/>
@@ -156,13 +159,16 @@
       </operations>
       <operations name="getAll" operationType="ReadAll" type="Object" collectionType="List" typeObject="/0/@elements.6"/>
       <operations name="getAlbum" type="Object" typeObject="/0/@elements.8">
-        <arguments name="p_oid" type="OID" typeObject="/0/@elements.6" isOrdered="true"/>
+        <arguments name="song" type="Object" typeObject="/0/@elements.6" isOrdered="true"/>
       </operations>
       <operations name="getArtist" type="Object" typeObject="/0/@elements.7">
-        <arguments name="p_oid" type="OID" typeObject="/0/@elements.6" isOrdered="true"/>
+        <arguments name="song" type="Object" typeObject="/0/@elements.6" isOrdered="true"/>
       </operations>
       <operations name="getGenre" type="Object" collectionType="List" typeObject="/0/@elements.5">
-        <arguments name="p_oid" type="OID" typeObject="/0/@elements.6" isOrdered="true"/>
+        <arguments name="song" type="Object" typeObject="/0/@elements.6" isOrdered="true"/>
+      </operations>
+      <operations name="search" operationType="ReadFilter" type="Object" collectionType="List" typeObject="/0/@elements.6" filter="FROM SongEN WHERE name LIKE '%' || :p_filter || '%'">
+        <arguments name="p_filter" isOrdered="true"/>
       </operations>
       <attributes alias="fname" navigable="false" name="fname"/>
       <attributes alias="artist" visibility="Public" associationTarget="/0/@elements.15" name="artist" type="Object"/>
@@ -175,6 +181,9 @@
         <arguments name="p_name" isOrdered="true"/>
         <arguments name="p_created" type="Date" isOrdered="true"/>
         <arguments name="p_type" isOrdered="true"/>
+      </operations>
+      <operations name="readOID" operationType="ReadOID" type="Object" typeObject="/0/@elements.7">
+        <arguments name="p_oid" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
       </operations>
       <operations name="create" type="Object" typeObject="/0/@elements.7">
         <arguments name="name" isOrdered="true"/>
@@ -191,7 +200,10 @@
         <arguments name="p_created" type="Date" isOrdered="true"/>
       </operations>
       <operations name="getAlbums" type="Object" collectionType="List" typeObject="/0/@elements.8">
-        <arguments name="p_oid" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
+        <arguments name="album" type="Object" typeObject="/0/@elements.7" isOrdered="true"/>
+      </operations>
+      <operations name="search" operationType="ReadFilter" type="Object" collectionType="List" typeObject="/0/@elements.7" filter="FROM ArtistEN WHERE name LIKE '%' || :p_filter || '%'">
+        <arguments name="p_filter" isOrdered="true"/>
       </operations>
       <attributes alias="bio" navigable="false" name="bio"/>
       <attributes alias="image" navigable="false" name="image"/>
@@ -206,6 +218,9 @@
         <arguments name="p_created" type="Date" isOrdered="true"/>
         <arguments name="p_type" isOrdered="true"/>
         <arguments name="p_artist" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
+      </operations>
+      <operations name="readOID" operationType="ReadOID" type="Object" typeObject="/0/@elements.8">
+        <arguments name="p_oid" type="OID" typeObject="/0/@elements.8" isOrdered="true"/>
       </operations>
       <operations name="create" type="Object" typeObject="/0/@elements.8">
         <arguments name="name" isOrdered="true"/>
@@ -223,10 +238,13 @@
         <arguments name="p_created" type="Date" isOrdered="true"/>
       </operations>
       <operations name="getSongs" type="Object" collectionType="List" typeObject="/0/@elements.6">
-        <arguments name="p_oid" type="OID" typeObject="/0/@elements.8" isOrdered="true"/>
+        <arguments name="album" type="Object" typeObject="/0/@elements.8" isOrdered="true"/>
       </operations>
       <operations name="getArtist" type="Object" typeObject="/0/@elements.7">
-        <arguments name="p_oid" type="OID" typeObject="/0/@elements.8" isOrdered="true"/>
+        <arguments name="album" type="Object" typeObject="/0/@elements.8" isOrdered="true"/>
+      </operations>
+      <operations name="search" operationType="ReadFilter" type="Object" collectionType="List" typeObject="/0/@elements.8" filter="FROM AlbumEN WHERE name LIKE '%' || :p_filter || '%'">
+        <arguments name="p_filter" isOrdered="true"/>
       </operations>
       <attributes alias="published" navigable="false" name="published" type="Date"/>
       <attributes alias="image" navigable="false" name="image"/>

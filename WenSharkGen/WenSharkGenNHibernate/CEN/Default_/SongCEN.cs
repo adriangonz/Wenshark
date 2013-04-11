@@ -65,6 +65,14 @@ public int New_ (string p_fname, string p_name, Nullable<DateTime> p_created, st
         return oid;
 }
 
+public SongEN ReadOID (int id)
+{
+        SongEN songEN = null;
+
+        songEN = _ISongCAD.ReadOID (id);
+        return songEN;
+}
+
 public void Destroy (int id)
 {
         _ISongCAD.Destroy (id);
@@ -91,6 +99,10 @@ public System.Collections.Generic.IList<SongEN> GetAll (int first, int size)
 
         list = _ISongCAD.GetAll (first, size);
         return list;
+}
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> Search (string p_filter)
+{
+        return _ISongCAD.Search (p_filter);
 }
 }
 }

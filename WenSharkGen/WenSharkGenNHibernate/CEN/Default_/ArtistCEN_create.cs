@@ -20,18 +20,19 @@ public WenSharkGenNHibernate.EN.Default_.ArtistEN Create (string name, string bi
 
         // Write here your custom code...
 
-    ArtistEN artistEN = new ArtistEN();
-    artistEN.Type = "Artist";
+        ArtistEN artistEN = new ArtistEN ();
 
-    artistEN.Name = name;
-    artistEN.Image = image;
-    artistEN.Bio = bio;
+        artistEN.Type = "Artist";
 
-    artistEN.Created = DateTime.Now;
+        artistEN.Name = name;
+        artistEN.Image = image;
+        artistEN.Bio = bio;
 
-    artistEN.Id = _IArtistCAD.New_(artistEN);
-    return artistEN;
- 
+        artistEN.Created = DateTime.Now;
+
+        artistEN.Id = _IArtistCAD.New_ (artistEN);
+        return artistEN;
+
         /*PROTECTED REGION END*/
 }
 }

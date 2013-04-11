@@ -14,13 +14,11 @@ namespace WenSharkGenNHibernate.CEN.Default_
 {
 public partial class AlbumCEN
 {
-public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> GetSongs (int p_oid)
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> GetSongs (WenSharkGenNHibernate.EN.Default_.AlbumEN album)
 {
         /*PROTECTED REGION ID(WenSharkGenNHibernate.CEN.Default__Album_getSongs) ENABLED START*/
+    throw new NotImplementedException("Method GetGenre() not yet implemented.");
 
-        // Write here your custom code...
-
-        throw new NotImplementedException ("Method GetSongs() not yet implemented.");
 
         /*PROTECTED REGION END*/
 }

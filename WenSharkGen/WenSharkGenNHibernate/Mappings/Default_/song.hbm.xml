@@ -31,5 +31,6 @@
 		  </joined-subclass>	
 		  
 		  <query name="SongENReadAllHQL">from SongEN</query>
+		  <query name="SongENsearchHQL"><![CDATA[FROM SongEN WHERE name LIKE '%' || :p_filter || '%']]></query>
 		</hibernate-mapping>
 	
