@@ -60,6 +60,9 @@ namespace WenSharkApp.Controllers
                         var old_path = file.LocalFileName;
                         var old_name = Path.GetFileName(old_path);
                         var ext = defaultExtension(file.Headers.ContentType.MediaType);
+                        //Anyadir aqui las extensiones que Windows no tiene por defecto
+                        if (ext == "" && file.Headers.ContentType.MediaType.Contains("ogg"))
+                            ext = "ogg";
                         var new_name = new_song.Id.ToString() + "." + ext;
                         var new_path = old_path.Replace(old_name, new_name);
                         File.Move(old_path, new_path);
@@ -68,7 +71,7 @@ namespace WenSharkApp.Controllers
                         songcen.Modify(new_song.Id, new_song.Fname, new_song.Name, new_song.Created);
 
                         //Devuelvo 200 (OK)
-                        return Request.CreateResponse(HttpStatusCode.OK);
+                        return new HttpResponseMessage(HttpStatusCode.OK);
                     } 
                     catch(System.Exception e) 
                     {

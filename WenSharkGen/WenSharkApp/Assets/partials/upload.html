@@ -1,6 +1,5 @@
 <div class="panel">
-	<h1>Sube tus canciones</h1>
-
+	<h1 class="title">Sube tus canciones</h1>
 	<div class="row uploader">
 		<section class="small-5 columns upl-songs">
 			<ul class="items-list">
@@ -8,23 +7,23 @@
 					<p class="name">{{song.name}}</p>
 				</li>
 			</ul>
-			<button class="button upl-add-song" ng-click="addFileToUpload()">Añadir canciones</button>
-			<button class="button success" ng-click="upload()" ng-show="songsToUpload.length">Subir canciones</button>
+			<button class="button upl-add-song" ng-disabled="uploading" ng-click="addFileToUpload()">Añadir canciones</button>
+			<button class="button success" ng-disabled="uploading" ng-click="upload()" ng-show="songsToUpload.length">Subir canciones</button>
 			<input type="file" multiple class="hidden hidden-file-input" />
 		</section>
 		<section class="small-6 columns upl-data">
 			<form ng-show="selected">
 				<label for="upl-song-name">Nombre de la cancion</label>
-				<input id="upl-song-name" type="text" placeholder="Nombre de la cancion" ng-model="selected.name"/>
+				<input ng-disabled="uploading" id="upl-song-name" type="text" placeholder="Nombre de la cancion" ng-model="selected.name"/>
 
 				<label for="upl-song-artist">Artista</label>
-				<input id="upl-song-artist" type="text" placeholder="Nombre del artista" ng-model="selected.artist.name"/>
+				<input ng-disabled="uploading" id="upl-song-artist" type="text" placeholder="Nombre del artista" ng-model="selected.artist.name"/>
 
 				<label for="upl-song-album">Album</label>
-				<input id="upl-song-album" type="text" placeholder="Nombre del artista" ng-model="selected.album.name"/>
+				<input  ng-disabled="uploading" id="upl-song-album" type="text" placeholder="Nombre del artista" ng-model="selected.album.name"/>
 
 				<label for="upl-song-genre">Generos</label>
-				<input id="upl-song-genre" type="text" placeholder="Generos de la cancion" />
+				<input ng-disabled="uploading" id="upl-song-genre" type="text" placeholder="Generos de la cancion" />
 			</form>
 
 			<h2 class="subheader" ng-show="!songsToUpload.length">Empieza añadiendo canciones</h2>

@@ -71,7 +71,10 @@ function UploadCtrl ($scope) {
 	$scope.addFileToUpload = function () {
 		$('.hidden-file-input').click();
 	}
+	$scope.uploading = false;
+	$scope.uploadOK = false;
 	$scope.upload = function () {
+		$scope.uploading = true;
 		//We upload the songs with the data
 		var formdata = new FormData();
 		for(var i = 0; i < $scope.songsToUpload.length; i++) {
@@ -80,8 +83,7 @@ function UploadCtrl ($scope) {
 			formdata.append("album-" + i, 2);
 			formdata.append("artist-" + i, 1);
 		}
-		console.log('Lo que subo: ');
-		console.log(formdata);
+
 		$.ajax({
 			url: '/api/song',
 			type: 'POST',
@@ -89,7 +91,19 @@ function UploadCtrl ($scope) {
 			processData: false,
 			contentType: false,
 			success: function (res) {
-				alert('Yiiieba!');
+				$scope.uploading = false;
+				$scope.songsToUpload = [];
+				$scope.selected = null;
+				$('<div data-alert class="alert-box">' + 
+					'<span>Todo ha ido bien :)</span>' + 
+	  				'<a href="#" class="close">&times;</a>' + 
+				'</div>').insertBefore('.uploader');
+				$scope.$apply();
+			},
+			error: function (res) {
+				alert('500: Error interno');
+				$scope.uploading = false;
+				$scope.$apply();
 			}
 		});
 	}
