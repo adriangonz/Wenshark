@@ -7,3 +7,8 @@
 .uploader .upl-data {
 	border-left: solid 1px rgb(217, 217, 217);
 }
+
+.uploader ul {
+	max-height: 20em;
+	overflow-y: scroll;
+}

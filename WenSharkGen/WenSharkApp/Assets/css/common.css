@@ -16,8 +16,8 @@ li.name h1 {
 }
 
 /* Styles on topbar for buttons */
-li.upload {
-	font-size: x-large;
+i.upload {
+	font-size: 1.5em;
 }
 
 .top-bar {
@@ -35,4 +35,12 @@ li.upload {
 .content {
 	margin-top: 55px;
 	margin-bottom: 120px;
+}
+
+.hidden {
+	display: none;
+}
+
+.white-background {
+	background: white !important;
 }

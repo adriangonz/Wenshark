@@ -8,7 +8,9 @@
 					<p class="name">{{song.name}}</p>
 				</li>
 			</ul>
-			<div class="button upl-add-song">Añadir canciones</div>
+			<button class="button upl-add-song" ng-click="addFileToUpload()">Añadir canciones</button>
+			<button class="button success" ng-show="songsToUpload.length">Subir canciones</button>
+			<input type="file" multiple class="hidden hidden-file-input" />
 		</section>
 		<section class="small-6 columns upl-data">
 			<form ng-show="selected">
@@ -25,7 +27,8 @@
 				<input id="upl-song-genre" type="text" placeholder="Generos de la cancion" />
 			</form>
 
-			<h2 class="subheader" ng-show="!selected">Selecciona una cancion para modificar sus datos</h2>
+			<h2 class="subheader" ng-show="!songsToUpload.length">Empieza añadiendo canciones</h2>
+			<h2 class="subheader" ng-show="songsToUpload.length && !selected">Selecciona una cancion para modificar sus datos</h2>
 		</section>
 	</div>
 </div>

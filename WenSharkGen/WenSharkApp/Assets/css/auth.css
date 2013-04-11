@@ -8,10 +8,10 @@
     margin-bottom: 10px;
 }
 
-input.ng-invalid.ng-dirty {
+#dropDownSignUp input.ng-invalid.ng-dirty {
     background-color: #F1787E;
 }
 
-input.ng-valid.ng-dirty {
+#dropDownSignUp input.ng-valid.ng-dirty {
     background-color: #78FA89;
 }

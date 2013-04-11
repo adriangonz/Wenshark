@@ -58,7 +58,7 @@
 							<form ng-submit="search(query)" action="">
 								<div class="row collapse">
 					        		<div class="small-10 columns">
-					        			<input type="text" placeholder="Buscar Musica" ng-model="query">
+					        			<input class="white-background" type="text" placeholder="Buscar Musica" ng-model="query">
 					        		</div>
 					        		<div class="small-2 columns">
 					          			<a ng-href="#/search/{{query}}" class="button prefix"><i class="foundicon-search"></i></a>
@@ -67,15 +67,16 @@
 					      	</form>
 						</li>
 						<li class="divider"></li>
-
 						<li class="has-dropdown">
                             <a href="#" class="" data-dropdown="dropDownSignIn">Sign In</a>
                         </li>
                         <li class="has-dropdown">
                             <a href="#" class="" data-dropdown="dropDownSignUp">Sign up</a>
-
                         </li>
-						<li title="Sube tus canciones" class="upload"><a href="#/upload"><i class="foundicon-cloud"></i></a></li>
+                        <li class="divider"></li>
+						<li class="has-form">
+							<a href="#/upload"><i class="foundicon-cloud upload" title="Sube tus canciones"></i></a>
+						</li>
 					</ul>
 				</section>
 			</div>
