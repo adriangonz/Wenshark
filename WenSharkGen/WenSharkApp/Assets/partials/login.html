@@ -1,21 +1,38 @@
 ﻿<!-- Formulario de registro -->
 
 <form ng-controller="SignInCtrl" ng-submit="signin()">
-
     <div class="row">
-      <div class="large-12 columns">
-        <label>User name</label>
-        <input type="text" placeholder="User name" ng-model="user.username">
-      </div>
+        <div class="large-12 columns">
+            <div class="row collapse">
+                <div class="small-6 columns">
+                    <button class="button tiny scundary">Google Login</button>
+                </div>
+                <div class="small-6 columns">
+                    <button class="button tiny scundary">Facebook Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <ul class="side-nav"><li class="divider"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <label>User name</label>
+            <input type="text" placeholder="User name" ng-model="user.username">
+        </div>
     </div>
 
     <div class="row">
-      <div class="large-12 columns">
-        <label>Password</label>
-        <input type="password" placeholder="password" ng-model="user.passw">
-      </div>
+        <div class="large-12 columns">
+            <label>Password</label>
+            <input type="password" placeholder="password" ng-model="user.passw">
+        </div>
     </div>
     <div class="row">
-        <input class="button small right" type="submit" value="Login"/>
+        <input class="button small right" type="submit" value="Login" />
     </div>
 </form>

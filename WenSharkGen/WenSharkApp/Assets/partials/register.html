@@ -2,40 +2,58 @@
 
 <form id="formSignUp" ng-controller="SignUpCtrl" ng-submit="signup()">
     <div class="row">
-      <div class="large-12 columns">
-        <label>Full name</label>
-        <input type="text" placeholder="Full Name" ng-model="user.name" required>
-      </div>
+        <div class="large-12 columns">
+            <div class="row collapse">
+                <div class="small-6 columns">
+                    <button class="button tiny scundary">Google Login</button>
+                </div>
+                <div class="small-6 columns">
+                    <button class="button tiny scundary">Facebook Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <ul class="side-nav"><li class="divider"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <label>Full name</label>
+            <input type="text" placeholder="Full Name" ng-model="user.name" required>
+        </div>
     </div>
 
     <div class="row">
-      <div class="large-12 columns">
-        <label>User name</label>
-        <input type="text" placeholder="User name" ng-model="user.username" required>
-      </div>
+        <div class="large-12 columns">
+            <label>User name</label>
+            <input type="text" placeholder="User name" ng-model="user.username" required>
+        </div>
     </div>
 
     <div class="row">
-      <div class="large-12 columns">
-        <label>Password</label>
-        <input type="password" placeholder="password" ng-model="user.passw" ng-minlength="6" required>
-      </div>
+        <div class="large-12 columns">
+            <label>Password</label>
+            <input type="password" placeholder="password" ng-model="user.passw" ng-minlength="6" required>
+        </div>
     </div>
 
     <div class="row">
-      <div class="large-12 columns">
-        <label>Confirm password</label>
-        <input type="password" placeholder="password" ui-validate-equals="user.passw" ng-model="user.confPass" required>
-      </div>
+        <div class="large-12 columns">
+            <label>Confirm password</label>
+            <input type="password" placeholder="password" ui-validate-equals="user.passw" ng-model="user.confPass" required>
+        </div>
     </div>
 
     <div class="row">
-      <div class="large-12 columns">
-        <label>Email</label>
-        <input type="email" placeholder="email@example.com" ng-model="user.email" required>
-      </div>
+        <div class="large-12 columns">
+            <label>Email</label>
+            <input type="email" placeholder="email@example.com" ng-model="user.email" required>
+        </div>
     </div>
     <div class="row">
-        <input class="button small right" type="submit" value="Sign up"/>
+        <input class="button small right" type="submit" value="Sign up" />
     </div>
 </form>
