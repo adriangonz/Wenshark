@@ -8,14 +8,6 @@ public partial interface IUserCAD
 {
 UserEN ReadOIDDefault (int id);
 
-int New_ (UserEN user);
-
-void Destroy (int id);
-
-
-void Modify (UserEN user);
-
-
 UserEN GetByID (int id);
 
 

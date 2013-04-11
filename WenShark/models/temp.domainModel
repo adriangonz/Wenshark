@@ -2,22 +2,6 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:es.ua.dlsi.ooh="http://www.dlsi.ua.es/ooh/conceptualView/1.0.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
   <es.ua.dlsi.ooh:ConceptualModel name="default" description="" aliasDB="default">
     <elements xsi:type="es.ua.dlsi.ooh:Class" name="User" alias="User" stereotyped="" inheritSons="/0/@elements.9 /0/@elements.10">
-      <operations name="new" operationType="New" type="Object" typeObject="/0/@elements.0">
-        <arguments name="p_name" isOrdered="true"/>
-        <arguments name="p_username" isOrdered="true"/>
-        <arguments name="p_email" isOrdered="true"/>
-        <arguments name="p_created" type="Date" isOrdered="true"/>
-      </operations>
-      <operations name="destroy" operationType="Destroy" type="Void">
-        <arguments name="p_oid" type="OID" typeObject="/0/@elements.0" isOrdered="true"/>
-      </operations>
-      <operations name="modify" operationType="Modifier" type="Void">
-        <arguments name="p_oid" type="OID" typeObject="/0/@elements.0" isOrdered="true"/>
-        <arguments name="p_name" isOrdered="true"/>
-        <arguments name="p_username" isOrdered="true"/>
-        <arguments name="p_email" isOrdered="true"/>
-        <arguments name="p_created" type="Date" isOrdered="true"/>
-      </operations>
       <operations name="getByID" operationType="ReadOID" type="Object" typeObject="/0/@elements.0">
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.0" isOrdered="true"/>
       </operations>
@@ -52,7 +36,7 @@
       <operations name="getByUsername" operationType="ReadFilter" type="Object" collectionType="List" typeObject="/0/@elements.1" filter="FROM AppUserEN WHERE username = :p_filter">
         <arguments name="p_filter" isOrdered="true"/>
       </operations>
-      <operations name="custom" type="Void">
+      <operations name="isValid" type="Boolean">
         <arguments name="user" isOrdered="true"/>
         <arguments name="pass" isOrdered="true"/>
       </operations>
@@ -63,21 +47,19 @@
       <operations name="new" operationType="New" type="Object" typeObject="/0/@elements.2">
         <arguments name="p_token_oauth" isOrdered="true"/>
         <arguments name="p_name" isOrdered="true"/>
-        <arguments name="p_username" isOrdered="true"/>
         <arguments name="p_email" isOrdered="true"/>
         <arguments name="p_created" type="Date" isOrdered="true"/>
         <arguments name="p_provider" type="OID" typeObject="/0/@elements.3" isOrdered="true"/>
-      </operations>
-      <operations name="destroy" operationType="Destroy" type="Void">
-        <arguments name="p_oid" type="OID" typeObject="/0/@elements.2" isOrdered="true"/>
       </operations>
       <operations name="modify" operationType="Modifier" type="Void">
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.2" isOrdered="true"/>
         <arguments name="p_token_oauth" isOrdered="true"/>
         <arguments name="p_name" isOrdered="true"/>
-        <arguments name="p_username" isOrdered="true"/>
         <arguments name="p_email" isOrdered="true"/>
         <arguments name="p_created" type="Date" isOrdered="true"/>
+      </operations>
+      <operations name="destroy" operationType="Destroy" type="Void">
+        <arguments name="p_oid" type="OID" typeObject="/0/@elements.2" isOrdered="true"/>
       </operations>
       <attributes alias="token_oauth" navigable="false" name="token_oauth"/>
       <attributes alias="provider" visibility="Public" associationOrigin="/0/@elements.11" name="provider" type="Object"/>

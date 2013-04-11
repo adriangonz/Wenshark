@@ -32,48 +32,6 @@ public IUserCAD get_IUserCAD ()
         return this._IUserCAD;
 }
 
-public int New_ (string p_name, string p_username, string p_email, Nullable<DateTime> p_created)
-{
-        UserEN userEN = null;
-        int oid;
-
-        //Initialized UserEN
-        userEN = new UserEN ();
-        userEN.Name = p_name;
-
-        userEN.Username = p_username;
-
-        userEN.Email = p_email;
-
-        userEN.Created = p_created;
-
-        //Call to UserCAD
-
-        oid = _IUserCAD.New_ (userEN);
-        return oid;
-}
-
-public void Destroy (int id)
-{
-        _IUserCAD.Destroy (id);
-}
-
-public void Modify (int p_oid, string p_name, string p_username, string p_email, Nullable<DateTime> p_created)
-{
-        UserEN userEN = null;
-
-        //Initialized UserEN
-        userEN = new UserEN ();
-        userEN.Id = p_oid;
-        userEN.Name = p_name;
-        userEN.Username = p_username;
-        userEN.Email = p_email;
-        userEN.Created = p_created;
-        //Call to UserCAD
-
-        _IUserCAD.Modify (userEN);
-}
-
 public UserEN GetByID (int id)
 {
         UserEN userEN = null;

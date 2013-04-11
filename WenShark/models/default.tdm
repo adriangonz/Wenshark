@@ -13,10 +13,14 @@ ConceptualModel default {
 		operations
 		{
 			/* Metodos basicos */
+			/* Los borro porque no tiene sentido que existan este tipo de usuarios, o son de oauth o son de nuestra app....
+
 			public new::New (p_name : String, p_username : String, p_email : String, p_created : Date) : Object->User;
 			public destroy::Destroy (p_oid : OID -> User) : Void;
 			public modify::Modifier (p_oid : OID -> User, p_name : String, p_username : String, p_email : String, p_created : Date) : Void;
-			
+			 */
+			 
+			 
 			/* Getters (por ID y todos) */
 			public getByID::ReadOID (p_oid : OID -> User) : Object -> User;
 			public getAll::ReadAll (/* No arguments */) : List<Object->User>;
@@ -44,7 +48,7 @@ ConceptualModel default {
 		
 			public getByUsername::ReadFilter (p_filter : String) : List<Object->AppUser> { filter = "FROM AppUserEN WHERE username = :p_filter" };
 			/* Metodos Custom */
-			public custom (user : String, pass: String) : Void;
+			public isValid (user : String, pass: String) : Boolean;
 		}
 	};
 	
@@ -59,9 +63,9 @@ ConceptualModel default {
 		operations
 		{
 			/* Metodos basicos */
-			public new::New (p_token_oauth : String, p_name : String, p_username : String, p_email : String, p_created : Date, p_provider : OID -> OAuthProvider) : Object->OAuthUser;
-			public destroy::Destroy (p_oid : OID -> OAuthUser) : Void;
-			public modify::Modifier (p_oid : OID -> OAuthUser, p_token_oauth : String, p_name : String, p_username : String, p_email : String, p_created : Date) : Void;
+			public new::New (p_token_oauth : String, p_name : String, p_email : String, p_created : Date, p_provider : OID -> OAuthProvider) : Object->OAuthUser;
+			public modify::Modifier (p_oid : OID -> OAuthUser, p_token_oauth : String, p_name : String, p_email : String, p_created : Date) : Void;
+			public destroy::Destroy (p_oid : OID -> OAuthUser) : Void;		
 		}
 	};
 	

@@ -39,15 +39,16 @@ namespace WenSharkApp.Controllers
         /// <returns>Información del usuario {id,nombre,image}</returns>
         public HttpResponseMessage getlogin(string user, string pass)
         {
-            if (user == "pepe" && pass == "pepe")
+            AppUserCEN appuserCEN = new AppUserCEN();
+            if (appuserCEN.IsValid(user,pass))
             {
-                FormsAuthentication.SetAuthCookie("pepe", false);
-                
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                AppUserEN userEN = appuserCEN.GetByUsername(user)[0];
+                FormsAuthentication.SetAuthCookie(user, false);
+                return this.Request.CreateResponse(HttpStatusCode.OK, userEN);
             }
             else
             {
-                return this.Request.CreateResponse(HttpStatusCode.Unauthorized);
+                return this.Request.CreateResponse(HttpStatusCode.NotAcceptable);
             }
 
         }
