@@ -18,22 +18,22 @@ public WenSharkGenNHibernate.EN.Default_.AlbumEN Create (string name, Nullable<D
 {
         /*PROTECTED REGION ID(WenSharkGenNHibernate.CEN.Default__Album_create) ENABLED START*/
 
-    AlbumEN albumEN = new AlbumEN();
-    albumEN.Type = "Album";
-    albumEN.Created = DateTime.Now;
+        AlbumEN albumEN = new AlbumEN ();
 
-    albumEN.Name = name;
-    albumEN.Published = published;
-    albumEN.Image = image;
+        albumEN.Type = "Album";
+        albumEN.Created = DateTime.Now;
 
-    if (artist != -1)
-    {
-        albumEN.Artist = new ArtistEN();
-        albumEN.Artist.Id = artist;
-    }
+        albumEN.Name = name;
+        albumEN.Published = published;
+        albumEN.Image = image;
 
-    albumEN.Id = _IAlbumCAD.New_(albumEN);
-    return albumEN;
+        if (artist != -1) {
+                albumEN.Artist = new ArtistEN ();
+                albumEN.Artist.Id = artist;
+        }
+
+        albumEN.Id = _IAlbumCAD.New_ (albumEN);
+        return albumEN;
 
         /*PROTECTED REGION END*/
 }

@@ -82,6 +82,33 @@ public int New_ (AlbumEN album)
         return album.Id;
 }
 
+public AlbumEN ReadOID (int id)
+{
+        AlbumEN albumEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                albumEN = (AlbumEN)session.Get (typeof(AlbumEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in AlbumCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return albumEN;
+}
+
 public void Destroy (int id)
 {
         try
@@ -137,6 +164,36 @@ public void Modify (AlbumEN album)
         {
                 SessionClose ();
         }
+}
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AlbumEN> Search (string p_filter)
+{
+        System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AlbumEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AlbumEN self where FROM AlbumEN WHERE name LIKE '%' || :p_filter || '%'";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AlbumENsearchHQL");
+                query.SetParameter ("p_filter", p_filter);
+
+                result = query.List<WenSharkGenNHibernate.EN.Default_.AlbumEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in AlbumCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
 }
 }
 }

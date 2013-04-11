@@ -14,7 +14,7 @@ namespace WenSharkGenNHibernate.CEN.Default_
 {
 public partial class ArtistCEN
 {
-public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AlbumEN> GetAlbums (int p_oid)
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AlbumEN> GetAlbums (WenSharkGenNHibernate.EN.Default_.ArtistEN album)
 {
         /*PROTECTED REGION ID(WenSharkGenNHibernate.CEN.Default__Artist_getAlbums) ENABLED START*/
 

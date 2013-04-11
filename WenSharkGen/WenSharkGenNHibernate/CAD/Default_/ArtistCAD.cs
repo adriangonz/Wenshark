@@ -77,6 +77,33 @@ public int New_ (ArtistEN artist)
         return artist.Id;
 }
 
+public ArtistEN ReadOID (int id)
+{
+        ArtistEN artistEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                artistEN = (ArtistEN)session.Get (typeof(ArtistEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in ArtistCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return artistEN;
+}
+
 public void Destroy (int id)
 {
         try
@@ -132,6 +159,36 @@ public void Modify (ArtistEN artist)
         {
                 SessionClose ();
         }
+}
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ArtistEN> Search (string p_filter)
+{
+        System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ArtistEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ArtistEN self where FROM ArtistEN WHERE name LIKE '%' || :p_filter || '%'";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ArtistENsearchHQL");
+                query.SetParameter ("p_filter", p_filter);
+
+                result = query.List<WenSharkGenNHibernate.EN.Default_.ArtistEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in ArtistCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
 }
 }
 }

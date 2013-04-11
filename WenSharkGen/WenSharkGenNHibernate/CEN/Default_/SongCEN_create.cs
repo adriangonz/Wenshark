@@ -18,28 +18,27 @@ public WenSharkGenNHibernate.EN.Default_.SongEN Create (string name, string fnam
 {
         /*PROTECTED REGION ID(WenSharkGenNHibernate.CEN.Default__Song_create) ENABLED START*/
 
-    SongEN songEN = new SongEN();
-    songEN.Type = "Song";
+        SongEN songEN = new SongEN ();
 
-    songEN.Name = name;
-    songEN.Fname = fname;
+        songEN.Type = "Song";
 
-    songEN.Created = DateTime.Now;
+        songEN.Name = name;
+        songEN.Fname = fname;
 
-    if (artist != -1)
-    {
-        songEN.Artist = new ArtistEN();
-        songEN.Artist.Id = artist;
-    }
+        songEN.Created = DateTime.Now;
 
-    if (album != -1)
-    {
-        songEN.Album = new AlbumEN();
-        songEN.Album.Id = album;
-    }
+        if (artist != -1) {
+                songEN.Artist = new ArtistEN ();
+                songEN.Artist.Id = artist;
+        }
 
-    songEN.Id = _ISongCAD.New_(songEN);
-    return songEN;
+        if (album != -1) {
+                songEN.Album = new AlbumEN ();
+                songEN.Album.Id = album;
+        }
+
+        songEN.Id = _ISongCAD.New_ (songEN);
+        return songEN;
 
         /*PROTECTED REGION END*/
 }
