@@ -32,7 +32,7 @@ public ISongCAD get_ISongCAD ()
         return this._ISongCAD;
 }
 
-public int New_ (string p_fname, string p_name, Nullable<DateTime> p_created, string p_type, int p_artist, int p_album)
+public int New_ (string p_fname, string p_mime, string p_name, Nullable<DateTime> p_created, string p_type, int p_artist, int p_album)
 {
         SongEN songEN = null;
         int oid;
@@ -40,6 +40,8 @@ public int New_ (string p_fname, string p_name, Nullable<DateTime> p_created, st
         //Initialized SongEN
         songEN = new SongEN ();
         songEN.Fname = p_fname;
+
+        songEN.Mime = p_mime;
 
         songEN.Name = p_name;
 
@@ -78,7 +80,7 @@ public void Destroy (int id)
         _ISongCAD.Destroy (id);
 }
 
-public void Modify (int p_oid, string p_fname, string p_name, Nullable<DateTime> p_created)
+public void Modify (int p_oid, string p_fname, string p_mime, string p_name, string p_type)
 {
         SongEN songEN = null;
 
@@ -86,8 +88,9 @@ public void Modify (int p_oid, string p_fname, string p_name, Nullable<DateTime>
         songEN = new SongEN ();
         songEN.Id = p_oid;
         songEN.Fname = p_fname;
+        songEN.Mime = p_mime;
         songEN.Name = p_name;
-        songEN.Created = p_created;
+        songEN.Type = p_type;
         //Call to SongCAD
 
         _ISongCAD.Modify (songEN);

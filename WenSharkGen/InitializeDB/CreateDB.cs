@@ -125,7 +125,7 @@ public static void InitializeData ()
                                         newSong.Name = "Cancion muy bonita del señor " + a_id + " y el album " + alb_id;
                                         newSong.Fname = "music.mp3";
                                         newSong.Created = DateTime.Now;
-                                        songCEN.Create (newSong.Name, newSong.Fname, a_id, alb_id);
+                                        songCEN.Create (newSong.Name, newSong.Fname, "", a_id, alb_id);
                                 }
                         }
                 }

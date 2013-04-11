@@ -32,7 +32,7 @@ public IOAuthUserCAD get_IOAuthUserCAD ()
         return this._IOAuthUserCAD;
 }
 
-public int New_ (string p_token_oauth, string p_name, string p_username, string p_email, Nullable<DateTime> p_created, int p_provider)
+public int New_ (string p_token_oauth, string p_name, string p_email, Nullable<DateTime> p_created, int p_provider)
 {
         OAuthUserEN oAuthUserEN = null;
         int oid;
@@ -42,8 +42,6 @@ public int New_ (string p_token_oauth, string p_name, string p_username, string 
         oAuthUserEN.Token_oauth = p_token_oauth;
 
         oAuthUserEN.Name = p_name;
-
-        oAuthUserEN.Username = p_username;
 
         oAuthUserEN.Email = p_email;
 
@@ -61,12 +59,7 @@ public int New_ (string p_token_oauth, string p_name, string p_username, string 
         return oid;
 }
 
-public void Destroy (int id)
-{
-        _IOAuthUserCAD.Destroy (id);
-}
-
-public void Modify (int p_oid, string p_token_oauth, string p_name, string p_username, string p_email, Nullable<DateTime> p_created)
+public void Modify (int p_oid, string p_token_oauth, string p_name, string p_email, Nullable<DateTime> p_created)
 {
         OAuthUserEN oAuthUserEN = null;
 
@@ -75,12 +68,16 @@ public void Modify (int p_oid, string p_token_oauth, string p_name, string p_use
         oAuthUserEN.Id = p_oid;
         oAuthUserEN.Token_oauth = p_token_oauth;
         oAuthUserEN.Name = p_name;
-        oAuthUserEN.Username = p_username;
         oAuthUserEN.Email = p_email;
         oAuthUserEN.Created = p_created;
         //Call to OAuthUserCAD
 
         _IOAuthUserCAD.Modify (oAuthUserEN);
+}
+
+public void Destroy (int id)
+{
+        _IOAuthUserCAD.Destroy (id);
 }
 }
 }

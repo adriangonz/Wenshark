@@ -139,5 +139,35 @@ public void Modify (AppUserEN appUser)
                 SessionClose ();
         }
 }
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AppUserEN> GetByUsername (string p_filter)
+{
+        System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AppUserEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AppUserEN self where FROM AppUserEN WHERE username = :p_filter";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AppUserENgetByUsernameHQL");
+                query.SetParameter ("p_filter", p_filter);
+
+                result = query.List<WenSharkGenNHibernate.EN.Default_.AppUserEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in AppUserCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

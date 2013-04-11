@@ -8,14 +8,20 @@
     		<column name="[id]"/>
    	</key>
 
+					<property name="Username" type="string"> 
+						<column name="[username]"  unique="true" not-null="true"/>
+					</property>
 					<property name="Password" type="string"> 
 						<column name="[password]"  not-null="true"/>
 					</property>
 			
+			
+					
 					
 		
 		  </joined-subclass>	
 		  
 		  <query name="AppUserENReadAllHQL">from AppUserEN</query>
+		  <query name="AppUserENgetByUsernameHQL"><![CDATA[FROM AppUserEN WHERE username = :p_filter]]></query>
 		</hibernate-mapping>
 	
