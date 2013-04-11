@@ -78,7 +78,7 @@ function UploadCtrl ($scope) {
 			formdata.append("file-" + i, $scope.songsToUpload[i].file);
 			formdata.append("name-" + i, $scope.songsToUpload[i].name);
 			formdata.append("album-" + i, 2);
-			formdata.append("artist-" + i, 3);
+			formdata.append("artist-" + i, 1);
 		}
 		console.log('Lo que subo: ');
 		console.log(formdata);
