@@ -10,9 +10,9 @@ OAuthUserEN ReadOIDDefault (int id);
 
 int New_ (OAuthUserEN oAuthUser);
 
-void Destroy (int id);
-
-
 void Modify (OAuthUserEN oAuthUser);
+
+
+void Destroy (int id);
 }
 }

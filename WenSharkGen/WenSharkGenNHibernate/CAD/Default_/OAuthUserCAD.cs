@@ -82,13 +82,25 @@ public int New_ (OAuthUserEN oAuthUser)
         return oAuthUser.Id;
 }
 
-public void Destroy (int id)
+public void Modify (OAuthUserEN oAuthUser)
 {
         try
         {
                 SessionInitializeTransaction ();
-                OAuthUserEN oAuthUserEN = (OAuthUserEN)session.Load (typeof(OAuthUserEN), id);
-                session.Delete (oAuthUserEN);
+                OAuthUserEN oAuthUserEN = (OAuthUserEN)session.Load (typeof(OAuthUserEN), oAuthUser.Id);
+
+                oAuthUserEN.Token_oauth = oAuthUser.Token_oauth;
+
+
+                oAuthUserEN.Name = oAuthUser.Name;
+
+
+                oAuthUserEN.Email = oAuthUser.Email;
+
+
+                oAuthUserEN.Created = oAuthUser.Created;
+
+                session.Update (oAuthUserEN);
                 SessionCommit ();
         }
 
@@ -105,29 +117,13 @@ public void Destroy (int id)
                 SessionClose ();
         }
 }
-
-public void Modify (OAuthUserEN oAuthUser)
+public void Destroy (int id)
 {
         try
         {
                 SessionInitializeTransaction ();
-                OAuthUserEN oAuthUserEN = (OAuthUserEN)session.Load (typeof(OAuthUserEN), oAuthUser.Id);
-
-                oAuthUserEN.Token_oauth = oAuthUser.Token_oauth;
-
-
-                oAuthUserEN.Name = oAuthUser.Name;
-
-
-                oAuthUserEN.Username = oAuthUser.Username;
-
-
-                oAuthUserEN.Email = oAuthUser.Email;
-
-
-                oAuthUserEN.Created = oAuthUser.Created;
-
-                session.Update (oAuthUserEN);
+                OAuthUserEN oAuthUserEN = (OAuthUserEN)session.Load (typeof(OAuthUserEN), id);
+                session.Delete (oAuthUserEN);
                 SessionCommit ();
         }
 
