@@ -23,7 +23,7 @@ namespace WenSharkApp.Controllers
             if (!Request.Content.IsMimeMultipartContent())
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             
-            string root = HttpContext.Current.Server.MapPath("~/App_Data");
+            string root = HttpContext.Current.Server.MapPath("~/App_Data/Songs");
             var provider = new MultipartFormDataStreamProvider(root);
 
             //Leo el form data y magia
