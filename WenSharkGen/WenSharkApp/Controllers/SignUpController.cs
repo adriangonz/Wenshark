@@ -12,14 +12,6 @@ namespace WenSharkApp.Controllers
     public class SignUpController : ApiController
     {
 
-        public AppUserCEN PostSignup(JObject data)
-        {
-            
-            AppUserCEN usr = new AppUserCEN();
-
-            usr.New_(data["passw"].ToString(), data["name"].ToString(), data["username"].ToString(), 
-                data["email"].ToString(), DateTime.Now);
-            return usr;
-        }
+        
     }
 }

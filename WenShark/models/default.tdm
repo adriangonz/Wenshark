@@ -47,8 +47,10 @@ ConceptualModel default {
 			public modify::Modifier (p_oid : OID -> AppUser, p_password : String, p_name : String, p_username : String, p_email : String, p_created : Date) : Void;
 		
 			public getByUsername::ReadFilter (p_filter : String) : List<Object->AppUser> { filter = "FROM AppUserEN WHERE username = :p_filter" };
+			
 			/* Metodos Custom */
 			public isValid (user : String, pass: String) : Boolean;
+			public exist   (user : String) : Boolean;
 		}
 	};
 	

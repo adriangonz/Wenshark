@@ -40,6 +40,9 @@
         <arguments name="user" isOrdered="true"/>
         <arguments name="pass" isOrdered="true"/>
       </operations>
+      <operations name="exist" type="Boolean">
+        <arguments name="user" isOrdered="true"/>
+      </operations>
       <attributes alias="username" navigable="false" name="username" unique="true"/>
       <attributes alias="password" navigable="false" name="password"/>
     </elements>

@@ -7,7 +7,7 @@ using System.Web.Http;
 using WenSharkGenNHibernate.EN.Default_;
 using WenSharkGenNHibernate.CEN.Default_;
 using System.Web.Security;
-
+using Newtonsoft.Json.Linq;
 
 namespace WenSharkApp.Controllers
 {
@@ -58,6 +58,35 @@ namespace WenSharkApp.Controllers
         {
             FormsAuthentication.SignOut();
             return this.Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+
+        public HttpResponseMessage PostSignUpAppUser(JObject data)
+        {
+            AppUserCEN usrCEN = new AppUserCEN();
+            String name = data["name"].ToString();
+            String pass = data["passw"].ToString();
+            String username = data["username"].ToString();
+            String email = data["email"].ToString();
+
+            if (name != null && pass != null && username != null && email != null)
+            {
+                if (!usrCEN.Exist(username))
+                {
+                    int id = usrCEN.New_(pass, name, username, email, DateTime.Now);
+                    AppUserEN usr = new AppUserEN();
+                    return this.Request.CreateResponse(HttpStatusCode.OK, id);
+                }
+                else
+                {
+                    return this.Request.CreateResponse(HttpStatusCode.Conflict, "Username ya existe.");
+                }
+            }
+            else
+            {
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "Error desconocido");
+            }
+            
         }
 
     }
