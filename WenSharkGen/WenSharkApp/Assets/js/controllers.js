@@ -6,7 +6,7 @@ function MainCtrl ($scope) {
 	    window.location.href = "/#/search/" + query;	
 	}
 
-	$scope.play = function (song) {
+	$scope.addToPlaylist = function (song) {
 		var n_song = {
 			Name: song.Name,
 			Album: song.Album,
@@ -19,6 +19,10 @@ function MainCtrl ($scope) {
 
 		if($scope.current == null)
 			$scope.current = n_song;
+	}
+
+	$scope.play = function (song) {
+		$scope.current = song;
 	}
 
 	$scope.playlist = [];

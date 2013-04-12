@@ -21,7 +21,6 @@
   	<link rel="stylesheet" href="/Assets/css/uploader.css" />
   	<link rel="stylesheet" href="/Assets/css/auth.css" />
   	<link rel="stylesheet" href="/Assets/css/player.css" />
-  	<link rel="stylesheet" href="/Assets/css/playlist.css" />
 
   	<!-- General JS references -->
 	<script src="/Assets/js/vendor/custom.modernizr.js"></script>
@@ -143,7 +142,7 @@
 			</div>
 			<div class="row">
 				<ul class="playlist">
-					<li id="playlist-{{song.order}}" class="th" ng-class="{active : current.order == song.order}" ng-repeat="song in playlist">
+					<li id="playlist-{{song.order}}" class="th" ng-click="play(song)" ng-class="{active : current.order == song.order}" ng-repeat="song in playlist">
 						<img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />
 						<div class="playlist-data">
 							<p class="playlist-name" title="{{song.Name}}">{{song.Name}}</p>
