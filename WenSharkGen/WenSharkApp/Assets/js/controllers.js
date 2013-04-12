@@ -23,6 +23,7 @@ function MainCtrl ($scope) {
 
 	$scope.play = function (song) {
 		$scope.current = song;
+		var urlToSong = '/api/song/file&id=' + song.Id;
 	}
 
 	$scope.playlist = [];
