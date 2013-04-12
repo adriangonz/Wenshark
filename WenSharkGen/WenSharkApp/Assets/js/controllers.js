@@ -34,15 +34,20 @@ function SignUpCtrl($scope, $routeParams, $http) {
         email : ''
     }
     $scope.signup = function () {
-        $http
-		.post('/api/signup', JSON.stringify($scope.user))
+        $('#modalSignUp').foundation('reveal', 'open');//esta linea hay que ponerla en el succes
+        $('#dropDownSignUp').removeClass('open');
+        $('#dropDownSignUp').css("left", "-9999px");
+        /*$http
+		.post('/api/user', JSON.stringify($scope.user))
 		.success(function (data) {
+		    
+		    
 		    if (data) {
 		        console.log(data);
 		    } else {
 		        console.log("No hay nada");
 		    }
-		});
+		});*/
     }
 }
 
