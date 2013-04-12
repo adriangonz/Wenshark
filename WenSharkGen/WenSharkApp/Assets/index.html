@@ -97,7 +97,21 @@
 
 		<!-- Footer -->
 		<div class="row player">
-		<div class="small-2 columns now-playing">Now playing</div>
+		<div class="small-2 columns now-playing">
+			<div ng-show="current">
+				<div class="current-img">
+					<img src="{{current.Album.Image}}" width="50" heigth="50" />
+				</div>
+				<div class="current-data">
+					<p class="current-name">{{current.Name}}</p>
+					<p>{{current.Artist.Name}}</p>
+					<p>{{current.Album.Name}}</p>
+				</div>
+			</div>
+			<div class="info" ng-show="!current">
+				No hay nada en reproducción
+			</div>
+		</div>
 		<div class="small-10 columns">
 			<div class="row">
 				<div class="small-12 columns controls">
@@ -129,7 +143,7 @@
 			</div>
 			<div class="row">
 				<ul class="playlist">
-					<li class="th" ng-repeat="song in playlist">
+					<li id="playlist-{{song.order}}" class="th" ng-class="{active : current.order == song.order}" ng-repeat="song in playlist">
 						<img class="playlist-img" src="song.Album.Image" width="50" height="50" />
 						<div class="playlist-data">
 							<p class="playlist-name" title="{{song.Name}}">{{song.Name}}</p>

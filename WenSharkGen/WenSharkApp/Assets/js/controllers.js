@@ -6,13 +6,23 @@ function MainCtrl ($scope) {
 	    window.location.href = "/#/search/" + query;	
 	}
 
-	$scope.playlist = [];
-
 	$scope.play = function (song) {
-		$scope.playlist.push(song);
-		console.log('Anyado a la playlist: ');
-		console.log(song);
+		var n_song = {
+			Name: song.Name,
+			Album: song.Album,
+			Artist: song.Artist,
+			Id: song.Id,
+			order: $scope.playlist.length
+		}
+
+		$scope.playlist.push(n_song);
+
+		if($scope.current == null)
+			$scope.current = n_song;
 	}
+
+	$scope.playlist = [];
+	$scope.current = null;
 }
 
 //Controller for the search
