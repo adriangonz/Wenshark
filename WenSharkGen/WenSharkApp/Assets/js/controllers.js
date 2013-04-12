@@ -34,30 +34,49 @@ function SignUpCtrl($scope, $routeParams, $http) {
         email : ''
     }
     $scope.signup = function () {
-        $('#modalSignUp').foundation('reveal', 'open');//esta linea hay que ponerla en el succes
-        $('#dropDownSignUp').removeClass('open');
-        $('#dropDownSignUp').css("left", "-9999px");
-        /*$http
-		.post('/api/user', JSON.stringify($scope.user))
-		.success(function (data) {
-		    
-		    
-		    if (data) {
-		        console.log(data);
-		    } else {
-		        console.log("No hay nada");
-		    }
-		});*/
+        if ($scope.user.passw != '' && $scope.user.passw == $scope.user.confPass) {
+            $http
+		    .post('/api/user', JSON.stringify($scope.user))
+		    .success(function (data) {
+		        $('#dropDownSignUp').removeClass('open');
+		        $('#dropDownSignUp').css("left", "-9999px");
+		        $('#modalSignUp').foundation('reveal', 'open');//esta linea hay que ponerla en el succes
+		        if (data) {
+		            console.log(data);
+		        } else {
+		            console.log("No hay nada");
+		        }
+		    })
+            .error(function (data, status) {
+                if (status == 409) {
+                    $('#usernameSignUp').removeClass('ng-valid');
+                    $('#usernameSignUp').addClass('ng-invalid');
+                } else {
+                    alert(data);
+                }
+            });
+        }
     }
 }
 
 function SignInCtrl($scope, $routeParams, $http) {
-    $scope.user = {
+    $scope.userlogin = {
         username: '',
         passw: ''
     }
     $scope.signin = function () {
-        console.log($scope.user);
+        if ($scope.userlogin.username != '' && $scope.userlogin.passw != '') {
+            $http
+            .get('/api/user?user='+$scope.userlogin.username+'&pass='+$scope.userlogin.passw)
+            .success(function (data) {
+                console.log(data);
+                $.cookie("id", data.id);
+                $.cookie("name", data.name);
+            })
+            .error(function (data) {
+
+            });
+        }
     }
 }
 

@@ -8,6 +8,7 @@ using WenSharkGenNHibernate.EN.Default_;
 using WenSharkGenNHibernate.CEN.Default_;
 using System.Web.Security;
 using Newtonsoft.Json.Linq;
+using System.Net.Http.Headers;
 
 namespace WenSharkApp.Controllers
 {
@@ -44,7 +45,11 @@ namespace WenSharkApp.Controllers
             {
                 AppUserEN userEN = appuserCEN.GetByUsername(user)[0];
                 FormsAuthentication.SetAuthCookie(user, false);
-                return this.Request.CreateResponse(HttpStatusCode.OK, userEN);
+
+               
+                var res = this.Request.CreateResponse(HttpStatusCode.OK, new { id = userEN.Id, name = userEN.Name });
+                
+                return res;
             }
             else
             {
@@ -60,17 +65,23 @@ namespace WenSharkApp.Controllers
             return this.Request.CreateResponse(HttpStatusCode.OK);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public HttpResponseMessage PostSignUpAppUser(JObject data)
         {
-            AppUserCEN usrCEN = new AppUserCEN();
-            String name = data["name"].ToString();
-            String pass = data["passw"].ToString();
-            String username = data["username"].ToString();
-            String email = data["email"].ToString();
-
-            if (name != null && pass != null && username != null && email != null)
+            try
             {
+
+                AppUserCEN usrCEN = new AppUserCEN();
+                String name = data["name"].ToString();
+                String pass = data["passw"].ToString();
+                String username = data["username"].ToString();
+                String email = data["email"].ToString();
+
+
                 if (!usrCEN.Exist(username))
                 {
                     int id = usrCEN.New_(pass, name, username, email, DateTime.Now);
@@ -82,9 +93,13 @@ namespace WenSharkApp.Controllers
                     return this.Request.CreateResponse(HttpStatusCode.Conflict, "Username ya existe.");
                 }
             }
-            else
+            catch (NullReferenceException)
             {
-                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "Error desconocido");
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "Parametros incorrectos");
+            }
+            catch (Exception)
+            {
+                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, "Error Desconocido");
             }
             
         }
