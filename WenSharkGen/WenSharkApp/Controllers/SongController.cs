@@ -113,7 +113,7 @@ namespace WenSharkApp.Controllers
             SongEN song = songcen.ReadOID(id);
 
             if (song == null)
-                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
 
             var path = HttpContext.Current.Server.MapPath("~/App_Data/Songs/" + song.Fname);
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
