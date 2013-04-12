@@ -85,10 +85,12 @@ function SignInCtrl($scope, $routeParams, $http) {
                 console.log(data);
                 $.cookie("id", data.id);
                 $.cookie("name", data.name);
-                $scope.MainCtrl.hideUserName = false;
-               // $scope.hideUserName = false;
-                console.log($scope.hideUserName);
-                //$('#nameIdLoggin').attr("ng-hide", false);
+                $scope.hideUserName = false;
+                $('#nameIdLoggin').html(data.name);
+                $('#idSignInLi').css("display", 'none');
+                $('#idSignUpLi').css('display', 'none');
+                $('#idNameLi').css('display', 'inline');
+                //console.log($scope.hideUserName);
             })
             .error(function (data) {
             });
