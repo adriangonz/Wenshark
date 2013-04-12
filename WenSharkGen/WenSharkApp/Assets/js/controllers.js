@@ -98,6 +98,29 @@ function SignInCtrl($scope, $routeParams, $http) {
     }
 }
 
+function Logout() {
+    //Borrar estas cookies
+    $.cookie("id", null);
+    $.cookie("name", null);
+    $.ajax({
+        url: '/api/user',
+        type: 'GET',
+        data: 'logout',
+        processData: false,
+        contentType: false,
+        success: function (res) {
+            $('#nameIdLoggin').html("Tu Nombre");
+            $('#idSignInLi').css("display", 'inline');
+            $('#idSignUpLi').css('display', 'inline');
+            $('#idNameLi').css('display', 'none');
+            //console.log($scope.hideUserName);
+        },
+        error: function (res) {
+            alert('500: Error interno');
+        }
+    });
+}
+
 
 //Controller for the upload
 function UploadCtrl ($scope) {
