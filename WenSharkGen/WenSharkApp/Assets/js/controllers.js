@@ -5,6 +5,14 @@ function MainCtrl ($scope) {
 	$scope.search = function (query) {
 	    window.location.href = "/#/search/" + query;	
 	}
+
+	$scope.playlist = [];
+
+	$scope.play = function (song) {
+		$scope.playlist.push(song);
+		console.log('Anyado a la playlist: ');
+		console.log(song);
+	}
 }
 
 //Controller for the search

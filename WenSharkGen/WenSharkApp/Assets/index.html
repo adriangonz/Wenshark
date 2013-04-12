@@ -21,6 +21,7 @@
   	<link rel="stylesheet" href="/Assets/css/uploader.css" />
   	<link rel="stylesheet" href="/Assets/css/auth.css" />
   	<link rel="stylesheet" href="/Assets/css/player.css" />
+  	<link rel="stylesheet" href="/Assets/css/playlist.css" />
 
   	<!-- General JS references -->
 	<script src="/Assets/js/vendor/custom.modernizr.js"></script>
@@ -127,7 +128,15 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="small-12 columns song-list">Lista</div>
+				<ul class="playlist">
+					<li class="th" ng-repeat="song in playlist">
+						<img class="playlist-img" src="song.Album.Image" width="50" height="50" />
+						<div class="playlist-data">
+							<p class="playlist-name" title="{{song.Name}}">{{song.Name}}</p>
+							<p class="playlist-artist subname" title="{{song.Artist.Name}}">{{song.Artist.Name}}</p>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
     </div>
