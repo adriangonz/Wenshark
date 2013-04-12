@@ -62,8 +62,8 @@ namespace WenSharkApp.Controllers
                         var ext = defaultExtension(file.Headers.ContentType.MediaType);
                         //Anyadir aqui las extensiones que Windows no tiene por defecto
                         if (ext == "" && file.Headers.ContentType.MediaType.Contains("ogg"))
-                            ext = "ogg";
-                        var new_name = new_song.Id.ToString() + "." + ext;
+                            ext = ".ogg";
+                        var new_name = new_song.Id.ToString() + ext;
                         var new_path = old_path.Replace(old_name, new_name);
                         File.Move(old_path, new_path);
                         new_song.Fname = new_name;
