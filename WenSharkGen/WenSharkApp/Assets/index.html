@@ -144,7 +144,7 @@
 			<div class="row">
 				<ul class="playlist">
 					<li id="playlist-{{song.order}}" class="th" ng-class="{active : current.order == song.order}" ng-repeat="song in playlist">
-						<img class="playlist-img" src="song.Album.Image" width="50" height="50" />
+						<img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />
 						<div class="playlist-data">
 							<p class="playlist-name" title="{{song.Name}}">{{song.Name}}</p>
 							<p class="playlist-artist subname" title="{{song.Artist.Name}}">{{song.Artist.Name}}</p>
