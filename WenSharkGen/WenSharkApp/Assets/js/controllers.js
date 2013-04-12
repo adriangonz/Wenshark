@@ -5,6 +5,13 @@ function MainCtrl ($scope) {
 	$scope.search = function (query) {
 	    window.location.href = "/#/search/" + query;	
 	}
+	if ($.cookie("name")) {
+	    $scope.hideUserName = false;
+	    $('#nameIdLoggin').html($.cookie("name"));
+	    console.log($.cookie("name"));
+	} else {
+	    $scope.hideUserName = true;
+	}
 }
 
 //Controller for the search
@@ -64,17 +71,26 @@ function SignInCtrl($scope, $routeParams, $http) {
         username: '',
         passw: ''
     }
+    
+    $scope.hideUserName = true;
     $scope.signin = function () {
+        
         if ($scope.userlogin.username != '' && $scope.userlogin.passw != '') {
             $http
             .get('/api/user?user='+$scope.userlogin.username+'&pass='+$scope.userlogin.passw)
             .success(function (data) {
+                $('#dropDownSignIn').removeClass('open');
+                $('#dropDownSignIn').css("left", "-9999px");
+                console.log("loggeado");
                 console.log(data);
                 $.cookie("id", data.id);
                 $.cookie("name", data.name);
+                $scope.MainCtrl.hideUserName = false;
+               // $scope.hideUserName = false;
+                console.log($scope.hideUserName);
+                //$('#nameIdLoggin').attr("ng-hide", false);
             })
             .error(function (data) {
-
             });
         }
     }
