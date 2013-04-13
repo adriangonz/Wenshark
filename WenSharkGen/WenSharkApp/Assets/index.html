@@ -42,7 +42,7 @@
     <script src="/Assets/js/controllers.js"></script>
     <script src="/Assets/js/routes.js"></script>
 
-   
+	<script src="/Assets/js/howler.js"></script>
 
 </head>
 <body ng-controller="MainCtrl">
@@ -131,23 +131,24 @@
 					<div class="row">
 						<div class="small-2 columns" >
 							<div class="buttons">
-								<a class="backward"></a>
-								<a class="play"></a>
-								<a class="pause"></a>
-								<a class="forward"></a>
+								<a class="backward" ng-click="prevSong()"></a>
+								<a class="play"     ng-click="playSong()"  ng-show="!current.isPlaying"></a>
+								<a class="pause"    ng-click="pauseSong()" ng-show="current.isPlaying"></a>
+								<a class="forward"  ng-click="nextSong()"></a>
 							</div>
 						</div>
 						<div class="small-8 columns left" style="padding-top:1px;">
 							<div class="row">
-								<div class="small-1 columns time-elapsed">
-									99:99
+								<div class="small-1 columns time-elapsed" style="padding-top:1px;" >
+									{{current.timeElapsed}}
 								</div>
 								<div class="small-8 columns progress-bar">&nbsp;
-			                        <div id="buffered" style="width: 45%;"></div>
-			                        <div id="elapsed" style="width: 35%;"></div>
+			                        <div id="elapsed" style="width:{{current.percElapsed}}%;"></div>
+			                        <div id="click_control" style="width:100%;"></div>
+			                        <div id="scrubber" style="left:{{current.scrubPos}}px"></div>
 								</div>
-								<div class="small-1 columns left time-total">
-									99:99
+								<div class="small-1 columns left time-total" style="padding-top:1px;">
+									{{current.timeTotal}}
 								</div>
 							</div>
 						</div>

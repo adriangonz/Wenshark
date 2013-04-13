@@ -45,7 +45,7 @@
 	background: transparent url('/Assets/img/player/backward.png') center top no-repeat;
 }
 .backward:hover {
-	background: url('/Assets/img/player/backward_active.png');	
+	background-image: url('/Assets/img/player/backward_active.png');	
 }
 
 .play {
@@ -55,19 +55,19 @@
 	background: transparent url('/Assets/img/player/play.png') center top no-repeat;
 }
 .play:hover {
-	background: url('/Assets/img/player/play_active.png');	
+	background-image: url('/Assets/img/player/play_active.png');
 }
 
 .pause {
 	margin-top: 1px;
 	margin-bottom: 1px;
-	width: 10px;
+	width: 16px;
 	height: 16px;
 	display: inline-block;
 	background: transparent url('/Assets/img/player/pause.png') center top no-repeat;
 }
 .pause:hover {
-	background: url('/Assets/img/player/pause_active.png');	
+	background-image: url('/Assets/img/player/pause_active.png');	
 }
 
 .forward {
@@ -77,7 +77,7 @@
 	background: transparent url('/Assets/img/player/forward.png') center top no-repeat;
 }
 .forward:hover {
-	background: url('/Assets/img/player/forward_active.png');	
+	background-image: url('/Assets/img/player/forward_active.png');	
 }
 
 /* Barra de progreso */
@@ -86,32 +86,51 @@
 	text-align: right;
 }
 
-.progress-bar {
-	background-color: white;
-	border-color: white;
-	border-style: solid;
-	border-width: 1px;
-	width: 400px;
-}
-
 .time-total {
 
 }
 
-#buffered {
+.progress-bar {
+	border-radius: 5px;
+	background-color: white;
+	border-color: white;
+	border-style: solid;
+	border-width: 1px;
+	height: 16px;
+	margin-top: 1px;
+	overflow: hidden;
+}
+
+#click_control {
+	border-radius: 5px;
 	top: 0px;
 	left: 0px;
-	height: 16px;
+	height: 14px;
 	position: absolute;
-	background-color: red;
 }
 
 #elapsed {
+	border-radius: 5px;
 	top: 0px;
 	left: 0px;
-	height: 16px;
+	height: 14px;
 	position: absolute;
-	background-color: green;
+	background-color: #111111;
+}
+
+#scrubber {
+	position: absolute;
+	top: 0px;
+	left: -7px;
+	z-index: 50px;
+	border-radius: 14px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #111111;
+	height: 14px;
+	width: 14px;
+	background-color: #a0f600;
+	cursor: hand; cursor: pointer;
 }
 
 /* Styles for the current song */

@@ -1,7 +1,7 @@
 /* Controllers for AngularJS */
 
 //Main controller of the app
-function MainCtrl ($scope) {
+function MainCtrl ($scope, $timeout) {
 	$scope.search = function (query) {
 	    window.location.href = "/#/search/" + query;	
 	}
@@ -41,15 +41,63 @@ function MainCtrl ($scope) {
 	    });
 	}
 
-	$scope.addToPlaylist = function (song) {
-		var n_song = {
-			Name: song.Name,
-			Album: song.Album,
-			Artist: song.Artist,
-			Id: song.Id,
-			order: $scope.playlist.length
+	// Player
+
+    // Pasa un tiempo en segundos a un string con el formato %M:%S
+	$scope.secondsToSongString = function (seconds) {
+		if(! typeof seconds === "number"){
+			return "";
 		}
 
+		var iMinutes = Math.floor(seconds / 60);
+		var iSeconds = Math.floor(seconds - iMinutes * 60);
+
+		var sSeconds = iSeconds < 10 ? "0" + iSeconds : "" + iSeconds;
+		var sMinutes = iMinutes < 10 ? "0" + iMinutes : "" + iMinutes;
+
+		return sMinutes + ":" + sSeconds;
+	}
+
+	$scope.createSong = function (song_obj) {
+		var howl = new Howl({
+			urls: [song_obj.src],
+			buffer: true,
+			onend: function(){
+				$scope.nextSong();
+			},
+			onload: function(){
+				song.timeTotal = $scope.secondsToSongString(this._duration);
+			}
+		});
+
+		var song = {
+			Name: song_obj.Name,
+			Album: song_obj.Album,
+			Artist: song_obj.Artist,
+			Id: song_obj.Id,
+			order: $scope.playlist.length,
+			isPlaying: false,
+			_howl: howl,
+			play: function(){
+				this._howl.play();	
+				this.isPlaying = true;	
+			},
+			pause: function(){
+				this._howl.pause();
+				this.isPlaying = false;
+			},
+			timeElapsed: "00:00",
+			timeTotal: "00:00",
+			percElapsed: 0,
+			scrubPos: -7,
+		};
+
+		return song;
+	}
+
+	$scope.addToPlaylist = function (song) {
+		var n_song = $scope.createSong(song);
+		window.pruebas = n_song._howl;
 		$scope.playlist.push(n_song);
 
 		if($scope.current == null)
@@ -92,8 +140,58 @@ function MainCtrl ($scope) {
 		var urlToPlay = '/api/song/file&id=' + song.Id;
 	}
 
+	$scope.playSong = function () {
+		console.log("play");
+		if($scope.current != null) {
+			if(!$scope.current.isPlaying) {
+				$scope.current.play();
+			}		
+		}
+	}
+
+	$scope.pauseSong = function () {
+		console.log("pause");
+		if($scope.current != null) {
+			if($scope.current.isPlaying) {
+				$scope.current.pause();
+			}		
+		} 
+	}
+
+	$scope.updateTime = function () {
+		var curr_seconds = $scope.current._howl.pos();
+		$scope.current.timeElapsed = $scope.secondsToSongString(curr_seconds);
+		var elapsed_perc = (curr_seconds /  $scope.current._howl._duration);
+		$scope.current.percElapsed = elapsed_perc * 100;
+		$scope.current.scrubPos = $("#click_control").width() * elapsed_perc - 7;
+	}
+
+	$scope.utOnTimeout = function () {
+		if($scope.current != null && $scope.current.isPlaying){
+    		$scope.updateTime();
+    	}
+    	utTimeout = $timeout($scope.utOnTimeout, 4000);
+    	console.log($scope.current.isPlaying);
+	}
+	var utTimeout = $timeout($scope.utOnTimeout, 4000);
+
 	$scope.playlist = [];
 	$scope.current = null;
+
+	var test_song = {
+		Name: "Test Song",
+		Album: {
+			Image: "/Assets/img/50x50.Img.gif",
+			Name: "Test Album"
+		},
+		Artist: {
+			Name: "Test Artist"
+		},
+		Id: 1,
+		src: "/Assets/songs/test.mp3"
+	};
+
+	$scope.addToPlaylist(test_song);
 }
 
 //Controller for the search
