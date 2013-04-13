@@ -14,5 +14,8 @@ void Modify (OAuthUserEN oAuthUser);
 
 
 void Destroy (int id);
+
+
+System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.OAuthUserEN> GetByidOAuth (string p_filter);
 }
 }

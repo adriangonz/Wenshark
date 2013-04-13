@@ -11,6 +11,12 @@ public partial class OAuthUserEN                :                           WenS
  *
  */
 
+private string idOAuth;
+
+/**
+ *
+ */
+
 private string token_oauth;
 
 /**
@@ -21,6 +27,11 @@ private WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider;
 
 
 
+
+
+public virtual string IdOAuth {
+        get { return idOAuth; } set { idOAuth = value;  }
+}
 
 
 public virtual string Token_oauth {
@@ -42,21 +53,23 @@ public OAuthUserEN() : base ()
 
 
 
-public OAuthUserEN(int id, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created)
+public OAuthUserEN(int id, string idOAuth, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created)
 {
-        this.init (id, token_oauth, provider, name, email, created);
+        this.init (id, idOAuth, token_oauth, provider, name, email, created);
 }
 
 
 public OAuthUserEN(OAuthUserEN oAuthUser)
 {
-        this.init (oAuthUser.Id, oAuthUser.Token_oauth, oAuthUser.Provider, oAuthUser.Name, oAuthUser.Email, oAuthUser.Created);
+        this.init (oAuthUser.Id, oAuthUser.IdOAuth, oAuthUser.Token_oauth, oAuthUser.Provider, oAuthUser.Name, oAuthUser.Email, oAuthUser.Created);
 }
 
-private void init (int id, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created)
+private void init (int id, string idOAuth, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created)
 {
         this.Id = id;
 
+
+        this.IdOAuth = idOAuth;
 
         this.Token_oauth = token_oauth;
 

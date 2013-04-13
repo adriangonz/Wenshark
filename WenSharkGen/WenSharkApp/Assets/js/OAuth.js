@@ -12,10 +12,6 @@ var expiresIn;
 var user;
 var loggedIn = false;
 
-$(document).ready(function () {
-    $("#tituloFeliz").text("Hola!!");
-});
-
 function loginGoogle() {
     var win = window.open(G_url, "windowname1", 'width=800, height=600');
 
@@ -35,7 +31,7 @@ function loginGoogle() {
 }
 
 function validateToken(token) {
-    $.ajax({
+  /*  $.ajax({
         url: GVALIDURL + token,
         data: null,
         success: function (responseText) {
@@ -44,8 +40,26 @@ function validateToken(token) {
             loggedIn = true;
             $('#loginText').hide();
             $('#logoutText').show();*/
-        },
+  /*      },
         dataType: "jsonp"
+});
+*/
+    $.ajax({
+        url: '/api/user?token=' + token,
+        success: function (data) {
+            //Mariconadas
+            $('#dropDownSignUp').removeClass('open');
+            $('#dropDownSignUp').css("left", "-9999px");
+            $('#dropDownSignIn').removeClass('open');
+            $('#dropDownSignIn').css("left", "-9999px");
+            $('#nameIdLoggin').html(data.name);
+            $('#idSignInLi').css("display", 'none');
+            $('#idSignUpLi').css('display', 'none');
+            $('#idNameLi').css('display', 'inline');
+            //Cookies
+            $.cookie("id", data.id);
+            $.cookie("name", data.name);
+        }
     });
 }
 

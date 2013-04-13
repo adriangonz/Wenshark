@@ -8,9 +8,13 @@
     		<column name="[id]"/>
    	</key>
 
+					<property name="IdOAuth" type="string"> 
+						<column name="[idOAuth]"  unique="true" not-null="true"/>
+					</property>
 					<property name="Token_oauth" type="string"> 
 						<column name="[token_oauth]"  not-null="true"/>
 					</property>
+			
 			
 			
 		  			
@@ -20,9 +24,11 @@
 											 					
 					
 					
+					
 		
 		  </joined-subclass>	
 		  
 		  <query name="OAuthUserENReadAllHQL">from OAuthUserEN</query>
+		  <query name="OAuthUserENgetByidOAuthHQL"><![CDATA[FROM OAuthUserEN WHERE idOAuth = :p_filter]]></query>
 		</hibernate-mapping>
 	

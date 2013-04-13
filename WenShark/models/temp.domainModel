@@ -48,6 +48,7 @@
     </elements>
     <elements xsi:type="es.ua.dlsi.ooh:Class" name="OAuthUser" alias="OAuthUser" stereotyped="" inheritFathers="/0/@elements.10" associationOrigin="/0/@elements.11">
       <operations name="new" operationType="New" type="Object" typeObject="/0/@elements.2">
+        <arguments name="p_idOAuth" isOrdered="true"/>
         <arguments name="p_token_oauth" isOrdered="true"/>
         <arguments name="p_name" isOrdered="true"/>
         <arguments name="p_email" isOrdered="true"/>
@@ -56,6 +57,7 @@
       </operations>
       <operations name="modify" operationType="Modifier" type="Void">
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.2" isOrdered="true"/>
+        <arguments name="p_idOAuth" isOrdered="true"/>
         <arguments name="p_token_oauth" isOrdered="true"/>
         <arguments name="p_name" isOrdered="true"/>
         <arguments name="p_email" isOrdered="true"/>
@@ -64,6 +66,13 @@
       <operations name="destroy" operationType="Destroy" type="Void">
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.2" isOrdered="true"/>
       </operations>
+      <operations name="getByidOAuth" operationType="ReadFilter" type="Object" collectionType="List" typeObject="/0/@elements.2" filter="FROM OAuthUserEN WHERE idOAuth = :p_filter">
+        <arguments name="p_filter" isOrdered="true"/>
+      </operations>
+      <operations name="exist" type="Boolean">
+        <arguments name="idOAuth" isOrdered="true"/>
+      </operations>
+      <attributes alias="idOAuth" navigable="false" name="idOAuth" unique="true"/>
       <attributes alias="token_oauth" navigable="false" name="token_oauth"/>
       <attributes alias="provider" visibility="Public" associationOrigin="/0/@elements.11" name="provider" type="Object"/>
     </elements>
@@ -249,7 +258,7 @@
     </elements>
     <elements xsi:type="es.ua.dlsi.ooh:Inheritance" name="inh_AppUser_User" son="/0/@elements.1" father="/0/@elements.0" strategy="TablePerClass"/>
     <elements xsi:type="es.ua.dlsi.ooh:Inheritance" name="inh_OAuthUser_User" son="/0/@elements.2" father="/0/@elements.0" strategy="TablePerClass"/>
-    <elements xsi:type="es.ua.dlsi.ooh:Association" name="OAuth" description="OAuth" alias="OAuth" rolOrigin="/0/@elements.2/@attributes.1" rolTarget="/0/@elements.3/@attributes.3" visibility="Public" classTarget="/0/@elements.3" classOrigin="/0/@elements.2" rolOriginName="provider" rolTargetName="users" rolOriginMultiplicity="1..1" rolTargetMultiplicity="0..*"/>
+    <elements xsi:type="es.ua.dlsi.ooh:Association" name="OAuth" description="OAuth" alias="OAuth" rolOrigin="/0/@elements.2/@attributes.2" rolTarget="/0/@elements.3/@attributes.3" visibility="Public" classTarget="/0/@elements.3" classOrigin="/0/@elements.2" rolOriginName="provider" rolTargetName="users" rolOriginMultiplicity="1..1" rolTargetMultiplicity="0..*"/>
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="ItemGenre" description="ItemGenre" alias="ItemGenre" rolOrigin="/0/@elements.4/@attributes.4" rolTarget="/0/@elements.5/@attributes.2" visibility="Public" classTarget="/0/@elements.5" classOrigin="/0/@elements.4" rolOriginName="genre" rolTargetName="item" rolOriginMultiplicity="0..*" rolTargetMultiplicity="0..*"/>
     <elements xsi:type="es.ua.dlsi.ooh:Inheritance" name="inh_Song_Item" son="/0/@elements.6" father="/0/@elements.4" strategy="TablePerClass"/>
     <elements xsi:type="es.ua.dlsi.ooh:Inheritance" name="inh_Artist_Item" son="/0/@elements.7" father="/0/@elements.4" strategy="TablePerClass"/>

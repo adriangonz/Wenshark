@@ -116,6 +116,7 @@
 	<Compile Include="CEN\Default_\OAuthUserCEN.cs" />
 	<Compile Include="CAD\Default_\IOAuthUserCAD.cs" />
 	<Compile Include="CAD\Default_\OAuthUserCAD.cs" />
+			<Compile Include="CEN\Default_\OAuthUserCEN_Exist.cs" />
 	<Compile Include="EN\Default_\OAuthProviderEN.cs" />
 	<Compile Include="CEN\Default_\OAuthProviderCEN.cs" />
 	<Compile Include="CAD\Default_\IOAuthProviderCAD.cs" />

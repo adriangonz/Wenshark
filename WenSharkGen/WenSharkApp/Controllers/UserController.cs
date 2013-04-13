@@ -9,6 +9,7 @@ using WenSharkGenNHibernate.CEN.Default_;
 using System.Web.Security;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace WenSharkApp.Controllers
 {
@@ -41,21 +42,20 @@ namespace WenSharkApp.Controllers
         public HttpResponseMessage getlogin(string user, string pass)
         {
             AppUserCEN appuserCEN = new AppUserCEN();
-            if (appuserCEN.IsValid(user,pass))
+            if (appuserCEN.IsValid(user, pass))
             {
                 AppUserEN userEN = appuserCEN.GetByUsername(user)[0];
                 FormsAuthentication.SetAuthCookie(user, false);
 
-               
+
                 var res = this.Request.CreateResponse(HttpStatusCode.OK, new { id = userEN.Id, name = userEN.Name });
-                
+
                 return res;
             }
             else
             {
                 return this.Request.CreateResponse(HttpStatusCode.NotAcceptable);
             }
-
         }
 
         [Authorize]
@@ -101,7 +101,49 @@ namespace WenSharkApp.Controllers
             {
                 return this.Request.CreateResponse(HttpStatusCode.InternalServerError, "Error Desconocido");
             }
-            
+
+        }
+
+        public async Task<HttpResponseMessage> getOAuthValidate(string token)
+        {
+            String uri = "https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + token;
+            HttpClient httpclient = new HttpClient();
+            HttpResponseMessage response = await httpclient.GetAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                //Sacamos info usuario
+                String uriuser = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=" + token;
+                response = await httpclient.GetAsync(uriuser);
+                if (response.IsSuccessStatusCode)
+                {
+                    JObject data = await response.Content.ReadAsAsync<JObject>();
+                    String idOAuth = data["id"].ToString();
+                    OAuthUserEN user = new OAuthUserEN();
+                    OAuthUserCEN userCEN = new OAuthUserCEN();
+
+                    if (userCEN.Exist(idOAuth))
+                    {
+                        user = userCEN.GetByidOAuth(idOAuth)[0];
+                    }
+                    else
+                    {
+                        user.Name = data["name"].ToString();
+                        user.Id = userCEN.New_(idOAuth, token, user.Name, data["email"].ToString(), DateTime.Now, -1);
+                    }
+
+                    FormsAuthentication.SetAuthCookie(idOAuth, false);
+                    return this.Request.CreateResponse(HttpStatusCode.OK, new { id = user.Id, name = user.Name });
+
+                }
+                else
+                {
+                    return this.Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+            }
+            else
+            {
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
         }
 
     }
