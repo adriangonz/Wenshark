@@ -44,3 +44,7 @@ i.upload {
 .white-background {
 	background: white !important;
 }
+
+.user-menu {
+	list-style: none;
+}
