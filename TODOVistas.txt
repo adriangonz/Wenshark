@@ -1,2 +1,2 @@
 DropDown multiple boton: Que cuando se abra un dropdown se cierre el otro
-Oauth: Añadir los botones de Oauth al login y registro
+Hacer que el redirect de la peticion de OAuth redirija a un sitio que exista para que no se vea el not found ese
