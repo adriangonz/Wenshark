@@ -56,6 +56,7 @@ function validateToken(token) {
             $('#idSignInLi').css("display", 'none');
             $('#idSignUpLi').css('display', 'none');
             $('#idNameLi').css('display', 'inline');
+            $('#idLiUpload').css('display', 'inline');
             //Cookies
             $.cookie("id", data.id);
             $.cookie("name", data.name);
