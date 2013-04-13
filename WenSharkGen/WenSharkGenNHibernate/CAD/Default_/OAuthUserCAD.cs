@@ -89,6 +89,9 @@ public void Modify (OAuthUserEN oAuthUser)
                 SessionInitializeTransaction ();
                 OAuthUserEN oAuthUserEN = (OAuthUserEN)session.Load (typeof(OAuthUserEN), oAuthUser.Id);
 
+                oAuthUserEN.IdOAuth = oAuthUser.IdOAuth;
+
+
                 oAuthUserEN.Token_oauth = oAuthUser.Token_oauth;
 
 
@@ -139,6 +142,37 @@ public void Destroy (int id)
         {
                 SessionClose ();
         }
+}
+
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.OAuthUserEN> GetByidOAuth (string p_filter)
+{
+        System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.OAuthUserEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM OAuthUserEN self where FROM OAuthUserEN WHERE idOAuth = :p_filter";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("OAuthUserENgetByidOAuthHQL");
+                query.SetParameter ("p_filter", p_filter);
+
+                result = query.List<WenSharkGenNHibernate.EN.Default_.OAuthUserEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in OAuthUserCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
 }
 }
 }

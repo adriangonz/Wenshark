@@ -1,5 +1,5 @@
-﻿angular.module('wenshark', []).directive('uiValidateEquals', function () {
-
+﻿angular.module('wenshark')
+.directive('uiValidateEquals', function () {
     return {
         restrict: 'A',
         require: 'ngModel',
@@ -29,3 +29,34 @@
         }
     };
 });
+/*
+.directive('dndList', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            // variables used for dnd
+            var toUpdate;
+            var startIndex = -1;
+     
+            // watch the model, so we always know what element
+            // is at a specific position
+            scope.$watch(attrs.dndList, function(value) {
+                toUpdate = value;
+            },true);
+     
+            // use jquery to make the element sortable (dnd). This is called
+            // when the element is rendered
+            $(element[0]).sortable({
+                items:'li',
+                zIndex: 10000,
+                start:function (event, ui) {
+                    //To the chuplin
+                },
+                stop:function (event, ui) {
+                    //Mas to the chuplin
+                },
+                axis:'x'
+            })
+        }
+    }
+});*/

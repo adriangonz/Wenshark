@@ -59,15 +59,20 @@ ConceptualModel default {
 	{
 		attributes
 		{
+			private unique idOAuth : String;
 			private token_oauth : String; /* Token de OAuth del usuario */
 		}
 		
 		operations
 		{
 			/* Metodos basicos */
-			public new::New (p_token_oauth : String, p_name : String, p_email : String, p_created : Date, p_provider : OID -> OAuthProvider) : Object->OAuthUser;
-			public modify::Modifier (p_oid : OID -> OAuthUser, p_token_oauth : String, p_name : String, p_email : String, p_created : Date) : Void;
-			public destroy::Destroy (p_oid : OID -> OAuthUser) : Void;		
+			public new::New (p_idOAuth : String, p_token_oauth : String, p_name : String, p_email : String, p_created : Date, p_provider : OID -> OAuthProvider) : Object->OAuthUser;
+			public modify::Modifier (p_oid : OID -> OAuthUser, p_idOAuth : String, p_token_oauth : String, p_name : String, p_email : String, p_created : Date) : Void;
+			public destroy::Destroy (p_oid : OID -> OAuthUser) : Void;
+
+			public getByidOAuth::ReadFilter (p_filter : String) : List<Object->OAuthUser> { filter = "FROM OAuthUserEN WHERE idOAuth = :p_filter" };
+			
+			public exist 	(idOAuth : String) : Boolean;
 		}
 	};
 	

@@ -32,13 +32,15 @@ public IOAuthUserCAD get_IOAuthUserCAD ()
         return this._IOAuthUserCAD;
 }
 
-public int New_ (string p_token_oauth, string p_name, string p_email, Nullable<DateTime> p_created, int p_provider)
+public int New_ (string p_idOAuth, string p_token_oauth, string p_name, string p_email, Nullable<DateTime> p_created, int p_provider)
 {
         OAuthUserEN oAuthUserEN = null;
         int oid;
 
         //Initialized OAuthUserEN
         oAuthUserEN = new OAuthUserEN ();
+        oAuthUserEN.IdOAuth = p_idOAuth;
+
         oAuthUserEN.Token_oauth = p_token_oauth;
 
         oAuthUserEN.Name = p_name;
@@ -59,13 +61,14 @@ public int New_ (string p_token_oauth, string p_name, string p_email, Nullable<D
         return oid;
 }
 
-public void Modify (int p_oid, string p_token_oauth, string p_name, string p_email, Nullable<DateTime> p_created)
+public void Modify (int p_oid, string p_idOAuth, string p_token_oauth, string p_name, string p_email, Nullable<DateTime> p_created)
 {
         OAuthUserEN oAuthUserEN = null;
 
         //Initialized OAuthUserEN
         oAuthUserEN = new OAuthUserEN ();
         oAuthUserEN.Id = p_oid;
+        oAuthUserEN.IdOAuth = p_idOAuth;
         oAuthUserEN.Token_oauth = p_token_oauth;
         oAuthUserEN.Name = p_name;
         oAuthUserEN.Email = p_email;
@@ -78,6 +81,11 @@ public void Modify (int p_oid, string p_token_oauth, string p_name, string p_ema
 public void Destroy (int id)
 {
         _IOAuthUserCAD.Destroy (id);
+}
+
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.OAuthUserEN> GetByidOAuth (string p_filter)
+{
+        return _IOAuthUserCAD.GetByidOAuth (p_filter);
 }
 }
 }
