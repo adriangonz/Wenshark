@@ -113,6 +113,8 @@ function Logout() {
             $('#idSignInLi').css("display", 'inline');
             $('#idSignUpLi').css('display', 'inline');
             $('#idNameLi').css('display', 'none');
+            $('#dropDownUserMenu').removeClass('open');
+            $('#dropDownUserMenu').css("left", "-9999px");
             //console.log($scope.hideUserName);
         },
         error: function (res) {

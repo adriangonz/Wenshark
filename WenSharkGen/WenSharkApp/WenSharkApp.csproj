@@ -168,6 +168,7 @@
     <Content Include="Assets\partials\register.html" />
     <Content Include="Assets\partials\search.html" />
     <Content Include="Assets\partials\upload.html" />
+    <Content Include="Assets\partials\userMenu.html" />
     <Content Include="Assets\robots.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">

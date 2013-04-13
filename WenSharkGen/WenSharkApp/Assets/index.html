@@ -77,7 +77,7 @@
                             <a href="#" class="" data-dropdown="dropDownSignUp">Sign up</a>
                         </li>
                         <li id="idNameLi" class="has-dropdown" ng-hide="hideUserName">
-                            <a id="nameIdLoggin" href="#" onclick="Logout()">Tu Nombre</a>
+                            <a id="nameIdLoggin" data-dropdown="dropDownUserMenu" href="#">Tu Nombre</a>
                         </li>
                         <li class="divider"></li>
                         <li class="has-form">
@@ -91,6 +91,7 @@
     <!-- End Top Bar -->
     <div id="dropDownSignUp" class="f-dropdown content small" ng-include src="'/Assets/partials/register.html'"></div>
     <div id="dropDownSignIn" class="f-dropdown content small" ng-include src="'/Assets/partials/login.html'"></div>
+    <div id="dropDownUserMenu" class="f-dropdown content small" ng-include src="'/Assets/partials/userMenu.html'"></div>
     <div id="modalSignUp" class="reveal-modal" ng-include src="'/Assets/partials/modalSignUp.html'"></div>
 
     <div class="row content">
