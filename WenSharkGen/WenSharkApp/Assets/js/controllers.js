@@ -148,25 +148,12 @@ function MainCtrl ($scope, $timeout) {
 			$scope.playlist[i].order--;
 	}
 
-	$scope.play = function (song) {
-		var playing = $scope.current.isPlaying;
-		if($scope.current.loaded()){
-			$scope.current.stop();
-		}
-		$scope.current = song;
-		if(playing){
-			$scope.current.play();
-		} else {
-			$scope.current.load();
-		}
-
-		var urlToPlay = '/api/song/file&id=' + song.Id;
-	}
-
 	$scope.playSong = function () {
 		console.log("play");
 		if($scope.current != null) {
 			if(!$scope.current.isPlaying) {
+
+			console.log($scope.current);
 				$scope.current.play();
 			}		
 		}
@@ -183,12 +170,22 @@ function MainCtrl ($scope, $timeout) {
 
 	$scope.nextSong = function () {
 		var next = $scope.getNextSong();
-		if(next != null){
+		$scope.changeSong(next);
+	}
+
+	$scope.prevSong = function () {
+		var prev = $scope.getPrevSong();
+		$scope.changeSong(prev);
+	}
+
+	$scope.changeSong = function (song) {
+		if(song != null){
+			console.log(song);
 			var playing = $scope.current.isPlaying;
 			if($scope.current.loaded()){
 				$scope.current.stop();
 			}
-			$scope.current = next;
+			$scope.current = song;
 			if(playing){
 				$scope.current.play();
 			} else {
@@ -215,7 +212,7 @@ function MainCtrl ($scope, $timeout) {
 
 	$scope.playlist = [];
 	$scope.current = null;
-/*
+
 	var song1 = {
 		Name: "Shop",
 		Album: {
@@ -238,12 +235,12 @@ function MainCtrl ($scope, $timeout) {
 		Artist: {
 			Name: "Test Artist"
 		},
-		Id: 1,
+		Id: 2,
 		src: "/Assets/songs/test2.mp3"
 	};
 
 	$scope.addToPlaylist(song1);
-	$scope.addToPlaylist(song2);*/
+	$scope.addToPlaylist(song2);
 }
 
 //Controller for the search

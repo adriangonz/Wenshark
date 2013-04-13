@@ -157,7 +157,7 @@
 			</div>
 			<div class="row">
 				<ul class="playlist" ng-class="{scrollable : playlist.length}">
-					<li id="playlist-{{song.order}}" class="th" ng-click="play(song)" ng-class="{active : current.order == song.order}" ng-repeat="song in playlist">
+					<li id="playlist-{{song.order}}" class="th" ng-click="changeSong(song)" ng-class="{active : current.order == song.order}" ng-repeat="song in playlist">
 						<i class="playlist-rm enclose-icon foundicon-remove" ng-click="rmFromPlaylist(song)"></i>
 						<div>
 							<img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />
