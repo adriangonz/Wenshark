@@ -9,27 +9,33 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/ico" href="/Assets/img/logo_small.ico">
 
-    <!-- Title -->
-    <title>WenShark - Tu musica en streaming</title>
+	<!-- Title -->
+	<title>WenShark - Tu musica en streaming</title>
+	
+	<!-- General CSSs-->
+	<link rel="stylesheet" href="/Assets/css/normalize.css" />
+	<link rel="stylesheet" href="/Assets/css/foundation.css" />
+  	<link rel="stylesheet" href="/Assets/css/general_foundicons.css" />
+  	<link rel="stylesheet" href="/Assets/css/common.css" />
+  	<link rel="stylesheet" href="/Assets/css/lists.css" />
+  	<link rel="stylesheet" href="/Assets/css/uploader.css" />
+  	<link rel="stylesheet" href="/Assets/css/auth.css" />
+  	<link rel="stylesheet" href="/Assets/css/player.css" />
+  	<link rel="stylesheet" href="/Assets/css/general_enclosed_foundicons.css" />
+  	<link rel="stylesheet" href="/Assets/css/jquery-ui-1.10.2.custom.min.css" />
 
-    <!-- General CSSs-->
-    <link rel="stylesheet" href="/Assets/css/normalize.css" />
-    <link rel="stylesheet" href="/Assets/css/foundation.css" />
-    <link rel="stylesheet" href="/Assets/css/general_foundicons.css" />
-    <link rel="stylesheet" href="/Assets/css/common.css" />
-    <link rel="stylesheet" href="/Assets/css/lists.css" />
-    <link rel="stylesheet" href="/Assets/css/uploader.css" />
-    <link rel="stylesheet" href="/Assets/css/auth.css" />
-    <link rel="stylesheet" href="/Assets/css/player.css" />
-
-    <!-- General JS references -->
-    <script src="/Assets/js/vendor/custom.modernizr.js"></script>
-    <script src="/Assets/js/vendor/angular.min.js"></script>
-    <script src="/Assets/js/directives.js"></script>
-    <script src="/Assets/js/vendor/jquery-1.9.1.min.js"></script>
-    <script src="/Assets/js/OAuth.js"></script>
-    <script src="/Assets/js/foundation.min.js"></script>
-     <!-- si no no va el dropDown -->
+  	<!-- General JS references -->
+	<script src="/Assets/js/vendor/custom.modernizr.js"></script>
+	<script src="/Assets/js/vendor/jquery-1.9.1.min.js"></script>
+	<script src="/Assets/js/vendor/jquery-ui-1.10.2.custom.min.js"></script>
+	<script src="/Assets/js/foundation.min.js"></script>
+	<script src="/Assets/js/vendor/angular.min.js"></script>
+	<script src="/Assets/js/routes.js"></script>
+	<script src="/Assets/js/directives.js"></script>
+	<script src="/Assets/js/controllers.js"></script>
+	<script src="/Assets/js/OAuth.js"></script>
+    
+    <!-- si no no va el dropDown -->
     <script>
         $(document).foundation();
     </script>
@@ -102,45 +108,69 @@
         </div>
         <!-- End Content -->
 
-        <!-- Footer -->
-        <div class="row player">
-            <div class="small-2 columns now-playing">Now playing</div>
-            <div class="small-10 columns">
-                <div class="row">
-                    <div class="small-12 columns controls">
-                        <div class="row">
-                            <div class="small-2 columns">
-                                <div class="buttons">
-                                    <a class="backward"></a>
-                                    <a class="play"></a>
-                                    <a class="pause"></a>
-                                    <a class="forward"></a>
-                                </div>
-                            </div>
-                            <div class="small-8 columns left" style="padding-top: 1px;">
-                                <div class="row">
-                                    <div class="small-1 columns time-elapsed">
-                                        99:99
-                                    </div>
-                                    <div class="small-8 columns progress-bar">
-                                        &nbsp;
+		<!-- Footer -->
+		<div class="row player">
+		<div class="small-2 columns now-playing">
+			<div ng-show="current">
+				<div class="current-img">
+					<img src="{{current.Album.Image}}" width="50" heigth="50" />
+				</div>
+				<div class="current-data">
+					<p class="current-name">{{current.Name}}</p>
+					<p>{{current.Artist.Name}}</p>
+					<p>{{current.Album.Name}}</p>
+				</div>
+			</div>
+			<div class="info" ng-show="!current">
+				No hay nada en reproducción
+			</div>
+		</div>
+		<div class="small-10 columns">
+			<div class="row">
+				<div class="small-12 columns controls">
+					<div class="row">
+						<div class="small-2 columns" >
+							<div class="buttons">
+								<a class="backward"></a>
+								<a class="play"></a>
+								<a class="pause"></a>
+								<a class="forward"></a>
+							</div>
+						</div>
+						<div class="small-8 columns left" style="padding-top:1px;">
+							<div class="row">
+								<div class="small-1 columns time-elapsed">
+									99:99
+								</div>
+								<div class="small-8 columns progress-bar">&nbsp;
 			                        <div id="buffered" style="width: 45%;"></div>
-                                        <div id="elapsed" style="width: 35%;"></div>
-                                    </div>
-                                    <div class="small-1 columns left time-total">
-                                        99:99
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="small-12 columns song-list">Lista</div>
-                </div>
-            </div>
-        </div>
-        <!-- End Footer -->
+			                        <div id="elapsed" style="width: 35%;"></div>
+								</div>
+								<div class="small-1 columns left time-total">
+									99:99
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<ul class="playlist" ng-class="{scrollable : playlist.length}">
+					<li id="playlist-{{song.order}}" class="th" ng-click="play(song)" ng-class="{active : current.order == song.order}" ng-repeat="song in playlist">
+						<i class="playlist-rm enclose-icon foundicon-remove" ng-click="rmFromPlaylist(song)"></i>
+						<div>
+							<img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />
+							<div class="playlist-data">
+								<p class="playlist-name" title="{{song.Name}}">{{song.Name}}</p>
+								<p class="playlist-artist subname" title="{{song.Artist.Name}}">{{song.Artist.Name}}</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
     </div>
+	<!-- End Footer -->
+	</div>
 </body>
 </html>

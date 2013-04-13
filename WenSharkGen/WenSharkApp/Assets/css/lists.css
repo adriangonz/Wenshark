@@ -25,6 +25,13 @@ ul.items-list li .name {
 	font-weight: bold;
 }
 
-ul.items-list li a,  ul.items-list li {
-	width: 100%;
+ul.items-list li {
+	/*width: 100%;*/
+	display: block;
+	padding-top: 0.5%;
+	margin: 0 auto !important;
+}
+
+ul.items-list li .song-name {
+	margin-top: 0;
 }

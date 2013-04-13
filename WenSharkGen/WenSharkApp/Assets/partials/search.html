@@ -9,11 +9,22 @@
 			<p class="title"><a href="">Canciones</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="songs.length">
-					<li class="song-thumb" ng-repeat="song in songs">
-						<a class="th" href="/play/{{song.Id}}">
+					<li class="song-thumb row th" ng-repeat="song in songs">
+						<!-- Picture of the song -->
+						<span class="song-img small-1 columns left">
+							<img src="{{song.Album.Image}}" width="50" height="50" />
+						</span>
+
+						<!-- Name, Artist and Album of the song -->
+						<span class="song-name small-6 columns left">
 							<p class="name">{{song.Name}}</p>
-							<p class="subname">{{song.Artist.Name}} · {{song.Album.name}}</p>
-						</a>
+							<p class="subname">{{song.Artist.Name}} · {{song.Album.Name}}</p>
+						</span>
+
+						<!-- Controls -->
+						<span class="song-controls small-3 columns right">
+							<button class="tiny" ng-click="addToPlaylist(song)"><span class="play"></span></button>
+						</span>
 					</li>
 				</ul>
 
@@ -25,8 +36,8 @@
 			<p class="title"><a href="">Artistas</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="artists.length">
-					<li class="art-thumb" ng-repeat="art in artists">
-						<a class="th" href="/artist/{{art.Id}}">
+					<li class="art-thumb row th" ng-repeat="art in artists">
+						<a href="/artist/{{art.Id}}">
 							<p class="name">{{art.Name}}</p>
 						</a>
 					</li>
@@ -40,8 +51,8 @@
 			<p class="title"><a href="">Albumes</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="albums.length">
-					<li class="alb-thumb" ng-repeat="alb in albums">
-						<a class="th" href="/album/{{alb.Id}}">
+					<li class="alb-thumb row th" ng-repeat="alb in albums">
+						<a href="/album/{{alb.Id}}">
 							<p class="name">{{alb.Name}}</p>
 						</a>
 					</li>
