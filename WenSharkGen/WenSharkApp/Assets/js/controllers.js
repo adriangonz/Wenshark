@@ -59,32 +59,45 @@ function MainCtrl ($scope, $timeout) {
 	}
 
 	$scope.createSong = function (song_obj) {
-		var howl = new Howl({
-			urls: [song_obj.src],
-			buffer: true,
-			onend: function(){
-				$scope.nextSong();
-			},
-			onload: function(){
-				song.timeTotal = $scope.secondsToSongString(this._duration);
-			}
-		});
-
 		var song = {
 			Name: song_obj.Name,
 			Album: song_obj.Album,
 			Artist: song_obj.Artist,
 			Id: song_obj.Id,
 			order: $scope.playlist.length,
+
 			isPlaying: false,
-			_howl: howl,
+			_howl: null,
+			loaded: function(){
+				return this._howl != null;
+			},
+			load: function() {
+				this._howl = new Howl({
+					urls: [song_obj.src],
+					buffer: true,
+					onend: function(){
+						$scope.nextSong();
+					},
+					onload: function(){
+						song.timeTotal = $scope.secondsToSongString(this._duration);
+					}
+				});
+			},
 			play: function(){
+				if(!this.loaded()){
+					this.load();
+				}
 				this._howl.play();	
 				this.isPlaying = true;	
 			},
 			pause: function(){
 				this._howl.pause();
 				this.isPlaying = false;
+			},
+			stop: function(){
+				this._howl.stop();
+				this.isPlaying = false;
+				this._howl = null;
 			},
 			timeElapsed: "00:00",
 			timeTotal: "00:00",
@@ -104,7 +117,7 @@ function MainCtrl ($scope, $timeout) {
 			$scope.current = n_song;
 	}
 
-	$scope.nextSong = function () {
+	$scope.getNextSong = function () {
 		var curr_order = $scope.current.order,
 			next = curr_order + 1;
 
@@ -114,7 +127,7 @@ function MainCtrl ($scope, $timeout) {
 		return $scope.playlist[next];
 	}
 
-	$scope.prevSong = function () {
+	$scope.getPrevSong = function () {
 		var curr_order = $scope.current.order,
 			prev = curr_order - 1;
 
@@ -126,7 +139,7 @@ function MainCtrl ($scope, $timeout) {
 
 	$scope.rmFromPlaylist = function (song) {
 		if($scope.current.order == song.order)
-			$scope.current = $scope.nextSong();
+			$scope.current = $scope.getNextSong();
 
 		$scope.playlist.splice(song.order, 1);
 
@@ -136,7 +149,17 @@ function MainCtrl ($scope, $timeout) {
 	}
 
 	$scope.play = function (song) {
+		var playing = $scope.current.isPlaying;
+		if($scope.current.loaded()){
+			$scope.current.stop();
+		}
 		$scope.current = song;
+		if(playing){
+			$scope.current.play();
+		} else {
+			$scope.current.load();
+		}
+
 		var urlToPlay = '/api/song/file&id=' + song.Id;
 	}
 
@@ -158,6 +181,22 @@ function MainCtrl ($scope, $timeout) {
 		} 
 	}
 
+	$scope.nextSong = function () {
+		var next = $scope.getNextSong();
+		if(next != null){
+			var playing = $scope.current.isPlaying;
+			if($scope.current.loaded()){
+				$scope.current.stop();
+			}
+			$scope.current = next;
+			if(playing){
+				$scope.current.play();
+			} else {
+				$scope.current.load();
+			}
+		}
+	}
+
 	$scope.updateTime = function () {
 		var curr_seconds = $scope.current._howl.pos();
 		$scope.current.timeElapsed = $scope.secondsToSongString(curr_seconds);
@@ -170,16 +209,15 @@ function MainCtrl ($scope, $timeout) {
 		if($scope.current != null && $scope.current.isPlaying){
     		$scope.updateTime();
     	}
-    	utTimeout = $timeout($scope.utOnTimeout, 4000);
-    	console.log($scope.current.isPlaying);
+    	utTimeout = $timeout($scope.utOnTimeout, 500);
 	}
-	var utTimeout = $timeout($scope.utOnTimeout, 4000);
+	var utTimeout = $timeout($scope.utOnTimeout, 500);
 
 	$scope.playlist = [];
 	$scope.current = null;
-
-	var test_song = {
-		Name: "Test Song",
+/*
+	var song1 = {
+		Name: "Shop",
 		Album: {
 			Image: "/Assets/img/50x50.Img.gif",
 			Name: "Test Album"
@@ -191,7 +229,21 @@ function MainCtrl ($scope, $timeout) {
 		src: "/Assets/songs/test.mp3"
 	};
 
-	$scope.addToPlaylist(test_song);
+	var song2 = {
+		Name: "Cant",
+		Album: {
+			Image: "/Assets/img/50x50.Img.gif",
+			Name: "Test Album"
+		},
+		Artist: {
+			Name: "Test Artist"
+		},
+		Id: 1,
+		src: "/Assets/songs/test2.mp3"
+	};
+
+	$scope.addToPlaylist(song1);
+	$scope.addToPlaylist(song2);*/
 }
 
 //Controller for the search
