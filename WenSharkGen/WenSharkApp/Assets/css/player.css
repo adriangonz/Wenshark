@@ -148,8 +148,11 @@
 /* Styles for the playlist */
 
 ul.playlist {
-	overflow-x: scroll;
 	white-space: nowrap;
+}
+
+ul.scrollable {
+	overflow-x: scroll;
 }
 
 ul.playlist li {

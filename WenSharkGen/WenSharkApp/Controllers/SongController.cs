@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Microsoft.Win32;
 using System.IO;
+using System.IO.MemoryMappedFiles;
+using System.Web.Mvc;
 
 namespace WenSharkApp.Controllers
 {
@@ -108,20 +110,22 @@ namespace WenSharkApp.Controllers
             return resul;
         }
 
-        public HttpResponseMessage getSong(string file, int id) {
+        public HttpResponseMessage getSong(string file, int id)
+        {
             SongCEN songcen = new SongCEN();
             SongEN song = songcen.ReadOID(id);
-
+            
             if (song == null)
                 return new HttpResponseMessage(HttpStatusCode.NotFound);
 
             var path = HttpContext.Current.Server.MapPath("~/App_Data/Songs/" + song.Fname);
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
-            var stream = new FileStream(path, FileMode.Open);
+            var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
             result.Content = new StreamContent(stream);
             result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(song.Mime);
 
             return result;
+      
         }
     }
 }

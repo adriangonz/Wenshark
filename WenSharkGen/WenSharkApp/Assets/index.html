@@ -141,7 +141,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<ul class="playlist">
+				<ul class="playlist" ng-class="{scrollable : playlist.length}">
 					<li id="playlist-{{song.order}}" class="th" ng-click="play(song)" ng-class="{active : current.order == song.order}" ng-repeat="song in playlist">
 						<img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />
 						<div class="playlist-data">
