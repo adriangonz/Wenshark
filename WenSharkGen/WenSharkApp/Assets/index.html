@@ -21,6 +21,7 @@
   	<link rel="stylesheet" href="/Assets/css/uploader.css" />
   	<link rel="stylesheet" href="/Assets/css/auth.css" />
   	<link rel="stylesheet" href="/Assets/css/player.css" />
+  	<link rel="stylesheet" href="/Assets/css/general_enclosed_foundicons.css">
 
   	<!-- General JS references -->
 	<script src="/Assets/js/vendor/custom.modernizr.js"></script>
@@ -143,10 +144,13 @@
 			<div class="row">
 				<ul class="playlist" ng-class="{scrollable : playlist.length}">
 					<li id="playlist-{{song.order}}" class="th" ng-click="play(song)" ng-class="{active : current.order == song.order}" ng-repeat="song in playlist">
-						<img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />
-						<div class="playlist-data">
-							<p class="playlist-name" title="{{song.Name}}">{{song.Name}}</p>
-							<p class="playlist-artist subname" title="{{song.Artist.Name}}">{{song.Artist.Name}}</p>
+						<i class="playlist-rm enclose-icon foundicon-remove" ng-click="rmFromPlaylist(song)"></i>
+						<div>
+							<img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />
+							<div class="playlist-data">
+								<p class="playlist-name" title="{{song.Name}}">{{song.Name}}</p>
+								<p class="playlist-artist subname" title="{{song.Artist.Name}}">{{song.Artist.Name}}</p>
+							</div>
 						</div>
 					</li>
 				</ul>

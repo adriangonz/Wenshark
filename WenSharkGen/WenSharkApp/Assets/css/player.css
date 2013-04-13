@@ -156,6 +156,8 @@ ul.scrollable {
 }
 
 ul.playlist li {
+	position: relative;
+
 	text-align: center;
 	border: none;
 	background-color: white;
@@ -166,11 +168,11 @@ ul.playlist li {
 }
 
 ul.playlist li:hover {
-	background-color: rgb(118, 180, 0);
+	background-color: rgb(158, 238, 6);
 }
 
 ul.playlist li.active {
-	background-color: rgb(118, 180, 0);	
+	background-color: rgb(118, 180, 0);
 }
 
 ul.playlist li img {
@@ -193,6 +195,21 @@ ul.playlist li .playlist-name {
 	font-weight: bold;
 }
 
-ul.playlist li .playlist-artist {
-	
+ul.playlist li .playlist-rm {
+	display: none;
+}
+
+ul.playlist li:hover .playlist-rm {
+	display: block;
+	position: absolute;
+	top: -7px;
+	right: -5px;
+
+	z-index: 9999;
+
+	color: black;
+
+	font-size: x-large;
+
+	cursor: pointer;
 }

@@ -21,9 +21,40 @@ function MainCtrl ($scope) {
 			$scope.current = n_song;
 	}
 
+	$scope.nextSong = function () {
+		var curr_order = $scope.current.order,
+			next = curr_order + 1;
+
+		if(next >= $scope.playlist.length)
+			return null;
+
+		return $scope.playlist[next];
+	}
+
+	$scope.prevSong = function () {
+		var curr_order = $scope.current.order,
+			prev = curr_order - 1;
+
+		if(prev < 0)
+			return null;
+
+		return $scope.playlist[prev];
+	}
+
+	$scope.rmFromPlaylist = function (song) {
+		if($scope.current.order == song.order)
+			$scope.current = $scope.nextSong();
+
+		$scope.playlist.splice(song.order, 1);
+
+		//We reset the order index of the next
+		for(var i = song.order; i < $scope.playlist.length; i++)
+			$scope.playlist[i].order--;
+	}
+
 	$scope.play = function (song) {
 		$scope.current = song;
-		var urlToSong = '/api/song/file&id=' + song.Id;
+		var urlToPlay = '/api/song/file&id=' + song.Id;
 	}
 
 	$scope.playlist = [];
