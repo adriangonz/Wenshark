@@ -9,9 +9,36 @@ function MainCtrl ($scope) {
 	if ($.cookie("name")) {
 	    $scope.hideUserName = false;
 	    $('#nameIdLoggin').html($.cookie("name"));
-	    console.log($.cookie("name"));
+	    //console.log($.cookie("name"));
 	} else {
 	    $scope.hideUserName = true;
+	}
+
+
+	$scope.Logout = function () {
+	    //Borrar estas cookies
+	    $.cookie("id", null);
+	    $.cookie("name", null);
+	    $.ajax({
+	        url: '/api/user',
+	        type: 'GET',
+	        data: 'logout',
+	        processData: false,
+	        contentType: false,
+	        success: function (res) {
+	            $('#nameIdLoggin').html("Tu Nombre");
+	            $('#idSignInLi').css("display", 'inline');
+	            $('#idSignUpLi').css('display', 'inline');
+	            $('#idNameLi').css('display', 'none');
+	            $('#idLiUpload').css('display', 'none');
+	            $('#dropDownUserMenu').removeClass('open');
+	            $('#dropDownUserMenu').css("left", "-9999px");
+	            //console.log($scope.hideUserName);
+	        },
+	        error: function (res) {
+	            alert('500: Error interno');
+	        }
+	    });
 	}
 
 	$scope.addToPlaylist = function (song) {
@@ -76,7 +103,7 @@ function SearchCtrl ($scope, $routeParams, $http) {
 	$http
 		.get('/api/search?name=' + $scope.query)
 		.success(function (data) {
-			console.log(data);
+			//console.log(data);
 			$scope.songs = data.songs;
 			$scope.albums = data.albums;
 			$scope.artists = data.artists;
@@ -103,11 +130,11 @@ function SignUpCtrl($scope, $routeParams, $http) {
 		        $('#dropDownSignUp').removeClass('open');
 		        $('#dropDownSignUp').css("left", "-9999px");
 		        $('#modalSignUp').foundation('reveal', 'open');//esta linea hay que ponerla en el succes
-		        if (data) {
+		        /*if (data) {
 		            console.log(data);
 		        } else {
 		            console.log("No hay nada");
-		        }
+		        }*/
 		    })
             .error(function (data, status) {
                 if (status == 409) {
@@ -136,8 +163,8 @@ function SignInCtrl($scope, $routeParams, $http) {
             .success(function (data) {
                 $('#dropDownSignIn').removeClass('open');
                 $('#dropDownSignIn').css("left", "-9999px");
-                console.log("loggeado");
-                console.log(data);
+                //console.log("loggeado");
+                //console.log(data);
                 $.cookie("id", data.id);
                 $.cookie("name", data.name);
                 $scope.hideUserName = false;
@@ -153,33 +180,6 @@ function SignInCtrl($scope, $routeParams, $http) {
         }
     }
 }
-
-function Logout() {
-    //Borrar estas cookies
-    $.cookie("id", null);
-    $.cookie("name", null);
-    $.ajax({
-        url: '/api/user',
-        type: 'GET',
-        data: 'logout',
-        processData: false,
-        contentType: false,
-        success: function (res) {
-            $('#nameIdLoggin').html("Tu Nombre");
-            $('#idSignInLi').css("display", 'inline');
-            $('#idSignUpLi').css('display', 'inline');
-            $('#idNameLi').css('display', 'none');
-            $('#idLiUpload').css('display', 'none');
-            $('#dropDownUserMenu').removeClass('open');
-            $('#dropDownUserMenu').css("left", "-9999px");
-            //console.log($scope.hideUserName);
-        },
-        error: function (res) {
-            alert('500: Error interno');
-        }
-    });
-}
-
 
 //Controller for the upload
 function UploadCtrl ($scope) {
@@ -251,6 +251,6 @@ function UploadCtrl ($scope) {
 			});
 		};
 		$scope.$apply();
-		console.log($scope.songsToUpload);
+		//console.log($scope.songsToUpload);
 	});
 }
