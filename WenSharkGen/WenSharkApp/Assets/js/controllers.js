@@ -45,8 +45,8 @@ function MainCtrl ($scope, $timeout) {
 
     // Pasa un tiempo en segundos a un string con el formato %M:%S
 	$scope.secondsToSongString = function (seconds) {
-		if(! typeof seconds === "number"){
-			return "";
+		if(! (typeof seconds === "number")){
+			return "00:00";
 		}
 
 		var iMinutes = Math.floor(seconds / 60);
@@ -80,6 +80,7 @@ function MainCtrl ($scope, $timeout) {
 					},
 					onload: function(){
 						song.timeTotal = $scope.secondsToSongString(this._duration);
+						song.duration = this._duration;
 					}
 				});
 			},
@@ -98,6 +99,16 @@ function MainCtrl ($scope, $timeout) {
 				this._howl.stop();
 				this.isPlaying = false;
 				this._howl = null;
+			},
+			duration: 0,
+			pos: function(pos){
+				if(this.loaded()){
+					if(typeof pos === "undefined"){
+						return this._howl.pos();
+					} else {
+						this._howl.pos(pos);
+					}
+				}	
 			},
 			timeElapsed: "00:00",
 			timeTotal: "00:00",
@@ -121,8 +132,9 @@ function MainCtrl ($scope, $timeout) {
 		var curr_order = $scope.current.order,
 			next = curr_order + 1;
 
-		if(next >= $scope.playlist.length)
+		if(next >= $scope.playlist.length){
 			return null;
+		}
 
 		return $scope.playlist[next];
 	}
@@ -139,7 +151,7 @@ function MainCtrl ($scope, $timeout) {
 
 	$scope.rmFromPlaylist = function (song) {
 		if($scope.current.order == song.order)
-			$scope.current = $scope.getNextSong();
+			$scope.nextSong();
 
 		$scope.playlist.splice(song.order, 1);
 
@@ -179,27 +191,31 @@ function MainCtrl ($scope, $timeout) {
 	}
 
 	$scope.changeSong = function (song) {
-		if(song != null){
-			console.log(song);
-			var playing = $scope.current.isPlaying;
+		var playing = false;
+		if($scope.current != null){
+			playing = $scope.current.isPlaying;
 			if($scope.current.loaded()){
 				$scope.current.stop();
+				$scope.current = null;
 			}
+		}
+		if(song != null){
 			$scope.current = song;
 			if(playing){
 				$scope.current.play();
 			} else {
 				$scope.current.load();
 			}
+			$scope.updateTime();
 		}
 	}
 
 	$scope.updateTime = function () {
-		var curr_seconds = $scope.current._howl.pos();
+		var curr_seconds = $scope.current.pos();
 		$scope.current.timeElapsed = $scope.secondsToSongString(curr_seconds);
 		var elapsed_perc = (curr_seconds /  $scope.current._howl._duration);
 		$scope.current.percElapsed = elapsed_perc * 100;
-		$scope.current.scrubPos = $("#click_control").width() * elapsed_perc - 7;
+		$scope.current.scrubPos = $("#clickControl").width() * elapsed_perc - 7;
 	}
 
 	$scope.utOnTimeout = function () {
@@ -212,6 +228,18 @@ function MainCtrl ($scope, $timeout) {
 
 	$scope.playlist = [];
 	$scope.current = null;
+
+	// Para poder moverse por la cancion
+	$scope.playAt = function (pos) {
+		if($scope.current.loaded()){
+			$scope.current.pos($scope.current.duration * pos);
+		}
+	}
+
+	$("#clickControl").click(function(e){
+		var relX = e.pageX - $(this).offset().left;
+		$scope.playAt(relX / $(this).width());
+	});
 
 	var song1 = {
 		Name: "Shop",
