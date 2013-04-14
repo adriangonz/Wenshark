@@ -75,7 +75,8 @@ function MainCtrl ($scope, $timeout) {
 				this._howl = new Howl({
 					urls: [song_obj.src],
 					buffer: true,
-					onend: function(){
+					loop: true,
+					onend: function() {
 						$scope.nextSong();
 					},
 					onload: function(){
@@ -164,8 +165,6 @@ function MainCtrl ($scope, $timeout) {
 		console.log("play");
 		if($scope.current != null) {
 			if(!$scope.current.isPlaying) {
-
-			console.log($scope.current);
 				$scope.current.play();
 			}		
 		}
@@ -212,10 +211,13 @@ function MainCtrl ($scope, $timeout) {
 
 	$scope.updateTime = function () {
 		var curr_seconds = $scope.current.pos();
+		if(typeof curr_seconds === "undefined"){ // No se que pasa, pero la cancion no termina
+			$scope.nextSong();
+			return;
+		}
 		$scope.current.timeElapsed = $scope.secondsToSongString(curr_seconds);
-		var elapsed_perc = (curr_seconds /  $scope.current._howl._duration);
-		$scope.current.percElapsed = elapsed_perc * 100;
-		$scope.current.scrubPos = $("#clickControl").width() * elapsed_perc - 7;
+		$scope.current.percElapsed = (curr_seconds / $scope.current.duration) * 100;
+		$scope.current.scrubPos = $("#clickControl").width() * (curr_seconds / ($scope.current.duration)) - 7;
 	}
 
 	$scope.utOnTimeout = function () {
@@ -241,6 +243,7 @@ function MainCtrl ($scope, $timeout) {
 		$scope.playAt(relX / $(this).width());
 	});
 
+/* Pruebas en local
 	var song1 = {
 		Name: "Shop",
 		Album: {
@@ -269,6 +272,7 @@ function MainCtrl ($scope, $timeout) {
 
 	$scope.addToPlaylist(song1);
 	$scope.addToPlaylist(song2);
+	*/
 }
 
 //Controller for the search
