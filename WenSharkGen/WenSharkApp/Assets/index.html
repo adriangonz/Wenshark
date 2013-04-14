@@ -34,15 +34,13 @@
 	<script src="/Assets/js/directives.js"></script>
 	<script src="/Assets/js/controllers.js"></script>
 	<script src="/Assets/js/OAuth.js"></script>
+	<script src="/Assets/js/howler.js"></script>
     
     <!-- si no no va el dropDown -->
     <script>
         $(document).foundation();
     </script>
-    <script src="/Assets/js/controllers.js"></script>
-    <script src="/Assets/js/routes.js"></script>
 
-	<script src="/Assets/js/howler.js"></script>
 
 </head>
 <body ng-controller="MainCtrl">
@@ -145,7 +143,7 @@
 								<div class="small-8 columns progress-bar">&nbsp;
 			                        <div id="elapsed" style="width:{{current.percElapsed}}%;"></div>
 			                        <div id="clickControl" style="width:100%;"></div>
-			                        <div id="scrubber" style="left:{{current.scrubPos}}px"></div>
+			                        <div id="scrubber" style="left:{{current.percElapsed}}%;margin-left:-7px;"></div>
 								</div>
 								<div class="small-1 columns left time-total" style="padding-top:1px;">
 									{{current.timeTotal}}
@@ -156,8 +154,8 @@
 				</div>
 			</div>
 			<div class="row">
-				<ul class="playlist" ng-class="{scrollable : playlist.length}">
-					<li id="playlist-{{song.order}}" class="th" ng-click="changeSong(song)" ng-class="{active : current.order == song.order}" ng-repeat="song in playlist">
+				<ul id="sortable" class="playlist" ng-class="{scrollable : playlist.length}">
+					<li id="playlist-{{song.Id}}" class="th" ng-click="changeSong(song)" ng-class="{active : current.Id == song.Id}" ng-repeat="song in playlist">
 						<i class="playlist-rm enclose-icon foundicon-remove" ng-click="rmFromPlaylist(song)"></i>
 						<div>
 							<img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />

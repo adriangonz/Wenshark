@@ -64,7 +64,6 @@ function MainCtrl ($scope, $timeout) {
 			Album: song_obj.Album,
 			Artist: song_obj.Artist,
 			Id: song_obj.Id,
-			order: $scope.playlist.length,
 
 			isPlaying: false,
 			_howl: null,
@@ -113,8 +112,7 @@ function MainCtrl ($scope, $timeout) {
 			},
 			timeElapsed: "00:00",
 			timeTotal: "00:00",
-			percElapsed: 0,
-			scrubPos: -7,
+			percElapsed: 0
 		};
 
 		return song;
@@ -122,7 +120,7 @@ function MainCtrl ($scope, $timeout) {
 
 	$scope.addToPlaylist = function (song) {
 		var n_song = $scope.createSong(song);
-		window.pruebas = n_song._howl;
+		
 		$scope.playlist.push(n_song);
 
 		if($scope.current == null)
@@ -130,35 +128,35 @@ function MainCtrl ($scope, $timeout) {
 	}
 
 	$scope.getNextSong = function () {
-		var curr_order = $scope.current.order,
-			next = curr_order + 1;
+		$scope.current_pos ++;
 
-		if(next >= $scope.playlist.length){
+		if($scope.current_pos >= $scope.playlist.length){
 			return null;
 		}
 
-		return $scope.playlist[next];
+		return $scope.playlist[$scope.current_pos];
 	}
 
 	$scope.getPrevSong = function () {
-		var curr_order = $scope.current.order,
-			prev = curr_order - 1;
-
-		if(prev < 0)
-			return null;
-
-		return $scope.playlist[prev];
+		$scope.current_pos = Math.max($scope.current_pos - 1, 0);
+		return $scope.playlist[$scope.current_pos];
 	}
 
 	$scope.rmFromPlaylist = function (song) {
-		if($scope.current.order == song.order)
+		for(var i = 0; i < $scope.playlist.length; i++){
+			if($scope.playlist[i].Id == song.Id){
+				$scope.playlist.splice(i, 1);
+				break;
+			}
+		}
+
+		if(i < $scope.current_pos){
+			$scope.current_pos--;
+		}
+
+		if($scope.current.Id == song.Id){
 			$scope.nextSong();
-
-		$scope.playlist.splice(song.order, 1);
-
-		//We reset the order index of the next
-		for(var i = song.order; i < $scope.playlist.length; i++)
-			$scope.playlist[i].order--;
+		}
 	}
 
 	$scope.playSong = function () {
@@ -199,6 +197,13 @@ function MainCtrl ($scope, $timeout) {
 			}
 		}
 		if(song != null){
+			for(var i = 0; i < $scope.playlist.length; i++){
+				if($scope.playlist[i].Id == song.Id){
+					$scope.current_pos = i;
+					break;
+				}
+			}
+
 			$scope.current = song;
 			if(playing){
 				$scope.current.play();
@@ -217,7 +222,6 @@ function MainCtrl ($scope, $timeout) {
 		}
 		$scope.current.timeElapsed = $scope.secondsToSongString(curr_seconds);
 		$scope.current.percElapsed = (curr_seconds / $scope.current.duration) * 100;
-		$scope.current.scrubPos = $("#clickControl").width() * (curr_seconds / ($scope.current.duration)) - 7;
 	}
 
 	$scope.utOnTimeout = function () {
@@ -230,6 +234,8 @@ function MainCtrl ($scope, $timeout) {
 
 	$scope.playlist = [];
 	$scope.current = null;
+	$scope.current_pos = 0;
+	var sortableEle;
 
 	// Para poder moverse por la cancion
 	$scope.playAt = function (pos) {
@@ -243,9 +249,41 @@ function MainCtrl ($scope, $timeout) {
 		$scope.playAt(relX / $(this).width());
 	});
 
-/* Pruebas en local
+	/* Reordenar las canciones */
+
+	$scope.dragStart = function(e, ui) {
+        ui.item.data('start', ui.item.index());
+    }
+    $scope.dragEnd = function(e, ui) {
+        var start = ui.item.data('start'),
+            end = ui.item.index();
+
+        if(start == $scope.current_pos){
+        	$scope.current_pos = end;
+        } else {
+	        if(start < $scope.current_pos){
+	        	$scope.current_pos--
+	        }
+
+	        if(end <= $scope.current_pos){
+	        	$scope.current_pos++
+	        }
+	    }
+
+        $scope.playlist.splice(end, 0, 
+            $scope.playlist.splice(start, 1)[0]);
+        
+        $scope.$apply();
+    }
+        
+    $scope.sortableEle = $('#sortable').sortable({
+        start: $scope.dragStart,
+        update: $scope.dragEnd
+    });
+
+/* Pruebas en local 
 	var song1 = {
-		Name: "Shop",
+		Name: "1",
 		Album: {
 			Image: "/Assets/img/50x50.Img.gif",
 			Name: "Test Album"
@@ -258,7 +296,7 @@ function MainCtrl ($scope, $timeout) {
 	};
 
 	var song2 = {
-		Name: "Cant",
+		Name: "2",
 		Album: {
 			Image: "/Assets/img/50x50.Img.gif",
 			Name: "Test Album"
@@ -269,10 +307,8 @@ function MainCtrl ($scope, $timeout) {
 		Id: 2,
 		src: "/Assets/songs/test2.mp3"
 	};
-
 	$scope.addToPlaylist(song1);
-	$scope.addToPlaylist(song2);
-	*/
+	$scope.addToPlaylist(song2);    */
 }
 
 //Controller for the search
