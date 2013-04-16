@@ -142,6 +142,18 @@ function MainCtrl ($scope, $timeout) {
 		}
 	}
 
+	$scope.addToPlaylistAndPlay = function (song) {
+		var n_song = $scope.createSong(song);
+
+		$scope.playlist.push(n_song);
+
+		if($scope.current != null && $scope.current.isPlaying)
+			$scope.current.stop();
+
+		$scope.current = n_song;
+		$scope.current.play();
+	}
+
 	$scope.getNextSong = function () {
 		$scope.current_pos ++;
 

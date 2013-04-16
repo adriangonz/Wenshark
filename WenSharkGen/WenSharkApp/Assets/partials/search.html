@@ -22,8 +22,11 @@
 						</span>
 
 						<!-- Controls -->
-						<span class="song-controls small-3 columns right">
-							<button class="tiny" ng-click="addToPlaylist(song)"><span class="play"></span></button>
+						<span class="song-controls small-5 columns right">
+							<ul class="button-group">
+								<li><button class="tiny" ng-click="addToPlaylist(song)"><span class="foundicon-plus"></span></button></li>
+								<li><button class="tiny" ng-click="addToPlaylistAndPlay(song)"><span class="tiny play"></span></button></li>
+							</ul>
 						</span>
 					</li>
 				</ul>
