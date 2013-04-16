@@ -33,6 +33,7 @@
         </div>
     </div>
     <div class="row">
-        <input class="button small right disable" type="submit" value="Login" />
+        <input ng-hide="tryingLoginOrSignUp" class="button small right disable" type="submit" value="Login" />
+        <img ng-show="tryingLoginOrSignUp" class="center" src="/Assets/img/loadingGif.gif"/>
     </div>
 </form>

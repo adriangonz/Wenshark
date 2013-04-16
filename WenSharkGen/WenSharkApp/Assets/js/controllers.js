@@ -372,7 +372,9 @@ function SignUpCtrl($scope, $routeParams, $http) {
         confPass: '',
         email : ''
     }
+    $scope.tryingToSignUp = false;
     $scope.signup = function () {
+    	$scope.tryingToSignUp = true;
         if ($scope.user.passw != '' && $scope.user.passw == $scope.user.confPass) {
             $http
 		    .post('/api/user', JSON.stringify($scope.user))
@@ -380,8 +382,10 @@ function SignUpCtrl($scope, $routeParams, $http) {
 		        $('#dropDownSignUp').removeClass('open');
 		        $('#dropDownSignUp').css("left", "-9999px");
 		        $('#modalSignUp').foundation('reveal', 'open');//esta linea hay que ponerla en el succes
+		        $scope.tryingToSignUp = false;
 		    })
             .error(function (data, status) {
+            	$scope.tryingToSignUp = false;
                 if (status == 409) {
                     $('#usernameSignUp').removeClass('ng-valid');
                     $('#usernameSignUp').addClass('ng-invalid');
@@ -398,10 +402,10 @@ function SignInCtrl($scope, $routeParams, $http) {
         username: '',
         passw: ''
     }
-    
+    $scope.tryingLoginOrSignUp = false;
     $scope.hideUserName = true;
     $scope.signin = function () {
-        
+        $scope.tryingLoginOrSignUp = true;
         if ($scope.userlogin.username != '' && $scope.userlogin.passw != '') {
             $http
             .get('/api/user?user='+$scope.userlogin.username+'&pass='+$scope.userlogin.passw)
@@ -416,8 +420,10 @@ function SignInCtrl($scope, $routeParams, $http) {
                 $('#idSignUpLi').css('display', 'none');
                 $('#idNameLi').css('display', 'inline');
                 $('#idLiUpload').css('display', 'inline');
+                $scope.tryingLoginOrSignUp = false;
             })
             .error(function (data) {
+            	$scope.tryingLoginOrSignUp = false;
             });
         }
     }

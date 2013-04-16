@@ -54,6 +54,7 @@
         </div>
     </div>
     <div class="row">
-        <input class="button small right" type="submit" value="Sign up" />
+        <input ng-hide="tryingToSignUp" class="button small right" type="submit" value="Sign up" />
+        <img ng-show="tryingToSignUp" class="center" src="/Assets/img/loadingGif.gif"/>
     </div>
 </form>
