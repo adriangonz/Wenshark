@@ -35,6 +35,7 @@
 	<script src="/Assets/js/controllers.js"></script>
 	<script src="/Assets/js/OAuth.js"></script>
 	<script src="/Assets/js/howler.js"></script>
+	<script src="/Assets/js/visualFixes.js"></script>
     
     <!-- si no no va el dropDown -->
     <script>
@@ -75,10 +76,10 @@
                         </li>
                         <li class="divider"></li>
                         <li id="idSignInLi" class="has-dropdown" ng-show="hideUserName">
-                            <a href="#" class="" data-dropdown="dropDownSignIn">Sign In</a>
+                            <a href="#" class="" data-dropdown="dropDownSignIn" onclick="hideSignUp()">Sign In</a>
                         </li>
                         <li id="idSignUpLi" class="has-dropdown" ng-show="hideUserName">
-                            <a href="#" class="" data-dropdown="dropDownSignUp">Sign up</a>
+                            <a href="#" class="" data-dropdown="dropDownSignUp" onclick="hideSignIn()">Sign up</a>
                         </li>
                         <li id="idNameLi" class="has-dropdown" ng-hide="hideUserName">
                             <a id="nameIdLoggin" data-dropdown="dropDownUserMenu" href="#">Tu Nombre</a>

@@ -7,7 +7,7 @@ angular.module('wenshark', [])
 			.when('/error', {templateUrl: '/Assets/partials/error.html'})
 			.when('/', {templateUrl: '/Assets/partials/main.html'})
 			.when('/upload', { controller: UploadCtrl, templateUrl: '/Assets/partials/upload.html' })
-            .when('/accestoken', {})//Para que Oauth no rediriga a error
+            .when('/accestoken', { templateUrl: '/Assets/partials/loading.html' })//Para que Oauth no rediriga a error
             .when('/user', {})//borrar
 			.otherwise({redirectTo: '/error'});
 	}]);

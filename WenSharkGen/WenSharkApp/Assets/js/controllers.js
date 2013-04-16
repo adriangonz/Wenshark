@@ -6,12 +6,20 @@ function MainCtrl ($scope, $timeout) {
 	    window.location.href = "/#/search/" + query;	
 	}
 
-	if ($.cookie("name")) {
-	    $scope.hideUserName = false;
+	$scope.IsLogged = function () {
+		if ($.cookie("name")) {
+		   return true;
+		} else {
+		    return false;
+		}
+	}
+
+	if ($scope.IsLogged()){
+		 $scope.hideUserName = false;
 	    $('#nameIdLoggin').html($.cookie("name"));
 	    //console.log($.cookie("name"));
-	} else {
-	    $scope.hideUserName = true;
+	}else{
+		$scope.hideUserName = true;
 	}
 
 
@@ -372,11 +380,6 @@ function SignUpCtrl($scope, $routeParams, $http) {
 		        $('#dropDownSignUp').removeClass('open');
 		        $('#dropDownSignUp').css("left", "-9999px");
 		        $('#modalSignUp').foundation('reveal', 'open');//esta linea hay que ponerla en el succes
-		        /*if (data) {
-		            console.log(data);
-		        } else {
-		            console.log("No hay nada");
-		        }*/
 		    })
             .error(function (data, status) {
                 if (status == 409) {
@@ -405,8 +408,6 @@ function SignInCtrl($scope, $routeParams, $http) {
             .success(function (data) {
                 $('#dropDownSignIn').removeClass('open');
                 $('#dropDownSignIn').css("left", "-9999px");
-                //console.log("loggeado");
-                //console.log(data);
                 $.cookie("id", data.id);
                 $.cookie("name", data.name);
                 $scope.hideUserName = false;
@@ -415,7 +416,6 @@ function SignInCtrl($scope, $routeParams, $http) {
                 $('#idSignUpLi').css('display', 'none');
                 $('#idNameLi').css('display', 'inline');
                 $('#idLiUpload').css('display', 'inline');
-                //console.log($scope.hideUserName);
             })
             .error(function (data) {
             });
@@ -425,74 +425,78 @@ function SignInCtrl($scope, $routeParams, $http) {
 
 //Controller for the upload
 function UploadCtrl ($scope) {
-	$scope.songsToUpload = [];
-	$scope.selected = null;
-	$scope.select = function (song) {
-		if($scope.selected != null)
-			$('#upl-song-' + $scope.selected.id).removeClass('active');
+	if (!$scope.IsLogged()){
+		window.location.href = "/#/error";
+	}else{
+		$scope.songsToUpload = [];
+		$scope.selected = null;
+		$scope.select = function (song) {
+			if($scope.selected != null)
+				$('#upl-song-' + $scope.selected.id).removeClass('active');
 
-		$scope.selected = song;
-		$('#upl-song-' + song.id).addClass('active');
-	};
-	$scope.addFileToUpload = function () {
-		$('.hidden-file-input').click();
-	}
-	$scope.uploading = false;
-	$scope.uploadOK = false;
-	$scope.upload = function () {
-		$scope.uploading = true;
-		//We upload the songs with the data
-		var formdata = new FormData();
-		for(var i = 0; i < $scope.songsToUpload.length; i++) {
-			formdata.append("file-" + i, $scope.songsToUpload[i].file);
-			formdata.append("name-" + i, $scope.songsToUpload[i].name);
-			formdata.append("album-" + i, 2);
-			formdata.append("artist-" + i, 1);
+			$scope.selected = song;
+			$('#upl-song-' + song.id).addClass('active');
+		};
+		$scope.addFileToUpload = function () {
+			$('.hidden-file-input').click();
 		}
-
-		$.ajax({
-			url: '/api/song',
-			type: 'POST',
-			data: formdata,
-			processData: false,
-			contentType: false,
-			success: function (res) {
-				$scope.uploading = false;
-				$scope.songsToUpload = [];
-				$scope.selected = null;
-				$('<div data-alert class="alert-box">' + 
-					'<span>Todo ha ido bien :)</span>' + 
-	  				'<a href="#" class="close">&times;</a>' + 
-				'</div>').insertBefore('.uploader');
-				$scope.$apply();
-			},
-			error: function (res) {
-				alert('500: Error interno');
-				$scope.uploading = false;
-				$scope.$apply();
+		$scope.uploading = false;
+		$scope.uploadOK = false;
+		$scope.upload = function () {
+			$scope.uploading = true;
+			//We upload the songs with the data
+			var formdata = new FormData();
+			for(var i = 0; i < $scope.songsToUpload.length; i++) {
+				formdata.append("file-" + i, $scope.songsToUpload[i].file);
+				formdata.append("name-" + i, $scope.songsToUpload[i].name);
+				formdata.append("album-" + i, 2);
+				formdata.append("artist-" + i, 1);
 			}
-		});
-	}
 
-	//Add some handlers for adding files to view
-	$('.hidden-file-input').change(function (e) {
-		var filesToAdd = $('.hidden-file-input')[0].files;
-		var size = $scope.songsToUpload.length;
-
-		for (var i = 0; i < filesToAdd.length; i++) {
-			$scope.songsToUpload.push( {
-				id: size + i,
-				name: filesToAdd[i].name,
-				file: filesToAdd[i],
-				album : {
-					name: ''
+			$.ajax({
+				url: '/api/song',
+				type: 'POST',
+				data: formdata,
+				processData: false,
+				contentType: false,
+				success: function (res) {
+					$scope.uploading = false;
+					$scope.songsToUpload = [];
+					$scope.selected = null;
+					$('<div data-alert class="alert-box">' + 
+						'<span>Todo ha ido bien :)</span>' + 
+		  				'<a href="#" class="close">&times;</a>' + 
+					'</div>').insertBefore('.uploader');
+					$scope.$apply();
 				},
-				artist : {
-					name: ''
+				error: function (res) {
+					alert('500: Error interno');
+					$scope.uploading = false;
+					$scope.$apply();
 				}
 			});
-		};
-		$scope.$apply();
-		//console.log($scope.songsToUpload);
-	});
+		}
+
+		//Add some handlers for adding files to view
+		$('.hidden-file-input').change(function (e) {
+			var filesToAdd = $('.hidden-file-input')[0].files;
+			var size = $scope.songsToUpload.length;
+
+			for (var i = 0; i < filesToAdd.length; i++) {
+				$scope.songsToUpload.push( {
+					id: size + i,
+					name: filesToAdd[i].name,
+					file: filesToAdd[i],
+					album : {
+						name: ''
+					},
+					artist : {
+						name: ''
+					}
+				});
+			};
+			$scope.$apply();
+			//console.log($scope.songsToUpload);
+		});
+	}
 }
