@@ -54,6 +54,17 @@
 	display: inline-block;
 	background: transparent url('/Assets/img/player/play.png') center top no-repeat;
 }
+
+.play.tiny {
+	width: 11px;
+	height: 11px;
+	background-size: 11px 11px;
+}
+
+.play.tiny:hover {
+	background-image: url('/Assets/img/player/play.png');
+}
+
 .play:hover {
 	background-image: url('/Assets/img/player/play_active.png');
 }

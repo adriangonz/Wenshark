@@ -67,6 +67,19 @@ function MainCtrl ($scope, $timeout) {
 	}
 
 	$scope.createSong = function (song_obj) {
+		//Parche porque Howler reconoce el tipo en funcion de la extension
+		song_obj.src = '/api/song?file&id=' + song_obj.Id;
+		switch(song_obj.Mime) {
+			case 'audio/mp3':
+				song_obj.src += '#.mp3';
+				break;
+			case 'audio/ogg':
+				song_obj.src += '#.ogg';
+				break;
+			case 'audio/wav':
+				song_obj.src += '#.wav';
+				break;
+		}
 		var song = {
 			Name: song_obj.Name,
 			Album: song_obj.Album,
@@ -128,11 +141,25 @@ function MainCtrl ($scope, $timeout) {
 
 	$scope.addToPlaylist = function (song) {
 		var n_song = $scope.createSong(song);
-		
+
 		$scope.playlist.push(n_song);
 
-		if($scope.current == null)
+		if($scope.current == null) {
 			$scope.current = n_song;
+			$scope.current.play();
+		}
+	}
+
+	$scope.addToPlaylistAndPlay = function (song) {
+		var n_song = $scope.createSong(song);
+
+		$scope.playlist.push(n_song);
+
+		if($scope.current != null && $scope.current.isPlaying)
+			$scope.current.stop();
+
+		$scope.current = n_song;
+		$scope.current.play();
 	}
 
 	$scope.getNextSong = function () {
