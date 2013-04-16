@@ -353,11 +353,6 @@ function SignUpCtrl($scope, $routeParams, $http) {
 		        $('#dropDownSignUp').removeClass('open');
 		        $('#dropDownSignUp').css("left", "-9999px");
 		        $('#modalSignUp').foundation('reveal', 'open');//esta linea hay que ponerla en el succes
-		        /*if (data) {
-		            console.log(data);
-		        } else {
-		            console.log("No hay nada");
-		        }*/
 		    })
             .error(function (data, status) {
                 if (status == 409) {
@@ -386,8 +381,6 @@ function SignInCtrl($scope, $routeParams, $http) {
             .success(function (data) {
                 $('#dropDownSignIn').removeClass('open');
                 $('#dropDownSignIn').css("left", "-9999px");
-                //console.log("loggeado");
-                //console.log(data);
                 $.cookie("id", data.id);
                 $.cookie("name", data.name);
                 $scope.hideUserName = false;
@@ -396,7 +389,6 @@ function SignInCtrl($scope, $routeParams, $http) {
                 $('#idSignUpLi').css('display', 'none');
                 $('#idNameLi').css('display', 'inline');
                 $('#idLiUpload').css('display', 'inline');
-                //console.log($scope.hideUserName);
             })
             .error(function (data) {
             });
