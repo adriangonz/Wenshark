@@ -14,9 +14,9 @@ var loggedIn = false;
 
 function loginGoogle() {
     var win = window.open(G_url, "windowname1", 'width=800, height=600');
-
+    
     var pollTimer = window.setInterval(function () {
-        console.log(win.document.URL);
+        //console.log(win.document.URL);
         if (win.document.URL.indexOf(GREDIRECT) != -1) {
             window.clearInterval(pollTimer);
             var url = win.document.URL;
@@ -24,7 +24,7 @@ function loginGoogle() {
             tokenType = gup(url, 'token_type');
             expiresIn = gup(url, 'expires_in');
             win.close();
-            console.log(url);
+            //console.log(url);
             validateToken(acToken);
         }
     }, 500);
@@ -44,6 +44,9 @@ function validateToken(token) {
         dataType: "jsonp"
 });
 */
+    console.log(angular.element($("#formSignIn")).scope().tryingLoginOrSignUp);
+    angular.element($("#formSignIn")).scope().tryingLoginOrSignUp = true;
+    angular.element($("#formSignUp")).scope().tryingToSignUp = true;
     $.ajax({
         url: '/api/user?token=' + token,
         success: function (data) {
@@ -57,9 +60,14 @@ function validateToken(token) {
             $('#idSignUpLi').css('display', 'none');
             $('#idNameLi').css('display', 'inline');
             $('#idLiUpload').css('display', 'inline');
+
+            angular.element($("#formSignIn")).scope().tryingLoginOrSignUp = false;
+            angular.element($("#formSignUp")).scope().tryingToSignUp = false;
+            console.log("loegado");
             //Cookies
             $.cookie("id", data.id);
             $.cookie("name", data.name);
+
         }
     });
 }
