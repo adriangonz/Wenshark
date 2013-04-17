@@ -55,9 +55,14 @@
 			<div class="content">
 				<ul class="items-list" ng-show="albums.length">
 					<li class="alb-thumb row th" ng-repeat="alb in albums">
-						<a href="/album/{{alb.Id}}">
-							<p class="name">{{alb.Name}}</p>
-						</a>
+						<span class="small-1 columns left">
+							<img src="{{alb.Image}}" width="50" height="50" />
+						</span>
+						<span class="small-6 columns left">
+							<a href="/album/{{alb.Id}}">
+								<p class="name">{{alb.Name}}</p>
+							</a>
+						</span>
 					</li>
 				</ul>
 

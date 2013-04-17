@@ -1,11 +1,11 @@
 ﻿<!-- Formulario de registro -->
 
-<form ng-controller="SignInCtrl" ng-submit="signin()">
+<form id="formSignIn" ng-controller="SignInCtrl" ng-submit="signin()">
     <div class="row">
         <div class="large-12 columns">
             <div class="row collapse">
                 <div class="small-6 columns">
-                    <a class="button tiny scundary" onclick="loginGoogle()">Google Login</a>
+                    <a ng-hide="tryingLoginOrSignUp" class="button tiny scundary" onclick="loginGoogle()">Google Login</a>
                 </div>
                 <!--div class="small-6 columns">
                     <a class="button tiny scundary" data-reveal-id="modalSignUp">Facebook Login</a>
