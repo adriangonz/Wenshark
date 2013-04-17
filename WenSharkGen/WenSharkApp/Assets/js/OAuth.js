@@ -3,7 +3,8 @@ var GOAUTHURL = 'https://accounts.google.com/o/oauth2/auth?';
 var GVALIDURL = 'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=';
 var GSCOPE = "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email";
 var GCLIENTID = '86668688312.apps.googleusercontent.com';
-var GREDIRECT = 'http://wenshark.azurewebsites.net/Assets/partials/loading.html'
+//var GREDIRECT = 'http://wenshark.azurewebsites.net/Assets/partials/loading.html'
+var GREDIRECT = 'http://localhost:5749/Assets/partials/loading.html'
 var GTYPE = 'token';
 var G_url = GOAUTHURL + 'scope=' + GSCOPE + '&client_id=' + GCLIENTID + '&redirect_uri=' + GREDIRECT + '&response_type=' + GTYPE;
 var acToken;

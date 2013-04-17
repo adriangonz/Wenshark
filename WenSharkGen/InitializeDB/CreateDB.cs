@@ -23,8 +23,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         // Conex DB
         SqlConnection cnn = new SqlConnection (@"Server=(local)\SQLEXPRESS; database=master; integrated security=yes");
 
-       // SqlConnection cnn = new SqlConnection(@"Server=tcp:u8epazazac.database.windows.net,1433;Database=WensharkDB;User ID=wenwen@u8epazazac;Password=Carrillo10!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;");
-
+    
      
 
         // Order T-SQL create user

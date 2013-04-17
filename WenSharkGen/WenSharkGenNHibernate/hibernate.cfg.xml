@@ -5,16 +5,17 @@
 			    <property name="dialect">NHibernate.Dialect.MsSql2005Dialect</property>
 			    <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
           <!--
-          LocalHost:
+          LocalHost:-->
           <property name="connection.connection_string">
             Data Source=(local)\sqlexpress;Initial Catalog=WenSharkGennhibernate;User Id=nhibernateUser;Password=nhibernatePass;
           </property>
-          -->
+          
           <!--Desde casa:-->
+          <!--
           <property name="connection.connection_string">
             Data Source=tcp:u8epazazac.database.windows.net,1433;Database=WensharkDB;User ID=wenwen@u8epazazac;Password=Carrillo10!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;
           </property>
-          
+          -->
           <!-- Produccion: 
           
           <property name="connection.connection_string">
