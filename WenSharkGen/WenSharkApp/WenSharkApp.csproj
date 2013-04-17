@@ -140,6 +140,12 @@
     <Content Include="Assets\img\1200x500.Slide_Image.gif" />
     <Content Include="Assets\img\300x465.Slide_Image.gif" />
     <Content Include="Assets\img\50x50.Img.gif" />
+    <Content Include="Assets\img\albums\greatest_hits.jpg" />
+    <Content Include="Assets\img\albums\hybrid_theory.jpg" />
+    <Content Include="Assets\img\albums\meteora.jpg" />
+    <Content Include="Assets\img\albums\que_grande_eres.jpg" />
+    <Content Include="Assets\img\albums\reanimation.jpg" />
+    <Content Include="Assets\img\albums\unknown.png" />
     <Content Include="Assets\img\backward.png" />
     <Content Include="Assets\img\backward_active.png" />
     <Content Include="Assets\img\forward.png" />
@@ -237,7 +243,7 @@
     <Content Include="Assets\img\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\img\Thumbs.db" />
+    <Content Include="Assets\img\albums\Thumbs.db" />
     <None Include="Properties\PublishProfiles\wenshark - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\wenshark - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\wenshark - Web Deploy %282%29.pubxml" />
