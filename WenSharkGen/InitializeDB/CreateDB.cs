@@ -23,12 +23,16 @@ public static void Create (string databaseArg, string userArg, string passArg)
         // Conex DB
         SqlConnection cnn = new SqlConnection (@"Server=(local)\SQLEXPRESS; database=master; integrated security=yes");
 
+       // SqlConnection cnn = new SqlConnection(@"Server=tcp:u8epazazac.database.windows.net,1433;Database=WensharkDB;User ID=wenwen@u8epazazac;Password=Carrillo10!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;");
+
+     
+
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
             BEGIN
                 CREATE LOGIN ["                                                                                                                                     + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
             END"                                                                                                                                                                                                                                                                                    ;
-
+    
         //Order delete user if exist
         String deleteDataBase = @"if exists(select * from sys.databases where name = '" + database + "') DROP DATABASE [" + database + "]";
         //Order create databas
@@ -43,8 +47,8 @@ public static void Create (string databaseArg, string userArg, string passArg)
                 cnn.Open ();
 
                 //Create user in SQLSERVER
-                cmd = new SqlCommand (createUser, cnn);
-                cmd.ExecuteNonQuery ();
+               cmd = new SqlCommand (createUser, cnn);
+               cmd.ExecuteNonQuery ();
 
                 //DELETE database if exist
                 cmd = new SqlCommand (deleteDataBase, cnn);

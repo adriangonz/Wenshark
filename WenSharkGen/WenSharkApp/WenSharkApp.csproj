@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -123,6 +124,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\Albums\.gitignore" />
+    <Content Include="App_Data\Songs\.gitignore" />
     <Content Include="Assets\css\common.css" />
     <Content Include="Assets\css\auth.css" />
     <Content Include="Assets\css\foundation.css" />
@@ -137,7 +140,34 @@
     <Content Include="Assets\img\1200x500.Slide_Image.gif" />
     <Content Include="Assets\img\300x465.Slide_Image.gif" />
     <Content Include="Assets\img\50x50.Img.gif" />
+    <Content Include="Assets\img\backward.png" />
+    <Content Include="Assets\img\backward_active.png" />
+    <Content Include="Assets\img\forward.png" />
+    <Content Include="Assets\img\forward_active.png" />
+    <Content Include="Assets\img\loadingGif.gif" />
+    <Content Include="Assets\img\logo_small.ico" />
     <Content Include="Assets\img\logo_verde_trans.png" />
+    <Content Include="Assets\img\pause.png" />
+    <Content Include="Assets\img\pause_active.png" />
+    <Content Include="Assets\img\play.png" />
+    <Content Include="Assets\img\player\backward.png" />
+    <Content Include="Assets\img\player\backward_active.png" />
+    <Content Include="Assets\img\player\forward.png" />
+    <Content Include="Assets\img\player\forward_active.png" />
+    <Content Include="Assets\img\player\pause.png" />
+    <Content Include="Assets\img\player\pause_active.png" />
+    <Content Include="Assets\img\player\play.png" />
+    <Content Include="Assets\img\player\play_active.png" />
+    <Content Include="Assets\img\player\random.png" />
+    <Content Include="Assets\img\player\random_active.png" />
+    <Content Include="Assets\img\player\repeat.png" />
+    <Content Include="Assets\img\player\repeat_active.png" />
+    <Content Include="Assets\img\play_active.png" />
+    <Content Include="Assets\img\random.png" />
+    <Content Include="Assets\img\random_active.png" />
+    <Content Include="Assets\img\repeat.png" />
+    <Content Include="Assets\img\repeat_active.png" />
+    <Content Include="Assets\img\spinner.gif" />
     <Content Include="Assets\index.html" />
     <Content Include="Assets\js\controllers.js" />
     <Content Include="Assets\js\directives.js" />
@@ -156,11 +186,16 @@
     <Content Include="Assets\js\foundation\foundation.section.js" />
     <Content Include="Assets\js\foundation\foundation.tooltips.js" />
     <Content Include="Assets\js\foundation\foundation.topbar.js" />
+    <Content Include="Assets\js\howler.js" />
     <Content Include="Assets\js\OAuth.js" />
     <Content Include="Assets\js\routes.js" />
+    <Content Include="Assets\js\vendor\angular.min.js" />
     <Content Include="Assets\js\vendor\custom.modernizr.js" />
+    <Content Include="Assets\js\vendor\jquery-1.9.1.min.js" />
+    <Content Include="Assets\js\vendor\jquery-ui-1.10.2.custom.min.js" />
     <Content Include="Assets\js\vendor\jquery.js" />
     <Content Include="Assets\js\vendor\zepto.js" />
+    <Content Include="Assets\js\visualFixes.js" />
     <Content Include="Assets\partials\error.html" />
     <Content Include="Assets\partials\loading.html" />
     <Content Include="Assets\partials\login.html" />
@@ -183,9 +218,7 @@
     </Content>
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -198,11 +231,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\fonts\.DS_Store" />
     <Content Include="Assets\fonts\general_foundicons.eot" />
     <Content Include="Assets\fonts\general_foundicons.ttf" />
     <Content Include="Assets\fonts\general_foundicons.woff" />
     <Content Include="Assets\img\.gitkeep" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\img\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\wenshark - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\wenshark - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\wenshark - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\wenshark - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -220,7 +259,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>3097</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:5749/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

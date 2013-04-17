@@ -49,7 +49,7 @@ namespace WenSharkApp.Controllers
 
         public HttpResponseMessage getSearch()
         {
-            SongCEN songcen = new SongCEN();
+          /*  SongCEN songcen = new SongCEN();
             var res = songcen.GetAll(0, 10).ToList();
 
             foreach (var song in res)
@@ -60,6 +60,8 @@ namespace WenSharkApp.Controllers
             }
 
             return this.Request.CreateResponse(HttpStatusCode.OK, new { pru = res });
+           */
+            return this.Request.CreateResponse(HttpStatusCode.OK, "hola");
         }
     }
 
