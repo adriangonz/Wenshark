@@ -9,34 +9,34 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/ico" href="/Assets/img/logo_small.ico">
 
-	<!-- Title -->
-	<title>WenShark - Tu musica en streaming</title>
-	
-	<!-- General CSSs-->
-	<link rel="stylesheet" href="/Assets/css/normalize.css" />
-	<link rel="stylesheet" href="/Assets/css/foundation.css" />
-  	<link rel="stylesheet" href="/Assets/css/general_foundicons.css" />
-  	<link rel="stylesheet" href="/Assets/css/common.css" />
-  	<link rel="stylesheet" href="/Assets/css/lists.css" />
-  	<link rel="stylesheet" href="/Assets/css/uploader.css" />
-  	<link rel="stylesheet" href="/Assets/css/auth.css" />
-  	<link rel="stylesheet" href="/Assets/css/player.css" />
-  	<link rel="stylesheet" href="/Assets/css/general_enclosed_foundicons.css" />
-  	<link rel="stylesheet" href="/Assets/css/jquery-ui-1.10.2.custom.min.css" />
+    <!-- Title -->
+    <title>WenShark - Tu musica en streaming</title>
 
-  	<!-- General JS references -->
-	<script src="/Assets/js/vendor/custom.modernizr.js"></script>
-	<script src="/Assets/js/vendor/jquery-1.9.1.min.js"></script>
-	<script src="/Assets/js/vendor/jquery-ui-1.10.2.custom.min.js"></script>
-	<script src="/Assets/js/foundation.min.js"></script>
-	<script src="/Assets/js/vendor/angular.min.js"></script>
-	<script src="/Assets/js/routes.js"></script>
-	<script src="/Assets/js/directives.js"></script>
-	<script src="/Assets/js/controllers.js"></script>
-	<script src="/Assets/js/OAuth.js"></script>
-	<script src="/Assets/js/howler.js"></script>
-	<script src="/Assets/js/visualFixes.js"></script>
-    
+    <!-- General CSSs-->
+    <link rel="stylesheet" href="/Assets/css/normalize.css" />
+    <link rel="stylesheet" href="/Assets/css/foundation.css" />
+    <link rel="stylesheet" href="/Assets/css/general_foundicons.css" />
+    <link rel="stylesheet" href="/Assets/css/common.css" />
+    <link rel="stylesheet" href="/Assets/css/lists.css" />
+    <link rel="stylesheet" href="/Assets/css/uploader.css" />
+    <link rel="stylesheet" href="/Assets/css/auth.css" />
+    <link rel="stylesheet" href="/Assets/css/player.css" />
+    <link rel="stylesheet" href="/Assets/css/general_enclosed_foundicons.css" />
+    <link rel="stylesheet" href="/Assets/css/jquery-ui-1.10.2.custom.min.css" />
+
+    <!-- General JS references -->
+    <script src="/Assets/js/vendor/custom.modernizr.js"></script>
+    <script src="/Assets/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="/Assets/js/vendor/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="/Assets/js/foundation.min.js"></script>
+    <script src="/Assets/js/vendor/angular.min.js"></script>
+    <script src="/Assets/js/routes.js"></script>
+    <script src="/Assets/js/directives.js"></script>
+    <script src="/Assets/js/controllers.js"></script>
+    <script src="/Assets/js/OAuth.js"></script>
+    <script src="/Assets/js/howler.js"></script>
+    <script src="/Assets/js/visualFixes.js"></script>
+
     <!-- si no no va el dropDown -->
     <script>
         $(document).foundation();
@@ -101,76 +101,87 @@
 
     <div class="row content">
         <!-- Main content -->
-        <div class="large-12 columns">
+        <div class="large-10 columns">
             <!-- Aqui el contenido -->
             <div ng-view></div>
         </div>
         <!-- End Content -->
+        <!-- Left bar -->
+        <div class="large-2 columns panel">
+                <h4>Playlist</h4>
+                <ul class="side-nav">
+                    <li><a>Lista1</a></li>
+                    <li><a>Lista2</a></li>
+                    <li><a>Lista3</a></li>
+                </ul>
+        </div>
+        <!-- End Left bar -->
 
-		<!-- Footer -->
-		<div class="row player">
-		<div class="small-2 columns now-playing">
-			<div ng-show="current">
-				<div class="current-img">
-					<img src="{{current.Album.Image}}" width="50" heigth="50" />
-				</div>
-				<div class="current-data">
-					<p class="current-name">{{current.Name}}</p>
-					<p>{{current.Artist.Name}}</p>
-					<p>{{current.Album.Name}}</p>
-				</div>
-			</div>
-			<div class="info" ng-show="!current">
-				No hay nada en reproducción
-			</div>
-		</div>
-		<div class="small-10 columns">
-			<div class="row">
-				<div class="small-12 columns controls">
-					<div class="row">
-						<div class="small-2 columns" >
-							<div class="buttons">
-								<a class="backward" ng-click="prevSong()"></a>
-								<a class="play"     ng-click="playSong()"  ng-show="!current.isPlaying"></a>
-								<a class="pause"    ng-click="pauseSong()" ng-show="current.isPlaying"></a>
-								<a class="forward"  ng-click="nextSong()"></a>
-							</div>
-						</div>
-						<div class="small-8 columns left" style="padding-top:1px;">
-							<div class="row">
-								<div class="small-1 columns time-elapsed" style="padding-top:1px;" >
-									{{current.timeElapsed}}
-								</div>
-								<div class="small-8 columns progress-bar">&nbsp;
-			                        <div id="elapsed" style="width:{{current.percElapsed}}%;"></div>
-			                        <div id="clickControl" style="width:100%;"></div>
-			                        <div id="scrubber" style="left:{{current.percElapsed}}%;margin-left:-7px;"></div>
-								</div>
-								<div class="small-1 columns left time-total" style="padding-top:1px;">
-									{{current.timeTotal}}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<ul id="sortable" class="playlist" ng-class="{scrollable : playlist.length}">
-					<li id="playlist-{{song.Id}}" class="th" ng-click="changeSong(song)" ng-class="{active : current.Id == song.Id}" ng-repeat="song in playlist">
-						<i class="playlist-rm enclose-icon foundicon-remove" ng-click="rmFromPlaylist(song)"></i>
-						<div>
-							<img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />
-							<div class="playlist-data">
-								<p class="playlist-name" title="{{song.Name}}">{{song.Name}}</p>
-								<p class="playlist-artist subname" title="{{song.Artist.Name}}">{{song.Artist.Name}}</p>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
+        <!-- Footer -->
+        <div class="row player">
+            <div class="small-2 columns now-playing">
+                <div ng-show="current">
+                    <div class="current-img">
+                        <img src="{{current.Album.Image}}" width="50" heigth="50" />
+                    </div>
+                    <div class="current-data">
+                        <p class="current-name">{{current.Name}}</p>
+                        <p>{{current.Artist.Name}}</p>
+                        <p>{{current.Album.Name}}</p>
+                    </div>
+                </div>
+                <div class="info" ng-show="!current">
+                    No hay nada en reproducción
+                </div>
+            </div>
+            <div class="small-10 columns">
+                <div class="row">
+                    <div class="small-12 columns controls">
+                        <div class="row">
+                            <div class="small-2 columns">
+                                <div class="buttons">
+                                    <a class="backward" ng-click="prevSong()"></a>
+                                    <a class="play" ng-click="playSong()" ng-show="!current.isPlaying"></a>
+                                    <a class="pause" ng-click="pauseSong()" ng-show="current.isPlaying"></a>
+                                    <a class="forward" ng-click="nextSong()"></a>
+                                </div>
+                            </div>
+                            <div class="small-8 columns left" style="padding-top: 1px;">
+                                <div class="row">
+                                    <div class="small-1 columns time-elapsed" style="padding-top: 1px;">
+                                        {{current.timeElapsed}}
+                                    </div>
+                                    <div class="small-8 columns progress-bar">
+                                        &nbsp;
+			                        <div id="elapsed" style="width: {{current.percElapsed}}%;"></div>
+                                        <div id="clickControl" style="width: 100%;"></div>
+                                        <div id="scrubber" style="left: {{current.percElapsed}}%; margin-left: -7px;"></div>
+                                    </div>
+                                    <div class="small-1 columns left time-total" style="padding-top: 1px;">
+                                        {{current.timeTotal}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul id="sortable" class="playlist" ng-class="{scrollable : playlist.length}">
+                        <li id="playlist-{{song.Id}}" class="th" ng-click="changeSong(song)" ng-class="{active : current.Id == song.Id}" ng-repeat="song in playlist">
+                            <i class="playlist-rm enclose-icon foundicon-remove" ng-click="rmFromPlaylist(song)"></i>
+                            <div>
+                                <img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />
+                                <div class="playlist-data">
+                                    <p class="playlist-name" title="{{song.Name}}">{{song.Name}}</p>
+                                    <p class="playlist-artist subname" title="{{song.Artist.Name}}">{{song.Artist.Name}}</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer -->
     </div>
-	<!-- End Footer -->
-	</div>
 </body>
 </html>
