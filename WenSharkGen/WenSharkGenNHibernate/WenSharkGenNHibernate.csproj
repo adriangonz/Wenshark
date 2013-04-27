@@ -1,195 +1,212 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WenSharkGenNHibernate</RootNamespace>
-    <AssemblyName>WenSharkGenNHibernate</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>AppLib\Castle.DynamicProxy2.dll</HintPath>
-    </Reference>
-    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>AppLib\LinFu.DynamicProxy.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>AppLib\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="System.Transactions" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AppLib\Antlr3.Runtime.dll" />
-    <Content Include="AppLib\Castle.DynamicProxy2.dll" />
-    <Content Include="AppLib\Iesi.Collections.dll" />
-    <Content Include="AppLib\LinFu.DynamicProxy.dll" />
-    <Content Include="AppLib\log4net.dll" />
-    <Content Include="AppLib\NHibernate.ByteCode.Castle.dll" />
-    <Content Include="AppLib\NHibernate.ByteCode.LinFu.dll" />
-    <Content Include="AppLib\NHibernate.dll" />
-    <Content Include="AppLib\nunit.core.dll" />
-    <Content Include="AppLib\nunit.framework.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Utils\Util.cs" />
-    <Compile Include="NHibernateHelper.cs" />
-    <Compile Include="Exceptions\ModelException.cs" />
-    <Compile Include="Exceptions\DataLayerException.cs" />
-    <Compile Include="CAD\BasicCAD.cs" />
-    <Compile Include="EN\Default_\UserEN.cs" />
-    <Compile Include="CEN\Default_\UserCEN.cs" />
-    <Compile Include="CAD\Default_\IUserCAD.cs" />
-    <Compile Include="CAD\Default_\UserCAD.cs" />
-    <Compile Include="EN\Default_\AppUserEN.cs" />
-    <Compile Include="CEN\Default_\AppUserCEN.cs" />
-    <Compile Include="CAD\Default_\IAppUserCAD.cs" />
-    <Compile Include="CAD\Default_\AppUserCAD.cs" />
-    <Compile Include="CEN\Default_\AppUserCEN_IsValid.cs" />
-    <Compile Include="CEN\Default_\AppUserCEN_Exist.cs" />
-    <Compile Include="EN\Default_\OAuthUserEN.cs" />
-    <Compile Include="CEN\Default_\OAuthUserCEN.cs" />
-    <Compile Include="CAD\Default_\IOAuthUserCAD.cs" />
-    <Compile Include="CAD\Default_\OAuthUserCAD.cs" />
-    <Compile Include="CEN\Default_\OAuthUserCEN_Exist.cs" />
-    <Compile Include="EN\Default_\OAuthProviderEN.cs" />
-    <Compile Include="CEN\Default_\OAuthProviderCEN.cs" />
-    <Compile Include="CAD\Default_\IOAuthProviderCAD.cs" />
-    <Compile Include="CAD\Default_\OAuthProviderCAD.cs" />
-    <Compile Include="EN\Default_\ItemEN.cs" />
-    <Compile Include="CEN\Default_\ItemCEN.cs" />
-    <Compile Include="CAD\Default_\IItemCAD.cs" />
-    <Compile Include="CAD\Default_\ItemCAD.cs" />
-    <Compile Include="EN\Default_\GenreEN.cs" />
-    <Compile Include="CEN\Default_\GenreCEN.cs" />
-    <Compile Include="CAD\Default_\IGenreCAD.cs" />
-    <Compile Include="CAD\Default_\GenreCAD.cs" />
-    <Compile Include="EN\Default_\SongEN.cs" />
-    <Compile Include="CEN\Default_\SongCEN.cs" />
-    <Compile Include="CAD\Default_\ISongCAD.cs" />
-    <Compile Include="CAD\Default_\SongCAD.cs" />
-    <Compile Include="CEN\Default_\SongCEN_Create.cs" />
-    <Compile Include="CEN\Default_\SongCEN_GetAlbum.cs" />
-    <Compile Include="CEN\Default_\SongCEN_GetArtist.cs" />
-    <Compile Include="CEN\Default_\SongCEN_GetGenre.cs" />
-    <Compile Include="EN\Default_\ArtistEN.cs" />
-    <Compile Include="CEN\Default_\ArtistCEN.cs" />
-    <Compile Include="CAD\Default_\IArtistCAD.cs" />
-    <Compile Include="CAD\Default_\ArtistCAD.cs" />
-    <Compile Include="CEN\Default_\ArtistCEN_Create.cs" />
-    <Compile Include="CEN\Default_\ArtistCEN_GetAlbums.cs" />
-    <Compile Include="EN\Default_\AlbumEN.cs" />
-    <Compile Include="CEN\Default_\AlbumCEN.cs" />
-    <Compile Include="CAD\Default_\IAlbumCAD.cs" />
-    <Compile Include="CAD\Default_\AlbumCAD.cs" />
-    <Compile Include="CEN\Default_\AlbumCEN_Create.cs" />
-    <Compile Include="CEN\Default_\AlbumCEN_GetSongs.cs" />
-    <Compile Include="CEN\Default_\AlbumCEN_GetArtist.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Mappings\Default_\user.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Default_\appuser.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Default_\oauthuser.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Default_\oauthprovider.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Default_\item.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Default_\genre.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Default_\song.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Default_\artist.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Default_\album.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="hibernate.cfg.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Resources\xsd\nhibernate-configuration.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+		<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		  <PropertyGroup>
+		    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		    <ProductVersion>8.0.30703</ProductVersion>
+		    <SchemaVersion>2.0</SchemaVersion>
+		    <ProjectGuid>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</ProjectGuid>
+		    <OutputType>Library</OutputType>
+		    <AppDesignerFolder>Properties</AppDesignerFolder>
+		    <RootNamespace>WenSharkGenNHibernate</RootNamespace>
+		    <AssemblyName>WenSharkGenNHibernate</AssemblyName>
+		    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+		    <FileAlignment>512</FileAlignment>
+		    <PublishUrl>publish\</PublishUrl>
+		    <Install>true</Install>
+		    <InstallFrom>Disk</InstallFrom>
+		    <UpdateEnabled>false</UpdateEnabled>
+		    <UpdateMode>Foreground</UpdateMode>
+		    <UpdateInterval>7</UpdateInterval>
+		    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+		    <UpdatePeriodically>false</UpdatePeriodically>
+		    <UpdateRequired>false</UpdateRequired>
+		    <MapFileExtensions>true</MapFileExtensions>
+		    <ApplicationRevision>0</ApplicationRevision>
+		    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+		    <IsWebBootstrapper>false</IsWebBootstrapper>
+		    <UseApplicationTrust>false</UseApplicationTrust>
+		    <BootstrapperEnabled>true</BootstrapperEnabled>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		    <DebugSymbols>true</DebugSymbols>
+		    <DebugType>full</DebugType>
+		    <Optimize>false</Optimize>
+		    <OutputPath>bin\Debug\</OutputPath>
+		    <DefineConstants>DEBUG;TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		    <DebugType>pdbonly</DebugType>
+		    <Optimize>true</Optimize>
+		    <OutputPath>bin\Release\</OutputPath>
+		    <DefineConstants>TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		<ItemGroup>
+		    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>AppLib\Castle.DynamicProxy2.dll</HintPath>
+		    </Reference>
+		    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>AppLib\LinFu.DynamicProxy.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>AppLib\NHibernate.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+		    </Reference>
+		    <Reference Include="System" />
+		    <Reference Include="System.Core">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+		    <Reference Include="System.Transactions" />
+		    <Reference Include="System.Xml.Linq">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data.DataSetExtensions">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data" />
+		    <Reference Include="System.Xml" />
+		</ItemGroup>
+		<ItemGroup>
+		    <Content Include="AppLib\Antlr3.Runtime.dll" />
+		    <Content Include="AppLib\Castle.DynamicProxy2.dll" />
+		    <Content Include="AppLib\Iesi.Collections.dll" />
+		    <Content Include="AppLib\LinFu.DynamicProxy.dll" />
+		    <Content Include="AppLib\log4net.dll" />
+		    <Content Include="AppLib\NHibernate.ByteCode.Castle.dll" />
+		    <Content Include="AppLib\NHibernate.ByteCode.LinFu.dll" />
+		    <Content Include="AppLib\NHibernate.dll" />
+		    <Content Include="AppLib\nunit.core.dll" />
+		    <Content Include="AppLib\nunit.framework.dll" />
+  		</ItemGroup>
+		<ItemGroup>
+			<Compile Include="Utils\Util.cs" />
+		    <Compile Include="NHibernateHelper.cs" />
+		    <Compile Include="Exceptions\ModelException.cs"/>
+		    <Compile Include="Exceptions\DataLayerException.cs"/>
+		    
+	
+	<Compile Include="CAD\BasicCAD.cs"/>
+	
+	<Compile Include="EN\Default_\UserEN.cs" />
+	<Compile Include="CEN\Default_\UserCEN.cs" />
+	<Compile Include="CAD\Default_\IUserCAD.cs" />
+	<Compile Include="CAD\Default_\UserCAD.cs" />
+	<Compile Include="EN\Default_\AppUserEN.cs" />
+	<Compile Include="CEN\Default_\AppUserCEN.cs" />
+	<Compile Include="CAD\Default_\IAppUserCAD.cs" />
+	<Compile Include="CAD\Default_\AppUserCAD.cs" />
+			<Compile Include="CEN\Default_\AppUserCEN_IsValid.cs" />
+			<Compile Include="CEN\Default_\AppUserCEN_Exist.cs" />
+	<Compile Include="EN\Default_\OAuthUserEN.cs" />
+	<Compile Include="CEN\Default_\OAuthUserCEN.cs" />
+	<Compile Include="CAD\Default_\IOAuthUserCAD.cs" />
+	<Compile Include="CAD\Default_\OAuthUserCAD.cs" />
+			<Compile Include="CEN\Default_\OAuthUserCEN_Exist.cs" />
+	<Compile Include="EN\Default_\OAuthProviderEN.cs" />
+	<Compile Include="CEN\Default_\OAuthProviderCEN.cs" />
+	<Compile Include="CAD\Default_\IOAuthProviderCAD.cs" />
+	<Compile Include="CAD\Default_\OAuthProviderCAD.cs" />
+	<Compile Include="EN\Default_\ItemEN.cs" />
+	<Compile Include="CEN\Default_\ItemCEN.cs" />
+	<Compile Include="CAD\Default_\IItemCAD.cs" />
+	<Compile Include="CAD\Default_\ItemCAD.cs" />
+	<Compile Include="EN\Default_\GenreEN.cs" />
+	<Compile Include="CEN\Default_\GenreCEN.cs" />
+	<Compile Include="CAD\Default_\IGenreCAD.cs" />
+	<Compile Include="CAD\Default_\GenreCAD.cs" />
+	<Compile Include="EN\Default_\SongEN.cs" />
+	<Compile Include="CEN\Default_\SongCEN.cs" />
+	<Compile Include="CAD\Default_\ISongCAD.cs" />
+	<Compile Include="CAD\Default_\SongCAD.cs" />
+			<Compile Include="CEN\Default_\SongCEN_Create.cs" />
+			<Compile Include="CEN\Default_\SongCEN_GetAlbum.cs" />
+			<Compile Include="CEN\Default_\SongCEN_GetArtist.cs" />
+			<Compile Include="CEN\Default_\SongCEN_GetGenre.cs" />
+	<Compile Include="EN\Default_\ArtistEN.cs" />
+	<Compile Include="CEN\Default_\ArtistCEN.cs" />
+	<Compile Include="CAD\Default_\IArtistCAD.cs" />
+	<Compile Include="CAD\Default_\ArtistCAD.cs" />
+			<Compile Include="CEN\Default_\ArtistCEN_Create.cs" />
+			<Compile Include="CEN\Default_\ArtistCEN_GetAlbums.cs" />
+	<Compile Include="EN\Default_\AlbumEN.cs" />
+	<Compile Include="CEN\Default_\AlbumCEN.cs" />
+	<Compile Include="CAD\Default_\IAlbumCAD.cs" />
+	<Compile Include="CAD\Default_\AlbumCAD.cs" />
+			<Compile Include="CEN\Default_\AlbumCEN_Create.cs" />
+			<Compile Include="CEN\Default_\AlbumCEN_GetSongs.cs" />
+			<Compile Include="CEN\Default_\AlbumCEN_GetArtist.cs" />
+	<Compile Include="EN\Default_\PlayListEN.cs" />
+	<Compile Include="CEN\Default_\PlayListCEN.cs" />
+	<Compile Include="CAD\Default_\IPlayListCAD.cs" />
+	<Compile Include="CAD\Default_\PlayListCAD.cs" />
+	
+	
+
+		    
+	
+
+		    <Compile Include="Properties\AssemblyInfo.cs" />
+		    <Compile Include="Properties\Settings.Designer.cs">
+		      <AutoGen>True</AutoGen>
+		      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		      <DependentUpon>Settings.settings</DependentUpon>
+		    </Compile>
+		  </ItemGroup>
+		  <ItemGroup>
+		  
+	<EmbeddedResource Include="Mappings\Default_\user.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\appuser.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\oauthuser.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\oauthprovider.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\item.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\genre.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\song.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\artist.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\album.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\playlist.hbm.xml" />
+	
+	
+
+		  </ItemGroup>
+		  <ItemGroup>
+		    <Content Include="hibernate.cfg.xml">
+		      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		    </Content>
+		  </ItemGroup>
+		  <ItemGroup>
+		    <None Include="app.config" />
+		    <None Include="Properties\Settings.settings">
+		      <Generator>SettingsSingleFileGenerator</Generator>
+		      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		    </None>
+		        <None Include="Resources\xsd\nhibernate-configuration.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\xsd\nhibernate-mapping.xsd">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+		  </ItemGroup>
+		  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+		  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 		       Other similar extension points exist, see Microsoft.Common.targets.
 		  <Target Name="BeforeBuild">
 		  </Target>
 		  <Target Name="AfterBuild">
 		  </Target>
 		  -->
-</Project>
+		</Project>

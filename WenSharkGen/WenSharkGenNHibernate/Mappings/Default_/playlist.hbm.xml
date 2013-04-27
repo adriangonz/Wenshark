@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="WenSharkGenNHibernate"
+		                   namespace="WenSharkGenNHibernate.EN.Default_">
+			<class name="PlayListEN" table="[PlayList]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Name" type="string"> 
+						<column name="[name]"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<many-to-one name="User" class="WenSharkGenNHibernate.EN.Default_.UserEN" >	
+								<column name="[FK_id_user]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Song" table="[PlayListSong]" inverse="true" >
+							<key>
+									<column name="[FK_id_playlist]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.SongEN">
+									<column name="[FK_id_song]"/>
+      						</many-to-many>
+    					</bag>
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="PlayListENReadAllHQL">from PlayListEN</query>
+		</hibernate-mapping>
+	

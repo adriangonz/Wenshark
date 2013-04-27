@@ -137,6 +137,10 @@
 			<Compile Include="CEN\Default_\AlbumCEN_Create.cs" />
 			<Compile Include="CEN\Default_\AlbumCEN_GetSongs.cs" />
 			<Compile Include="CEN\Default_\AlbumCEN_GetArtist.cs" />
+	<Compile Include="EN\Default_\PlayListEN.cs" />
+	<Compile Include="CEN\Default_\PlayListCEN.cs" />
+	<Compile Include="CAD\Default_\IPlayListCAD.cs" />
+	<Compile Include="CAD\Default_\PlayListCAD.cs" />
 	
 	
 
@@ -161,6 +165,7 @@
 	<EmbeddedResource Include="Mappings\Default_\song.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Default_\artist.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Default_\album.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\playlist.hbm.xml" />
 	
 	
 

@@ -29,6 +29,12 @@ private string email;
 
 private Nullable<DateTime> created;
 
+/**
+ *
+ */
+
+private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist;
+
 
 
 
@@ -53,27 +59,33 @@ public virtual Nullable<DateTime> Created {
 }
 
 
+public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> Playlist {
+        get { return playlist; } set { playlist = value;  }
+}
+
+
 
 
 
 public UserEN()
 {
+        playlist = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.PlayListEN>();
 }
 
 
 
-public UserEN(int id, string name, string email, Nullable<DateTime> created)
+public UserEN(int id, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
 {
-        this.init (id, name, email, created);
+        this.init (id, name, email, created, playlist);
 }
 
 
 public UserEN(UserEN user)
 {
-        this.init (user.Id, user.Name, user.Email, user.Created);
+        this.init (user.Id, user.Name, user.Email, user.Created, user.Playlist);
 }
 
-private void init (int id, string name, string email, Nullable<DateTime> created)
+private void init (int id, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
 {
         this.Id = id;
 
@@ -83,6 +95,8 @@ private void init (int id, string name, string email, Nullable<DateTime> created
         this.Email = email;
 
         this.Created = created;
+
+        this.Playlist = playlist;
 }
 
 public override bool Equals (object obj)

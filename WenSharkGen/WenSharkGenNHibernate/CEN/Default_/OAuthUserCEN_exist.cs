@@ -19,14 +19,13 @@ public bool Exist (string idOAuth)
         /*PROTECTED REGION ID(WenSharkGenNHibernate.CEN.Default__OAuthUser_exist) ENABLED START*/
 
         // Write here your custom code...
-    Boolean exist = false;
-    var users = this.GetByidOAuth(idOAuth);
+        Boolean exist = false;
+        var users = this.GetByidOAuth (idOAuth);
 
-    if (users.Count == 1)
-    {
-        exist = true;
-    }
-    return exist;
+        if (users.Count == 1) {
+                exist = true;
+        }
+        return exist;
 
         /*PROTECTED REGION END*/
 }

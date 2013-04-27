@@ -20,6 +20,16 @@
 			
 			
 			
+			
+		  			
+						<bag name="Playlist" >
+							<key>
+								<column name="[FK_id_user]"/>
+					      	</key>
+							<one-to-many class="WenSharkGenNHibernate.EN.Default_.PlayListEN"/>
+					    </bag>
+					
+					
 					
 					
 					

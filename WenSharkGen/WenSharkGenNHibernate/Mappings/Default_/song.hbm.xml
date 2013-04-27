@@ -28,6 +28,17 @@
 								<column name="[FK_id_album]"/>
 						</many-to-one>
 											 					
+			
+		  			
+						<bag name="Playlist" table="[PlayListSong]"  >
+							<key>
+									<column name="[FK_id_song]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.PlayListEN">
+									<column name="[FK_id_playlist]"/>
+      						</many-to-many>
+    					</bag>
+					
 					
 					
 					
