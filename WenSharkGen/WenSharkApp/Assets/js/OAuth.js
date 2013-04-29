@@ -61,6 +61,7 @@ function validateToken(token) {
             $('#idSignUpLi').css('display', 'none');
             $('#idNameLi').css('display', 'inline');
             $('#idLiUpload').css('display', 'inline');
+            $('#playListBar').css('display', 'inline');
 
             angular.element($("#formSignIn")).scope().tryingLoginOrSignUp = false;
             angular.element($("#formSignUp")).scope().tryingToSignUp = false;

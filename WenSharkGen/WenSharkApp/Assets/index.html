@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/Assets/css/uploader.css" />
     <link rel="stylesheet" href="/Assets/css/auth.css" />
     <link rel="stylesheet" href="/Assets/css/player.css" />
+    <link rel="stylesheet" href="/Assets/css/playListBar.css" />
     <link rel="stylesheet" href="/Assets/css/general_enclosed_foundicons.css" />
     <link rel="stylesheet" href="/Assets/css/jquery-ui-1.10.2.custom.min.css" />
 
@@ -45,6 +46,7 @@
 
 </head>
 <body ng-controller="MainCtrl">
+
     <!-- Navbar -->
     <nav class="top-bar">
         <div class="large-12 columns">
@@ -101,20 +103,13 @@
 
     <div class="row content">
         <!-- Main content -->
-        <div class="large-10 columns">
+        <div class="large-12 columns">
             <!-- Aqui el contenido -->
             <div ng-view></div>
         </div>
         <!-- End Content -->
         <!-- Left bar -->
-        <div class="large-2 columns panel">
-                <h4>Playlist</h4>
-                <ul class="side-nav">
-                    <li><a>Lista1</a></li>
-                    <li><a>Lista2</a></li>
-                    <li><a>Lista3</a></li>
-                </ul>
-        </div>
+        <div id="playListBar" class="playListBar panel" ng-include src="'/Assets/partials/panelPlayList.html'" ng-hide="hideUserName"></div>
         <!-- End Left bar -->
 
         <!-- Footer -->

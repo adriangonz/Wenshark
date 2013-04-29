@@ -41,6 +41,7 @@ function MainCtrl ($scope, $timeout) {
 	            $('#idLiUpload').css('display', 'none');
 	            $('#dropDownUserMenu').removeClass('open');
 	            $('#dropDownUserMenu').css("left", "-9999px");
+	            $('#playListBar').css('display', 'none');
 	            //console.log($scope.hideUserName);
 	        },
 	        error: function (res) {
@@ -420,6 +421,7 @@ function SignInCtrl($scope, $routeParams, $http) {
                 $('#idSignUpLi').css('display', 'none');
                 $('#idNameLi').css('display', 'inline');
                 $('#idLiUpload').css('display', 'inline');
+                $('#playListBar').css('display', 'inline');
                 $scope.tryingLoginOrSignUp = false;
             })
             .error(function (data) {
