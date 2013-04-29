@@ -5,6 +5,7 @@ angular.module('wenshark', [])
 		$routeProvider
 			.when('/search/:query', {controller: SearchCtrl, templateUrl: '/Assets/partials/search.html'})
 			.when('/artist/:id', {controller: ArtistCtrl, templateUrl: '/Assets/partials/artist.html'})
+			.when('/album/:id', {controller: AlbumCtrl, templateUrl: '/Assets/partials/album.html'})
 			.when('/error', {templateUrl: '/Assets/partials/error.html'})
 			.when('/', {templateUrl: '/Assets/partials/main.html'})
 			.when('/upload', { controller: UploadCtrl, templateUrl: '/Assets/partials/upload.html' })

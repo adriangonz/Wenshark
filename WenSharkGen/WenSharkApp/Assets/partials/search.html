@@ -9,26 +9,7 @@
 			<p class="title"><a href="">Canciones</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="songs.length">
-					<li class="song-thumb row th" ng-repeat="song in songs">
-						<!-- Picture of the song -->
-						<span class="song-img small-1 columns left">
-							<img src="{{song.Album.Image}}" width="50" height="50" />
-						</span>
-
-						<!-- Name, Artist and Album of the song -->
-						<span class="song-name small-6 columns left">
-							<p class="name">{{song.Name}}</p>
-							<p class="subname">{{song.Artist.Name}} · {{song.Album.Name}}</p>
-						</span>
-
-						<!-- Controls -->
-						<span class="song-controls small-5 columns right">
-							<ul class="button-group">
-								<li><button class="tiny" ng-click="addToPlaylist(song)"><span class="foundicon-plus"></span></button></li>
-								<li><button class="tiny" ng-click="addToPlaylistAndPlay(song)"><span class="tiny play"></span></button></li>
-							</ul>
-						</span>
-					</li>
+					<li class="song-thumb row th" ng-repeat="song in songs" ng-song ng-model="song"></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!songs.length">No se han encontrado canciones :(</h2>
@@ -39,11 +20,7 @@
 			<p class="title"><a href="">Artistas</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="artists.length">
-					<li class="art-thumb row th" ng-repeat="art in artists">
-						<a href="/artist/{{art.Id}}">
-							<p class="name">{{art.Name}}</p>
-						</a>
-					</li>
+					<li class="art-thumb row th" ng-repeat="art in artists" ng-song ng-model="art"></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!artists.length">No se han encontrado artistas :(</h2>
@@ -54,16 +31,7 @@
 			<p class="title"><a href="">Albumes</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="albums.length">
-					<li class="alb-thumb row th" ng-repeat="alb in albums">
-						<span class="small-1 columns left">
-							<img src="{{alb.Image}}" width="50" height="50" />
-						</span>
-						<span class="small-6 columns left">
-							<a href="/album/{{alb.Id}}">
-								<p class="name">{{alb.Name}}</p>
-							</a>
-						</span>
-					</li>
+					<li class="alb-thumb row th" ng-repeat="alb in albums" ng-song ng-model="alb"></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!albums.length">No se han encontrado albumes :(</h2>

@@ -1,7 +1,7 @@
 <!-- Partial view for the artist's details -->
 <div class="panel">
 	<div class="row art-info">
-		<span class="small-3 columns">
+		<span class="small-3 columns left">
 			<img src="{{artist.Image}}" width="150" />
 		</span>
 		<span class="art-data">
@@ -9,32 +9,34 @@
 			<p>{{artist.Bio}}</p>
 		</span>
 	</div> <!-- artist info row /-->
-
+	<hr />
 	<div class="row art-cont">
-		<div class="section-container auto" data-section>
-			<section class="section active">
-				<p class="title"><a href="">Canciones</a></p>
+		<div class="small-12 columns">
+			<div class="section-container auto" data-section>
+				<section class="section active">
+					<p class="title"><a href="">Canciones</a></p>
 
-				<div class="content">
-					<ul class="items-list" ng-show="artist.Songs.length">
-						<li class="row th" ng-repeat="song in artist.Songs" ws-song ng-model="song"></li>
-					</ul>
+					<div class="content">
+						<ul class="items-list" ng-show="artist.Songs.length">
+							<li class="row th" ng-repeat="song in artist.Songs" ws-song ng-model="song"></li>
+						</ul>
 
-					<h2 class="subheader" ng-show="!artist.Songs.length">Este artista no tiene canciones :(</h2>
-				</div>
-			</section> <!-- artist songs /-->
+						<h2 class="subheader" ng-show="!artist.Songs.length">Este artista no tiene canciones :(</h2>
+					</div>
+				</section> <!-- artist songs /-->
 
-			<section class="section">
-				<p class="title"><a href="">Albums</a></p>
+				<section class="section">
+					<p class="title"><a href="">Albums</a></p>
 
-				<div class="content">
-					<ul class="items-list">
-						<li class="row th" ng-repeat="album in artist.Albums" ws-album ng-model="album"></li>
-					</ul>
+					<div class="content">
+						<ul class="items-list">
+							<li class="row th" ng-repeat="album in artist.Albums" ws-album ng-model="album"></li>
+						</ul>
 
-					<h2 class="subheader" ng-show="!artist.Albums.length">Este artista no tiene albumes :(</h2>
-				</div>
-			</section> <!-- artist albums /-->
+						<h2 class="subheader" ng-show="!artist.Albums.length">Este artista no tiene albumes :(</h2>
+					</div>
+				</section> <!-- artist albums /-->
+			</div>
 		</div>
 	</div> <!-- artist content (songs and albums) /-->
 </div>
