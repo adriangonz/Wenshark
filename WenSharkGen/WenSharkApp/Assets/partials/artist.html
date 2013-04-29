@@ -18,7 +18,7 @@
 
 					<div class="content">
 						<ul class="items-list" ng-show="artist.Songs.length">
-							<li class="row th" ng-repeat="song in artist.Songs" ws-song ng-model="song"></li>
+							<li class="row th" ng-repeat="song in artist.Songs" ws-song></li>
 						</ul>
 
 						<h2 class="subheader" ng-show="!artist.Songs.length">Este artista no tiene canciones :(</h2>
@@ -30,7 +30,7 @@
 
 					<div class="content">
 						<ul class="items-list">
-							<li class="row th" ng-repeat="album in artist.Albums" ws-album ng-model="album"></li>
+							<li class="row th" ng-repeat="album in artist.Albums" ws-album></li>
 						</ul>
 
 						<h2 class="subheader" ng-show="!artist.Albums.length">Este artista no tiene albumes :(</h2>

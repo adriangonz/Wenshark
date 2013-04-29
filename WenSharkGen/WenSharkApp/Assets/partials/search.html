@@ -9,7 +9,7 @@
 			<p class="title"><a href="">Canciones</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="songs.length">
-					<li class="song-thumb row th" ng-repeat="song in songs" ng-song ng-model="song"></li>
+					<li class="song-thumb row th" ng-repeat="song in songs" ng-song></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!songs.length">No se han encontrado canciones :(</h2>
@@ -20,7 +20,7 @@
 			<p class="title"><a href="">Artistas</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="artists.length">
-					<li class="art-thumb row th" ng-repeat="art in artists" ng-song ng-model="art"></li>
+					<li class="art-thumb row th" ng-repeat="artist in artists" ng-artist></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!artists.length">No se han encontrado artistas :(</h2>
@@ -31,7 +31,7 @@
 			<p class="title"><a href="">Albumes</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="albums.length">
-					<li class="alb-thumb row th" ng-repeat="alb in albums" ng-song ng-model="alb"></li>
+					<li class="alb-thumb row th" ng-repeat="album in albums" ng-album></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!albums.length">No se han encontrado albumes :(</h2>

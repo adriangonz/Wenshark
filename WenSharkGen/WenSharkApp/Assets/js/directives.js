@@ -32,23 +32,19 @@
 .directive('wsSong', function() {
     return {
         restrict: 'A',
-        require: 'ngModel',
-        scope: {
-            ngModel: '='
-        },
         template: 
             '<span class="song-img small-1 columns left">' + 
-                '<img src="{{ngModel.Album.Image}}" width="50" height="50" />' + 
+                '<img src="{{song.Album.Image}}" width="50" height="50" />' + 
             '</span>' + 
             '<span class="song-name small-6 columns left">' +
-                '<p class="name">{{ngModel.Name}}</p>' + 
-                '<p class="subname"><a href="#/artist/{{ngModel.Artist.Id}}">{{ngModel.Artist.Name}}</a> · ' + 
-                '<a href="#/album/{{ngModel.Album.Id}}">{{ngModel.Album.Name}}</a></p>' + 
+                '<p class="name">{{song.Name}}</p>' + 
+                '<p class="subname"><a href="#/artist/{{song.Artist.Id}}">{{song.Artist.Name}}</a> · ' + 
+                '<a href="#/album/{{song.Album.Id}}">{{song.Album.Name}}</a></p>' + 
             '</span>' + 
             '<span class="song-controls small-5 columns right">' + 
                 '<ul class="button-group">' + 
-                    '<li><button class="tiny" ng-click"addToPlaylist(ngModel)"><span class="foundicon-plus"></span></button></li>' + 
-                    '<li><button class="tiny" ng-click"addToPlaylistAndPlay(ngModel)"><span class="tiny play"></span></button></li>' +
+                    '<li><button class="tiny" ng-click="addToPlaylist(song)"><span class="foundicon-plus"></span></button></li>' + 
+                    '<li><button class="tiny" ng-click="addToPlaylistAndPlay(song)"><span class="tiny play"></span></button></li>' +
                 '</ul>' + 
             '</span>'
     }
@@ -56,17 +52,13 @@
 .directive('wsAlbum', function() {
     return {
         restrict: 'A',
-        require: 'ngModel',
-        scope: {
-            ngModel: '='
-        },
         template: 
             '<span class="small-1 columns left">' +
-                '<img src="{{ngModel.Image}}" width="50" height="50" />' + 
+                '<img src="{{album.Image}}" width="50" height="50" />' + 
             '</span>' + 
             '<span class="small-6 columns left">' + 
-                '<a href="#/album/{{ngModel.Id}}">' + 
-                    '<p class="name">{{ngModel.Name}}</p>' + 
+                '<a href="#/album/{{album.Id}}">' + 
+                    '<p class="name">{{album.Name}}</p>' + 
                 '</a>' + 
             '</span>'
     }
@@ -74,17 +66,13 @@
 .directive('wsArtist', function() {
     return {
         restrict: 'A',
-        require: 'ngModel',
-        scope: {
-            ngModel: '='
-        },
         template: 
             '<span class="small-1 columns left">' +
-                '<img src="{{ngModel.Image}}" width="50" height="50" />' + 
+                '<img src="{{artist.Image}}" width="50" height="50" />' + 
             '</span>' + 
             '<span class="small-6 columns left">' + 
-                '<a href="#/artist/{{ngModel.Id}}">' + 
-                    '<p class="name">{{ngModel.Name}}</p>' + 
+                '<a href="#/artist/{{artist.Id}}">' + 
+                    '<p class="name">{{artist.Name}}</p>' + 
                 '</a>' + 
             '</span>'
     }

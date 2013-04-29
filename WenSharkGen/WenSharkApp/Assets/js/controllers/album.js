@@ -1,7 +1,7 @@
 //Controller for the artist page
 function AlbumCtrl($scope, $routeParams, $http) {
 	var id = $routeParams.id;
-	console.log('Entras en artista ' + id + ' o k ase');
+	console.log('Entras en album ' + id + ' o k ase');
 
 	songs = []
 	for(var i = 0; i < 10; i++) {

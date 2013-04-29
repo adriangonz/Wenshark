@@ -8,17 +8,17 @@
 			<h1>{{album.Name}}</h1>
 			<p>Album por <a href="#/artist/{{album.Artist.Id}}">{{album.Artist.Name}}</a></p>
 		</span>
-	</div> <!-- artist info row /-->
+	</div> <!-- album info row /-->
 	<hr />
 	<div class="row art-cont">
 		<div class="small-12 columns">
 			<h2>Canciones</h2>
 			
 			<ul class="items-list" ng-show="album.Songs.length">
-				<li class="row th" ng-repeat="song in album.Songs" ws-song ng-model="song"></li>
+				<li class="row th" ng-repeat="song in album.Songs" ws-song="song"></li>
 			</ul>
 
-			<h2 class="subheader" ng-show="!album.Songs.length">Este artista no tiene canciones :(</h2>
+			<h2 class="subheader" ng-show="!album.Songs.length">Este album no tiene canciones :(</h2>
 		</div>
 	</div> <!-- album songs /-->
 </div>
