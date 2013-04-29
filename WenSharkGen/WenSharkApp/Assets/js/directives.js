@@ -28,35 +28,64 @@
             });
         }
     };
-});
-/*
-.directive('dndList', function() {
+})
+.directive('wsSong', function() {
     return {
         restrict: 'A',
-        link: function(scope, element, attrs) {
-            // variables used for dnd
-            var toUpdate;
-            var startIndex = -1;
-     
-            // watch the model, so we always know what element
-            // is at a specific position
-            scope.$watch(attrs.dndList, function(value) {
-                toUpdate = value;
-            },true);
-     
-            // use jquery to make the element sortable (dnd). This is called
-            // when the element is rendered
-            $(element[0]).sortable({
-                items:'li',
-                zIndex: 10000,
-                start:function (event, ui) {
-                    //To the chuplin
-                },
-                stop:function (event, ui) {
-                    //Mas to the chuplin
-                },
-                axis:'x'
-            })
-        }
+        require: 'ngModel',
+        scope: {
+            ngModel: '='
+        },
+        template: 
+            '<span class="song-img small-1 columns left">' + 
+                '<img src="{{ngModel.Album.Image}}" width="50" height="50" />' + 
+            '</span>' + 
+            '<span class="song-name small-6 columns left">' +
+                '<p class="name">{{ngModel.Name}}</p>' + 
+                '<p class="subname"><a href="#/artist/{{ngModel.Artist.Id}}">{{ngModel.Artist.Name}}</a> · ' + 
+                '<a href="#/album/{{ngModel.Album.Id}}">{{ngModel.Album.Name}}</a></p>' + 
+            '</span>' + 
+            '<span class="song-controls small-5 columns right">' + 
+                '<ul class="button-group">' + 
+                    '<li><button class="tiny" ng-click"addToPlaylist(ngModel)"><span class="foundicon-plus"></span></button></li>' + 
+                    '<li><button class="tiny" ng-click"addToPlaylistAndPlay(ngModel)"><span class="tiny play"></span></button></li>' +
+                '</ul>' + 
+            '</span>'
     }
-});*/
+})
+.directive('wsAlbum', function() {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        scope: {
+            ngModel: '='
+        },
+        template: 
+            '<span class="small-1 columns left">' +
+                '<img src="{{ngModel.Image}}" width="50" height="50" />' + 
+            '</span>' + 
+            '<span class="small-6 columns left">' + 
+                '<a href="#/album/{{ngModel.Id}}">' + 
+                    '<p class="name">{{ngModel.Name}}</p>' + 
+                '</a>' + 
+            '</span>'
+    }
+})
+.directive('wsArtist', function() {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        scope: {
+            ngModel: '='
+        },
+        template: 
+            '<span class="small-1 columns left">' +
+                '<img src="{{ngModel.Image}}" width="50" height="50" />' + 
+            '</span>' + 
+            '<span class="small-6 columns left">' + 
+                '<a href="#/artist/{{ngModel.Id}}">' + 
+                    '<p class="name">{{ngModel.Name}}</p>' + 
+                '</a>' + 
+            '</span>'
+    }
+});
