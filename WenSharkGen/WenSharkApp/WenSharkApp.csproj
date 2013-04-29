@@ -134,6 +134,7 @@
     <Content Include="Assets\css\lists.css" />
     <Content Include="Assets\css\normalize.css" />
     <Content Include="Assets\css\player.css" />
+    <Content Include="Assets\css\playListBar.css" />
     <Content Include="Assets\css\uploader.css" />
     <Content Include="Assets\fonts\general_foundicons.svg" />
     <Content Include="Assets\humans.txt" />
@@ -176,6 +177,7 @@
     <Content Include="Assets\img\spinner.gif" />
     <Content Include="Assets\index.html" />
     <Content Include="Assets\js\controllers.js" />
+    <Content Include="Assets\js\controllers\ctrlPlayList.js" />
     <Content Include="Assets\js\directives.js" />
     <Content Include="Assets\js\foundation.min.js" />
     <Content Include="Assets\js\foundation\foundation.alerts.js" />
@@ -207,6 +209,8 @@
     <Content Include="Assets\partials\login.html" />
     <Content Include="Assets\partials\main.html" />
     <Content Include="Assets\partials\modalSignUp.html" />
+    <Content Include="Assets\partials\panelPlayList.html" />
+    <Content Include="Assets\partials\playListPage.html" />
     <Content Include="Assets\partials\register.html" />
     <Content Include="Assets\partials\search.html" />
     <Content Include="Assets\partials\upload.html" />
