@@ -26,6 +26,7 @@ namespace WenSharkApp.Controllers
             foreach (var item in lsongs)
             {
                 item.Genre = null;
+                item.Playlist = null;
                 item.Artist = songCEN.GetArtist(item);
                 item.Album = songCEN.GetAlbum(item);
             }
