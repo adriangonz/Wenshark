@@ -7,7 +7,7 @@ using WenSharkGenNHibernate.EN.Default_;
 using WenSharkGenNHibernate.CEN.Default_;
 using WenSharkGenNHibernate.CAD.Default_;
 
-namespace WenSharkCP
+namespace WenSharkCP.WensharkCP
 {
     public class PlayListCP : BasicCP
     {

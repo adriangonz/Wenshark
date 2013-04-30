@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using WenSharkGenNHibernate.CEN.Default_;
 using WenSharkGenNHibernate.EN.Default_;
-using WenSharkCP;
+using WenSharkCP.WensharkCP;
 using System.Web.Security;
 
 
