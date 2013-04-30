@@ -35,3 +35,13 @@ ul.items-list li {
 ul.items-list li .song-name {
 	margin-top: 0;
 }
+
+/* Styling for lists of genres */
+ul.genre-list {
+	text-align: justify;
+}
+
+ul.genre-list li {
+	display: inline-block;
+	margin-right: 2%;
+}

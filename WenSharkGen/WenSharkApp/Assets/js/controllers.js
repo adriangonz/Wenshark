@@ -362,6 +362,15 @@ function SearchCtrl ($scope, $routeParams, $http) {
 			$(document).foundation('section', function () {
 				$scope.loading = false;
 			});
+		})
+		.error(function(data) {
+			$scope.songs = [];
+			$scope.albums = [];
+			$scope.artists = [];
+			
+			$(document).foundation('section', function () {
+				$scope.loading = false;
+			});
 		});
 }
 
