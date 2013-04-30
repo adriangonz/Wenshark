@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WenSharkGenNHibernate.CAD.Default_;
+using WenSharkGenNHibernate.EN.Default_;
 
 namespace WenSharkCP
 {
@@ -56,6 +57,33 @@ namespace WenSharkCP
                 session.Dispose();
                 session = null;
             }
+        }
+
+        protected void nullArtist(ArtistEN artist)
+        {
+            artist.Songs = null;
+            artist.Albums = null;
+            artist.Genre = null;
+        }
+
+        protected void nullAlbum(AlbumEN album)
+        {
+            album.Songs = null;
+            album.Artist = null;
+            album.Genre = null;
+        }
+
+        protected void nullSong(SongEN song)
+        {
+            song.Album = new AlbumEN { Name = song.Album.Name, Id = song.Album.Id, Image = song.Album.Image, Genre = null, Artist = null, Songs = null };
+            song.Artist = new ArtistEN { Name = song.Artist.Name, Id = song.Artist.Id, Genre = null, Albums = null, Songs = null };
+            song.Genre = null;
+            song.Playlist = null;
+        }
+
+        protected void nullGenre(GenreEN genre)
+        {
+            genre.Item = null;
         }
     }
 }

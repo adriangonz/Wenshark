@@ -113,6 +113,7 @@
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\ArtistController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\NHibernateContractResolver.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\SongController.cs" />
@@ -233,6 +234,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WenSharkCP\WenSharkCP.csproj">
+      <Project>{ba4f04b0-efca-4ce3-9a3a-7717ffafbfc3}</Project>
+      <Name>WenSharkCP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WenSharkGenNHibernate\WenSharkGenNHibernate.csproj">
       <Project>{66c66636-fd6a-4a3f-a7c5-fe88bba117af}</Project>
       <Name>WenSharkGenNHibernate</Name>
