@@ -76,4 +76,11 @@
                 '</a>' + 
             '</span>'
     }
+})
+.directive('wsGenre', function() {
+    return {
+        restrict: 'A',
+        template:
+            '<span class="radius label">{{genre.Name}}</span>'
+    }
 });

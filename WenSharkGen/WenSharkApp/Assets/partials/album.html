@@ -7,6 +7,11 @@
 		<span class="art-data">
 			<h1>{{album.Name}}</h1>
 			<p>Album por <a href="#/artist/{{album.Artist.Id}}">{{album.Artist.Name}}</a></p>
+			<div>
+				<ul class="genre-list">
+					<li ng-repeat="genre in album.Genres" ws-genre></li>
+				</ul>
+			</div>
 		</span>
 	</div> <!-- album info row /-->
 	<hr />

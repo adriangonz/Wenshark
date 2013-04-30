@@ -20,14 +20,22 @@ function ArtistCtrl($scope, $routeParams, $http) {
 		});
 	};
 
+	genres = []
+	for(var i = 0; i < 10; i++) {
+		genres.push({
+			Name: 'Genero-' + i
+		})
+	}
+
 	$scope.artist = {
 		Id: id,
 		Name: 'Artist name',
 		Image: 'artist-pic.gif',
 		Bio: 'Artist bio',
 		Songs: songs,
-		Albums: []
+		Albums: [],
+		Genres: genres
 	};
-	
+
 	$(document).foundation('section');
 }

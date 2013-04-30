@@ -20,6 +20,13 @@ function AlbumCtrl($scope, $routeParams, $http) {
 		});
 	};
 
+	genres = []
+	for(var i = 0; i < 10; i++) {
+		genres.push({
+			Name: 'Genero-' + i
+		})
+	}
+
 	$scope.album = {
 		Id: id,
 		Name: 'Album name',
@@ -28,7 +35,8 @@ function AlbumCtrl($scope, $routeParams, $http) {
 			Id: 90,
 			Name: 'Artista del album'
 		},
-		Songs: songs
+		Songs: songs,
+		Genres: genres
 	}
 
 	$(document).foundation('section');

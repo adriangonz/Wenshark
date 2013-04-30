@@ -7,6 +7,11 @@
 		<span class="art-data">
 			<h1>{{artist.Name}}</h1>
 			<p>{{artist.Bio}}</p>
+			<div class="art-genres">
+				<ul class="genre-list">
+					<li ng-repeat="genre in artist.Genres" ws-genre></li>
+				</ul>
+			</div>
 		</span>
 	</div> <!-- artist info row /-->
 	<hr />
