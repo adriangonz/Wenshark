@@ -11,17 +11,20 @@ namespace WenSharkApp.Controllers
 {
     public class AlbumController : ApiController
     {
-        public AlbumEN getAlbum(int id) 
+        public HttpResponseMessage getAlbum(int id) 
         {
             //Obtenemos el album
             AlbumCEN albumcen = new AlbumCEN();
             AlbumEN album = albumcen.ReadOID(id);
 
-            if (album == null) throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+            if (album == null) return this.Request.CreateErrorResponse(HttpStatusCode.NotFound, new Exception());
 
             //Esto no ira por culpa de los lazy y tal
-
-            return album;
+            album.Artist = null;
+            album.Genre = null;
+            album.Songs = null;
+            
+            return this.Request.CreateResponse(HttpStatusCode.OK, album);
         }
     }
 }

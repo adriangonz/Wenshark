@@ -4,12 +4,12 @@
 
 	<div ng-show="loading"><img class="center" src="/Assets/img/spinner.gif" width="200" height="30" /></div>
 
-	<div class="section-container auto" data-section ng-show="!loading">
+	<div class="section-container auto" data-section ng-hide="loading">
 		<section class="section active">
 			<p class="title"><a href="">Canciones</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="songs.length">
-					<li class="song-thumb row th" ng-repeat="song in songs" ng-song></li>
+					<li class="song-thumb row th" ng-repeat="song in songs" ws-song></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!songs.length">No se han encontrado canciones :(</h2>
@@ -20,7 +20,7 @@
 			<p class="title"><a href="">Artistas</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="artists.length">
-					<li class="art-thumb row th" ng-repeat="artist in artists" ng-artist></li>
+					<li class="art-thumb row th" ng-repeat="artist in artists" ws-artist></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!artists.length">No se han encontrado artistas :(</h2>
@@ -31,7 +31,7 @@
 			<p class="title"><a href="">Albumes</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="albums.length">
-					<li class="alb-thumb row th" ng-repeat="album in albums" ng-album></li>
+					<li class="alb-thumb row th" ng-repeat="album in albums" ws-album></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!albums.length">No se han encontrado albumes :(</h2>

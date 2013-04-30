@@ -33,10 +33,10 @@
     return {
         restrict: 'A',
         template: 
-            '<span class="song-img small-1 columns left">' + 
-                '<img src="{{song.Album.Image}}" width="50" height="50" />' + 
+            '<span class="song-img small-2 columns left">' + 
+                '<img src="{{song.Album.Image}}" width="50" />' + 
             '</span>' + 
-            '<span class="song-name small-6 columns left">' +
+            '<span class="song-name small-5 columns left">' +
                 '<p class="name">{{song.Name}}</p>' + 
                 '<p class="subname"><a href="#/artist/{{song.Artist.Id}}">{{song.Artist.Name}}</a> · ' + 
                 '<a href="#/album/{{song.Album.Id}}">{{song.Album.Name}}</a></p>' + 
@@ -53,8 +53,8 @@
     return {
         restrict: 'A',
         template: 
-            '<span class="small-1 columns left">' +
-                '<img src="{{album.Image}}" width="50" height="50" />' + 
+            '<span class="small-2 columns left">' +
+                '<img src="{{album.Image}}" width="50" />' + 
             '</span>' + 
             '<span class="small-6 columns left">' + 
                 '<a href="#/album/{{album.Id}}">' + 
@@ -67,8 +67,8 @@
     return {
         restrict: 'A',
         template: 
-            '<span class="small-1 columns left">' +
-                '<img src="{{artist.Image}}" width="50" height="50" />' + 
+            '<span class="small-2 columns left">' +
+                '<img src="{{artist.Image}}" width="50" />' + 
             '</span>' + 
             '<span class="small-6 columns left">' + 
                 '<a href="#/artist/{{artist.Id}}">' + 

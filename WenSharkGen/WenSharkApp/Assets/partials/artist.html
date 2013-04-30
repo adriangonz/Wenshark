@@ -1,47 +1,53 @@
 <!-- Partial view for the artist's details -->
 <div class="panel">
-	<div class="row art-info">
-		<span class="small-3 columns left">
-			<img src="{{artist.Image}}" width="150" />
-		</span>
-		<span class="art-data">
-			<h1>{{artist.Name}}</h1>
-			<p>{{artist.Bio}}</p>
-			<div class="art-genres">
-				<ul class="genre-list">
-					<li ng-repeat="genre in artist.Genres" ws-genre></li>
-				</ul>
+	<div ng-show="loading">
+		<h2 class="center">Cargando información del artista...</h2>
+		<img class="center" src="/Assets/img/spinner.gif" width="200" height="30" />
+	</div>	
+	<div ng-hide="loading">
+		<div class="row art-info">
+			<span class="small-3 columns left">
+				<img src="{{artist.Image}}" width="150" />
+			</span>
+			<span class="art-data">
+				<h1>{{artist.Name}}</h1>
+				<p>{{artist.Bio}}</p>
+				<div class="art-genres">
+					<ul class="genre-list">
+						<li ng-repeat="genre in artist.Genres" ws-genre></li>
+					</ul>
+				</div>
+			</span>
+		</div> <!-- artist info row /-->
+		<hr />
+		<div class="row art-cont">
+			<div class="small-12 columns">
+				<div class="section-container auto" data-section>
+					<section class="section active">
+						<p class="title"><a href="">Canciones</a></p>
+
+						<div class="content">
+							<ul class="items-list" ng-show="artist.Songs.length">
+								<li class="row th" ng-repeat="song in artist.Songs" ws-song></li>
+							</ul>
+
+							<h2 class="subheader" ng-show="!artist.Songs.length">Este artista no tiene canciones :(</h2>
+						</div>
+					</section> <!-- artist songs /-->
+
+					<section class="section">
+						<p class="title"><a href="">Albums</a></p>
+
+						<div class="content">
+							<ul class="items-list" ng-show="artist.Albums.length">
+								<li class="row th" ng-repeat="album in artist.Albums" ws-album></li>
+							</ul>
+
+							<h2 class="subheader" ng-show="!artist.Albums.length">Este artista no tiene albumes :(</h2>
+						</div>
+					</section> <!-- artist albums /-->
+				</div>
 			</div>
-		</span>
-	</div> <!-- artist info row /-->
-	<hr />
-	<div class="row art-cont">
-		<div class="small-12 columns">
-			<div class="section-container auto" data-section>
-				<section class="section active">
-					<p class="title"><a href="">Canciones</a></p>
-
-					<div class="content">
-						<ul class="items-list" ng-show="artist.Songs.length">
-							<li class="row th" ng-repeat="song in artist.Songs" ws-song></li>
-						</ul>
-
-						<h2 class="subheader" ng-show="!artist.Songs.length">Este artista no tiene canciones :(</h2>
-					</div>
-				</section> <!-- artist songs /-->
-
-				<section class="section">
-					<p class="title"><a href="">Albums</a></p>
-
-					<div class="content">
-						<ul class="items-list">
-							<li class="row th" ng-repeat="album in artist.Albums" ws-album></li>
-						</ul>
-
-						<h2 class="subheader" ng-show="!artist.Albums.length">Este artista no tiene albumes :(</h2>
-					</div>
-				</section> <!-- artist albums /-->
-			</div>
-		</div>
-	</div> <!-- artist content (songs and albums) /-->
+		</div> <!-- artist content (songs and albums) /-->
+	</div>
 </div>

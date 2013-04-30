@@ -11,17 +11,20 @@ namespace WenSharkApp.Controllers
 {
     public class ArtistController : ApiController
     {
-        public ArtistEN getArtist(int i)
+        public HttpResponseMessage getArtist(int id)
         {
             //Obtenemos el artista por su ID
             ArtistCEN artistcen = new ArtistCEN();
-            ArtistEN artist = artistcen.ReadOID(i);
+            ArtistEN artist = artistcen.ReadOID(id);
 
-            if (artist == null) throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+            if (artist == null) return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, new Exception());
 
             //Esto petara porque no hay aun sesiones ni mierdas
+            artist.Albums = null;
+            artist.Genre = null;
+            artist.Songs = null;
 
-            return artist;
+            return this.Request.CreateResponse(HttpStatusCode.OK, artist);
         }
     }
 }
