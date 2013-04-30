@@ -1,5 +1,15 @@
 ﻿<!-- Partial view for the items' search -->
 <div class="panel">
-	<h1>Lista <span class="subheader">{{query}}</span></h1>
-    <div ng-show="loading"><img class="center" src="/Assets/img/spinner.gif" width="200" height="30" /></div>
+    <h1><span class="subheader">{{listName}}</span></h1>
+    <div ng-show="loading">
+        <img class="center" src="/Assets/img/spinner.gif" width="200" height="30" />
+
+    </div>
+    <div class="section-container auto" data-section ng-hide="loading">
+        <div class="content">
+            <ul class="items-list" ng-show="songs.length">
+                <li class="song-thumb row th" ng-repeat="song in songs" ws-song></li>
+            </ul>
+        </div>
+    </div>
 </div>

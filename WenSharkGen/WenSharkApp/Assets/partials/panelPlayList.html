@@ -1,7 +1,9 @@
-﻿<h6>Playlists</h6>
-<ul class="side-nav">
-    <li><a ng-href="#/playlist/1">Lista1</a></li>
-    <li><a ng-href="#/playlist/2">Lista2</a></li>
-    <li><a ng-href="#/playlist/3">Lista3</a></li>
-    <li><a ng-href="#/playlist/VentiCatorce">ListaVentiCatorce</a></li>
-</ul>
+﻿<div ng-show="loadingPlayList">
+    <img class="center" src="/Assets/img/loadingGif.gif" width="200" height="30" />
+</div>
+<div ng-hide="loadingPlayList">
+    <h6>Playlists</h6>
+    <ul class="items-list">
+        <li ng-repeat="playlist in playlists"><a href="#/playlist/{{playlist.Id}}">{{playlist.Name}}</a></li>
+    </ul>
+</div>

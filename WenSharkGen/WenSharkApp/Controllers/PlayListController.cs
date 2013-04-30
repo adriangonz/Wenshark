@@ -23,7 +23,17 @@ namespace WenSharkApp.Controllers
                 return this.Request.CreateResponse(HttpStatusCode.NotFound, "PlayList no encontrada");
             }
 
-            return this.Request.CreateResponse(HttpStatusCode.OK, "Bieeeen"+pl.Name);
+            List<SongEN> ls = new List<SongEN>();
+            SongCEN songCEN = new SongCEN();
+            ls = songCEN.Search("li").ToList();
+            foreach (var item in ls)
+            {
+                item.Genre = null;
+                item.Playlist = null;
+                item.Artist = songCEN.GetArtist(item);
+                item.Album = songCEN.GetAlbum(item);
+            }
+            return this.Request.CreateResponse(HttpStatusCode.OK, new { songs = ls, name = pl.Name });
         }
 
        

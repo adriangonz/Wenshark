@@ -202,6 +202,7 @@
     <Content Include="Assets\js\foundation\foundation.topbar.js" />
     <Content Include="Assets\js\howler.js" />
     <Content Include="Assets\js\OAuth.js" />
+    <Content Include="Assets\js\playList.js" />
     <Content Include="Assets\js\routes.js" />
     <Content Include="Assets\js\vendor\angular.min.js" />
     <Content Include="Assets\js\vendor\custom.modernizr.js" />
@@ -210,6 +211,8 @@
     <Content Include="Assets\js\vendor\jquery.js" />
     <Content Include="Assets\js\vendor\zepto.js" />
     <Content Include="Assets\js\visualFixes.js" />
+    <Content Include="Assets\partials\album.html" />
+    <Content Include="Assets\partials\artist.html" />
     <Content Include="Assets\partials\error.html" />
     <Content Include="Assets\partials\loading.html" />
     <Content Include="Assets\partials\login.html" />
