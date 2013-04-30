@@ -5,6 +5,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WenSharkGenNHibernate", "WenSharkGenNHibernate\WenSharkGenNHibernate.csproj", "{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WenSharkApp", "WenSharkApp\WenSharkApp.csproj", "{6D0518EE-1EE7-4AB1-8F0A-EF1B42DFE03F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E} = {710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WenSharkCP", "WenSharkCP\WenSharkCP.csproj", "{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF} = {66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +54,16 @@ Global
 		{6D0518EE-1EE7-4AB1-8F0A-EF1B42DFE03F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6D0518EE-1EE7-4AB1-8F0A-EF1B42DFE03F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6D0518EE-1EE7-4AB1-8F0A-EF1B42DFE03F}.Release|x86.ActiveCfg = Release|Any CPU
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{710EA1FB-8BA6-4F9E-9ABA-C26F27728E5E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,6 +6,9 @@ using System.Net.Http;
 using System.Web.Http;
 using WenSharkGenNHibernate.CEN.Default_;
 using WenSharkGenNHibernate.EN.Default_;
+using WenSharkCP;
+using System.Web.Security;
+
 
 namespace WenSharkApp.Controllers
 {
@@ -22,17 +25,18 @@ namespace WenSharkApp.Controllers
 
             return this.Request.CreateResponse(HttpStatusCode.OK, "Bieeeen"+pl.Name);
         }
-        public HttpResponseMessage getPlayLists(int idUser)
+
+       
+        [Authorize]
+        public HttpResponseMessage getPlayLists()
         {
-            UserCEN userCEN = new UserCEN();
-            UserEN user = userCEN.GetByID(idUser);
+            PlayListCP playlistCP = new PlayListCP();
 
-            if (user == null)
-            {
-                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, "El usuario no existe");
-            }
-
-            return this.Request.CreateResponse(HttpStatusCode.OK, "Play lists de usuarios de "+user.Name);
+            int id = int.Parse(this.User.Identity.Name);           
+            IList<PlayListEN> l = playlistCP.getByUser(id);
+            
+            return this.Request.CreateResponse(HttpStatusCode.OK, l);
+  
         }
     }
 }
