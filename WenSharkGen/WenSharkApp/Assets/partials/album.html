@@ -1,0 +1,36 @@
+<!-- Partial view for the album's details -->
+<div class="panel">
+	<div ng-show="loading">
+		<h2 class="center">Cargando información del album...</h2>
+		<img class="center" src="/Assets/img/spinner.gif" width="200" height="30" />
+	</div>
+
+	<div ng-hide="loading">
+		<div class="row album-info">
+			<span class="small-3 columns left">
+				<img src="{{album.Image}}" width="150" />
+			</span>
+			<span class="art-data">
+				<h1>{{album.Name}}</h1>
+				<p>Album por <a href="#/artist/{{album.Artist.Id}}">{{album.Artist.Name}}</a></p>
+				<div>
+					<ul class="genre-list">
+						<li ng-repeat="genre in album.Genres" ws-genre></li>
+					</ul>
+				</div>
+			</span>
+		</div> <!-- album info row /-->
+		<hr />
+		<div class="row art-cont">
+			<div class="small-12 columns">
+				<h2>Canciones</h2>
+				
+				<ul class="items-list" ng-show="album.Songs.length">
+					<li class="row th" ng-repeat="song in album.Songs" ws-song="song"></li>
+				</ul>
+
+				<h2 class="subheader" ng-show="!album.Songs.length">Este album no tiene canciones :(</h2>
+			</div>
+		</div> <!-- album songs /-->
+	</div>
+</div>
