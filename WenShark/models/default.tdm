@@ -294,7 +294,7 @@ ConceptualModel default {
  	};
  	
  	
- 	Association Favorite ( User - Item )
+ 	Association Favorite ( User - Song )
  	{
  		=> navigable favorites:Share ( "0", "*");
  		<= navigable user 		( "0", "*");

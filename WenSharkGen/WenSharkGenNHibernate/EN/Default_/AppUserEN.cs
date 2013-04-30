@@ -42,7 +42,7 @@ public AppUserEN() : base ()
 
 
 
-public AppUserEN(int id, string username, string password, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> favorites)
+public AppUserEN(int id, string username, string password, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites)
 {
         this.init (id, username, password, name, email, created, playlist, favorites);
 }
@@ -53,7 +53,7 @@ public AppUserEN(AppUserEN appUser)
         this.init (appUser.Id, appUser.Username, appUser.Password, appUser.Name, appUser.Email, appUser.Created, appUser.Playlist, appUser.Favorites);
 }
 
-private void init (int id, string username, string password, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> favorites)
+private void init (int id, string username, string password, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites)
 {
         this.Id = id;
 

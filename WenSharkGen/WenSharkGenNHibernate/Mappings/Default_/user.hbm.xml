@@ -35,7 +35,7 @@
 							<key>
 									<column name="[FK_id_user]"/>
 							</key>
-      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.ItemEN">
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.SongEN">
 									<column name="[FK_id_favorites]"/>
       						</many-to-many>
     					</bag>

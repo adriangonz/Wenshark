@@ -145,14 +145,14 @@ public void Relationer_favorites (int p_user, System.Collections.Generic.IList<i
         {
                 SessionInitializeTransaction ();
                 userEN = (UserEN)session.Load (typeof(UserEN), p_user);
-                WenSharkGenNHibernate.EN.Default_.ItemEN favoritesENAux = null;
+                WenSharkGenNHibernate.EN.Default_.SongEN favoritesENAux = null;
                 if (userEN.Favorites == null) {
-                        userEN.Favorites = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.ItemEN>();
+                        userEN.Favorites = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.SongEN>();
                 }
 
                 foreach (int item in p_item) {
-                        favoritesENAux = new WenSharkGenNHibernate.EN.Default_.ItemEN ();
-                        favoritesENAux = (WenSharkGenNHibernate.EN.Default_.ItemEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.ItemEN), item);
+                        favoritesENAux = new WenSharkGenNHibernate.EN.Default_.SongEN ();
+                        favoritesENAux = (WenSharkGenNHibernate.EN.Default_.SongEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.SongEN), item);
                         favoritesENAux.User.Add (userEN);
 
                         userEN.Favorites.Add (favoritesENAux);

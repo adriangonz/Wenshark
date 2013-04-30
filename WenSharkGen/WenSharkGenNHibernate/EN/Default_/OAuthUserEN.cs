@@ -53,7 +53,7 @@ public OAuthUserEN() : base ()
 
 
 
-public OAuthUserEN(int id, string idOAuth, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> favorites)
+public OAuthUserEN(int id, string idOAuth, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites)
 {
         this.init (id, idOAuth, token_oauth, provider, name, email, created, playlist, favorites);
 }
@@ -64,7 +64,7 @@ public OAuthUserEN(OAuthUserEN oAuthUser)
         this.init (oAuthUser.Id, oAuthUser.IdOAuth, oAuthUser.Token_oauth, oAuthUser.Provider, oAuthUser.Name, oAuthUser.Email, oAuthUser.Created, oAuthUser.Playlist, oAuthUser.Favorites);
 }
 
-private void init (int id, string idOAuth, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> favorites)
+private void init (int id, string idOAuth, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites)
 {
         this.Id = id;
 

@@ -38,6 +38,17 @@
 									<column name="[FK_id_playlist]"/>
       						</many-to-many>
     					</bag>
+			
+		  			
+						<bag name="User" table="[Favorite]"  >
+							<key>
+									<column name="[FK_id_favorites]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.UserEN">
+									<column name="[FK_id_user]"/>
+      						</many-to-many>
+    					</bag>
+					
 					
 					
 					
