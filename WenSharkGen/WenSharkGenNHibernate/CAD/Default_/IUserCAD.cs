@@ -15,5 +15,8 @@ System.Collections.Generic.IList<UserEN> GetAll (int first, int size);
 
 
 System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> Search (string p_filter);
+
+
+void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_playlist);
 }
 }

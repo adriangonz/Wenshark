@@ -14,5 +14,8 @@ void Destroy (int id);
 
 
 void Modify (PlayListEN playList);
+
+
+PlayListEN GetById (int id);
 }
 }

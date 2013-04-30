@@ -27,6 +27,7 @@ ConceptualModel default {
 			
 			/* Busqueda por nombre completo y por username */
 			public search::ReadFilter (p_filter : String) : List<Object->User> { filter = "FROM UserEN WHERE lower(:p_filter) LIKE %lower(username)%OR lower(:p_filter) LIKE %lower(name)%" };
+			public addNewPlayList::Relationer->UserPlayList.playlist (p_user : OID -> User, p_playlist : List<OID -> PlayList>) : Void;
 		}
 	};
 	
@@ -275,6 +276,7 @@ ConceptualModel default {
  			public new::New (p_name : String) : Object->PlayList;
  			public destroy::Destroy (p_oid : OID -> PlayList) : Void;
  			public modify::Modifier (p_oid : OID -> PlayList, p_name : String) : Void;
+ 			public getById::ReadOID (p_oid : OID -> PlayList) : Object -> PlayList;
  		}
  	};
  	

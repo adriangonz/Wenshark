@@ -64,5 +64,13 @@ public void Modify (int p_oid, string p_name)
 
         _IPlayListCAD.Modify (playListEN);
 }
+
+public PlayListEN GetById (int id)
+{
+        PlayListEN playListEN = null;
+
+        playListEN = _IPlayListCAD.GetById (id);
+        return playListEN;
+}
 }
 }

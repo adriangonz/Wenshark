@@ -87,7 +87,17 @@ public static void InitializeData ()
                 userEjemplo1.Username = "test1";
                 userEjemplo1.Password = "test1";
                 userEjemplo1.Created = DateTime.Now;
-                userCEN.New_ (userEjemplo1.Password, userEjemplo1.Name, userEjemplo1.Username, userEjemplo1.Email, userEjemplo1.Created);
+                int idUserEjemplo1 = userCEN.New_ (userEjemplo1.Password, userEjemplo1.Name, userEjemplo1.Username, userEjemplo1.Email, userEjemplo1.Created);
+
+
+                PlayListCEN plCEN = new PlayListCEN();
+                int pl1 = plCEN.New_("Lista test1 1");
+
+                List<int> listaPlayList = new List<int>();
+                listaPlayList.Add(pl1);
+                UserCEN usCEN = new UserCEN();
+                usCEN.AddNewPlayList(idUserEjemplo1, listaPlayList);
+
 
                 AppUserEN userEjemplo2 = new AppUserEN ();
                 userEjemplo2.Email = "test2@example.com";
