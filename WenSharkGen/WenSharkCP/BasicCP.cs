@@ -76,7 +76,7 @@ namespace WenSharkCP
         protected void nullSong(SongEN song)
         {
             song.Album = new AlbumEN { Name = song.Album.Name, Id = song.Album.Id, Image = song.Album.Image, Genre = null, Artist = null, Songs = null };
-            song.Artist = new ArtistEN { Name = song.Artist.Name, Id = song.Artist.Id, Genre = null, Albums = null, Songs = null };
+            song.Artist = new ArtistEN { Name = song.Artist.Name, Id = song.Artist.Id, Genre = null, Albums = null };
             song.Genre = null;
             song.Playlist = null;
         }
