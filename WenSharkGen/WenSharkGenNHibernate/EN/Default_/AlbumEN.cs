@@ -65,18 +65,18 @@ public AlbumEN() : base ()
 
 
 
-public AlbumEN(int id, Nullable<DateTime> published, string image, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+public AlbumEN(int id, Nullable<DateTime> published, string image, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> user)
 {
-        this.init (id, published, image, artist, songs, name, created, type, genre);
+        this.init (id, published, image, artist, songs, name, created, type, genre, user);
 }
 
 
 public AlbumEN(AlbumEN album)
 {
-        this.init (album.Id, album.Published, album.Image, album.Artist, album.Songs, album.Name, album.Created, album.Type, album.Genre);
+        this.init (album.Id, album.Published, album.Image, album.Artist, album.Songs, album.Name, album.Created, album.Type, album.Genre, album.User);
 }
 
-private void init (int id, Nullable<DateTime> published, string image, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+private void init (int id, Nullable<DateTime> published, string image, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> user)
 {
         this.Id = id;
 
@@ -96,6 +96,8 @@ private void init (int id, Nullable<DateTime> published, string image, WenSharkG
         this.Type = type;
 
         this.Genre = genre;
+
+        this.User = user;
 }
 
 public override bool Equals (object obj)

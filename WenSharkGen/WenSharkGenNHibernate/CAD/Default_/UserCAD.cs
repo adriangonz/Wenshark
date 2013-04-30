@@ -138,5 +138,43 @@ public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN
 
         return result;
 }
+public void Relationer_favorites (int p_user, System.Collections.Generic.IList<int> p_item)
+{
+        WenSharkGenNHibernate.EN.Default_.UserEN userEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                userEN = (UserEN)session.Load (typeof(UserEN), p_user);
+                WenSharkGenNHibernate.EN.Default_.ItemEN favoritesENAux = null;
+                if (userEN.Favorites == null) {
+                        userEN.Favorites = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.ItemEN>();
+                }
+
+                foreach (int item in p_item) {
+                        favoritesENAux = new WenSharkGenNHibernate.EN.Default_.ItemEN ();
+                        favoritesENAux = (WenSharkGenNHibernate.EN.Default_.ItemEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.ItemEN), item);
+                        favoritesENAux.User.Add (userEN);
+
+                        userEN.Favorites.Add (favoritesENAux);
+                }
+
+
+                session.Update (userEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in UserCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

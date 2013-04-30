@@ -53,18 +53,18 @@ public OAuthUserEN() : base ()
 
 
 
-public OAuthUserEN(int id, string idOAuth, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
+public OAuthUserEN(int id, string idOAuth, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> favorites)
 {
-        this.init (id, idOAuth, token_oauth, provider, name, email, created, playlist);
+        this.init (id, idOAuth, token_oauth, provider, name, email, created, playlist, favorites);
 }
 
 
 public OAuthUserEN(OAuthUserEN oAuthUser)
 {
-        this.init (oAuthUser.Id, oAuthUser.IdOAuth, oAuthUser.Token_oauth, oAuthUser.Provider, oAuthUser.Name, oAuthUser.Email, oAuthUser.Created, oAuthUser.Playlist);
+        this.init (oAuthUser.Id, oAuthUser.IdOAuth, oAuthUser.Token_oauth, oAuthUser.Provider, oAuthUser.Name, oAuthUser.Email, oAuthUser.Created, oAuthUser.Playlist, oAuthUser.Favorites);
 }
 
-private void init (int id, string idOAuth, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
+private void init (int id, string idOAuth, string token_oauth, WenSharkGenNHibernate.EN.Default_.OAuthProviderEN provider, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> favorites)
 {
         this.Id = id;
 
@@ -82,6 +82,8 @@ private void init (int id, string idOAuth, string token_oauth, WenSharkGenNHiber
         this.Created = created;
 
         this.Playlist = playlist;
+
+        this.Favorites = favorites;
 }
 
 public override bool Equals (object obj)

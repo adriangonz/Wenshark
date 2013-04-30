@@ -35,6 +35,12 @@ private string type;
 
 private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre;
 
+/**
+ *
+ */
+
+private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> user;
+
 
 
 
@@ -64,28 +70,34 @@ public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default
 }
 
 
+public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> User {
+        get { return user; } set { user = value;  }
+}
+
+
 
 
 
 public ItemEN()
 {
         genre = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.GenreEN>();
+        user = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.UserEN>();
 }
 
 
 
-public ItemEN(int id, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+public ItemEN(int id, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> user)
 {
-        this.init (id, name, created, type, genre);
+        this.init (id, name, created, type, genre, user);
 }
 
 
 public ItemEN(ItemEN item)
 {
-        this.init (item.Id, item.Name, item.Created, item.Type, item.Genre);
+        this.init (item.Id, item.Name, item.Created, item.Type, item.Genre, item.User);
 }
 
-private void init (int id, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+private void init (int id, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> user)
 {
         this.Id = id;
 
@@ -97,6 +109,8 @@ private void init (int id, string name, Nullable<DateTime> created, string type,
         this.Type = type;
 
         this.Genre = genre;
+
+        this.User = user;
 }
 
 public override bool Equals (object obj)

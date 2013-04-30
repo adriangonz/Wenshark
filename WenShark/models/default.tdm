@@ -27,6 +27,7 @@ ConceptualModel default {
 			
 			/* Busqueda por nombre completo y por username */
 			public search::ReadFilter (p_filter : String) : List<Object->User> { filter = "FROM UserEN WHERE lower(:p_filter) LIKE %lower(username)%OR lower(:p_filter) LIKE %lower(name)%" };
+			public relationer_favorites::Relationer->Favorite.favorites (p_user : OID -> User, p_item : List<OID -> Item>) : Void;
 		}
 	};
 	
@@ -293,6 +294,11 @@ ConceptualModel default {
  	};
  	
  	
- 	
- 	
+ 	Association Favorite ( User - Item )
+ 	{
+ 		=> navigable favorites:Share ( "0", "*");
+ 		<= navigable user 		( "0", "*");
+ 	};
+ 	 	
+ 	 	 	
 }
