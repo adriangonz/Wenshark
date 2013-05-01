@@ -14,29 +14,23 @@ namespace WenSharkApp.Controllers
 {
     public class PlayListController : ApiController
     {
+
         public HttpResponseMessage get(int id)
         {
-            PlayListCEN plCEN = new PlayListCEN();
-            PlayListEN pl = plCEN.GetById(id);
-            if (pl == null)
+
+            PlayListCP playlistCP = new PlayListCP();
+            PlayListEN playlist = playlistCP.getPlayList(id);
+            if (playlist == null)
             {
                 return this.Request.CreateResponse(HttpStatusCode.NotFound, "PlayList no encontrada");
             }
-
-            List<SongEN> ls = new List<SongEN>();
-            SongCEN songCEN = new SongCEN();
-            ls = songCEN.Search("li").ToList();
-            foreach (var item in ls)
+            else
             {
-                item.Genre = null;
-                item.Playlist = null;
-                item.Artist = songCEN.GetArtist(item);
-                item.Album = songCEN.GetAlbum(item);
+                return this.Request.CreateResponse(HttpStatusCode.OK, playlist);
             }
-            return this.Request.CreateResponse(HttpStatusCode.OK, new { songs = ls, name = pl.Name });
         }
 
-       
+
         [Authorize]
         public HttpResponseMessage getPlayLists()
         {

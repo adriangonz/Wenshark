@@ -11,6 +11,31 @@ namespace WenSharkCP.WensharkCP
 {
     public class PlayListCP : BasicCP
     {
+        public PlayListEN getPlayList(int id)
+        {
+            PlayListEN playlist = null;
+
+            SessionInitializeTransaction();
+            PlayListCAD playCAD = new PlayListCAD(session);
+            PlayListCEN playCEN = new PlayListCEN(playCAD);
+
+            playlist = playCEN.GetById(id);
+
+            if (playlist != null)
+            {
+                foreach (var song in playlist.Song)
+	            {
+                    nullSong(song);
+	            } 
+            }
+
+            SessionClose();
+
+            playlist.User = null;
+            return playlist;
+        }
+
+
         public List<PlayListEN> getByUser(int idUser)
         {
             List<PlayListEN> lplaylist = new List<PlayListEN>();
