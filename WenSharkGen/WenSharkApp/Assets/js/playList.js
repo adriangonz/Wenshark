@@ -1,10 +1,11 @@
-﻿function loadPlayListPanel($scope,$http) {
+﻿/*function loadPlayListPanel($scope,$http) {
     $('#playListBar').css('display', 'inline');
-
+    console.log($scope);
     $scope.loadingPlayList = true;
     $http
 		.get('/api/playlist')
 		.success(function (data) {
+		    //console.log(data);
 		    $scope.playlists = data;
 		    $scope.loadingPlayList = false;
 		})
@@ -23,5 +24,5 @@
         error: function (res) {
             alert('500: Error interno');
         }
-    });*/
-}
+    });
+}*/
