@@ -142,6 +142,10 @@ function MainCtrl ($scope, $timeout, $http) {
 		return song;
 	}
 
+	$scope.createPlaylist = function () {
+	    
+	}
+
 	$scope.addToPlaylist = function (song) {
 		var n_song = $scope.createSong(song);
 
@@ -251,6 +255,7 @@ function MainCtrl ($scope, $timeout, $http) {
 			$scope.updateTime();
 		}
 	}
+
 
 	$scope.updateTime = function () {
 		var curr_seconds = $scope.current.pos();
