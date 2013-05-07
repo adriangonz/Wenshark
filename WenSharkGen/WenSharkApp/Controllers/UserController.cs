@@ -10,6 +10,7 @@ using System.Web.Security;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using WenSharkCP.WensharkCP;
 
 namespace WenSharkApp.Controllers
 {
@@ -25,9 +26,11 @@ namespace WenSharkApp.Controllers
         public HttpResponseMessage get(int id)
         {
             UserEN user;
-            UserCEN userCEN = new UserCEN();
+            UserCP usercp = new UserCP();
 
-            user = userCEN.GetByID(id);
+            user = usercp.getUser(id);
+
+            if (user == null) return this.Request.CreateErrorResponse(HttpStatusCode.NotFound, new Exception());
 
             return this.Request.CreateResponse(HttpStatusCode.OK, user);
         }
@@ -84,7 +87,7 @@ namespace WenSharkApp.Controllers
 
                 if (!usrCEN.Exist(username))
                 {
-                    int id = usrCEN.New_(pass, name, username, email, DateTime.Now);
+                    int id = usrCEN.New_(pass, name, username, email, DateTime.Now, "/Assets/img/placeholder_user.png");
                     AppUserEN usr = new AppUserEN();
                     return this.Request.CreateResponse(HttpStatusCode.OK, id);
                 }
@@ -128,7 +131,7 @@ namespace WenSharkApp.Controllers
                     else
                     {
                         user.Name = data["name"].ToString();
-                        user.Id = userCEN.New_(idOAuth, token, user.Name, data["email"].ToString(), DateTime.Now, -1);
+                        user.Id = userCEN.New_(idOAuth, token, user.Name, data["email"].ToString(), DateTime.Now, -1, data["picture"].ToString());
                     }
 
                     FormsAuthentication.SetAuthCookie(idOAuth, false);

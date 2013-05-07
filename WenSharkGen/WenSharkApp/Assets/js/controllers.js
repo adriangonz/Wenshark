@@ -1,7 +1,7 @@
 /* Controllers for AngularJS */
 
 //Main controller of the app
-function MainCtrl ($scope, $timeout) {
+function MainCtrl ($scope, $timeout, $location) {
 	$scope.search = function (query) {
 	    window.location.href = "/#/search/" + query;	
 	}
@@ -14,8 +14,12 @@ function MainCtrl ($scope, $timeout) {
 		}
 	}
 
+	$scope.getUserId = function() {
+		return $.cookie('id');
+	}
+
 	if ($scope.IsLogged()){
-		 $scope.hideUserName = false;
+		$scope.hideUserName = false;
 	    $('#nameIdLoggin').html($.cookie("name"));
 	    //console.log($.cookie("name"));
 	}else{
@@ -42,9 +46,11 @@ function MainCtrl ($scope, $timeout) {
 	            $('#dropDownUserMenu').removeClass('open');
 	            $('#dropDownUserMenu').css("left", "-9999px");
 	            //console.log($scope.hideUserName);
+	            $location.path('/');
 	        },
 	        error: function (res) {
 	            alert('500: Error interno');
+	            $location.path('/');
 	        }
 	    });
 	}

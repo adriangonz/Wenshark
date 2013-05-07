@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WensharkCP\AlbumCP.cs" />
     <Compile Include="WensharkCP\ArtistCP.cs" />
+    <Compile Include="WensharkCP\UserCP.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WenSharkGenNHibernate\WenSharkGenNHibernate.csproj">

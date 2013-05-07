@@ -1,0 +1,15 @@
+<div class="panel">
+	<div ng-show="loading">
+		<h2 class="center">Cargando perfil...</h2>
+		<img class="center" src="/Assets/img/spinner.gif" width="200" height="30" />
+	</div>	
+
+	<div class="row" ng-hide="loading">
+		<span class="small-3 columns left">
+			<img src="{{user.Image}}" width="200" />
+		</span>
+		<span>
+			<h1>{{user.Name}}</h1>
+		</span>
+	</div>
+</div>

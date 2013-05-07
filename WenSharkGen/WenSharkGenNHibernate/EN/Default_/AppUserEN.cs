@@ -42,18 +42,18 @@ public AppUserEN() : base ()
 
 
 
-public AppUserEN(int id, string username, string password, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
+public AppUserEN(int id, string username, string password, string name, string email, Nullable<DateTime> created, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
 {
-        this.init (id, username, password, name, email, created, playlist);
+        this.init (id, username, password, name, email, created, image, playlist);
 }
 
 
 public AppUserEN(AppUserEN appUser)
 {
-        this.init (appUser.Id, appUser.Username, appUser.Password, appUser.Name, appUser.Email, appUser.Created, appUser.Playlist);
+        this.init (appUser.Id, appUser.Username, appUser.Password, appUser.Name, appUser.Email, appUser.Created, appUser.Image, appUser.Playlist);
 }
 
-private void init (int id, string username, string password, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
+private void init (int id, string username, string password, string name, string email, Nullable<DateTime> created, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
 {
         this.Id = id;
 
@@ -67,6 +67,8 @@ private void init (int id, string username, string password, string name, string
         this.Email = email;
 
         this.Created = created;
+
+        this.Image = image;
 
         this.Playlist = playlist;
 }

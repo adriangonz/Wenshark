@@ -122,6 +122,9 @@ public void Modify (AppUserEN appUser)
 
                 appUserEN.Created = appUser.Created;
 
+
+                appUserEN.Image = appUser.Image;
+
                 session.Update (appUserEN);
                 SessionCommit ();
         }

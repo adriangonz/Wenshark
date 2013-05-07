@@ -87,7 +87,7 @@ public static void InitializeData ()
                 userEjemplo1.Username = "test1";
                 userEjemplo1.Password = "test1";
                 userEjemplo1.Created = DateTime.Now;
-                userCEN.New_ (userEjemplo1.Password, userEjemplo1.Name, userEjemplo1.Username, userEjemplo1.Email, userEjemplo1.Created);
+                userCEN.New_ (userEjemplo1.Password, userEjemplo1.Name, userEjemplo1.Username, userEjemplo1.Email, userEjemplo1.Created, "");
 
                 AppUserEN userEjemplo2 = new AppUserEN ();
                 userEjemplo2.Email = "test2@example.com";
@@ -95,7 +95,7 @@ public static void InitializeData ()
                 userEjemplo2.Username = "test2";
                 userEjemplo2.Password = "test2";
                 userEjemplo2.Created = DateTime.Now;
-                userCEN.New_ (userEjemplo2.Password, userEjemplo2.Name, userEjemplo2.Username, userEjemplo2.Email, userEjemplo2.Created);
+                userCEN.New_ (userEjemplo2.Password, userEjemplo2.Name, userEjemplo2.Username, userEjemplo2.Email, userEjemplo2.Created, "");
 
                 //Creo algo de contenido
                 ArtistCEN artistcen = new ArtistCEN ();
@@ -104,8 +104,8 @@ public static void InitializeData ()
 
                 //Creamos algunos artistas
                 ArtistEN unknown = artistcen.Create ("Unknown artist", "Unknown bio", "/Assets/img/artists/unknown.png");
-                ArtistEN linkin_park = artistcen.Create("Linkin Park", "Linkin Park es una banda estadounidense de rock procedente de Agoura Hills, California.", "/Assets/img/artists/linkin_park.jpg");
-                ArtistEN limp_bizkit = artistcen.Create("Limp Bizkit", "Limp Bizkit es una banda de nu metal formada en Jacksonville, Florida, en 1994. Sus creadores fueron el líder y vocalista Fred Durst y el bajista Sam Rivers.", "/Assets/img/artists/limp_bizkit.jpg");
+                ArtistEN linkin_park = artistcen.Create ("Linkin Park", "Linkin Park es una banda estadounidense de rock procedente de Agoura Hills, California.", "/Assets/img/artists/linkin_park.jpg");
+                ArtistEN limp_bizkit = artistcen.Create ("Limp Bizkit", "Limp Bizkit es una banda de nu metal formada en Jacksonville, Florida, en 1994. Sus creadores fueron el líder y vocalista Fred Durst y el bajista Sam Rivers.", "/Assets/img/artists/limp_bizkit.jpg");
                 ArtistEN fary = artistcen.Create ("El Fary", "José Luis Cantero Rada, más conocido por su nombre artístico El Fary (Madrid, 20 de agosto de 1937 - Madrid, 19 de junio de 2007), fue un famoso cantante de copla y pop español.", "/Assets/img/artists/fary.jpg");
 
                 //Creamos algunos albums
