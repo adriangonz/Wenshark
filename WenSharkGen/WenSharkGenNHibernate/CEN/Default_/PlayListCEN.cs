@@ -72,5 +72,18 @@ public PlayListEN GetById (int id)
         playListEN = _IPlayListCAD.GetById (id);
         return playListEN;
 }
+
+public void Relationer_song (int p_playlist, System.Collections.Generic.IList<int> p_song)
+{
+        //Call to PlayListCAD
+
+        _IPlayListCAD.Relationer_song (p_playlist, p_song);
+}
+public void Relationer_user (int p_playlist, int p_user)
+{
+        //Call to PlayListCAD
+
+        _IPlayListCAD.Relationer_user (p_playlist, p_user);
+}
 }
 }

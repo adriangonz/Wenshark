@@ -181,6 +181,7 @@ ConceptualModel default {
  			public modify::Modifier (p_oid : OID -> Song, p_fname : String, p_mime : String, p_name : String, p_type : String) : Void;
  			public getAll::ReadAll (/* No arguments */) : List<Object->Song>;
  			
+ 			
  			public getAlbum (song : Object->Song) : Object -> Album;
  			public getArtist (song : Object->Song) : Object->Artist;
  			public getGenre (song : Object->Song) : List<Object -> Genre>;
@@ -277,6 +278,8 @@ ConceptualModel default {
  			public destroy::Destroy (p_oid : OID -> PlayList) : Void;
  			public modify::Modifier (p_oid : OID -> PlayList, p_name : String) : Void;
  			public getById::ReadOID (p_oid : OID -> PlayList) : Object -> PlayList;
+ 			public relationer_song::Relationer->PlayListSong.song (p_playlist : OID -> PlayList, p_song : List<OID -> Song>) : Void;
+ 			public relationer_user::Relationer->UserPlayList.user (p_playlist : OID -> PlayList, p_user : OID -> User) : Void;
  		}
  	};
  	

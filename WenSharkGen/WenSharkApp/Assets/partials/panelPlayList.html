@@ -1,9 +1,12 @@
 ﻿<div ng-show="loadingPlayList">
     <img class="center" src="/Assets/img/loadingGif.gif" width="200" height="30" />
 </div>
-<div ng-hide="loadingPlayList">
+<div ng-controller="NewPlaylistCtrl" ng-hide="loadingPlayList">
     <h6>Playlists <a ng-click="createPlaylist()">+</a></h6>
     <ul class="items-list">
-        <li ng-repeat="playlist in playlists"><a href="#/playlist/{{playlist.Id}}">{{playlist.Name}}</a></li>
+        <li class="row" ng-repeat="playlist in playlists" ws-playlist></li>
     </ul>
+    <form ng-submit="submitPlaylist()">
+        <input type="text" ng-model="newPlaylistName" placeholder="Nombre Playlist" ng-show="creatingPlaylist"  />
+    </form>
 </div>

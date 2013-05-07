@@ -90,13 +90,13 @@ public static void InitializeData ()
                 int idUserEjemplo1 = userCEN.New_ (userEjemplo1.Password, userEjemplo1.Name, userEjemplo1.Username, userEjemplo1.Email, userEjemplo1.Created);
 
 
-                PlayListCEN plCEN = new PlayListCEN();
-                int pl1 = plCEN.New_("Lista test1 1");
+                PlayListCEN plCEN = new PlayListCEN ();
+                int pl1 = plCEN.New_ ("Lista test1 1");
 
                 List<int> listaPlayList = new List<int>();
-                listaPlayList.Add(pl1);
-                UserCEN usCEN = new UserCEN();
-                usCEN.AddNewPlayList(idUserEjemplo1, listaPlayList);
+                listaPlayList.Add (pl1);
+                UserCEN usCEN = new UserCEN ();
+                usCEN.AddNewPlayList (idUserEjemplo1, listaPlayList);
 
 
                 AppUserEN userEjemplo2 = new AppUserEN ();
@@ -114,8 +114,8 @@ public static void InitializeData ()
 
                 //Creamos algunos artistas
                 ArtistEN unknown = artistcen.Create ("Unknown artist", "Unknown bio", "/Assets/img/artists/unknown.png");
-                ArtistEN linkin_park = artistcen.Create("Linkin Park", "Linkin Park es una banda estadounidense de rock procedente de Agoura Hills, California.", "/Assets/img/artists/linkin_park.jpg");
-                ArtistEN limp_bizkit = artistcen.Create("Limp Bizkit", "Limp Bizkit es una banda de nu metal formada en Jacksonville, Florida, en 1994. Sus creadores fueron el líder y vocalista Fred Durst y el bajista Sam Rivers.", "/Assets/img/artists/limp_bizkit.jpg");
+                ArtistEN linkin_park = artistcen.Create ("Linkin Park", "Linkin Park es una banda estadounidense de rock procedente de Agoura Hills, California.", "/Assets/img/artists/linkin_park.jpg");
+                ArtistEN limp_bizkit = artistcen.Create ("Limp Bizkit", "Limp Bizkit es una banda de nu metal formada en Jacksonville, Florida, en 1994. Sus creadores fueron el líder y vocalista Fred Durst y el bajista Sam Rivers.", "/Assets/img/artists/limp_bizkit.jpg");
                 ArtistEN fary = artistcen.Create ("El Fary", "José Luis Cantero Rada, más conocido por su nombre artístico El Fary (Madrid, 20 de agosto de 1937 - Madrid, 19 de junio de 2007), fue un famoso cantante de copla y pop español.", "/Assets/img/artists/fary.jpg");
 
                 //Creamos algunos albums

@@ -8,6 +8,7 @@ using WenSharkGenNHibernate.CEN.Default_;
 using WenSharkGenNHibernate.EN.Default_;
 using WenSharkCP.WensharkCP;
 using System.Web.Security;
+using Newtonsoft.Json.Linq;
 
 
 namespace WenSharkApp.Controllers
@@ -41,6 +42,21 @@ namespace WenSharkApp.Controllers
             
             return this.Request.CreateResponse(HttpStatusCode.OK, l);
   
+        }
+
+        [Authorize]
+        public HttpResponseMessage putPlaylist(JObject data)
+        {
+            int idUser = int.Parse(this.User.Identity.Name);
+            string name = data["name"].ToString();
+            List<int> songs =  data["songs"].ToObject<List<int>>();
+
+            PlayListCEN playCEN = new PlayListCEN();
+            int idNewPlaylist = playCEN.New_(name);
+            playCEN.Relationer_song(idNewPlaylist, songs);
+            playCEN.Relationer_user(idNewPlaylist, idUser);
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, new { Id = idNewPlaylist, Name = name });
         }
     }
 }

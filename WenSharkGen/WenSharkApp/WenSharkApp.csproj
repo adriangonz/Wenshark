@@ -184,6 +184,7 @@
     <Content Include="Assets\js\controllers\album.js" />
     <Content Include="Assets\js\controllers\artist.js" />
     <Content Include="Assets\js\controllers\ctrlPlayList.js" />
+    <Content Include="Assets\js\controllers\NewPlaylitCtrl.js" />
     <Content Include="Assets\js\directives.js" />
     <Content Include="Assets\js\foundation.min.js" />
     <Content Include="Assets\js\foundation\foundation.alerts.js" />
@@ -202,7 +203,6 @@
     <Content Include="Assets\js\foundation\foundation.topbar.js" />
     <Content Include="Assets\js\howler.js" />
     <Content Include="Assets\js\OAuth.js" />
-    <Content Include="Assets\js\playList.js" />
     <Content Include="Assets\js\routes.js" />
     <Content Include="Assets\js\vendor\angular.min.js" />
     <Content Include="Assets\js\vendor\custom.modernizr.js" />

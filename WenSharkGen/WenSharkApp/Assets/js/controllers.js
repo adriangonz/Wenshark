@@ -13,7 +13,9 @@ function MainCtrl ($scope, $timeout, $http) {
 		    return false;
 		}
 	}
-
+	$scope.debug = function (string) {
+	    alert(string);
+	}
 	$scope.playlists = [];
 
 	$scope.loadPlayListPanel = function () {
@@ -158,10 +160,6 @@ function MainCtrl ($scope, $timeout, $http) {
 		};
 
 		return song;
-	}
-
-	$scope.createPlaylist = function () {
-	    
 	}
 
 	$scope.addToPlaylist = function (song) {
