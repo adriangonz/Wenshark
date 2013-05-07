@@ -66,10 +66,37 @@ namespace WenSharkApp.Controllers
             string name = data["name"].ToString();
             int idPlaylist = data["id"].ToObject<int>();
 
-            PlayListCEN playCEN = new PlayListCEN();
-            playCEN.Modify(idPlaylist, name);
+            PlayListCP playlistCP = new PlayListCP();
+            if (playlistCP.isOwner(idPlaylist, idUser))
+            {
+                PlayListCEN playCEN = new PlayListCEN();
+                playCEN.Modify(idPlaylist, name);
 
-            return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return this.Request.CreateResponse(HttpStatusCode.Forbidden);
+            }
+        }
+
+        [Authorize]
+        public HttpResponseMessage deletePlaylist(int id)
+        {
+            int idUser = int.Parse(this.User.Identity.Name);
+
+            PlayListCP playlistCP = new PlayListCP();
+            if (playlistCP.isOwner(id, idUser))
+            {
+                PlayListCEN playCEN = new PlayListCEN();
+                playCEN.Destroy(id);
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return this.Request.CreateResponse(HttpStatusCode.Forbidden);
+            }
+
         }
     }
 }

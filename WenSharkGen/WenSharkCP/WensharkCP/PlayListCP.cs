@@ -62,5 +62,25 @@ namespace WenSharkCP.WensharkCP
             
             return lplaylist;
         }
+
+        public bool isOwner(int idPlaylist, int idUser)
+        {
+            bool owner = false;
+
+            SessionInitializeTransaction();
+            PlayListCAD playCAD = new PlayListCAD(session);
+            PlayListCEN playCEN = new PlayListCEN(playCAD);
+
+            var playlist = playCEN.GetById(idPlaylist);
+            if(playlist != null)
+            {
+                if (playlist.User.Id == idUser)
+                {
+                    owner = true;
+                }
+            }
+
+            return owner;
+        }
     }
 }
