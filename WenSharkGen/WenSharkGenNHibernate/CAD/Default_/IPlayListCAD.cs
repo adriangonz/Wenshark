@@ -14,5 +14,17 @@ void Destroy (int id);
 
 
 void Modify (PlayListEN playList);
+
+
+PlayListEN GetById (int id);
+
+
+void Relationer_song (int p_playlist, System.Collections.Generic.IList<int> p_song);
+
+void Relationer_user (int p_playlist, int p_user);
+
+void Unrelationer_song (int p_playlist, System.Collections.Generic.IList<int> p_song);
+
+void Unrelationer_user (int p_playlist, int p_user);
 }
 }

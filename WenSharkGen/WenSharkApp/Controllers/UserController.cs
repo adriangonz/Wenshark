@@ -45,7 +45,7 @@ namespace WenSharkApp.Controllers
             if (appuserCEN.IsValid(user, pass))
             {
                 AppUserEN userEN = appuserCEN.GetByUsername(user)[0];
-                FormsAuthentication.SetAuthCookie(user, false);
+                FormsAuthentication.SetAuthCookie(userEN.Id.ToString(), false);
 
 
                 var res = this.Request.CreateResponse(HttpStatusCode.OK, new { id = userEN.Id, name = userEN.Name });
@@ -131,7 +131,7 @@ namespace WenSharkApp.Controllers
                         user.Id = userCEN.New_(idOAuth, token, user.Name, data["email"].ToString(), DateTime.Now, -1);
                     }
 
-                    FormsAuthentication.SetAuthCookie(idOAuth, false);
+                    FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
                     return this.Request.CreateResponse(HttpStatusCode.OK, new { id = user.Id, name = user.Name });
 
                 }

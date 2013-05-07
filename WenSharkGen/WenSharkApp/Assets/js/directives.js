@@ -83,4 +83,15 @@
         template:
             '<span class="radius label">{{genre.Name}}</span>'
     }
-});
+})
+.directive('wsPlaylist',function(){
+    return {
+        restrict: 'A',
+        template:
+            '<div class="row collapse">'+
+            '<a class="large-8 columns" href="#/playlist/{{playlist.Id}}">{{playlist.Name}}</a> ' +
+            '<a style="cursor: pointer" ng-click="playPlayList(playlist)" class="tiny large-2 columns"><span class="tiny play"></span></a>' +
+            '</div>'
+    }
+})
+;

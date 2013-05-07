@@ -1,7 +1,7 @@
 /* Controllers for AngularJS */
 
 //Main controller of the app
-function MainCtrl ($scope, $timeout) {
+function MainCtrl ($scope, $timeout, $http) {
 	$scope.search = function (query) {
 	    window.location.href = "/#/search/" + query;	
 	}
@@ -13,14 +13,36 @@ function MainCtrl ($scope, $timeout) {
 		    return false;
 		}
 	}
+	$scope.debug = function (string) {
+	    alert(string);
+	}
+	$scope.playlists = [];
+
+	$scope.loadPlayListPanel = function () {
+	    $('#playListBar').css('display', 'inline');
+	    $scope.loadingPlayList = true;
+	    $http
+            .get('/api/playlist')
+            .success(function (data) {
+                //console.log(data);
+                $scope.playlists = data;
+                $scope.loadingPlayList = false;
+            })
+            .error(function (data) {
+                alert('500: Error interno');
+            });
+	}
 
 	if ($scope.IsLogged()){
-		 $scope.hideUserName = false;
+	    $scope.hideUserName = false;
+	    $scope.loadPlayListPanel();
 	    $('#nameIdLoggin').html($.cookie("name"));
-	    //console.log($.cookie("name"));
+	    
 	}else{
 		$scope.hideUserName = true;
 	}
+
+	
 
 
 	$scope.Logout = function () {
@@ -41,6 +63,7 @@ function MainCtrl ($scope, $timeout) {
 	            $('#idLiUpload').css('display', 'none');
 	            $('#dropDownUserMenu').removeClass('open');
 	            $('#dropDownUserMenu').css("left", "-9999px");
+	            $('#playListBar').css('display', 'none');
 	            //console.log($scope.hideUserName);
 	        },
 	        error: function (res) {
@@ -249,6 +272,7 @@ function MainCtrl ($scope, $timeout) {
 		}
 	}
 
+
 	$scope.updateTime = function () {
 		var curr_seconds = $scope.current.pos();
 		if(typeof curr_seconds === "undefined"){ // No se que pasa, pero la cancion no termina
@@ -429,7 +453,9 @@ function SignInCtrl($scope, $routeParams, $http) {
                 $('#idSignUpLi').css('display', 'none');
                 $('#idNameLi').css('display', 'inline');
                 $('#idLiUpload').css('display', 'inline');
+                
                 $scope.tryingLoginOrSignUp = false;
+                $scope.loadPlayListPanel();
             })
             .error(function (data) {
             	$scope.tryingLoginOrSignUp = false;

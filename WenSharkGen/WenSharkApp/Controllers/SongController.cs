@@ -114,18 +114,16 @@ namespace WenSharkApp.Controllers
         {
             SongCEN songcen = new SongCEN();
             SongEN song = songcen.ReadOID(id);
-            
+
             if (song == null)
                 return new HttpResponseMessage(HttpStatusCode.NotFound);
-
             var path = HttpContext.Current.Server.MapPath("~/App_Data/Songs/" + song.Fname);
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
             var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+            
             result.Content = new StreamContent(stream);
             result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(song.Mime);
-
             return result;
-      
         }
     }
 }
