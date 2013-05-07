@@ -363,30 +363,47 @@ function MainCtrl ($scope, $timeout, $http) {
 	}
 
 	$scope.addToFavorites = function (song) {
-		$http
-			.get('/api/favorites?add&song_id=' + song.Id)
-			.success(function (data) {
-				$scope.favorites.push(song);
-				console.log($scope.favorites.length);
-			});
+		var i = -1;
+		for(i = 0; i < $scope.favorites.length; i++){
+			if($scope.favorites[i] == song){
+				break;
+			}
+		}
+		if(i != $scope.favorites.length){
+			$http
+				.get('/api/favorites?add&song_id=' + song.Id)
+				.success(function (data) {
+					$scope.favorites.push(song);
+					console.log($scope.favorites.length);
+				});
+		}
 	}
 
 	$scope.removeFromFavorites = function (song) {
-		$http
-			.get('/api/favorites?remove&song_id=' + song.Id)
-			.success(function (data) {
-				for(var i = 0; i < $scope.favorites.length; i++){
-					if($scope.favorites[i] == song){
-						$scope.favorites.splice(i,1);
-						break;
-					}
-				}
-				console.log($scope.favorites.length);
-			});
+		var i = -1;
+		for(i = 0; i < $scope.favorites.length; i++){
+			if($scope.favorites[i] == song){
+				break;
+			}
+		}
+		if(i != -1){
+			$http
+				.get('/api/favorites?remove&song_id=' + song.Id)
+				.success(function (data) {
+					$scope.favorites.splice(i,1);
+					console.log($scope.favorites.length);
+				});
+		}
 	}
 
 	$scope.isFavorited = function (song) {
-		return false;
+		var i = -1;
+		for(i = 0; i < $scope.favorites.length; i++){
+			if($scope.favorites[i] == song){
+				break;
+			}
+		}
+		return i != $scope.favorites.length;
 	}
 }
 
