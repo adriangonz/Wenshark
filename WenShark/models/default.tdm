@@ -280,6 +280,8 @@ ConceptualModel default {
  			public getById::ReadOID (p_oid : OID -> PlayList) : Object -> PlayList;
  			public relationer_song::Relationer->PlayListSong.song (p_playlist : OID -> PlayList, p_song : List<OID -> Song>) : Void;
  			public relationer_user::Relationer->UserPlayList.user (p_playlist : OID -> PlayList, p_user : OID -> User) : Void;
+ 			public unrelationer_song::Unrelationer->PlayListSong.song (p_playlist : OID -> PlayList, p_song : List<OID -> Song>) : Void;
+ 			public unrelationer_user::Unrelationer->UserPlayList.user (p_playlist : OID -> PlayList, p_user : OID -> User) : Void;
  		}
  	};
  	

@@ -89,7 +89,11 @@ namespace WenSharkApp.Controllers
             if (playlistCP.isOwner(id, idUser))
             {
                 PlayListCEN playCEN = new PlayListCEN();
+                playlistCP.unbind(id);
                 playCEN.Destroy(id);
+
+               
+
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
             else

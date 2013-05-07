@@ -223,5 +223,75 @@ public void Relationer_user (int p_playlist, int p_user)
                 SessionClose ();
         }
 }
+
+public void Unrelationer_song (int p_playlist, System.Collections.Generic.IList<int> p_song)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                WenSharkGenNHibernate.EN.Default_.PlayListEN playListEN = null;
+                playListEN = (PlayListEN)session.Load (typeof(PlayListEN), p_playlist);
+
+                WenSharkGenNHibernate.EN.Default_.SongEN songENAux = null;
+                if (playListEN.Song != null) {
+                        foreach (int item in p_song) {
+                                songENAux = (WenSharkGenNHibernate.EN.Default_.SongEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.SongEN), item);
+                                if (playListEN.Song.Contains (songENAux) == true) {
+                                        playListEN.Song.Remove (songENAux);
+                                        songENAux.Playlist.Remove (playListEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_song you are trying to unrelationer, doesn't exist in PlayListEN");
+                        }
+                }
+
+                session.Update (playListEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in PlayListCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void Unrelationer_user (int p_playlist, int p_user)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                WenSharkGenNHibernate.EN.Default_.PlayListEN playListEN = null;
+                playListEN = (PlayListEN)session.Load (typeof(PlayListEN), p_playlist);
+
+                if (playListEN.User.Id == p_user) {
+                        playListEN.User = null;
+                }
+                else
+                        throw new ModelException ("The identifier " + p_user + " in p_user you are trying to unrelationer, doesn't exist in PlayListEN");
+
+                session.Update (playListEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in PlayListCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

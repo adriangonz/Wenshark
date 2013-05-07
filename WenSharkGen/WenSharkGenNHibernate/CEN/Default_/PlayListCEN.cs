@@ -85,5 +85,17 @@ public void Relationer_user (int p_playlist, int p_user)
 
         _IPlayListCAD.Relationer_user (p_playlist, p_user);
 }
+public void Unrelationer_song (int p_playlist, System.Collections.Generic.IList<int> p_song)
+{
+        //Call to PlayListCAD
+
+        _IPlayListCAD.Unrelationer_song (p_playlist, p_song);
+}
+public void Unrelationer_user (int p_playlist, int p_user)
+{
+        //Call to PlayListCAD
+
+        _IPlayListCAD.Unrelationer_user (p_playlist, p_user);
+}
 }
 }

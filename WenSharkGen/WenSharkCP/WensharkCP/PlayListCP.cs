@@ -24,9 +24,9 @@ namespace WenSharkCP.WensharkCP
             if (playlist != null)
             {
                 foreach (var song in playlist.Song)
-	            {
+                {
                     nullSong(song);
-	            } 
+                }
             }
 
             SessionClose();
@@ -40,7 +40,7 @@ namespace WenSharkCP.WensharkCP
         {
             List<PlayListEN> lplaylist = new List<PlayListEN>();
             SessionInitializeTransaction();
-           
+
 
             UserCAD userCAD = new UserCAD(session);
             UserCEN userCEN = new UserCEN(userCAD);
@@ -59,7 +59,7 @@ namespace WenSharkCP.WensharkCP
                 item.Song = null;
                 item.User = null;
             }
-            
+
             return lplaylist;
         }
 
@@ -72,7 +72,7 @@ namespace WenSharkCP.WensharkCP
             PlayListCEN playCEN = new PlayListCEN(playCAD);
 
             var playlist = playCEN.GetById(idPlaylist);
-            if(playlist != null)
+            if (playlist != null)
             {
                 if (playlist.User.Id == idUser)
                 {
@@ -81,6 +81,29 @@ namespace WenSharkCP.WensharkCP
             }
 
             return owner;
+        }
+
+        public void unbind(int id)
+        {
+            SessionInitializeTransaction();
+
+            PlayListCAD playCAD = new PlayListCAD(session);
+            PlayListCEN playCEN = new PlayListCEN(playCAD);
+
+            var playlist = playCEN.GetById(id);
+            if (playlist != null)
+            {
+                int idUser = playlist.User.Id;
+                List<int> songs = new List<int>();
+                foreach (var s in playlist.Song)
+	            {
+                    songs.Add(s.Id);
+	            }
+
+                playCEN.Unrelationer_song(id, songs);
+                playCEN.Unrelationer_user(id, idUser);
+            }
+            SessionCommit();
         }
     }
 }
