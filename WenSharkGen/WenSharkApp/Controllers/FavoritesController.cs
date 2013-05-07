@@ -7,20 +7,16 @@ using System.Web.Http;
 using WenSharkGenNHibernate;
 using WenSharkGenNHibernate.EN.Default_;
 using WenSharkGenNHibernate.CEN.Default_;
+using WenSharkCP.WensharkCP;
 
 namespace WenSharkApp.Controllers
 {
     public class FavoritesController : ApiController
     {
         public HttpResponseMessage getFavorites(int user_id) {
-            UserCEN userCEN = new UserCEN();
+            FavoritesCP favCP = new FavoritesCP();
 
-            UserEN userEN = userCEN.GetByID(user_id);
-            if(userEN == null){
-                return this.Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            List<SongEN> lsongs = userEN.Favorites.ToList();
+            List<SongEN> lsongs = favCP.getUserFavorites(user_id);
 
             return this.Request.CreateResponse(HttpStatusCode.OK, new {songs = lsongs});
         }
