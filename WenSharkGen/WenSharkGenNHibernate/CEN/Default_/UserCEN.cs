@@ -51,11 +51,17 @@ public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN
 {
         return _IUserCAD.Search (p_filter);
 }
-public void Relationer_favorites (int p_user, System.Collections.Generic.IList<int> p_item)
+public void Relationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song)
 {
         //Call to UserCAD
 
-        _IUserCAD.Relationer_favorites (p_user, p_item);
+        _IUserCAD.Relationer_favorites (p_user, p_song);
+}
+public void Unrelationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song)
+{
+        //Call to UserCAD
+
+        _IUserCAD.Unrelationer_favorites (p_user, p_song);
 }
 }
 }

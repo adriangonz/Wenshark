@@ -27,7 +27,10 @@ ConceptualModel default {
 			
 			/* Busqueda por nombre completo y por username */
 			public search::ReadFilter (p_filter : String) : List<Object->User> { filter = "FROM UserEN WHERE lower(:p_filter) LIKE %lower(username)%OR lower(:p_filter) LIKE %lower(name)%" };
-			public relationer_favorites::Relationer->Favorite.favorites (p_user : OID -> User, p_item : List<OID -> Item>) : Void;
+			
+			// Favoritos
+			public relationer_favorites::Relationer->Favorite.favorites (p_user : OID -> User, p_song : List<OID -> Song>) : Void;
+			public unrelationer_favorites::Unrelationer->Favorite.favorites (p_user : OID -> User, p_song : List<OID -> Song>) : Void;
 		}
 	};
 	
