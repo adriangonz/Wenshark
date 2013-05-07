@@ -21,7 +21,6 @@ void Relationer_favorites (int p_user, System.Collections.Generic.IList<int> p_s
 
 void Unrelationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song);
 
-
 void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_playlist);
 }
 }

@@ -90,13 +90,13 @@ public static void InitializeData ()
                 int idUserEjemplo1 = userCEN.New_ (userEjemplo1.Password, userEjemplo1.Name, userEjemplo1.Username, userEjemplo1.Email, userEjemplo1.Created);
 
 
-                PlayListCEN plCEN = new PlayListCEN();
-                int pl1 = plCEN.New_("Lista test1 1");
+                PlayListCEN plCEN = new PlayListCEN ();
+                int pl1 = plCEN.New_ ("Lista test1 1");
 
                 List<int> listaPlayList = new List<int>();
-                listaPlayList.Add(pl1);
-                UserCEN usCEN = new UserCEN();
-                usCEN.AddNewPlayList(idUserEjemplo1, listaPlayList);
+                listaPlayList.Add (pl1);
+                UserCEN usCEN = new UserCEN ();
+                usCEN.AddNewPlayList (idUserEjemplo1, listaPlayList);
 
 
                 AppUserEN userEjemplo2 = new AppUserEN ();

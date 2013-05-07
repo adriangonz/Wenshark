@@ -13,26 +13,32 @@ namespace WenSharkApp.Controllers
 {
     public class FavoritesController : ApiController
     {
-        public HttpResponseMessage getFavorites(int user_id) {
+        [Authorize]
+        public HttpResponseMessage getFavorites() {
             FavoritesCP favCP = new FavoritesCP();
 
-            List<SongEN> lsongs = favCP.getUserFavorites(user_id);
+            int id = int.Parse(this.User.Identity.Name);
+            List<SongEN> lsongs = favCP.getUserFavorites(id);
             
             return this.Request.CreateResponse(HttpStatusCode.OK, new {songs = lsongs});
         }
 
-        public HttpResponseMessage getAddFavorite(int user_id, int song_id, string add) {
+        [Authorize]
+        public HttpResponseMessage getAddFavorite(int song_id, string add) {
             UserCEN userCEN = new UserCEN();
             SongCEN songCEN = new SongCEN();
 
-            UserEN userEN = userCEN.GetByID(user_id);
+            int user_id = int.Parse(this.User.Identity.Name);
             SongEN songEN = songCEN.ReadOID(song_id);
-            if (userEN == null || songEN == null) {
+            if (songEN == null) {
                 return this.Request.CreateResponse(HttpStatusCode.NotFound);
             }
 
             try {
-                userEN.Favorites.Add(songEN);
+                List<int> songs = new List<int>();
+                songs.Add(song_id);
+                userCEN.Relationer_favorites(user_id, songs);
+
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception) {
@@ -40,18 +46,27 @@ namespace WenSharkApp.Controllers
             }
         }
 
-        public HttpResponseMessage getRemoveFavorite(int user_id, int song_id, string remove) {
+        [Authorize]
+        public HttpResponseMessage getRemoveFavorite(int song_id, string remove) {
             UserCEN userCEN = new UserCEN();
             SongCEN songCEN = new SongCEN();
 
-            UserEN userEN = userCEN.GetByID(user_id);
+            int user_id = int.Parse(this.User.Identity.Name);
             SongEN songEN = songCEN.ReadOID(song_id);
-            if (userEN == null || songEN == null) {
+            if (songEN == null) {
                 return this.Request.CreateResponse(HttpStatusCode.NotFound);
             }
 
-            userEN.Favorites.Remove(songEN);
-            return this.Request.CreateResponse(HttpStatusCode.OK);
+            try {
+                List<int> songs = new List<int>();
+                songs.Add(song_id);
+                userCEN.Unrelationer_favorites(user_id, songs);
+
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception) {
+                return this.Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }
