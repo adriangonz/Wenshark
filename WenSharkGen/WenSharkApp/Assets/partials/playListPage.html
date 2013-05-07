@@ -1,6 +1,21 @@
 ﻿<!-- Partial view for the items' search -->
-<div class="panel">
-    <h1><span class="subheader">{{listName}}</span></h1>
+<div class="panel" ng-controller="PlayListCtrl">
+    <div class="row playlistDiv">
+        <h1 class="large-9 columns">
+            <span class="subheader" ng-hide="editing">{{listName}}</span>
+            <form ng-submit="editPlaylist()">
+                <input id="inputNewName" type="text" ng-show="editing" ng-model="newName" placeholder="{{listName}}"></input>
+            </form>
+        </h1>
+        <ul class="button-group radius collapse large-3 columns">
+            <li>
+                <a class="button" ng-click="startEdit()"><span  class="foundicon-edit"></span></a>
+            </li>
+            <li>
+                <a class="button" ng-click="playPlaylist()"><span class="play"></span></a>
+            </li>
+        </ul>
+    </div>
     <div ng-show="loading">
         <img class="center" src="/Assets/img/spinner.gif" width="200" height="30" />
 

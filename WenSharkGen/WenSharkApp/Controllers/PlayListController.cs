@@ -58,5 +58,18 @@ namespace WenSharkApp.Controllers
 
             return this.Request.CreateResponse(HttpStatusCode.OK, new { Id = idNewPlaylist, Name = name });
         }
+
+        [Authorize]
+        public HttpResponseMessage postPlaylist(JObject data)
+        {
+            int idUser = int.Parse(this.User.Identity.Name);
+            string name = data["name"].ToString();
+            int idPlaylist = data["id"].ToObject<int>();
+
+            PlayListCEN playCEN = new PlayListCEN();
+            playCEN.Modify(idPlaylist, name);
+
+            return this.Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }

@@ -30,8 +30,15 @@ function NewPlaylistCtrl($scope, $routeParams, $http) {
     }
 
     $scope.playPlayList = function (playlist) {
-        console.log("pene");
         console.log(playlist);
-        alert("Aqui hay que hacer un ajax para pedir las canciones y llamar a addListToPlaylist(canciones) -> esta en la rama de martin... ");
+        $http
+        .get('/api/playlist/' + playlist.Id)
+        .success(function (data) {
+            console.log(data);
+            addListToPlaylistAndPlay(playlist.Song);
+        })
+        .error(function (data) {
+            console.log(data);
+        });
     }
 }

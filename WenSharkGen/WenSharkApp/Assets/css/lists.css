@@ -45,3 +45,13 @@ ul.genre-list li {
 	display: inline-block;
 	margin-right: 2%;
 }
+
+
+/* Styling for cosas...*/
+.playlistDiv ul {
+    margin-top: 15px;
+}
+
+.playlistDiv a {
+    font-size: 18px;
+}
