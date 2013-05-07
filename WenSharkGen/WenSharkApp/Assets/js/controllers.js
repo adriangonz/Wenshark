@@ -13,16 +13,34 @@ function MainCtrl ($scope, $timeout, $http) {
 		    return false;
 		}
 	}
+
 	$scope.playlists = [];
+
+	$scope.loadPlayListPanel = function () {
+	    $('#playListBar').css('display', 'inline');
+	    $scope.loadingPlayList = true;
+	    $http
+            .get('/api/playlist')
+            .success(function (data) {
+                //console.log(data);
+                $scope.playlists = data;
+                $scope.loadingPlayList = false;
+            })
+            .error(function (data) {
+                alert('500: Error interno');
+            });
+	}
 
 	if ($scope.IsLogged()){
 	    $scope.hideUserName = false;
-	    loadPlayListPanel($scope,$http);
+	    $scope.loadPlayListPanel();
 	    $('#nameIdLoggin').html($.cookie("name"));
 	    
 	}else{
 		$scope.hideUserName = true;
 	}
+
+	
 
 
 	$scope.Logout = function () {
@@ -434,7 +452,7 @@ function SignInCtrl($scope, $routeParams, $http) {
                 $('#idLiUpload').css('display', 'inline');
                 
                 $scope.tryingLoginOrSignUp = false;
-                loadPlayListPanel($scope,$http);
+                $scope.loadPlayListPanel();
             })
             .error(function (data) {
             	$scope.tryingLoginOrSignUp = false;
