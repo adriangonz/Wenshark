@@ -1,7 +1,7 @@
 /* Controllers for AngularJS */
 
 //Main controller of the app
-function MainCtrl ($scope, $timeout) {
+function MainCtrl ($scope, $timeout, $http) {
 	$scope.search = function (query) {
 	    window.location.href = "/#/search/" + query;	
 	}
@@ -13,11 +13,13 @@ function MainCtrl ($scope, $timeout) {
 		    return false;
 		}
 	}
+	$scope.playlists = [];
 
 	if ($scope.IsLogged()){
-		 $scope.hideUserName = false;
+	    $scope.hideUserName = false;
+	    loadPlayListPanel($scope,$http);
 	    $('#nameIdLoggin').html($.cookie("name"));
-	    //console.log($.cookie("name"));
+	    
 	}else{
 		$scope.hideUserName = true;
 	}
@@ -41,6 +43,7 @@ function MainCtrl ($scope, $timeout) {
 	            $('#idLiUpload').css('display', 'none');
 	            $('#dropDownUserMenu').removeClass('open');
 	            $('#dropDownUserMenu').css("left", "-9999px");
+	            $('#playListBar').css('display', 'none');
 	            //console.log($scope.hideUserName);
 	        },
 	        error: function (res) {
@@ -429,7 +432,9 @@ function SignInCtrl($scope, $routeParams, $http) {
                 $('#idSignUpLi').css('display', 'none');
                 $('#idNameLi').css('display', 'inline');
                 $('#idLiUpload').css('display', 'inline');
+                
                 $scope.tryingLoginOrSignUp = false;
+                loadPlayListPanel($scope,$http);
             })
             .error(function (data) {
             	$scope.tryingLoginOrSignUp = false;

@@ -31,6 +31,8 @@ ConceptualModel default {
 			// Favoritos
 			public relationer_favorites::Relationer->Favorite.favorites (p_user : OID -> User, p_song : List<OID -> Song>) : Void;
 			public unrelationer_favorites::Unrelationer->Favorite.favorites (p_user : OID -> User, p_song : List<OID -> Song>) : Void;
+
+			public addNewPlayList::Relationer->UserPlayList.playlist (p_user : OID -> User, p_playlist : List<OID -> PlayList>) : Void;
 		}
 	};
 	
@@ -279,6 +281,7 @@ ConceptualModel default {
  			public new::New (p_name : String) : Object->PlayList;
  			public destroy::Destroy (p_oid : OID -> PlayList) : Void;
  			public modify::Modifier (p_oid : OID -> PlayList, p_name : String) : Void;
+ 			public getById::ReadOID (p_oid : OID -> PlayList) : Object -> PlayList;
  		}
  	};
  	

@@ -20,5 +20,8 @@ System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> Searc
 void Relationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song);
 
 void Unrelationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song);
+
+
+void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_playlist);
 }
 }

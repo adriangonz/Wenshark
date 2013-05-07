@@ -127,5 +127,31 @@ public void Modify (PlayListEN playList)
                 SessionClose ();
         }
 }
+public PlayListEN GetById (int id)
+{
+        PlayListEN playListEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                playListEN = (PlayListEN)session.Get (typeof(PlayListEN), id);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in PlayListCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return playListEN;
+}
 }
 }

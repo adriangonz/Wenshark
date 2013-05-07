@@ -51,6 +51,12 @@ public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN
 {
         return _IUserCAD.Search (p_filter);
 }
+public void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_playlist)
+{
+        //Call to UserCAD
+
+        _IUserCAD.AddNewPlayList (p_user, p_playlist);
+}
 public void Relationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song)
 {
         //Call to UserCAD

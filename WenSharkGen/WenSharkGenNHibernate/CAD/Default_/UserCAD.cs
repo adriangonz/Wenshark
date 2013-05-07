@@ -138,6 +138,45 @@ public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN
 
         return result;
 }
+public void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_playlist)
+{
+        WenSharkGenNHibernate.EN.Default_.UserEN userEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                userEN = (UserEN)session.Load (typeof(UserEN), p_user);
+                WenSharkGenNHibernate.EN.Default_.PlayListEN playlistENAux = null;
+                if (userEN.Playlist == null) {
+                        userEN.Playlist = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.PlayListEN>();
+                }
+
+                foreach (int item in p_playlist) {
+                        playlistENAux = new WenSharkGenNHibernate.EN.Default_.PlayListEN ();
+                        playlistENAux = (WenSharkGenNHibernate.EN.Default_.PlayListEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.PlayListEN), item);
+                        playlistENAux.User = userEN;
+
+                        userEN.Playlist.Add (playlistENAux);
+                }
+
+
+                session.Update (userEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in UserCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
 public void Relationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song)
 {
         WenSharkGenNHibernate.EN.Default_.UserEN userEN = null;
@@ -214,6 +253,5 @@ public void Unrelationer_favorites (int p_user, System.Collections.Generic.IList
         {
                 SessionClose ();
         }
-}
 }
 }

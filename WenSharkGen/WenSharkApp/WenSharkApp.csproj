@@ -115,6 +115,7 @@
     <Compile Include="Controllers\ArtistController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\NHibernateContractResolver.cs" />
+    <Compile Include="Controllers\PlayListController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\SongController.cs" />
@@ -138,6 +139,7 @@
     <Content Include="Assets\css\lists.css" />
     <Content Include="Assets\css\normalize.css" />
     <Content Include="Assets\css\player.css" />
+    <Content Include="Assets\css\playListBar.css" />
     <Content Include="Assets\css\uploader.css" />
     <Content Include="Assets\fonts\general_foundicons.svg" />
     <Content Include="Assets\humans.txt" />
@@ -180,6 +182,9 @@
     <Content Include="Assets\img\spinner.gif" />
     <Content Include="Assets\index.html" />
     <Content Include="Assets\js\controllers.js" />
+    <Content Include="Assets\js\controllers\album.js" />
+    <Content Include="Assets\js\controllers\artist.js" />
+    <Content Include="Assets\js\controllers\ctrlPlayList.js" />
     <Content Include="Assets\js\directives.js" />
     <Content Include="Assets\js\foundation.min.js" />
     <Content Include="Assets\js\foundation\foundation.alerts.js" />
@@ -198,6 +203,7 @@
     <Content Include="Assets\js\foundation\foundation.topbar.js" />
     <Content Include="Assets\js\howler.js" />
     <Content Include="Assets\js\OAuth.js" />
+    <Content Include="Assets\js\playList.js" />
     <Content Include="Assets\js\routes.js" />
     <Content Include="Assets\js\vendor\angular.min.js" />
     <Content Include="Assets\js\vendor\custom.modernizr.js" />
@@ -206,11 +212,15 @@
     <Content Include="Assets\js\vendor\jquery.js" />
     <Content Include="Assets\js\vendor\zepto.js" />
     <Content Include="Assets\js\visualFixes.js" />
+    <Content Include="Assets\partials\album.html" />
+    <Content Include="Assets\partials\artist.html" />
     <Content Include="Assets\partials\error.html" />
     <Content Include="Assets\partials\loading.html" />
     <Content Include="Assets\partials\login.html" />
     <Content Include="Assets\partials\main.html" />
     <Content Include="Assets\partials\modalSignUp.html" />
+    <Content Include="Assets\partials\panelPlayList.html" />
+    <Content Include="Assets\partials\playListPage.html" />
     <Content Include="Assets\partials\register.html" />
     <Content Include="Assets\partials\search.html" />
     <Content Include="Assets\partials\upload.html" />
@@ -228,7 +238,9 @@
     </Content>
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -236,7 +248,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WenSharkCP\WenSharkCP.csproj">
-      <Project>{ba4f04b0-efca-4ce3-9a3a-7717ffafbfc3}</Project>
+      <Project>{710ea1fb-8ba6-4f9e-9aba-c26f27728e5e}</Project>
       <Name>WenSharkCP</Name>
     </ProjectReference>
     <ProjectReference Include="..\WenSharkGenNHibernate\WenSharkGenNHibernate.csproj">
