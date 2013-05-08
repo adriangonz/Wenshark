@@ -27,6 +27,11 @@ ConceptualModel default {
 			
 			/* Busqueda por nombre completo y por username */
 			public search::ReadFilter (p_filter : String) : List<Object->User> { filter = "FROM UserEN WHERE lower(:p_filter) LIKE %lower(username)%OR lower(:p_filter) LIKE %lower(name)%" };
+			
+			// Favoritos
+			public relationer_favorites::Relationer->Favorite.favorites (p_user : OID -> User, p_song : List<OID -> Song>) : Void;
+			public unrelationer_favorites::Unrelationer->Favorite.favorites (p_user : OID -> User, p_song : List<OID -> Song>) : Void;
+
 			public addNewPlayList::Relationer->UserPlayList.playlist (p_user : OID -> User, p_playlist : List<OID -> PlayList>) : Void;
 		}
 	};
@@ -300,6 +305,11 @@ ConceptualModel default {
  	};
  	
  	
- 	
- 	
+ 	Association Favorite ( User - Song )
+ 	{
+ 		=> navigable favorites:Share ( "0", "*");
+ 		<= navigable user 		( "0", "*");
+ 	};
+ 	 	
+ 	 	 	
 }

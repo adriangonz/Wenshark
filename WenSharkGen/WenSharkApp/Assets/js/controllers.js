@@ -42,7 +42,14 @@ function MainCtrl ($scope, $timeout, $http) {
 		$scope.hideUserName = true;
 	}
 
-	
+	$http
+		.get('/api/favorites')
+		.success(function (data){
+			$scope.favorites = data.songs;
+		})
+		.error(function (data){
+			console.log("ERROR: " + data);	
+		});
 
 
 	$scope.Logout = function () {
@@ -340,34 +347,87 @@ function MainCtrl ($scope, $timeout, $http) {
         update: $scope.dragEnd
     });
 
-/* Pruebas en local 
-	var song1 = {
-		Name: "1",
-		Album: {
-			Image: "/Assets/img/50x50.Img.gif",
-			Name: "Test Album"
-		},
-		Artist: {
-			Name: "Test Artist"
-		},
-		Id: 1,
-		src: "/Assets/songs/test.mp3"
-	};
+    $scope.addListToPlaylist = function (songs) {
+    	if(songs.length != 0){
+			var n_song = $scope.createSong(songs[0]);
 
-	var song2 = {
-		Name: "2",
-		Album: {
-			Image: "/Assets/img/50x50.Img.gif",
-			Name: "Test Album"
-		},
-		Artist: {
-			Name: "Test Artist"
-		},
-		Id: 2,
-		src: "/Assets/songs/test2.mp3"
-	};
-	$scope.addToPlaylist(song1);
-	$scope.addToPlaylist(song2);    */
+			$scope.playlist.push(n_song);
+
+			for(var i = 1; i < songs.length; i++){
+				$scope.playlist.push($scope.createSong(songs[i]));
+			}
+
+			if($scope.current == null) {
+				$scope.current = n_song;
+				$scope.current.play();
+			}
+		}
+	}
+
+	$scope.addListToPlaylistAndPlay = function (songs) {
+		if(songs.length != 0) {
+			var n_song = $scope.createSong(songs[0]);
+
+			$scope.playlist.push(n_song);
+
+			for(var i = 1; i < songs.length; i++){
+				$scope.playlist.push($scope.createSong(songs[i]));
+			}
+
+			if($scope.current != null && $scope.current.isPlaying)
+				$scope.current.stop();
+
+			$scope.current = n_song;
+			$scope.current.play();
+		}
+	}
+
+	$scope.addToFavorites = function (song) {
+		var i = -1;
+		for(i = 0; i < $scope.favorites.length; i++){
+			if($scope.favorites[i].Id == song.Id){
+				break;
+			}
+		}
+		if($scope.favorites.length == 0 || i == $scope.favorites.length){
+			$http
+				.get('/api/favorites?add&song_id=' + song.Id)
+				.success(function (data) {
+					$scope.favorites.push(song);
+					console.log($scope.favorites.length);
+				});
+		}
+	}
+
+	$scope.removeFromFavorites = function (song) {
+		var i;
+		for(i = 0; i < $scope.favorites.length; i++){
+			if($scope.favorites[i].Id == song.Id){
+				break;
+			}
+		}
+		if($scope.favorites.length > 0 && i != $scope.favorites.length){
+			$http
+				.get('/api/favorites?remove&song_id=' + song.Id)
+				.success(function (data) {
+					$scope.favorites.splice(i,1);
+					console.log($scope.favorites.length);
+				});
+		}
+	}
+
+	$scope.isFavorited = function (song) {
+		if(typeof $scope.favorites === "undefined")
+			return false;
+		var i = -1;
+		for(i = 0; i < $scope.favorites.length; i++){
+			if($scope.favorites[i].Id == song.Id){
+				break;
+			}
+		}
+		return i != $scope.favorites.length;
+		//return false;
+	}
 }
 
 //Controller for the search
