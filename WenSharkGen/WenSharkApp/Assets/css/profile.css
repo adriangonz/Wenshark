@@ -1,0 +1,69 @@
+/* Styles for profile page */
+
+.img {
+	position: relative;
+}
+
+.img-edit {
+	position: absolute;
+	display: none;
+
+	top: 25%;
+	right: 25%;
+
+	background-color: white;
+
+	border-radius: 100em;
+
+	height: 47.5%;
+}
+
+.img-edit i {
+
+	font-size: 5em;
+
+	color: rgb(118,180,0);
+
+	cursor: pointer;
+}
+
+.img:hover .img-edit {
+	display: block;
+}
+
+.name {
+	display: inline-block;
+}
+
+.name i {
+	visibility: hidden;
+
+	/*font-size: 1em;*/
+
+	color: rgb(118,180,0);
+
+	cursor: pointer;
+
+	vertical-align: text-bottom;
+}
+
+.name:hover i {
+	visibility: visible;
+}
+
+.edit-buttons {
+	font-size: 1.5em;
+	cursor: pointer;
+
+	vertical-align: baseline;
+
+	margin-left: 0.5%;
+}
+
+.edit-buttons .check {
+	color: green;
+}
+
+.edit-buttons .cancel {
+	color: red;
+}

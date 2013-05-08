@@ -8,9 +8,9 @@ function ProfileCtrl($scope, $routeParams, $http, $location) {
 
 	//Check if same user (to enable editing)
 	if ($scope.getUserId() == $routeParams.id)
-		$scope.editable = true;
+		$scope.isEditable = true;
 	else
-		$scope.editable = false;
+		$scope.isEditable = false;
 
 	//Load the info
 	$http
@@ -24,4 +24,26 @@ function ProfileCtrl($scope, $routeParams, $http, $location) {
 	.error(function() {
 		$location.path('error');
 	});
+
+	$scope.editingName = false;
+	var oldName = '';
+	//Some functions for editing
+	$scope.editName = function () {
+		if(!$scope.isEditable) return;
+
+		$scope.editingName = true;
+		oldName = $scope.user.Name;
+
+		$('.name-txt').attr('contenteditable', 'true');
+	}
+
+	$scope.cancelEdit = function() {
+		$scope.editingName = false;
+		$('.name-txt').attr('contenteditable', 'false');
+		$('.name-txt').html(oldName);
+	}
+
+	$scope.submitEdit = function() {
+		
+	}
 }
