@@ -48,7 +48,6 @@ namespace WenSharkApp.Controllers
 
         [Authorize]
         public HttpResponseMessage getRemoveFavorite(int song_id, string remove) {
-            UserCEN userCEN = new UserCEN();
             SongCEN songCEN = new SongCEN();
 
             int user_id = int.Parse(this.User.Identity.Name);
@@ -58,9 +57,8 @@ namespace WenSharkApp.Controllers
             }
 
             try {
-                List<int> songs = new List<int>();
-                songs.Add(song_id);
-                userCEN.Unrelationer_favorites(user_id, songs);
+                FavoritesCP favCP = new FavoritesCP();
+                favCP.removeUserFavorite(user_id, song_id);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK);
             }

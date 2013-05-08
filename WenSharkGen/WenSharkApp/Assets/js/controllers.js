@@ -365,11 +365,11 @@ function MainCtrl ($scope, $timeout, $http) {
 	$scope.addToFavorites = function (song) {
 		var i = -1;
 		for(i = 0; i < $scope.favorites.length; i++){
-			if($scope.favorites[i] == song){
+			if($scope.favorites[i].Id == song.Id){
 				break;
 			}
 		}
-		if(i != $scope.favorites.length){
+		if($scope.favorites.length == 0 || i == $scope.favorites.length){
 			$http
 				.get('/api/favorites?add&song_id=' + song.Id)
 				.success(function (data) {
@@ -380,13 +380,13 @@ function MainCtrl ($scope, $timeout, $http) {
 	}
 
 	$scope.removeFromFavorites = function (song) {
-		var i = -1;
+		var i;
 		for(i = 0; i < $scope.favorites.length; i++){
-			if($scope.favorites[i] == song){
+			if($scope.favorites[i].Id == song.Id){
 				break;
 			}
 		}
-		if(i != -1){
+		if($scope.favorites.length > 0 && i != $scope.favorites.length){
 			$http
 				.get('/api/favorites?remove&song_id=' + song.Id)
 				.success(function (data) {
@@ -397,13 +397,16 @@ function MainCtrl ($scope, $timeout, $http) {
 	}
 
 	$scope.isFavorited = function (song) {
+		if(typeof $scope.favorites === "undefined")
+			return false;
 		var i = -1;
 		for(i = 0; i < $scope.favorites.length; i++){
-			if($scope.favorites[i] == song){
+			if($scope.favorites[i].Id == song.Id){
 				break;
 			}
 		}
 		return i != $scope.favorites.length;
+		//return false;
 	}
 }
 
