@@ -115,6 +115,7 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\NHibernateContractResolver.cs" />
     <Compile Include="Controllers\PlayListController.cs" />
+    <Compile Include="Controllers\PublicationController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\SongController.cs" />

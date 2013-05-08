@@ -57,5 +57,11 @@ public void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_
 
         _IUserCAD.AddNewPlayList (p_user, p_playlist);
 }
+public void AddNewPublication (int p_user, System.Collections.Generic.IList<int> p_publication)
+{
+        //Call to UserCAD
+
+        _IUserCAD.AddNewPublication (p_user, p_publication);
+}
 }
 }

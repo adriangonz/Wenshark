@@ -28,6 +28,7 @@ ConceptualModel default {
 			/* Busqueda por nombre completo y por username */
 			public search::ReadFilter (p_filter : String) : List<Object->User> { filter = "FROM UserEN WHERE lower(:p_filter) LIKE %lower(username)%OR lower(:p_filter) LIKE %lower(name)%" };
 			public addNewPlayList::Relationer->UserPlayList.playlist (p_user : OID -> User, p_playlist : List<OID -> PlayList>) : Void;
+			public addNewPublication::Relationer->UserPublication.Publication (p_user : OID -> User, p_publication : List<OID -> Publication>) : Void;
 		}
 	};
 	
@@ -315,6 +316,11 @@ ConceptualModel default {
  			public new::New (p_text : String) : Object->Publication;
  			public destroy::Destroy (p_oid : OID -> Publication) : Void;
  			public modify::Modifier (p_oid : OID -> Publication, p_text : String) : Void;
+ 			
+ 			public setItem::Relationer->PublicationItem.Item (p_publication : OID -> Publication, p_item : OID -> Item) : Void;
+ 			public setUser::Relationer->UserPublication.User (p_publication : OID -> Publication, p_user : OID -> User) : Void;
+ 			public unrelate_Item::Unrelationer->PublicationItem.Item (p_publication : OID -> Publication, p_item : OID -> Item) : Void;
+ 			public unrelate_User::Unrelationer->UserPublication.User (p_publication : OID -> Publication, p_user : OID -> User) : Void;
  		}
  	};
  	

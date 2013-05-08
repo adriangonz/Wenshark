@@ -127,5 +127,129 @@ public void Modify (PublicationEN publication)
                 SessionClose ();
         }
 }
+public void SetItem (int p_publication, int p_item)
+{
+        WenSharkGenNHibernate.EN.Default_.PublicationEN publicationEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                publicationEN = (PublicationEN)session.Load (typeof(PublicationEN), p_publication);
+                publicationEN.Item = (WenSharkGenNHibernate.EN.Default_.ItemEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.ItemEN), p_item);
+
+                publicationEN.Item.Publication.Add (publicationEN);
+
+
+
+                session.Update (publicationEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in PublicationCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void SetUser (int p_publication, int p_user)
+{
+        WenSharkGenNHibernate.EN.Default_.PublicationEN publicationEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                publicationEN = (PublicationEN)session.Load (typeof(PublicationEN), p_publication);
+                publicationEN.User = (WenSharkGenNHibernate.EN.Default_.UserEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.UserEN), p_user);
+
+                publicationEN.User.Publication.Add (publicationEN);
+
+
+
+                session.Update (publicationEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in PublicationCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void Unrelate_Item (int p_publication, int p_item)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                WenSharkGenNHibernate.EN.Default_.PublicationEN publicationEN = null;
+                publicationEN = (PublicationEN)session.Load (typeof(PublicationEN), p_publication);
+
+                if (publicationEN.Item.Id == p_item) {
+                        publicationEN.Item = null;
+                }
+                else
+                        throw new ModelException ("The identifier " + p_item + " in p_item you are trying to unrelationer, doesn't exist in PublicationEN");
+
+                session.Update (publicationEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in PublicationCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void Unrelate_User (int p_publication, int p_user)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                WenSharkGenNHibernate.EN.Default_.PublicationEN publicationEN = null;
+                publicationEN = (PublicationEN)session.Load (typeof(PublicationEN), p_publication);
+
+                if (publicationEN.User.Id == p_user) {
+                        publicationEN.User = null;
+                }
+                else
+                        throw new ModelException ("The identifier " + p_user + " in p_user you are trying to unrelationer, doesn't exist in PublicationEN");
+
+                session.Update (publicationEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in PublicationCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

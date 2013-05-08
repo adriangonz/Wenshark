@@ -98,6 +98,8 @@ public static void InitializeData ()
                 UserCEN usCEN = new UserCEN ();
                 usCEN.AddNewPlayList (idUserEjemplo1, listaPlayList);
 
+                
+
 
                 AppUserEN userEjemplo2 = new AppUserEN ();
                 userEjemplo2.Email = "test2@example.com";
@@ -162,8 +164,12 @@ public static void InitializeData ()
                 songcen.Create ("A place for my head", "lk_ht_09.mp3", "audio/mp3", linkin_park.Id, hybrid_theory.Id);
                 songcen.Create ("Forgotten", "lk_ht_10.mp3", "audio/mp3", linkin_park.Id, hybrid_theory.Id);
                 songcen.Create ("Cure for the Itch", "lk_ht_11.mp3", "audio/mp3", linkin_park.Id, hybrid_theory.Id);
-                songcen.Create ("Pushing me away", "lk_ht_12.mp3", "audio/mp3", linkin_park.Id, hybrid_theory.Id);
-
+                SongEN sE = songcen.Create ("Pushing me away", "lk_ht_12.mp3", "audio/mp3", linkin_park.Id, hybrid_theory.Id);
+                
+                PublicationCEN pbCEN = new PublicationCEN();
+                int pb1 = pbCEN.New_("Mirad como mola esto");
+                pbCEN.SetUser(pb1, idUserEjemplo1);
+                pbCEN.SetItem(pb1, sE.Id);
                 //Alguna del fary
                 songcen.Create ("Apatrullando la ciudad", "apatrullando.mp3", "audio/mp3", fary.Id, que_grande_eres.Id);
 

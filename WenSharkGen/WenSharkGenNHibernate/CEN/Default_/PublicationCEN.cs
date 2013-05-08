@@ -64,5 +64,30 @@ public void Modify (int p_oid, string p_text)
 
         _IPublicationCAD.Modify (publicationEN);
 }
+
+public void SetItem (int p_publication, int p_item)
+{
+        //Call to PublicationCAD
+
+        _IPublicationCAD.SetItem (p_publication, p_item);
+}
+public void SetUser (int p_publication, int p_user)
+{
+        //Call to PublicationCAD
+
+        _IPublicationCAD.SetUser (p_publication, p_user);
+}
+public void Unrelate_Item (int p_publication, int p_item)
+{
+        //Call to PublicationCAD
+
+        _IPublicationCAD.Unrelate_Item (p_publication, p_item);
+}
+public void Unrelate_User (int p_publication, int p_user)
+{
+        //Call to PublicationCAD
+
+        _IPublicationCAD.Unrelate_User (p_publication, p_user);
+}
 }
 }

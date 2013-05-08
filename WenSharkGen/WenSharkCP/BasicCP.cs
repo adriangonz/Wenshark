@@ -85,5 +85,23 @@ namespace WenSharkCP
         {
             genre.Item = null;
         }
+
+        protected void nullItem(ItemEN it)
+        {
+            it.Genre = null;
+            it.Publication = null;
+            if (it is SongEN)
+            {
+                nullSong((SongEN)it);
+            }
+            else if (it is AlbumEN)
+            {
+                nullAlbum((AlbumEN)it);
+            }
+            else if (it is ArtistEN)
+            {
+                nullArtist((ArtistEN)it);
+            }
+        }
     }
 }
