@@ -66,18 +66,18 @@ public ArtistEN() : base ()
 
 
 
-public ArtistEN(int id, string bio, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AlbumEN> albums, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+public ArtistEN(int id, string bio, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AlbumEN> albums, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication)
 {
-        this.init (id, bio, image, songs, albums, name, created, type, genre);
+        this.init (id, bio, image, songs, albums, name, created, type, genre, publication);
 }
 
 
 public ArtistEN(ArtistEN artist)
 {
-        this.init (artist.Id, artist.Bio, artist.Image, artist.Songs, artist.Albums, artist.Name, artist.Created, artist.Type, artist.Genre);
+        this.init (artist.Id, artist.Bio, artist.Image, artist.Songs, artist.Albums, artist.Name, artist.Created, artist.Type, artist.Genre, artist.Publication);
 }
 
-private void init (int id, string bio, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AlbumEN> albums, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre)
+private void init (int id, string bio, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> songs, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.AlbumEN> albums, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication)
 {
         this.Id = id;
 
@@ -97,6 +97,8 @@ private void init (int id, string bio, string image, System.Collections.Generic.
         this.Type = type;
 
         this.Genre = genre;
+
+        this.Publication = publication;
 }
 
 public override bool Equals (object obj)

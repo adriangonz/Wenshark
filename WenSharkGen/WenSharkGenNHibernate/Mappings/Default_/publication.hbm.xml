@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="WenSharkGenNHibernate"
+		                   namespace="WenSharkGenNHibernate.EN.Default_">
+			<class name="PublicationEN" table="[Publication]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Text" type="string"> 
+						<column name="[text]"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<many-to-one name="User" class="WenSharkGenNHibernate.EN.Default_.UserEN" >	
+								<column name="[FK_id_User]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Item" class="WenSharkGenNHibernate.EN.Default_.ItemEN" >	
+								<column name="[FK_id_Item]"/>
+						</many-to-one>
+											 					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="PublicationENReadAllHQL">from PublicationEN</query>
+		</hibernate-mapping>
+	

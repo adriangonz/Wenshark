@@ -42,18 +42,18 @@ public AppUserEN() : base ()
 
 
 
-public AppUserEN(int id, string username, string password, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
+public AppUserEN(int id, string username, string password, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication)
 {
-        this.init (id, username, password, name, email, created, playlist);
+        this.init (id, username, password, name, email, created, playlist, publication);
 }
 
 
 public AppUserEN(AppUserEN appUser)
 {
-        this.init (appUser.Id, appUser.Username, appUser.Password, appUser.Name, appUser.Email, appUser.Created, appUser.Playlist);
+        this.init (appUser.Id, appUser.Username, appUser.Password, appUser.Name, appUser.Email, appUser.Created, appUser.Playlist, appUser.Publication);
 }
 
-private void init (int id, string username, string password, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
+private void init (int id, string username, string password, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication)
 {
         this.Id = id;
 
@@ -69,6 +69,8 @@ private void init (int id, string username, string password, string name, string
         this.Created = created;
 
         this.Playlist = playlist;
+
+        this.Publication = publication;
 }
 
 public override bool Equals (object obj)

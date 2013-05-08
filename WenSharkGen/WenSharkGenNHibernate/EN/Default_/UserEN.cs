@@ -35,6 +35,12 @@ private Nullable<DateTime> created;
 
 private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist;
 
+/**
+ *
+ */
+
+private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication;
+
 
 
 
@@ -64,28 +70,34 @@ public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default
 }
 
 
+public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> Publication {
+        get { return publication; } set { publication = value;  }
+}
+
+
 
 
 
 public UserEN()
 {
         playlist = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.PlayListEN>();
+        Publication = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.PublicationEN>();
 }
 
 
 
-public UserEN(int id, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
+public UserEN(int id, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication)
 {
-        this.init (id, name, email, created, playlist);
+        this.init (id, name, email, created, playlist, publication);
 }
 
 
 public UserEN(UserEN user)
 {
-        this.init (user.Id, user.Name, user.Email, user.Created, user.Playlist);
+        this.init (user.Id, user.Name, user.Email, user.Created, user.Playlist, user.Publication);
 }
 
-private void init (int id, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
+private void init (int id, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication)
 {
         this.Id = id;
 
@@ -97,6 +109,8 @@ private void init (int id, string name, string email, Nullable<DateTime> created
         this.Created = created;
 
         this.Playlist = playlist;
+
+        this.Publication = publication;
 }
 
 public override bool Equals (object obj)

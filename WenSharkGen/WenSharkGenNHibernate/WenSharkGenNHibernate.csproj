@@ -154,6 +154,10 @@
 	<Compile Include="CEN\Default_\PlayListCEN.cs" />
 	<Compile Include="CAD\Default_\IPlayListCAD.cs" />
 	<Compile Include="CAD\Default_\PlayListCAD.cs" />
+	<Compile Include="EN\Default_\PublicationEN.cs" />
+	<Compile Include="CEN\Default_\PublicationCEN.cs" />
+	<Compile Include="CAD\Default_\IPublicationCAD.cs" />
+	<Compile Include="CAD\Default_\PublicationCAD.cs" />
 	
 	
 
@@ -179,6 +183,7 @@
 	<EmbeddedResource Include="Mappings\Default_\artist.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Default_\album.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Default_\playlist.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Default_\publication.hbm.xml" />
 	
 	
 
