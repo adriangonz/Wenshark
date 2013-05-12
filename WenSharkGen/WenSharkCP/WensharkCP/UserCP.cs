@@ -41,5 +41,63 @@ namespace WenSharkCP.WensharkCP
 
             return user;
         }
+
+        public void changeName(int oid, string name)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                UserCAD usercad = new UserCAD(session);
+                UserCEN usercen = new UserCEN(usercad);
+                UserEN user;
+
+                user = usercen.GetByID(oid);
+
+                //Si no existe nos salimos
+                if (user == null) throw new Exception();
+
+                user.Name = name;
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+            }
+            finally
+            {
+                SessionClose();
+            }
+        }
+
+        public void changeImage(int oid, string img)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                UserCAD usercad = new UserCAD(session);
+                UserCEN usercen = new UserCEN(usercad);
+                UserEN user;
+
+                user = usercen.GetByID(oid);
+
+                //Si no existe nos salimos
+                if (user == null) throw new Exception();
+
+                user.Image = img;
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+            }
+            finally
+            {
+                SessionClose();
+            }
+        }
     }
 }

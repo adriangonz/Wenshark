@@ -35,6 +35,26 @@ namespace WenSharkApp.Controllers
             return this.Request.CreateResponse(HttpStatusCode.OK, user);
         }
 
+        [Authorize]
+        public HttpResponseMessage postName(int id, string name)
+        {
+            //Si no es el usuario actual PUM!
+            if (int.Parse(this.User.Identity.Name) != id) return this.Request.CreateErrorResponse(HttpStatusCode.Forbidden, new Exception());
+
+            UserCP usercp = new UserCP();
+
+            try
+            {
+                usercp.changeName(id, name);
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch
+            {
+                //Si por algun casual falla, PUM!
+                return this.Request.CreateErrorResponse(HttpStatusCode.NotFound, new Exception());
+            }
+        }
+
         /// <summary>
         /// Este controlador se encarga de logear los usuarios registrados de nuestra aplicación
         /// hay que ver como realizar el login de OAuth y demás
@@ -48,8 +68,7 @@ namespace WenSharkApp.Controllers
             if (appuserCEN.IsValid(user, pass))
             {
                 AppUserEN userEN = appuserCEN.GetByUsername(user)[0];
-                FormsAuthentication.SetAuthCookie(user, false);
-
+                FormsAuthentication.SetAuthCookie(userEN.Id.ToString(), false);
 
                 var res = this.Request.CreateResponse(HttpStatusCode.OK, new { id = userEN.Id, name = userEN.Name });
 
@@ -134,7 +153,7 @@ namespace WenSharkApp.Controllers
                         user.Id = userCEN.New_(idOAuth, token, user.Name, data["email"].ToString(), DateTime.Now, -1, data["picture"].ToString());
                     }
 
-                    FormsAuthentication.SetAuthCookie(idOAuth, false);
+                    FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
                     return this.Request.CreateResponse(HttpStatusCode.OK, new { id = user.Id, name = user.Name });
 
                 }

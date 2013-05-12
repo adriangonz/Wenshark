@@ -44,6 +44,20 @@ function ProfileCtrl($scope, $routeParams, $http, $location) {
 	}
 
 	$scope.submitEdit = function() {
-		
+		var id = $scope.user.Id,
+			name = $('.name-txt').html();
+		$http
+		.post('/api/user?id=' + id + '&name=' + name)
+		.success(function (data) {
+			$('<div data-alert class="alert-box">' + 
+				'<span>Todo ha ido bien :)</span>' + 
+  				'<a href="#" class="close">&times;</a>' + 
+			'</div>').insertAfter('.profile-name');
+			$scope.editingName = false;
+			$('.name-txt').attr('contenteditable', 'false');
+		})
+		.error(function() {
+			alert('Ha habido un error');
+		});
 	}
 }

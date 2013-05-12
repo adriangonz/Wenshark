@@ -14,9 +14,11 @@
 			</div>
 		</span>
 		<span class="small-9 columns">
-			<h1 class="name">
+			<h1 class="name profile-name">
 				<span class="name-txt">{{user.Name}}</span>
-				<i class="foundicon-edit" ng-show="isEditable" ng-hide="editingName" ng-click="editName()"></i>
+				<span ng-show="isEditable">
+					<i class="foundicon-edit" ng-hide="editingName" ng-click="editName()"></i>
+				</span>
 			</h1>
 			<span class="edit-buttons" ng-show="editingName">
 				<i class="foundicon-checkmark check" ng-click="submitEdit()"></i>
