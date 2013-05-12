@@ -26,12 +26,15 @@
 			</span>
 
 			<div ng-show="editingImage">
-				<label for="img-txt">Escribe la URL a la imagen</label>
-				<input id="img-txt" type="text" ng-model="user.Image" />
-				<span class="edit-buttons">
+				<button class="choose-button" ng-click="chooseImage()">Elige una imagen</button>
+				<input class="hidden" id="input-image" type="file" />
+				<span class="edit-buttons" ng-show="imageToUpload">
 					<i class="foundicon-checkmark check" ng-click="submitEditImage()"></i>
 					<i class="foundicon-remove cancel" ng-click="cancelEditImage()"></i>
 				</span>
+				<div>
+					<img ng-src="{{imageURL}}" width="200" ng-show="imageChosen" />
+				</div>
 			</div>
 		</span>
 	</div>

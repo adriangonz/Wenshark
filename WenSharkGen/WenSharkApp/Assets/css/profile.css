@@ -13,9 +13,10 @@
 
 	background-color: white;
 
-	border-radius: 100em;
+	width: 5em;
+	height: 5em;
 
-	height: 47.5%;
+	border-radius: 5em;
 }
 
 .img-edit i {
@@ -70,4 +71,8 @@
 
 .edit-buttons .cancel {
 	color: red;
+}
+
+.choose-button {
+	width: 200px;
 }

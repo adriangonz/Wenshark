@@ -11,6 +11,8 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using WenSharkCP.WensharkCP;
+using System.Web;
+using System.IO;
 
 namespace WenSharkApp.Controllers
 {
@@ -56,17 +58,42 @@ namespace WenSharkApp.Controllers
         }
 
         [Authorize]
-        public HttpResponseMessage postimage(int id, string image)
+        public async Task<HttpResponseMessage> postImage(int id)
         {
             //Si no es el usuario actual PUM!
             if (int.Parse(this.User.Identity.Name) != id) return this.Request.CreateErrorResponse(HttpStatusCode.Forbidden, new Exception());
 
-            UserCP usercp = new UserCP();
+            //Primero subimos la imagen
+            if (!Request.Content.IsMimeMultipartContent())
+                return this.Request.CreateErrorResponse(HttpStatusCode.UnsupportedMediaType, new Exception());
+
+            //La leemos en el servidor...
+            string root = HttpContext.Current.Server.MapPath("~/Assets/img/users");
+            var provider = new MultipartFormDataStreamProvider(root);
+            await Request.Content.ReadAsMultipartAsync(provider);
+
+            //La movemos (para tener un nombre de fichero mas legible)
+            var file = provider.FileData[0];
+            var ext = SongController.defaultExtension(file.Headers.ContentType.MediaType);
+            var new_name = id + ext;
+            var old_path = file.LocalFileName;
+            var old_name = Path.GetFileName(old_path);
+            var new_path = old_path.Replace(old_name, new_name);
+
+            if (File.Exists(new_path))
+                File.Delete(new_path);
+            
+            File.Move(old_path, new_path);
+            
+            //TODO: Cambiarle el tamanyo
 
             try
             {
+                //Ahora guardamos la ruta en la BD
+                var image = "/Assets/img/users/" + new_name;
+                UserCP usercp = new UserCP();
                 usercp.changeImage(id, image);
-                return this.Request.CreateResponse(HttpStatusCode.OK);
+                return this.Request.CreateResponse(HttpStatusCode.OK, image + "?" + DateTime.Now.ToString());
             }
             catch
             {

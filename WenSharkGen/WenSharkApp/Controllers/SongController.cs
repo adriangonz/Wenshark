@@ -21,7 +21,7 @@ namespace WenSharkApp.Controllers
 {
     public class SongController : ApiController
     {
-        private static string defaultExtension(string mimeType)
+        public static string defaultExtension(string mimeType)
         {
             string result;
             RegistryKey key;
