@@ -33,13 +33,13 @@ private Nullable<DateTime> created;
  *
  */
 
-private string image;
+private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist;
 
 /**
  *
  */
 
-private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist;
+private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites;
 
 
 
@@ -65,13 +65,13 @@ public virtual Nullable<DateTime> Created {
 }
 
 
-public virtual string Image {
-        get { return image; } set { image = value;  }
+public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> Playlist {
+        get { return playlist; } set { playlist = value;  }
 }
 
 
-public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> Playlist {
-        get { return playlist; } set { playlist = value;  }
+public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> Favorites {
+        get { return favorites; } set { favorites = value;  }
 }
 
 
@@ -81,22 +81,23 @@ public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default
 public UserEN()
 {
         playlist = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.PlayListEN>();
+        favorites = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.SongEN>();
 }
 
 
 
-public UserEN(int id, string name, string email, Nullable<DateTime> created, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
+public UserEN(int id, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites)
 {
-        this.init (id, name, email, created, image, playlist);
+        this.init (id, name, email, created, playlist, favorites);
 }
 
 
 public UserEN(UserEN user)
 {
-        this.init (user.Id, user.Name, user.Email, user.Created, user.Image, user.Playlist);
+        this.init (user.Id, user.Name, user.Email, user.Created, user.Playlist, user.Favorites);
 }
 
-private void init (int id, string name, string email, Nullable<DateTime> created, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist)
+private void init (int id, string name, string email, Nullable<DateTime> created, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites)
 {
         this.Id = id;
 
@@ -107,9 +108,9 @@ private void init (int id, string name, string email, Nullable<DateTime> created
 
         this.Created = created;
 
-        this.Image = image;
-
         this.Playlist = playlist;
+
+        this.Favorites = favorites;
 }
 
 public override bool Equals (object obj)

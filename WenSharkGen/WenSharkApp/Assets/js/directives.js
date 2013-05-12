@@ -43,6 +43,8 @@
             '</span>' + 
             '<span class="song-controls small-5 columns right">' + 
                 '<ul class="button-group">' + 
+                    '<li ng-hide="isFavorited(song)"><button class="tiny" ng-click="addToFavorites(song)"><span class="foundicon-star"></span></button></li>' +
+                    '<li ng-show="isFavorited(song)"><a class="tiny" ng-click="removeFromFavorites(song)"><span class="foundicon-star"></span></button></li>' +
                     '<li><button class="tiny" ng-click="addToPlaylist(song)"><span class="foundicon-plus"></span></button></li>' + 
                     '<li><button class="tiny" ng-click="addToPlaylistAndPlay(song)"><span class="tiny play"></span></button></li>' +
                 '</ul>' + 
@@ -83,4 +85,15 @@
         template:
             '<span class="radius label">{{genre.Name}}</span>'
     }
-});
+})
+.directive('wsPlaylist',function(){
+    return {
+        restrict: 'A',
+        template:
+            '<div class="row collapse">'+
+            '<a class="large-8 columns" href="#/playlist/{{playlist.Id}}">{{playlist.Name}}</a> ' +
+            '<a style="cursor: pointer" ng-click="playPlayList(playlist)" class="tiny large-2 columns"><span class="tiny play"></span></a>' +
+            '</div>'
+    }
+})
+;

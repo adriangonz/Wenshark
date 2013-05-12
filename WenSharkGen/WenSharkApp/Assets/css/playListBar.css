@@ -1,0 +1,12 @@
+﻿.playListBar {
+	position: fixed;
+	left: 0;
+    height: 100%;
+    width: 170px;
+	background-color: #1b1b1b;
+    border-style: none;
+}
+
+.playListBar h6 {
+    color: white;
+}

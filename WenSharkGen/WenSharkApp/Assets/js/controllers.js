@@ -1,7 +1,7 @@
 /* Controllers for AngularJS */
 
 //Main controller of the app
-function MainCtrl ($scope, $timeout, $location) {
+function MainCtrl ($scope, $timeout, $http, $location) {
 	$scope.search = function (query) {
 	    window.location.href = "/#/search/" + query;	
 	}
@@ -13,18 +13,46 @@ function MainCtrl ($scope, $timeout, $location) {
 		    return false;
 		}
 	}
+	$scope.debug = function (string) {
+	    alert(string);
+	}
+	$scope.playlists = [];
+
+	$scope.loadPlayListPanel = function () {
+	    $('#playListBar').css('display', 'inline');
+	    $scope.loadingPlayList = true;
+	    $http
+            .get('/api/playlist')
+            .success(function (data) {
+                //console.log(data);
+                $scope.playlists = data;
+                $scope.loadingPlayList = false;
+            })
+            .error(function (data) {
+                alert('500: Error interno');
+            });
+	}
 
 	$scope.getUserId = function() {
 		return $.cookie('id');
 	}
 
 	if ($scope.IsLogged()){
-		$scope.hideUserName = false;
-	    $('#nameIdLoggin').html($.cookie("name"));
-	    //console.log($.cookie("name"));
+	    $scope.hideUserName = false;
+	    $scope.loadPlayListPanel();
+	    $('#nameIdLoggin').html($.cookie("name"));	    
 	}else{
 		$scope.hideUserName = true;
 	}
+
+	$http
+		.get('/api/favorites')
+		.success(function (data){
+			$scope.favorites = data.songs;
+		})
+		.error(function (data){
+			console.log("ERROR: " + data);	
+		});
 
 
 	$scope.Logout = function () {
@@ -45,6 +73,7 @@ function MainCtrl ($scope, $timeout, $location) {
 	            $('#idLiUpload').css('display', 'none');
 	            $('#dropDownUserMenu').removeClass('open');
 	            $('#dropDownUserMenu').css("left", "-9999px");
+	            $('#playListBar').css('display', 'none');
 	            //console.log($scope.hideUserName);
 	            $location.path('/');
 	        },
@@ -255,6 +284,7 @@ function MainCtrl ($scope, $timeout, $location) {
 		}
 	}
 
+
 	$scope.updateTime = function () {
 		var curr_seconds = $scope.current.pos();
 		if(typeof curr_seconds === "undefined"){ // No se que pasa, pero la cancion no termina
@@ -322,34 +352,87 @@ function MainCtrl ($scope, $timeout, $location) {
         update: $scope.dragEnd
     });
 
-/* Pruebas en local 
-	var song1 = {
-		Name: "1",
-		Album: {
-			Image: "/Assets/img/50x50.Img.gif",
-			Name: "Test Album"
-		},
-		Artist: {
-			Name: "Test Artist"
-		},
-		Id: 1,
-		src: "/Assets/songs/test.mp3"
-	};
+    $scope.addListToPlaylist = function (songs) {
+    	if(songs.length != 0){
+			var n_song = $scope.createSong(songs[0]);
 
-	var song2 = {
-		Name: "2",
-		Album: {
-			Image: "/Assets/img/50x50.Img.gif",
-			Name: "Test Album"
-		},
-		Artist: {
-			Name: "Test Artist"
-		},
-		Id: 2,
-		src: "/Assets/songs/test2.mp3"
-	};
-	$scope.addToPlaylist(song1);
-	$scope.addToPlaylist(song2);    */
+			$scope.playlist.push(n_song);
+
+			for(var i = 1; i < songs.length; i++){
+				$scope.playlist.push($scope.createSong(songs[i]));
+			}
+
+			if($scope.current == null) {
+				$scope.current = n_song;
+				$scope.current.play();
+			}
+		}
+	}
+
+	$scope.addListToPlaylistAndPlay = function (songs) {
+		if(songs.length != 0) {
+			var n_song = $scope.createSong(songs[0]);
+
+			$scope.playlist.push(n_song);
+
+			for(var i = 1; i < songs.length; i++){
+				$scope.playlist.push($scope.createSong(songs[i]));
+			}
+
+			if($scope.current != null && $scope.current.isPlaying)
+				$scope.current.stop();
+
+			$scope.current = n_song;
+			$scope.current.play();
+		}
+	}
+
+	$scope.addToFavorites = function (song) {
+		var i = -1;
+		for(i = 0; i < $scope.favorites.length; i++){
+			if($scope.favorites[i].Id == song.Id){
+				break;
+			}
+		}
+		if($scope.favorites.length == 0 || i == $scope.favorites.length){
+			$http
+				.get('/api/favorites?add&song_id=' + song.Id)
+				.success(function (data) {
+					$scope.favorites.push(song);
+					console.log($scope.favorites.length);
+				});
+		}
+	}
+
+	$scope.removeFromFavorites = function (song) {
+		var i;
+		for(i = 0; i < $scope.favorites.length; i++){
+			if($scope.favorites[i].Id == song.Id){
+				break;
+			}
+		}
+		if($scope.favorites.length > 0 && i != $scope.favorites.length){
+			$http
+				.get('/api/favorites?remove&song_id=' + song.Id)
+				.success(function (data) {
+					$scope.favorites.splice(i,1);
+					console.log($scope.favorites.length);
+				});
+		}
+	}
+
+	$scope.isFavorited = function (song) {
+		if(typeof $scope.favorites === "undefined")
+			return false;
+		var i = -1;
+		for(i = 0; i < $scope.favorites.length; i++){
+			if($scope.favorites[i].Id == song.Id){
+				break;
+			}
+		}
+		return i != $scope.favorites.length;
+		//return false;
+	}
 }
 
 //Controller for the search
@@ -435,7 +518,9 @@ function SignInCtrl($scope, $routeParams, $http) {
                 $('#idSignUpLi').css('display', 'none');
                 $('#idNameLi').css('display', 'inline');
                 $('#idLiUpload').css('display', 'inline');
+                
                 $scope.tryingLoginOrSignUp = false;
+                $scope.loadPlayListPanel();
             })
             .error(function (data) {
             	$scope.tryingLoginOrSignUp = false;
