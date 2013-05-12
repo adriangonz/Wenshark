@@ -8,6 +8,7 @@ ConceptualModel default {
 			private name : String; /* Nombre completo del usuario */
 			private email : String; /* Email del usuario */
 			private created : Date; /* Fecha de creacion */
+			private image : String; /* URL a la imagen del usuario */
 		}
 		
 		operations
@@ -27,6 +28,11 @@ ConceptualModel default {
 			
 			/* Busqueda por nombre completo y por username */
 			public search::ReadFilter (p_filter : String) : List<Object->User> { filter = "FROM UserEN WHERE name LIKE '%' || :p_filter || '%'" };
+			
+			// Favoritos
+			public relationer_favorites::Relationer->Favorite.favorites (p_user : OID -> User, p_song : List<OID -> Song>) : Void;
+			public unrelationer_favorites::Unrelationer->Favorite.favorites (p_user : OID -> User, p_song : List<OID -> Song>) : Void;
+
 			public addNewPlayList::Relationer->UserPlayList.playlist (p_user : OID -> User, p_playlist : List<OID -> PlayList>) : Void;
 			
 			public relationer_sigues::Relationer->Seguir.sigues (p_user : OID -> User, p_user2 : List<OID -> User>) : Void;
@@ -51,9 +57,9 @@ ConceptualModel default {
 		operations
 		{
 			/* Metodos basicos */
-			public new::New (p_password : String, p_name : String, p_username : String, p_email : String, p_created : Date) : Object->AppUser;
+			public new::New (p_password : String, p_name : String, p_username : String, p_email : String, p_created : Date, p_image : String) : Object->AppUser;
 			public destroy::Destroy (p_oid : OID -> AppUser) : Void;
-			public modify::Modifier (p_oid : OID -> AppUser, p_password : String, p_name : String, p_username : String, p_email : String, p_created : Date) : Void;
+			public modify::Modifier (p_oid : OID -> AppUser, p_password : String, p_name : String, p_username : String, p_email : String, p_created : Date, p_image : String) : Void;
 		
 			public getByUsername::ReadFilter (p_filter : String) : List<Object->AppUser> { filter = "FROM AppUserEN WHERE username = :p_filter" };
 			
@@ -75,8 +81,8 @@ ConceptualModel default {
 		operations
 		{
 			/* Metodos basicos */
-			public new::New (p_idOAuth : String, p_token_oauth : String, p_name : String, p_email : String, p_created : Date, p_provider : OID -> OAuthProvider) : Object->OAuthUser;
-			public modify::Modifier (p_oid : OID -> OAuthUser, p_idOAuth : String, p_token_oauth : String, p_name : String, p_email : String, p_created : Date) : Void;
+			public new::New (p_idOAuth : String, p_token_oauth : String, p_name : String, p_email : String, p_created : Date, p_provider : OID -> OAuthProvider, p_image : String) : Object->OAuthUser;
+			public modify::Modifier (p_oid : OID -> OAuthUser, p_idOAuth : String, p_token_oauth : String, p_name : String, p_email : String, p_created : Date, p_image : String) : Void;
 			public destroy::Destroy (p_oid : OID -> OAuthUser) : Void;
 
 			public getByidOAuth::ReadFilter (p_filter : String) : List<Object->OAuthUser> { filter = "FROM OAuthUserEN WHERE idOAuth = :p_filter" };
@@ -308,6 +314,11 @@ ConceptualModel default {
  	};
  	
  	
- 	
- 	
+ 	Association Favorite ( User - Song )
+ 	{
+ 		=> navigable favorites:Share ( "0", "*");
+ 		<= navigable user 		( "0", "*");
+ 	};
+ 	 	
+ 	 	 	
 }

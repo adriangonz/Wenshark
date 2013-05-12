@@ -103,6 +103,9 @@ public void Modify (OAuthUserEN oAuthUser)
 
                 oAuthUserEN.Created = oAuthUser.Created;
 
+
+                oAuthUserEN.Image = oAuthUser.Image;
+
                 session.Update (oAuthUserEN);
                 SessionCommit ();
         }

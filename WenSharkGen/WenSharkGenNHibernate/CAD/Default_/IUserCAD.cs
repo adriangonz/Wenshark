@@ -17,6 +17,10 @@ System.Collections.Generic.IList<UserEN> GetAll (int first, int size);
 System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> Search (string p_filter);
 
 
+void Relationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song);
+
+void Unrelationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song);
+
 void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_playlist);
 
 void Relationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2);

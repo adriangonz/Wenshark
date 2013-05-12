@@ -1,0 +1,18 @@
+<!-- Partial view for the items' search -->
+<div class="panel">
+	<h1>Favoritos </h1>
+	
+	<ul class="button-group">
+		<li><button class="tiny" ng-click="addToFavorites(songs)"><span class="foundicon-star"></span></button></li> 
+		<li><button class="tiny" ng-click="addListToPlaylist(favorites)"><span class="foundicon-plus"></span></button></li> 
+        <li><button class="tiny" ng-click="addListToPlaylistAndPlay(favorites)"><span class="tiny play"></span></button></li>
+	</ul>
+
+	<div class="content">
+		<ul class="items-list" ng-show="favorites.length">
+			<li class="song-thumb row th" ng-repeat="song in favorites" ws-song></li>
+		</ul>
+
+		<h2 class="subheader" ng-show="!favorites.length">No se han encontrado canciones :(</h2>
+	</div>
+</div>

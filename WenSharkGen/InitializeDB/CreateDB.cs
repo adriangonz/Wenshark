@@ -87,8 +87,7 @@ public static void InitializeData ()
                 userEjemplo1.Username = "test1";
                 userEjemplo1.Password = "test1";
                 userEjemplo1.Created = DateTime.Now;
-                int idUserEjemplo1 = userCEN.New_ (userEjemplo1.Password, userEjemplo1.Name, userEjemplo1.Username, userEjemplo1.Email, userEjemplo1.Created);
-
+                int idUserEjemplo1 = userCEN.New_(userEjemplo1.Password, userEjemplo1.Name, userEjemplo1.Username, userEjemplo1.Email, userEjemplo1.Created, "");
 
                 PlayListCEN plCEN = new PlayListCEN ();
                 int pl1 = plCEN.New_ ("Lista test1 1");
@@ -98,14 +97,13 @@ public static void InitializeData ()
                 UserCEN usCEN = new UserCEN ();
                 usCEN.AddNewPlayList (idUserEjemplo1, listaPlayList);
 
-
                 AppUserEN userEjemplo2 = new AppUserEN ();
                 userEjemplo2.Email = "test2@example.com";
                 userEjemplo2.Name = "Otro señor";
                 userEjemplo2.Username = "test2";
                 userEjemplo2.Password = "test2";
                 userEjemplo2.Created = DateTime.Now;
-                userCEN.New_ (userEjemplo2.Password, userEjemplo2.Name, userEjemplo2.Username, userEjemplo2.Email, userEjemplo2.Created);
+                userCEN.New_ (userEjemplo2.Password, userEjemplo2.Name, userEjemplo2.Username, userEjemplo2.Email, userEjemplo2.Created, "");
 
                 //Creo algo de contenido
                 ArtistCEN artistcen = new ArtistCEN ();

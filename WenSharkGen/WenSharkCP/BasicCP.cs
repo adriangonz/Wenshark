@@ -79,6 +79,7 @@ namespace WenSharkCP
             song.Artist = new ArtistEN { Name = song.Artist.Name, Id = song.Artist.Id, Genre = null, Albums = null };
             song.Genre = null;
             song.Playlist = null;
+            song.User = null;
         }
 
         protected void nullGenre(GenreEN genre)

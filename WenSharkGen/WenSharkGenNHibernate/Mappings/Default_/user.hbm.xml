@@ -16,6 +16,10 @@
 					<property name="Created" type="date"> 
 						<column name="[created]"  not-null="true"/>
 					</property>
+					<property name="Image" type="string"> 
+						<column name="[image]"  not-null="true"/>
+					</property>
+			
 			
 			
 			
@@ -48,6 +52,18 @@
 					      	</key>
 							<one-to-many class="WenSharkGenNHibernate.EN.Default_.PlayListEN"/>
 					    </bag>
+					
+			
+		  			
+						<bag name="Favorites" table="[Favorite]" inverse="true" >
+							<key>
+									<column name="[FK_id_user]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.SongEN">
+									<column name="[FK_id_favorites]"/>
+      						</many-to-many>
+    					</bag>
+					
 					
 					
 					
