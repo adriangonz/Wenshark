@@ -186,6 +186,7 @@
     <Content Include="Assets\js\controllers\artist.js" />
     <Content Include="Assets\js\controllers\ctrlPlayList.js" />
     <Content Include="Assets\js\controllers\NewPlaylitCtrl.js" />
+    <Content Include="Assets\js\controllers\sharePublicationCtrl.js" />
     <Content Include="Assets\js\directives.js" />
     <Content Include="Assets\js\foundation.min.js" />
     <Content Include="Assets\js\foundation\foundation.alerts.js" />
@@ -218,6 +219,7 @@
     <Content Include="Assets\partials\loading.html" />
     <Content Include="Assets\partials\login.html" />
     <Content Include="Assets\partials\main.html" />
+    <Content Include="Assets\partials\modalNewPublication.html" />
     <Content Include="Assets\partials\modalSignUp.html" />
     <Content Include="Assets\partials\panelPlayList.html" />
     <Content Include="Assets\partials\playListPage.html" />
