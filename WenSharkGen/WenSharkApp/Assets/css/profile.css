@@ -31,6 +31,10 @@
 	display: block;
 }
 
+.img-edit.active {
+	display: block !important;
+}
+
 .name {
 	display: inline-block;
 }

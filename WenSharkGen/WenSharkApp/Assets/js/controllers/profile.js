@@ -30,6 +30,7 @@ function ProfileCtrl($scope, $routeParams, $http, $location) {
 	//Some functions for editing
 	$scope.editName = function () {
 		if(!$scope.isEditable) return;
+		if($scope.editingImage) return;
 
 		$scope.editingName = true;
 		oldName = $scope.user.Name;
@@ -37,24 +38,68 @@ function ProfileCtrl($scope, $routeParams, $http, $location) {
 		$('.name-txt').attr('contenteditable', 'true');
 	}
 
-	$scope.cancelEdit = function() {
+	$scope.cancelEditName = function() {
+		if(!$scope.isEditable) return;
+
 		$scope.editingName = false;
 		$('.name-txt').attr('contenteditable', 'false');
 		$('.name-txt').html(oldName);
 	}
 
-	$scope.submitEdit = function() {
+	$scope.submitEditName = function() {
+		if(!$scope.isEditable) return;
+
 		var id = $scope.user.Id,
 			name = $('.name-txt').html();
 		$http
 		.post('/api/user?id=' + id + '&name=' + name)
 		.success(function (data) {
 			$('<div data-alert class="alert-box">' + 
-				'<span>Todo ha ido bien :)</span>' + 
+				'<span>Tu nombre se ha actualizado :)</span>' + 
   				'<a href="#" class="close">&times;</a>' + 
 			'</div>').insertAfter('.profile-name');
 			$scope.editingName = false;
 			$('.name-txt').attr('contenteditable', 'false');
+		})
+		.error(function() {
+			alert('Ha habido un error');
+		});
+	}
+
+	//Editing the image
+	var oldImage = '';
+	$scope.editImage = function() {
+		if(!$scope.isEditable) return;
+		if($scope.editingName) return;
+
+		$scope.editingImage = true;
+		$('.img-edit').addClass('active');
+		oldImage = $scope.user.Image;
+	}
+
+	$scope.cancelEditImage = function() {
+		if(!$scope.isEditable) return;
+
+		$scope.editingImage = false;
+		$('.img-edit').removeClass('active');
+		$scope.user.Image = oldImage;
+	}
+
+	$scope.submitEditImage = function() {
+		if(!$scope.isEditable) return;
+
+		var id = $scope.user.Id,
+			image = $scope.user.Image;
+
+		$http
+		.post('/api/user?id=' + id + '&image=' + image)
+		.success(function (data) {
+			$('<div data-alert class="alert-box">' + 
+				'<span>Tu imagen se ha actualizado :)</span>' + 
+  				'<a href="#" class="close">&times;</a>' + 
+			'</div>').insertAfter('.profile-name');
+			$scope.editingImage = false;
+			$('.img-edit').removeClass('active');
 		})
 		.error(function() {
 			alert('Ha habido un error');

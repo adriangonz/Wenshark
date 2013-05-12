@@ -55,6 +55,26 @@ namespace WenSharkApp.Controllers
             }
         }
 
+        [Authorize]
+        public HttpResponseMessage postimage(int id, string image)
+        {
+            //Si no es el usuario actual PUM!
+            if (int.Parse(this.User.Identity.Name) != id) return this.Request.CreateErrorResponse(HttpStatusCode.Forbidden, new Exception());
+
+            UserCP usercp = new UserCP();
+
+            try
+            {
+                usercp.changeImage(id, image);
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch
+            {
+                //Si por algun casual falla, PUM!
+                return this.Request.CreateErrorResponse(HttpStatusCode.NotFound, new Exception());
+            }
+        }
+
         /// <summary>
         /// Este controlador se encarga de logear los usuarios registrados de nuestra aplicación
         /// hay que ver como realizar el login de OAuth y demás

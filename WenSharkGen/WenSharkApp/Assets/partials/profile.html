@@ -8,7 +8,7 @@
 		<span class="small-3 columns left">
 			<div class="img">
 				<img src="{{user.Image}}" width="200" />
-				<div class="img-edit">
+				<div class="img-edit" ng-hide="editingName">
 					<i class="enclose-icon foundicon-edit" ng-click="editImage()" ng-show="isEditable"></i>
 				</div>
 			</div>
@@ -16,14 +16,23 @@
 		<span class="small-9 columns">
 			<h1 class="name profile-name">
 				<span class="name-txt">{{user.Name}}</span>
-				<span ng-show="isEditable">
+				<span ng-show="isEditable" ng-hide="editingImage">
 					<i class="foundicon-edit" ng-hide="editingName" ng-click="editName()"></i>
 				</span>
 			</h1>
 			<span class="edit-buttons" ng-show="editingName">
-				<i class="foundicon-checkmark check" ng-click="submitEdit()"></i>
-				<i class="foundicon-remove cancel" ng-click="cancelEdit()"></i>
+				<i class="foundicon-checkmark check" ng-click="submitEditName()"></i>
+				<i class="foundicon-remove cancel" ng-click="cancelEditName()"></i>
 			</span>
+
+			<div ng-show="editingImage">
+				<label for="img-txt">Escribe la URL a la imagen</label>
+				<input id="img-txt" type="text" ng-model="user.Image" />
+				<span class="edit-buttons">
+					<i class="foundicon-checkmark check" ng-click="submitEditImage()"></i>
+					<i class="foundicon-remove cancel" ng-click="cancelEditImage()"></i>
+				</span>
+			</div>
 		</span>
 	</div>
 </div>
