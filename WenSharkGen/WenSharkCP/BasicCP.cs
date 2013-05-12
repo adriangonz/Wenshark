@@ -85,5 +85,12 @@ namespace WenSharkCP
         {
             genre.Item = null;
         }
+
+        protected void nullUser(UserEN user)
+        {
+            user.Playlist = null;
+            user.Seguidores = null;
+            user.Sigues = null;
+        }
     }
 }

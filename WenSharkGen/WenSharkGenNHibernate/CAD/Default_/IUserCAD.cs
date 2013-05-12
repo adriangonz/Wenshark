@@ -18,5 +18,9 @@ System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> Searc
 
 
 void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_playlist);
+
+void Relationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2);
+
+void Unrelationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2);
 }
 }

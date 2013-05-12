@@ -26,11 +26,19 @@ ConceptualModel default {
 			public getAll::ReadAll (/* No arguments */) : List<Object->User>;
 			
 			/* Busqueda por nombre completo y por username */
-			public search::ReadFilter (p_filter : String) : List<Object->User> { filter = "FROM UserEN WHERE lower(:p_filter) LIKE %lower(username)%OR lower(:p_filter) LIKE %lower(name)%" };
+			public search::ReadFilter (p_filter : String) : List<Object->User> { filter = "FROM UserEN WHERE name LIKE '%' || :p_filter || '%'" };
 			public addNewPlayList::Relationer->UserPlayList.playlist (p_user : OID -> User, p_playlist : List<OID -> PlayList>) : Void;
+			
+			public relationer_sigues::Relationer->Seguir.sigues (p_user : OID -> User, p_user2 : List<OID -> User>) : Void;
+			public unrelationer_sigues::Unrelationer->Seguir.sigues (p_user : OID -> User, p_user2 : List<OID -> User>) : Void;
 		}
 	};
 	
+	Association Seguir (User - User)
+	{
+		=> navigable sigues ("0","*");
+		<= navigable seguidores ("0","*");
+	};
 	
 	Class AppUser extends User /* Usuario registrado en nuestra app */
 	{

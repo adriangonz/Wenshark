@@ -22,6 +22,26 @@
 			
 			
 		  			
+						<bag name="Sigues" table="[Seguir]" inverse="true" >
+							<key>
+									<column name="[FK_id_sigues]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.UserEN">
+									<column name="[FK_id_seguidores]"/>
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Seguidores" table="[Seguir]"  >
+							<key>
+									<column name="[FK_id_seguidores]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.UserEN">
+									<column name="[FK_id_sigues]"/>
+      						</many-to-many>
+    					</bag>
+			
+		  			
 						<bag name="Playlist" >
 							<key>
 								<column name="[FK_id_user]"/>
@@ -34,10 +54,12 @@
 					
 					
 					
+					
+					
 		
 		  </class>
 		  
 		  <query name="UserENReadAllHQL">from UserEN</query>
-		  <query name="UserENsearchHQL"><![CDATA[FROM UserEN WHERE lower(:p_filter) LIKE %lower(username)%OR lower(:p_filter) LIKE %lower(name)%]]></query>
+		  <query name="UserENsearchHQL"><![CDATA[FROM UserEN WHERE name LIKE '%' || :p_filter || '%']]></query>
 		</hibernate-mapping>
 	

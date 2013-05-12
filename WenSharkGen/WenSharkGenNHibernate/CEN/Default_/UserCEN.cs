@@ -57,5 +57,17 @@ public void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_
 
         _IUserCAD.AddNewPlayList (p_user, p_playlist);
 }
+public void Relationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2)
+{
+        //Call to UserCAD
+
+        _IUserCAD.Relationer_sigues (p_user, p_user2);
+}
+public void Unrelationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2)
+{
+        //Call to UserCAD
+
+        _IUserCAD.Unrelationer_sigues (p_user, p_user2);
+}
 }
 }
