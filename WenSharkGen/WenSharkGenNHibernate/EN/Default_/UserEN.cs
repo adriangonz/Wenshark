@@ -33,6 +33,12 @@ private Nullable<DateTime> created;
  *
  */
 
+private string image;
+
+/**
+ *
+ */
+
 private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> sigues;
 
 /**
@@ -40,12 +46,6 @@ private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserE
  */
 
 private System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> seguidores;
-
-/**
- *
- */
-
-private string image;
 
 /**
  *
@@ -83,6 +83,11 @@ public virtual Nullable<DateTime> Created {
 }
 
 
+public virtual string Image {
+        get { return image; } set { image = value;  }
+}
+
+
 public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> Sigues {
         get { return sigues; } set { sigues = value;  }
 }
@@ -90,11 +95,6 @@ public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default
 
 public virtual System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> Seguidores {
         get { return seguidores; } set { seguidores = value;  }
-}
-
-
-public virtual string Image {
-        get { return image; } set { image = value;  }
 }
 
 
@@ -121,18 +121,18 @@ public UserEN()
 
 
 
-public UserEN(int id, string name, string email, Nullable<DateTime> created, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites)
+public UserEN(int id, string name, string email, Nullable<DateTime> created, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> sigues, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> seguidores, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites)
 {
-        this.init (id, name, email, created, image, playlist, favorites);
+        this.init (id, name, email, created, image, sigues, seguidores, playlist, favorites);
 }
 
 
 public UserEN(UserEN user)
 {
-        this.init (user.Id, user.Name, user.Email, user.Created, user.Image, user.Playlist, user.Favorites);
+        this.init (user.Id, user.Name, user.Email, user.Created, user.Image, user.Sigues, user.Seguidores, user.Playlist, user.Favorites);
 }
 
-private void init (int id, string name, string email, Nullable<DateTime> created, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites)
+private void init (int id, string name, string email, Nullable<DateTime> created, string image, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> sigues, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> seguidores, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.SongEN> favorites)
 {
         this.Id = id;
 
@@ -143,11 +143,11 @@ private void init (int id, string name, string email, Nullable<DateTime> created
 
         this.Created = created;
 
+        this.Image = image;
+
         this.Sigues = sigues;
 
         this.Seguidores = seguidores;
-
-        this.Image = image;
 
         this.Playlist = playlist;
 

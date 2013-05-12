@@ -92,6 +92,7 @@ namespace WenSharkCP
             user.Playlist = null;
             user.Seguidores = null;
             user.Sigues = null;
+            user.Favorites = null;
         }
     }
 }
