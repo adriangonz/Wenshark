@@ -26,7 +26,11 @@ namespace WenSharkCP.WensharkCP
 
                 if (user == null) throw new Exception();
 
-                //TODO (Adri): Cargar y mostrar las playlists
+                foreach (SongEN s in user.Favorites)
+                {
+                    nullSong(s);
+                }
+
                 user.Playlist = null;
             }
             catch (Exception ex)
