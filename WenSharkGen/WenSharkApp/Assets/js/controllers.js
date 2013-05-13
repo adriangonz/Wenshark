@@ -442,10 +442,11 @@ function SearchCtrl ($scope, $routeParams, $http) {
 	$http
 		.get('/api/search?name=' + $scope.query)
 		.success(function (data) {
-			//console.log(data);
 			$scope.songs = data.songs;
 			$scope.albums = data.albums;
 			$scope.artists = data.artists;
+			$scope.users = data.users;
+			console.log(data.users);
 
 			$(document).foundation('section', function () {
 				$scope.loading = false;
@@ -455,6 +456,7 @@ function SearchCtrl ($scope, $routeParams, $http) {
 			$scope.songs = [];
 			$scope.albums = [];
 			$scope.artists = [];
+			$scope.users = [];
 			
 			$(document).foundation('section', function () {
 				$scope.loading = false;

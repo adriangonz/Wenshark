@@ -86,6 +86,20 @@
             '<span class="radius label">{{genre.Name}}</span>'
     }
 })
+.directive('wsUser',function(){
+    return {
+        restrict: 'A',
+        template:
+            '<span class="small-2 columns left">' +
+                '<img src="{{user.Id}}" width="50" />' +
+            '</span>' +
+            '<span class="small-6 columns left">' +
+                '<a href="#/profile/{{user.Id}}">' +
+                    '<p class="name">{{user.Name}}</p>' +
+                '</a>' +
+            '</span>'
+    }
+})
 .directive('wsPlaylist',function(){
     return {
         restrict: 'A',
