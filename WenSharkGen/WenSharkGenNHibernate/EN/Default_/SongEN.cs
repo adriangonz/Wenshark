@@ -23,6 +23,12 @@ private string mime;
  *
  */
 
+private int listenedTimes;
+
+/**
+ *
+ */
+
 private WenSharkGenNHibernate.EN.Default_.ArtistEN artist;
 
 /**
@@ -57,6 +63,11 @@ public virtual string Mime {
 }
 
 
+public virtual int ListenedTimes {
+        get { return listenedTimes; } set { listenedTimes = value;  }
+}
+
+
 public virtual WenSharkGenNHibernate.EN.Default_.ArtistEN Artist {
         get { return artist; } set { artist = value;  }
 }
@@ -88,18 +99,18 @@ public SongEN() : base ()
 
 
 
-public SongEN(int id, string fname, string mime, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, WenSharkGenNHibernate.EN.Default_.AlbumEN album, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> user, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication)
+public SongEN(int id, string fname, string mime, int listenedTimes, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, WenSharkGenNHibernate.EN.Default_.AlbumEN album, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> user, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication)
 {
-        this.init (id, fname, mime, artist, album, playlist, user, name, created, type, genre, publication);
+        this.init (id, fname, mime, listenedTimes, artist, album, playlist, user, name, created, type, genre, publication);
 }
 
 
 public SongEN(SongEN song)
 {
-        this.init (song.Id, song.Fname, song.Mime, song.Artist, song.Album, song.Playlist, song.User, song.Name, song.Created, song.Type, song.Genre, song.Publication);
+        this.init (song.Id, song.Fname, song.Mime, song.ListenedTimes, song.Artist, song.Album, song.Playlist, song.User, song.Name, song.Created, song.Type, song.Genre, song.Publication);
 }
 
-private void init (int id, string fname, string mime, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, WenSharkGenNHibernate.EN.Default_.AlbumEN album, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> user, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication)
+private void init (int id, string fname, string mime, int listenedTimes, WenSharkGenNHibernate.EN.Default_.ArtistEN artist, WenSharkGenNHibernate.EN.Default_.AlbumEN album, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PlayListEN> playlist, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN> user, string name, Nullable<DateTime> created, string type, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.GenreEN> genre, System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.PublicationEN> publication)
 {
         this.Id = id;
 
@@ -107,6 +118,8 @@ private void init (int id, string fname, string mime, WenSharkGenNHibernate.EN.D
         this.Fname = fname;
 
         this.Mime = mime;
+
+        this.ListenedTimes = listenedTimes;
 
         this.Artist = artist;
 

@@ -49,6 +49,7 @@ namespace WenSharkCP.WensharkCP
                     nullGenre(genre);
                 }
 
+                artista.Publication = null;
                 //No queremos que se modifique la BD
                 //SessionCommit();
             }

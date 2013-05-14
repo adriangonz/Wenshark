@@ -41,6 +41,7 @@ namespace WenSharkCP.WensharkCP
                 }
 
                 nullArtist(album.Artist);
+                album.Publication = null;
 
                 //No queremos que se modifique la BD
                 //SessionCommit();
@@ -48,7 +49,7 @@ namespace WenSharkCP.WensharkCP
             catch (Exception ex)
             {
                 SessionRollBack();
-                throw ex;
+                //throw ex;
             }
             finally
             {

@@ -51,6 +51,7 @@
     <Compile Include="WensharkCP\ArtistCP.cs" />
     <Compile Include="WensharkCP\PublicationCP.cs" />
     <Compile Include="WensharkCP\SearchCP.cs" />
+    <Compile Include="WensharkCP\SongCP.cs" />
     <Compile Include="WensharkCP\UserCP.cs" />
   </ItemGroup>
   <ItemGroup>

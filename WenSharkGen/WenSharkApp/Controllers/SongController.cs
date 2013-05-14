@@ -16,6 +16,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.IO.MemoryMappedFiles;
 using System.Web.Mvc;
+using WenSharkCP.WensharkCP;
 
 namespace WenSharkApp.Controllers
 {
@@ -110,10 +111,17 @@ namespace WenSharkApp.Controllers
             return resul;
         }
 
+        public List<SongEN> getMostPopular(string popular)
+        {
+            SongCP songcp = new SongCP();
+
+            return songcp.getMostPopular();
+        }
+
         public HttpResponseMessage getSong(string file, int id)
         {
-            SongCEN songcen = new SongCEN();
-            SongEN song = songcen.ReadOID(id);
+            SongCP songcp = new SongCP();
+            SongEN song = songcp.getSong(id);
 
             if (song == null)
                 return new HttpResponseMessage(HttpStatusCode.NotFound);
