@@ -64,6 +64,7 @@ namespace WenSharkCP
             artist.Songs = null;
             artist.Albums = null;
             artist.Genre = null;
+            artist.Publication = null;
         }
 
         protected void nullAlbum(AlbumEN album)
@@ -71,6 +72,8 @@ namespace WenSharkCP
             album.Songs = null;
             album.Artist = null;
             album.Genre = null;
+            album.Publication = null;
+
         }
 
         protected void nullSong(SongEN song)
@@ -80,6 +83,7 @@ namespace WenSharkCP
             song.Genre = null;
             song.Playlist = null;
             song.User = null;
+            song.Publication = null;
         }
 
         protected void nullGenre(GenreEN genre)
@@ -93,6 +97,25 @@ namespace WenSharkCP
             user.Seguidores = null;
             user.Sigues = null;
             user.Favorites = null;
+            user.Publication = null;
+        }
+
+        protected void nullItem(ItemEN it)
+        {
+            it.Genre = null;
+            it.Publication = null;
+            if (it is SongEN)
+            {
+                nullSong((SongEN)it);
+            }
+            else if (it is AlbumEN)
+            {
+                nullAlbum((AlbumEN)it);
+            }
+            else if (it is ArtistEN)
+            {
+                nullArtist((ArtistEN)it);
+            }
         }
     }
 }

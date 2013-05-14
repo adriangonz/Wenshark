@@ -1,0 +1,21 @@
+﻿<h2>Nueva publicación</h2>
+<form id="formSignUp" ng-controller="sharePublicationCtrl" ng-submit="share()">
+    <div class="row">
+        <div class="large-12 columns">
+            <label>Descripción</label>
+            <textarea placeholder="Escuchad todos mi nuevo single, va a ser un bombazo...o no" ng-model="publication.text" ></textarea>
+        </div>
+    </div>
+    <!--
+    <div class="row">
+        <div class="large-12 columns">
+            <label>Relacionado con</label>
+            <input type="text" placeholder="Canción, album, artista..." ng-model="itemClickedToPublish" required>
+        </div>
+    </div>-->
+    <div class="row">
+        <input ng-hide="sharing" class="button small right" type="submit" value="Compartir" />
+        <img ng-show="sharing" class="center" src="/Assets/img/loadingGif.gif"/>
+    </div>
+</form>
+<a class="close-reveal-modal">&#215;</a>

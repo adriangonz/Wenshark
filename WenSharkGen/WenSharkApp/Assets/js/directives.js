@@ -44,11 +44,14 @@
             '<span class="song-controls small-5 columns right">' + 
                 '<ul class="button-group">' + 
                     '<li ng-hide="isFavorited(song)"><button class="tiny" ng-click="addToFavorites(song)"><span class="foundicon-star"></span></button></li>' +
-                    '<li ng-show="isFavorited(song)"><a class="tiny" ng-click="removeFromFavorites(song)"><span class="foundicon-star"></span></button></li>' +
-                    '<li><button class="tiny" ng-click="addToPlaylist(song)"><span class="foundicon-plus"></span></button></li>' + 
+                    '<li ng-show="isFavorited(song)"><a class="tiny" ng-click="removeFromFavorites(song)"><span class="foundicon-star"></span></a></li>' +
+                    '<li><button class="tiny" ng-click="addNewPlublication(song)" data-reveal-id="modalNewPublication"><span class="foundicon-globe"></span></button></li>' +
+                    '<li><button class="tiny" ng-click="addToPlaylist(song)"><span class="foundicon-plus"></span></button></li>' +
                     '<li><button class="tiny" ng-click="addToPlaylistAndPlay(song)"><span class="tiny play"></span></button></li>' +
+                    
                 '</ul>' + 
-            '</span>'
+            '</span>' 
+            
     }
 })
 .directive('wsAlbum', function() {
@@ -62,6 +65,11 @@
                 '<a href="#/album/{{album.Id}}">' + 
                     '<p class="name">{{album.Name}}</p>' + 
                 '</a>' + 
+            '</span>'+
+            '<span class="song-controls small-4 columns right">' +
+                '<ul class="button-group">' +
+                    '<li><button class="tiny" ng-click="addNewPlublication(album)" data-reveal-id="modalNewPublication"><span class="foundicon-globe"></span></button></li>' +
+                '</ul>' +
             '</span>'
     }
 })
@@ -76,6 +84,11 @@
                 '<a href="#/artist/{{artist.Id}}">' + 
                     '<p class="name">{{artist.Name}}</p>' + 
                 '</a>' + 
+            '</span>' +
+            '<span class="song-controls small-4 columns right">' +
+                '<ul class="button-group">' +
+                    '<li><button class="tiny" ng-click="addNewPlublication(artist)" data-reveal-id="modalNewPublication"><span class="foundicon-globe"></span></button></li>' +
+                '</ul>' +
             '</span>'
     }
 })

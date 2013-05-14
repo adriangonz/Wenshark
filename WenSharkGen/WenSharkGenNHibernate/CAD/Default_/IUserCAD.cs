@@ -23,6 +23,8 @@ void Unrelationer_favorites (int p_user, System.Collections.Generic.IList<int> p
 
 void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_playlist);
 
+void AddNewPublication (int p_user, System.Collections.Generic.IList<int> p_publication);
+
 void Relationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2);
 
 void Unrelationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2);

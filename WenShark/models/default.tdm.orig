@@ -34,9 +34,13 @@ ConceptualModel default {
 			public unrelationer_favorites::Unrelationer->Favorite.favorites (p_user : OID -> User, p_song : List<OID -> Song>) : Void;
 
 			public addNewPlayList::Relationer->UserPlayList.playlist (p_user : OID -> User, p_playlist : List<OID -> PlayList>) : Void;
+<<<<<<< HEAD
 			public addNewPublication::Relationer->UserPublication.Publication (p_user : OID -> User, p_publication : List<OID -> Publication>) : Void;
+=======
+			
 			public relationer_sigues::Relationer->Seguir.sigues (p_user : OID -> User, p_user2 : List<OID -> User>) : Void;
 			public unrelationer_sigues::Unrelationer->Seguir.sigues (p_user : OID -> User, p_user2 : List<OID -> User>) : Void;
+>>>>>>> origin/master
 		}
 	};
 	
@@ -314,6 +318,7 @@ ConceptualModel default {
  	};
  	
  	
+<<<<<<< HEAD
  	
  	Class Publication 
  	{
@@ -337,13 +342,6 @@ ConceptualModel default {
  		}
  	};
  	
- 	Association Favorite ( User - Song )
- 	{
- 		=> navigable favorites:Share ( "0", "*");
- 		<= navigable user 		( "0", "*");
- 	};
- 	 	
- 	 	 	
  	
  	Association UserPublication ( User - Publication )
  	{
@@ -360,4 +358,13 @@ ConceptualModel default {
  	
  	
  	
+=======
+ 	Association Favorite ( User - Song )
+ 	{
+ 		=> navigable favorites:Share ( "0", "*");
+ 		<= navigable user 		( "0", "*");
+ 	};
+ 	 	
+ 	 	 	
+>>>>>>> origin/master
 }

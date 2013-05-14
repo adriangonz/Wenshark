@@ -197,6 +197,10 @@ function MainCtrl ($scope, $timeout, $http, $location) {
 		$scope.current.play();
 	}
 
+	$scope.addNewPlublication = function (song){
+	    $scope.itemClickedToPublish = song.Id;
+	}
+
 	$scope.getNextSong = function () {
 		$scope.current_pos ++;
 
