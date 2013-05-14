@@ -421,6 +421,8 @@ function MainCtrl ($scope, $timeout, $http, $location) {
 		}
 	}
 
+
+
 	$scope.isFavorited = function (song) {
 		if(typeof $scope.favorites === "undefined")
 			return false;
@@ -462,6 +464,47 @@ function SearchCtrl ($scope, $routeParams, $http) {
 				$scope.loading = false;
 			});
 		});
+
+	$scope.seguirPersona = function (idDest) {
+	    console.log("Seguir Persona " + idDest);
+	    var idActual = $.cookie("id");
+
+	    $http
+		.get('/api/user?addFollower=' + idDest)
+		.success(function (data) {
+		    for (var i = 0; i < $scope.users.length; i++) {
+		        if ($scope.users[i].Id == idDest) {
+		            $scope.users[i].Follow = true;
+		            break;
+		        }
+		    }
+		})
+		.error(function (data) {
+		    alert("PUM");
+		});
+
+	}
+
+	$scope.dejarseguirPersona = function (idDest) {
+	    console.log("Dejar de seguir persona " + idDest);
+	    var idActual = $.cookie("id");
+
+	    $http
+		.get('/api/user?removeFollower=' + idDest)
+		.success(function (data) {
+		    for (var i = 0; i < $scope.users.length; i++) {
+		        if ($scope.users[i].Id == idDest) {
+		            $scope.users[i].Follow = false;
+		            break;
+		        }
+		    }
+		})
+		.error(function (data) {
+		    alert("PUM");
+		});
+	}
+
+
 }
 
 function SignUpCtrl($scope, $routeParams, $http) {

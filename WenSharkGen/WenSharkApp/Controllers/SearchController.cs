@@ -9,6 +9,7 @@ using WenSharkGenNHibernate.EN.Default_;
 using WenSharkGenNHibernate.CEN.Default_;
 using NHibernate;
 using WenSharkCP.WensharkCP;
+using WenSharkCP.DTO;
 
 namespace WenSharkApp.Controllers
 {
@@ -22,11 +23,12 @@ namespace WenSharkApp.Controllers
             List<AlbumEN> lalbums = searchCP.searchAlbum(name);
             List<ArtistEN> lartists = searchCP.searchArtist(name);
 
-            List<UserEN> lusers = new List<UserEN>();
+            List<UserDTO> lusers = new List<UserDTO>();
 
             if (this.User.Identity.IsAuthenticated)
             {
-                lusers = searchCP.searchUsers(name);
+                int idUser = int.Parse(this.User.Identity.Name);
+                lusers = searchCP.searchUsers(idUser,name);
             }
             return this.Request.CreateResponse(HttpStatusCode.OK, new { songs = lsongs, albums = lalbums, artists = lartists, users = lusers });
         }

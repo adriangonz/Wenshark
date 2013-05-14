@@ -21,9 +21,12 @@ namespace WenSharkCP.WensharkCP {
             UserEN user = userCEN.GetByID(user_id);
             if(user != null)
                 lsongs = user.Favorites.ToList();
-
-            foreach(SongEN s in lsongs){
-                nullSong(s);
+            if (lsongs != null)
+            {
+                foreach (SongEN s in lsongs)
+                {
+                    nullSong(s);
+                }
             }
 
             SessionClose();

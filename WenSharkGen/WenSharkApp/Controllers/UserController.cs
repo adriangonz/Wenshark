@@ -58,6 +58,36 @@ namespace WenSharkApp.Controllers
         }
 
         [Authorize]
+        public HttpResponseMessage getAddFollower(int addFollower)
+        {
+            UserCP usercp = new UserCP();
+            int idUser = int.Parse(this.User.Identity.Name);
+            if (usercp.setFollower(idUser, addFollower))
+            {
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+        }
+
+        [Authorize]
+        public HttpResponseMessage getRemoveFollower(int removeFollower)
+        {
+            UserCP usercp = new UserCP();
+            int idUser = int.Parse(this.User.Identity.Name);
+            if (usercp.removeFollower(idUser, removeFollower))
+            {
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+        }
+
+        [Authorize]
         public async Task<HttpResponseMessage> postImage(int id)
         {
             //Si no es el usuario actual PUM!

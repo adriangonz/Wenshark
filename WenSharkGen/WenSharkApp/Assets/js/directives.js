@@ -97,7 +97,9 @@
                 '<a href="#/profile/{{user.Id}}">' +
                     '<p class="name">{{user.Name}}</p>' +
                 '</a>' +
-            '</span>'
+            '</span>'+
+            '<a class="button" ng-hide="user.Follow" ng-click="seguirPersona(user.Id)">Seguir</a>' +
+            '<a class="button" ng-show="user.Follow" ng-click="dejarseguirPersona(user.Id)">Dejar de seguir</a>'
     }
 })
 .directive('wsPlaylist',function(){

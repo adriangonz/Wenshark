@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using WenSharkGenNHibernate.CAD.Default_;
 using WenSharkGenNHibernate.CEN.Default_;
 using WenSharkGenNHibernate.EN.Default_;
-
+using WenSharkCP.DTO;
 
 namespace WenSharkCP.WensharkCP
 {
@@ -64,21 +64,39 @@ namespace WenSharkCP.WensharkCP
             return resul;
         }
 
-        public List<UserEN> searchUsers(string name)
+        public List<UserDTO> searchUsers(int idUser,string name)
         {
             SessionInitializeTransaction();
-            List<UserEN> resul = new List<UserEN>();
+            List<UserDTO> resulDTO = new List<UserDTO>();
+            List<UserEN> resulEN = new List<UserEN>();
             UserCAD userCAD = new UserCAD(session);
             UserCEN userCEN = new UserCEN(userCAD);
 
-            resul = userCEN.Search(name).ToList();
+            UserEN user = userCEN.GetByID(idUser);
 
-            foreach (var item in resul)
+            resulEN = userCEN.Search(name).ToList();
+
+            foreach (var item in resulEN)
             {
-                nullUser(item);
+                UserDTO u = new UserDTO();
+                u.Name = item.Name;
+                u.Id = item.Id;
+                u.Image = item.Image;
+                u.Follow = false;
+
+                //Esto es un poco ineficiente... hay que mejorarlo
+                for (int i = 0; i < user.Sigues.Count; i++)
+                {
+                    if (item.Id == user.Sigues[i].Id)
+                    {
+                        u.Follow = true;
+                        break;
+                    }
+                }
+                resulDTO.Add(u);
             }
             SessionClose();
-            return resul;
+            return resulDTO;
         }
  
     }
