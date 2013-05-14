@@ -187,6 +187,7 @@
     <Content Include="Assets\js\controllers\artist.js" />
     <Content Include="Assets\js\controllers\ctrlPlayList.js" />
     <Content Include="Assets\js\controllers\NewPlaylitCtrl.js" />
+    <Content Include="Assets\js\controllers\profile.js" />
     <Content Include="Assets\js\controllers\sharePublicationCtrl.js" />
     <Content Include="Assets\js\directives.js" />
     <Content Include="Assets\js\foundation.min.js" />
@@ -217,6 +218,7 @@
     <Content Include="Assets\partials\album.html" />
     <Content Include="Assets\partials\artist.html" />
     <Content Include="Assets\partials\error.html" />
+    <Content Include="Assets\partials\favorites.html" />
     <Content Include="Assets\partials\loading.html" />
     <Content Include="Assets\partials\login.html" />
     <Content Include="Assets\partials\main.html" />
@@ -224,6 +226,7 @@
     <Content Include="Assets\partials\modalSignUp.html" />
     <Content Include="Assets\partials\panelPlayList.html" />
     <Content Include="Assets\partials\playListPage.html" />
+    <Content Include="Assets\partials\profile.html" />
     <Content Include="Assets\partials\register.html" />
     <Content Include="Assets\partials\search.html" />
     <Content Include="Assets\partials\upload.html" />
