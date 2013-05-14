@@ -104,6 +104,7 @@ namespace WenSharkCP.WensharkCP
                 playCEN.Unrelationer_user(id, idUser);
             }
             SessionCommit();
+            SessionClose();
         }
     }
 }

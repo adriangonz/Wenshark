@@ -10,6 +10,9 @@ using System.Web.Security;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using WenSharkCP.WensharkCP;
+using System.Web;
+using System.IO;
 
 namespace WenSharkApp.Controllers
 {
@@ -25,11 +28,78 @@ namespace WenSharkApp.Controllers
         public HttpResponseMessage get(int id)
         {
             UserEN user;
-            UserCEN userCEN = new UserCEN();
+            UserCP usercp = new UserCP();
 
-            user = userCEN.GetByID(id);
+            user = usercp.getUser(id);
+
+            if (user == null) return this.Request.CreateErrorResponse(HttpStatusCode.NotFound, new Exception());
 
             return this.Request.CreateResponse(HttpStatusCode.OK, user);
+        }
+
+        [Authorize]
+        public HttpResponseMessage postName(int id, string name)
+        {
+            //Si no es el usuario actual PUM!
+            if (int.Parse(this.User.Identity.Name) != id) return this.Request.CreateErrorResponse(HttpStatusCode.Forbidden, new Exception());
+
+            UserCP usercp = new UserCP();
+
+            try
+            {
+                usercp.changeName(id, name);
+                return this.Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch
+            {
+                //Si por algun casual falla, PUM!
+                return this.Request.CreateErrorResponse(HttpStatusCode.NotFound, new Exception());
+            }
+        }
+
+        [Authorize]
+        public async Task<HttpResponseMessage> postImage(int id)
+        {
+            //Si no es el usuario actual PUM!
+            if (int.Parse(this.User.Identity.Name) != id) return this.Request.CreateErrorResponse(HttpStatusCode.Forbidden, new Exception());
+
+            //Primero subimos la imagen
+            if (!Request.Content.IsMimeMultipartContent())
+                return this.Request.CreateErrorResponse(HttpStatusCode.UnsupportedMediaType, new Exception());
+
+            //La leemos en el servidor...
+            string root = HttpContext.Current.Server.MapPath("~/Assets/img/users");
+            var provider = new MultipartFormDataStreamProvider(root);
+            await Request.Content.ReadAsMultipartAsync(provider);
+
+            //La movemos (para tener un nombre de fichero mas legible)
+            var file = provider.FileData[0];
+            var ext = SongController.defaultExtension(file.Headers.ContentType.MediaType);
+            var new_name = id + ext;
+            var old_path = file.LocalFileName;
+            var old_name = Path.GetFileName(old_path);
+            var new_path = old_path.Replace(old_name, new_name);
+
+            if (File.Exists(new_path))
+                File.Delete(new_path);
+            
+            File.Move(old_path, new_path);
+            
+            //TODO: Cambiarle el tamanyo
+
+            try
+            {
+                //Ahora guardamos la ruta en la BD
+                var image = "/Assets/img/users/" + new_name;
+                UserCP usercp = new UserCP();
+                usercp.changeImage(id, image);
+                return this.Request.CreateResponse(HttpStatusCode.OK, image + "?" + DateTime.Now.ToString());
+            }
+            catch
+            {
+                //Si por algun casual falla, PUM!
+                return this.Request.CreateErrorResponse(HttpStatusCode.NotFound, new Exception());
+            }
         }
 
         /// <summary>
@@ -46,7 +116,6 @@ namespace WenSharkApp.Controllers
             {
                 AppUserEN userEN = appuserCEN.GetByUsername(user)[0];
                 FormsAuthentication.SetAuthCookie(userEN.Id.ToString(), false);
-
 
                 var res = this.Request.CreateResponse(HttpStatusCode.OK, new { id = userEN.Id, name = userEN.Name });
 
@@ -84,7 +153,7 @@ namespace WenSharkApp.Controllers
 
                 if (!usrCEN.Exist(username))
                 {
-                    int id = usrCEN.New_(pass, name, username, email, DateTime.Now);
+                    int id = usrCEN.New_(pass, name, username, email, DateTime.Now, "/Assets/img/placeholder_user.png");
                     AppUserEN usr = new AppUserEN();
                     return this.Request.CreateResponse(HttpStatusCode.OK, id);
                 }
@@ -128,7 +197,7 @@ namespace WenSharkApp.Controllers
                     else
                     {
                         user.Name = data["name"].ToString();
-                        user.Id = userCEN.New_(idOAuth, token, user.Name, data["email"].ToString(), DateTime.Now, -1);
+                        user.Id = userCEN.New_(idOAuth, token, user.Name, data["email"].ToString(), DateTime.Now, -1, data["picture"].ToString());
                     }
 
                     FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);

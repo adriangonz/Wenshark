@@ -16,10 +16,34 @@
 					<property name="Created" type="date"> 
 						<column name="[created]"  not-null="true"/>
 					</property>
+					<property name="Image" type="string"> 
+						<column name="[image]"  not-null="true"/>
+					</property>
 			
 			
 			
 			
+			
+			
+		  			
+						<bag name="Sigues" table="[Seguir]" inverse="true" >
+							<key>
+									<column name="[FK_id_sigues]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.UserEN">
+									<column name="[FK_id_seguidores]"/>
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Seguidores" table="[Seguir]"  >
+							<key>
+									<column name="[FK_id_seguidores]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.UserEN">
+									<column name="[FK_id_sigues]"/>
+      						</many-to-many>
+    					</bag>
 			
 		  			
 						<bag name="Playlist" >
@@ -31,12 +55,16 @@
 					
 			
 		  			
-						<bag name="Publication" >
+						<bag name="Favorites" table="[Favorite]" inverse="true" >
 							<key>
-								<column name="[FK_id_User]"/>
-					      	</key>
-							<one-to-many class="WenSharkGenNHibernate.EN.Default_.PublicationEN"/>
-					    </bag>
+									<column name="[FK_id_user]"/>
+							</key>
+      						<many-to-many class="WenSharkGenNHibernate.EN.Default_.SongEN">
+									<column name="[FK_id_favorites]"/>
+      						</many-to-many>
+    					</bag>
+					
+					
 					
 					
 					
@@ -48,6 +76,6 @@
 		  </class>
 		  
 		  <query name="UserENReadAllHQL">from UserEN</query>
-		  <query name="UserENsearchHQL"><![CDATA[FROM UserEN WHERE lower(:p_filter) LIKE %lower(username)%OR lower(:p_filter) LIKE %lower(name)%]]></query>
+		  <query name="UserENsearchHQL"><![CDATA[FROM UserEN WHERE name LIKE '%' || :p_filter || '%']]></query>
 		</hibernate-mapping>
 	

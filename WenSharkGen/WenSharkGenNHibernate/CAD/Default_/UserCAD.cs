@@ -114,7 +114,7 @@ public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM UserEN self where FROM UserEN WHERE lower(:p_filter) LIKE %lower(username)%OR lower(:p_filter) LIKE %lower(name)%";
+                //String sql = @"FROM UserEN self where FROM UserEN WHERE name LIKE '%' || :p_filter || '%'";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("UserENsearchHQL");
                 query.SetParameter ("p_filter", p_filter);
@@ -137,6 +137,83 @@ public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN
         }
 
         return result;
+}
+public void Relationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song)
+{
+        WenSharkGenNHibernate.EN.Default_.UserEN userEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                userEN = (UserEN)session.Load (typeof(UserEN), p_user);
+                WenSharkGenNHibernate.EN.Default_.SongEN favoritesENAux = null;
+                if (userEN.Favorites == null) {
+                        userEN.Favorites = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.SongEN>();
+                }
+
+                foreach (int item in p_song) {
+                        favoritesENAux = new WenSharkGenNHibernate.EN.Default_.SongEN ();
+                        favoritesENAux = (WenSharkGenNHibernate.EN.Default_.SongEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.SongEN), item);
+                        favoritesENAux.User.Add (userEN);
+
+                        userEN.Favorites.Add (favoritesENAux);
+                }
+
+
+                session.Update (userEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in UserCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void Unrelationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                WenSharkGenNHibernate.EN.Default_.UserEN userEN = null;
+                userEN = (UserEN)session.Load (typeof(UserEN), p_user);
+
+                WenSharkGenNHibernate.EN.Default_.SongEN favoritesENAux = null;
+                if (userEN.Favorites != null) {
+                        foreach (int item in p_song) {
+                                favoritesENAux = (WenSharkGenNHibernate.EN.Default_.SongEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.SongEN), item);
+                                if (userEN.Favorites.Contains (favoritesENAux) == true) {
+                                        userEN.Favorites.Remove (favoritesENAux);
+                                        favoritesENAux.User.Remove (userEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_song you are trying to unrelationer, doesn't exist in UserEN");
+                        }
+                }
+
+                session.Update (userEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in UserCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
 }
 public void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_playlist)
 {
@@ -177,26 +254,65 @@ public void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_
         }
 }
 
-public void AddNewPublication (int p_user, System.Collections.Generic.IList<int> p_publication)
+public void Relationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2)
 {
         WenSharkGenNHibernate.EN.Default_.UserEN userEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 userEN = (UserEN)session.Load (typeof(UserEN), p_user);
-                WenSharkGenNHibernate.EN.Default_.PublicationEN publicationENAux = null;
-                if (userEN.Publication == null) {
-                        userEN.Publication = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.PublicationEN>();
+                WenSharkGenNHibernate.EN.Default_.UserEN siguesENAux = null;
+                if (userEN.Sigues == null) {
+                        userEN.Sigues = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.UserEN>();
                 }
 
-                foreach (int item in p_publication) {
-                        publicationENAux = new WenSharkGenNHibernate.EN.Default_.PublicationEN ();
-                        publicationENAux = (WenSharkGenNHibernate.EN.Default_.PublicationEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.PublicationEN), item);
-                        publicationENAux.User = userEN;
+                foreach (int item in p_user2) {
+                        siguesENAux = new WenSharkGenNHibernate.EN.Default_.UserEN ();
+                        siguesENAux = (WenSharkGenNHibernate.EN.Default_.UserEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.UserEN), item);
+                        siguesENAux.Seguidores.Add (userEN);
 
-                        userEN.Publication.Add (publicationENAux);
+                        userEN.Sigues.Add (siguesENAux);
                 }
 
+
+                session.Update (userEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in UserCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void Unrelationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                WenSharkGenNHibernate.EN.Default_.UserEN userEN = null;
+                userEN = (UserEN)session.Load (typeof(UserEN), p_user);
+
+                WenSharkGenNHibernate.EN.Default_.UserEN siguesENAux = null;
+                if (userEN.Sigues != null) {
+                        foreach (int item in p_user2) {
+                                siguesENAux = (WenSharkGenNHibernate.EN.Default_.UserEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.UserEN), item);
+                                if (userEN.Sigues.Contains (siguesENAux) == true) {
+                                        userEN.Sigues.Remove (siguesENAux);
+                                        siguesENAux.Seguidores.Remove (userEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_user2 you are trying to unrelationer, doesn't exist in UserEN");
+                        }
+                }
 
                 session.Update (userEN);
                 SessionCommit ();

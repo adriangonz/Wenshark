@@ -32,7 +32,7 @@ public IOAuthUserCAD get_IOAuthUserCAD ()
         return this._IOAuthUserCAD;
 }
 
-public int New_ (string p_idOAuth, string p_token_oauth, string p_name, string p_email, Nullable<DateTime> p_created, int p_provider)
+public int New_ (string p_idOAuth, string p_token_oauth, string p_name, string p_email, Nullable<DateTime> p_created, int p_provider, string p_image)
 {
         OAuthUserEN oAuthUserEN = null;
         int oid;
@@ -55,13 +55,15 @@ public int New_ (string p_idOAuth, string p_token_oauth, string p_name, string p
                 oAuthUserEN.Provider.Id = p_provider;
         }
 
+        oAuthUserEN.Image = p_image;
+
         //Call to OAuthUserCAD
 
         oid = _IOAuthUserCAD.New_ (oAuthUserEN);
         return oid;
 }
 
-public void Modify (int p_oid, string p_idOAuth, string p_token_oauth, string p_name, string p_email, Nullable<DateTime> p_created)
+public void Modify (int p_oid, string p_idOAuth, string p_token_oauth, string p_name, string p_email, Nullable<DateTime> p_created, string p_image)
 {
         OAuthUserEN oAuthUserEN = null;
 
@@ -73,6 +75,7 @@ public void Modify (int p_oid, string p_idOAuth, string p_token_oauth, string p_
         oAuthUserEN.Name = p_name;
         oAuthUserEN.Email = p_email;
         oAuthUserEN.Created = p_created;
+        oAuthUserEN.Image = p_image;
         //Call to OAuthUserCAD
 
         _IOAuthUserCAD.Modify (oAuthUserEN);

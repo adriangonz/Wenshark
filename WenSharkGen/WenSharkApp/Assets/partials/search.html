@@ -37,5 +37,15 @@
 				<h2 class="subheader" ng-show="!albums.length">No se han encontrado albumes :(</h2>
 			</div>
 		</section>
+
+        <section class="section" ng-hide="hideUserName">
+            <p class="title"><a href="">Personas</a></p>
+            <div class="content">
+                <ul class="items-list" ng-show="users.length">
+                    <li class="user-thumb row th" ng-repeat="user in users"  ng-show="users.length" ws-user></li>
+                 </ul>
+                <h2 class="subheader" ng-show="!users.length">No se han encontrado usuarios :(</h2>
+            </div>
+        </section>
 	</div>
 </div>

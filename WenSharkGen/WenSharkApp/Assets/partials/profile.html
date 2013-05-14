@@ -1,0 +1,41 @@
+<div class="panel">
+	<div ng-show="loading">
+		<h2 class="center">Cargando perfil...</h2>
+		<img class="center" src="/Assets/img/spinner.gif" width="200" height="30" />
+	</div>	
+
+	<div class="row" ng-hide="loading">
+		<span class="small-3 columns left">
+			<div class="img">
+				<img src="{{user.Image}}" width="200" />
+				<div class="img-edit" ng-hide="editingName">
+					<i class="enclose-icon foundicon-edit" ng-click="editImage()" ng-show="isEditable"></i>
+				</div>
+			</div>
+		</span>
+		<span class="small-9 columns">
+			<h1 class="name profile-name">
+				<span class="name-txt">{{user.Name}}</span>
+				<span ng-show="isEditable" ng-hide="editingImage">
+					<i class="foundicon-edit" ng-hide="editingName" ng-click="editName()"></i>
+				</span>
+			</h1>
+			<span class="edit-buttons" ng-show="editingName">
+				<i class="foundicon-checkmark check" ng-click="submitEditName()"></i>
+				<i class="foundicon-remove cancel" ng-click="cancelEditName()"></i>
+			</span>
+
+			<div ng-show="editingImage">
+				<button class="choose-button" ng-click="chooseImage()">Elige una imagen</button>
+				<input class="hidden" id="input-image" type="file" />
+				<span class="edit-buttons" ng-show="imageToUpload">
+					<i class="foundicon-checkmark check" ng-click="submitEditImage()"></i>
+					<i class="foundicon-remove cancel" ng-click="cancelEditImage()"></i>
+				</span>
+				<div>
+					<img ng-src="{{imageURL}}" width="200" ng-show="imageChosen" />
+				</div>
+			</div>
+		</span>
+	</div>
+</div>

@@ -51,17 +51,35 @@ public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.UserEN
 {
         return _IUserCAD.Search (p_filter);
 }
+public void Relationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song)
+{
+        //Call to UserCAD
+
+        _IUserCAD.Relationer_favorites (p_user, p_song);
+}
+public void Unrelationer_favorites (int p_user, System.Collections.Generic.IList<int> p_song)
+{
+        //Call to UserCAD
+
+        _IUserCAD.Unrelationer_favorites (p_user, p_song);
+}
 public void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_playlist)
 {
         //Call to UserCAD
 
         _IUserCAD.AddNewPlayList (p_user, p_playlist);
 }
-public void AddNewPublication (int p_user, System.Collections.Generic.IList<int> p_publication)
+public void Relationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2)
 {
         //Call to UserCAD
 
-        _IUserCAD.AddNewPublication (p_user, p_publication);
+        _IUserCAD.Relationer_sigues (p_user, p_user2);
+}
+public void Unrelationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2)
+{
+        //Call to UserCAD
+
+        _IUserCAD.Unrelationer_sigues (p_user, p_user2);
 }
 }
 }

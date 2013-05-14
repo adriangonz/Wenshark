@@ -32,7 +32,7 @@ public IAppUserCAD get_IAppUserCAD ()
         return this._IAppUserCAD;
 }
 
-public int New_ (string p_password, string p_name, string p_username, string p_email, Nullable<DateTime> p_created)
+public int New_ (string p_password, string p_name, string p_username, string p_email, Nullable<DateTime> p_created, string p_image)
 {
         AppUserEN appUserEN = null;
         int oid;
@@ -49,6 +49,8 @@ public int New_ (string p_password, string p_name, string p_username, string p_e
 
         appUserEN.Created = p_created;
 
+        appUserEN.Image = p_image;
+
         //Call to AppUserCAD
 
         oid = _IAppUserCAD.New_ (appUserEN);
@@ -60,7 +62,7 @@ public void Destroy (int id)
         _IAppUserCAD.Destroy (id);
 }
 
-public void Modify (int p_oid, string p_password, string p_name, string p_username, string p_email, Nullable<DateTime> p_created)
+public void Modify (int p_oid, string p_password, string p_name, string p_username, string p_email, Nullable<DateTime> p_created, string p_image)
 {
         AppUserEN appUserEN = null;
 
@@ -72,6 +74,7 @@ public void Modify (int p_oid, string p_password, string p_name, string p_userna
         appUserEN.Username = p_username;
         appUserEN.Email = p_email;
         appUserEN.Created = p_created;
+        appUserEN.Image = p_image;
         //Call to AppUserCAD
 
         _IAppUserCAD.Modify (appUserEN);
