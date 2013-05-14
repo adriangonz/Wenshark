@@ -254,6 +254,45 @@ public void AddNewPlayList (int p_user, System.Collections.Generic.IList<int> p_
         }
 }
 
+public void AddNewPublication (int p_user, System.Collections.Generic.IList<int> p_publication)
+{
+        WenSharkGenNHibernate.EN.Default_.UserEN userEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                userEN = (UserEN)session.Load (typeof(UserEN), p_user);
+                WenSharkGenNHibernate.EN.Default_.PublicationEN publicationENAux = null;
+                if (userEN.Publication == null) {
+                        userEN.Publication = new System.Collections.Generic.List<WenSharkGenNHibernate.EN.Default_.PublicationEN>();
+                }
+
+                foreach (int item in p_publication) {
+                        publicationENAux = new WenSharkGenNHibernate.EN.Default_.PublicationEN ();
+                        publicationENAux = (WenSharkGenNHibernate.EN.Default_.PublicationEN)session.Load (typeof(WenSharkGenNHibernate.EN.Default_.PublicationEN), item);
+                        publicationENAux.User = userEN;
+
+                        userEN.Publication.Add (publicationENAux);
+                }
+
+
+                session.Update (userEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in UserCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
 public void Relationer_sigues (int p_user, System.Collections.Generic.IList<int> p_user2)
 {
         WenSharkGenNHibernate.EN.Default_.UserEN userEN = null;

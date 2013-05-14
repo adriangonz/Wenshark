@@ -63,6 +63,16 @@
 									<column name="[FK_id_favorites]"/>
       						</many-to-many>
     					</bag>
+			
+		  			
+						<bag name="Publication" >
+							<key>
+								<column name="[FK_id_User]"/>
+					      	</key>
+							<one-to-many class="WenSharkGenNHibernate.EN.Default_.PublicationEN"/>
+					    </bag>
+					
+					
 					
 					
 					
