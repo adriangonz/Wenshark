@@ -599,14 +599,17 @@ function UploadCtrl ($scope) {
 		$scope.uploadOK = false;
 		$scope.upload = function () {
 			$scope.uploading = true;
-			//We upload the songs with the data
+		    //We upload the songs with the data
 			var formdata = new FormData();
-			for(var i = 0; i < $scope.songsToUpload.length; i++) {
+			for (var i = 0; i < $scope.songsToUpload.length; i++) {
+			    console.log("AA: " + $scope.songsToUpload[i].file);
+			    console.log("BB: " + $scope.songsToUpload[i].name);
 				formdata.append("file-" + i, $scope.songsToUpload[i].file);
 				formdata.append("name-" + i, $scope.songsToUpload[i].name);
 				formdata.append("album-" + i, 5);
 				formdata.append("artist-" + i, 1);
 			}
+			
 
 			$.ajax({
 				url: '/api/song',
@@ -614,7 +617,10 @@ function UploadCtrl ($scope) {
 				data: formdata,
 				processData: false,
 				contentType: false,
-				success: function (res) {
+				success: function (data,status) {
+				    console.log("Repuesta");
+				    console.log(data);
+				    console.log(status);
 					$scope.uploading = false;
 					$scope.songsToUpload = [];
 					$scope.selected = null;
@@ -634,24 +640,40 @@ function UploadCtrl ($scope) {
 
 		//Add some handlers for adding files to view
 		$('.hidden-file-input').change(function (e) {
-			var filesToAdd = $('.hidden-file-input')[0].files;
+		    var filesToAdd = $('.hidden-file-input')[0].files;
 			var size = $scope.songsToUpload.length;
-
 			for (var i = 0; i < filesToAdd.length; i++) {
-				$scope.songsToUpload.push( {
-					id: size + i,
-					name: filesToAdd[i].name,
-					file: filesToAdd[i],
-					album : {
-						name: ''
-					},
-					artist : {
-						name: ''
-					}
-				});
+			    var url = filesToAdd[i].name;
+			    var songFile = filesToAdd[i];
+			    ID3.loadTags(url, function () {
+			        var endDate = new Date().getTime();
+			        var tags = ID3.getAllTags(url);
+			        var songName = url;
+			        if (tags.title) { songName = tags.title; }
+			        $scope.songsToUpload.push({
+			            id: size + i,
+			            name: songName,
+			            file: songFile,
+			            album: {
+			                name: ''
+			            },
+			            artist: {
+			                name: ''
+			            }
+			        });
+			    },
+                {
+                    tags: ["artist", "title", "album", "year", "comment", "track", "genre", "lyrics", "picture"],
+                    dataReader: FileAPIReader(filesToAdd[i])
+                });
+				
 			};
 			$scope.$apply();
 			//console.log($scope.songsToUpload);
 		});
+
+
+		
+
 	}
 }

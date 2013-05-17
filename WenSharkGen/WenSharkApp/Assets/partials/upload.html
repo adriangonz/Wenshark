@@ -10,7 +10,7 @@
 			<button class="button upl-add-song" ng-show="!uploading" ng-click="addFileToUpload()">Añadir canciones</button>
 			<button class="button success" ng-click="upload()" ng-show="songsToUpload.length && !uploading">Subir canciones</button>
 			<div ng-show="uploading"><img class="center" src="/Assets/img/spinner.gif" width="200" height="30" /></div>
-			<input type="file" multiple class="hidden hidden-file-input" />
+			<input type="file" multiple class="hidden hidden-file-input"/>
 		</section>
 		<section class="small-6 columns upl-data">
 			<form ng-show="selected">
@@ -24,7 +24,7 @@
 				<input  ng-disabled="uploading" id="upl-song-album" type="text" placeholder="Nombre del artista" ng-model="selected.album.name"/>
 
 				<label for="upl-song-genre">Generos</label>
-				<input ng-disabled="uploading" id="upl-song-genre" type="text" placeholder="Generos de la cancion" />
+				<input ng-disabled="uploading" id="upl-song-genre" type="text" placeholder="Generos de la cancion" ng-model="selected.genre.name"/>
 			</form>
 
 			<h2 class="subheader" ng-show="!songsToUpload.length">Empieza añadiendo canciones</h2>

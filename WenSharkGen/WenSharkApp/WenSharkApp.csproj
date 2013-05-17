@@ -206,6 +206,7 @@
     <Content Include="Assets\js\foundation\foundation.tooltips.js" />
     <Content Include="Assets\js\foundation\foundation.topbar.js" />
     <Content Include="Assets\js\howler.js" />
+    <Content Include="Assets\js\id3-minimized.js" />
     <Content Include="Assets\js\OAuth.js" />
     <Content Include="Assets\js\routes.js" />
     <Content Include="Assets\js\vendor\angular.min.js" />
