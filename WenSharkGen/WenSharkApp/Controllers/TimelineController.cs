@@ -27,6 +27,8 @@ namespace WenSharkApp.Controllers
                 publicaciones.AddRange(publCP.getByUser(i));
             }
 
+            //publicaciones = publicaciones.OrderByDescending(o=>o.
+
             return this.Request.CreateResponse(HttpStatusCode.OK, publicaciones);
         }
     }

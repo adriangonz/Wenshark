@@ -129,7 +129,17 @@
     return {
         restrict: 'A',
         template:
-            '{{publication.Text}}'
+            '<img src="http://localhost:5749/Assets/img/albums/reanimation.jpg" width="15" height="15">'+
+            '<p><span class="user">Adrian</span> shared this:</p>'+
+            '<br>'+
+            '<p class="quote">{{publication.Text}}</p>'+
+            '<div>'+
+                '<img class="left" src="http://localhost:5749/Assets/img/albums/reanimation.jpg" width="50" height="50">'+
+                '<div>'+
+                    '<p class="song">Gold on the no se que</p>'+
+                    '<p>by <span class="artist">The Black Keys</span></p>'+
+                '</div>'+
+            '</div>'
     }
 })
 
