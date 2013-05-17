@@ -602,8 +602,6 @@ function UploadCtrl ($scope) {
 		    //We upload the songs with the data
 			var formdata = new FormData();
 			for (var i = 0; i < $scope.songsToUpload.length; i++) {
-			    console.log("AA: " + $scope.songsToUpload[i].file);
-			    console.log("BB: " + $scope.songsToUpload[i].name);
 				formdata.append("file-" + i, $scope.songsToUpload[i].file);
 				formdata.append("name-" + i, $scope.songsToUpload[i].name);
 				formdata.append("album-" + i, 5);
@@ -655,10 +653,13 @@ function UploadCtrl ($scope) {
 			            name: songName,
 			            file: songFile,
 			            album: {
-			                name: ''
+			                name: tags.album
 			            },
 			            artist: {
-			                name: ''
+			                name: tags.artist
+			            },
+			            genre: {
+			                name: tags.genre
 			            }
 			        });
 			    },
