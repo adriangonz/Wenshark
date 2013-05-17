@@ -6,8 +6,8 @@
 .popular-songs {
 	text-align: justify;
 	-moz-text-align-last: justify;
-    -webkit-text-align-last: justify; /* not implemented yet */
-    text-align-last: justify; /* IE */
+	webkit-text-align-last: justify; /* not implemented yet */
+	text-align-last: justify; /* IE */
 	display: block;
 }
 
