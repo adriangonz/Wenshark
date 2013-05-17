@@ -1,0 +1,103 @@
+/* Stylings for home page */
+.header-popular {
+
+}
+
+.popular-songs {
+	text-align: justify;
+	-moz-text-align-last: justify;
+    -webkit-text-align-last: justify; /* not implemented yet */
+    text-align-last: justify; /* IE */
+	display: block;
+}
+
+.popular-songs:before {
+	content: '';
+    display: block;
+    width: 100%;
+    margin-bottom: -0.5em;
+}
+
+.popular-songs:after {
+	content: '';
+    display: inline-block;
+    width: 100%;
+}
+
+.popular-songs li {
+	display: inline;
+	list-style: none;
+
+	text-align: center;
+}
+
+.popular-songs li .popular-song-thumbnail {
+	display: inline-block;
+	position: relative;
+}
+
+.popular-songs .popular-song-thumbnail:hover .play-button {
+	display: inline-block;
+}
+
+.popular-songs .popular-song-hover {
+	position: absolute;
+	bottom: 7px;
+	left: 0;
+	right: 0;
+
+	text-align: center;
+}
+
+.popular-songs .popular-song-hover .play-button {
+	display: none;
+
+	position: relative;
+
+	background-color: rgb(118,180,0);
+	
+	margin-bottom: 5%;
+
+	width: 3em;
+	height: 3em;
+
+	border-radius: 3em;
+
+	cursor: pointer;
+}
+
+.popular-songs .play-button .play {
+	position: absolute;
+	
+	top: 30%;
+	right: 30%;
+}
+
+.popular-songs .popular-song-info {
+	display: block;
+	background-color: rgb(118,180,0);
+}
+
+.popular-songs .popular-song-info p {
+	margin-bottom: 0.2%;
+
+	max-width: 150px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	text-align: center;
+}
+
+.popular-songs .popular-name {
+	font-weight: bold;
+	color: rgb(50, 50, 50);
+}
+
+.popular-songs .popular-artist a {
+	color: white;
+}
+
+.popular-songs .popular-artist a:hover {
+	color: rgb(198, 232, 132);
+}

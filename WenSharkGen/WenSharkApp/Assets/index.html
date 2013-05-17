@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/Assets/css/auth.css" />
     <link rel="stylesheet" href="/Assets/css/player.css" />
     <link rel="stylesheet" href="/Assets/css/profile.css">
+    <link rel="stylesheet" href="/Assets/css/home.css">
     <link rel="stylesheet" href="/Assets/css/playListBar.css" />
     <link rel="stylesheet" href="/Assets/css/general_enclosed_foundicons.css" />
     <link rel="stylesheet" href="/Assets/css/jquery-ui-1.10.2.custom.min.css" />
@@ -39,6 +40,7 @@
     <script src="/Assets/js/controllers/artist.js"></script>
     <script src="/Assets/js/controllers/album.js"></script>
     <script src="/Assets/js/controllers/profile.js"></script>
+    <script src="/Assets/js/controllers/home.js"></script>
     <script src="/Assets/js/controllers/NewPlaylitCtrl.js"></script>
     <script src="/Assets/js/controllers/sharePublicationCtrl.js"></script>
     <script src="/Assets/js/OAuth.js"></script>
@@ -125,7 +127,7 @@
             <div class="small-2 columns now-playing">
                 <div ng-show="current">
                     <div class="current-img">
-                        <img src="{{current.Album.Image}}" width="50" heigth="50" />
+                        <img ng-src="{{current.Album.Image}}" width="50" heigth="50" />
                     </div>
                     <div class="current-data">
                         <p class="current-name">{{current.Name}}</p>
@@ -173,7 +175,7 @@
                         <li id="playlist-{{song.Id}}" class="th" ng-click="changeSong(song)" ng-class="{active : current.Id == song.Id}" ng-repeat="song in playlist">
                             <i class="playlist-rm enclose-icon foundicon-remove" ng-click="rmFromPlaylist(song)"></i>
                             <div>
-                                <img class="playlist-img" src="{{song.Album.Image}}" width="50" height="50" />
+                                <img class="playlist-img" ng-src="{{song.Album.Image}}" width="50" height="50" />
                                 <div class="playlist-data">
                                     <p class="playlist-name" title="{{song.Name}}">{{song.Name}}</p>
                                     <p class="playlist-artist subname" title="{{song.Artist.Name}}">{{song.Artist.Name}}</p>
