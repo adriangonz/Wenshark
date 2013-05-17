@@ -125,4 +125,12 @@
             '</div>'
     }
 })
+.directive('wsPublication',function(){
+    return {
+        restrict: 'A',
+        template:
+            '{{publication.Text}}'
+    }
+})
+
 ;

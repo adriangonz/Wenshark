@@ -175,5 +175,33 @@ namespace WenSharkCP.WensharkCP
             }
             return resul;
         }
+
+        public List<int> getAllFollowers(int idUser) {
+            List<int> listaUsers = new List<int>();
+
+            try {
+                SessionInitializeTransaction();
+
+                UserCAD usercad = new UserCAD(session);
+                UserCEN usercen = new UserCEN(usercad);
+                UserEN user;
+
+                user = usercen.GetByID(idUser);
+
+                if (user == null) throw new Exception();
+
+                List<UserEN> followed = user.Sigues.ToList<UserEN>();
+                foreach (var u in followed) {
+                    listaUsers.Add(u.Id);
+                }
+
+            } catch (Exception ex) {
+                SessionRollBack();
+            } finally {
+                SessionClose();
+            }
+
+            return listaUsers;
+        }
     }
 }

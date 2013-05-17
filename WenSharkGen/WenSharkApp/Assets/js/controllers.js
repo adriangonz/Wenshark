@@ -655,3 +655,18 @@ function UploadCtrl ($scope) {
 		});
 	}
 }
+
+function TimelineCtrl($scope, $location, $http) {
+	$scope.publications = [];
+console.log("entro");
+	$http
+        .get('/api/timeline')
+        .success(function (data) {
+            $scope.publications = data;
+            console.log(data);
+        })
+        .error(function (data) {
+            alert('500: Error interno');
+        });
+
+}
