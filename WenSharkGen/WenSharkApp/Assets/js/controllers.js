@@ -551,6 +551,9 @@ function SignInCtrl($scope, $routeParams, $http) {
     }
     $scope.tryingLoginOrSignUp = false;
     $scope.hideUserName = true;
+    $scope.loginOauthGoogle = function () {
+        loginGoogle($scope);
+    }
     $scope.signin = function () {
         $scope.tryingLoginOrSignUp = true;
         if ($scope.userlogin.username != '' && $scope.userlogin.passw != '') {

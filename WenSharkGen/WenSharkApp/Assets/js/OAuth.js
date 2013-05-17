@@ -13,7 +13,7 @@ var expiresIn;
 var user;
 var loggedIn = false;
 
-function loginGoogle() {
+function loginGoogle($scope) {
     var win = window.open(G_url, "windowname1", 'width=800, height=600');
     
     var pollTimer = window.setInterval(function () {
@@ -25,27 +25,12 @@ function loginGoogle() {
             tokenType = gup(url, 'token_type');
             expiresIn = gup(url, 'expires_in');
             win.close();
-            //console.log(url);
-            validateToken(acToken);
+            validateToken(acToken,$scope);
         }
     }, 500);
 }
 
-function validateToken(token) {
-  /*  $.ajax({
-        url: GVALIDURL + token,
-        data: null,
-        success: function (responseText) {
-            getUserInfo();
-            /*$("#tituloFeliz").text("UOOO!! Me has dado permiso");
-            loggedIn = true;
-            $('#loginText').hide();
-            $('#logoutText').show();*/
-  /*      },
-        dataType: "jsonp"
-});
-*/
-    console.log(angular.element($("#formSignIn")).scope().tryingLoginOrSignUp);
+function validateToken(token,$scope) {
     angular.element($("#formSignIn")).scope().tryingLoginOrSignUp = true;
     angular.element($("#formSignUp")).scope().tryingToSignUp = true;
     $.ajax({
@@ -69,7 +54,7 @@ function validateToken(token) {
             //Cookies
             $.cookie("id", data.id);
             $.cookie("name", data.name);
-            loadPlayListPanel();
+            $scope.loadPlayListPanel();
 
         }
     });
@@ -102,10 +87,3 @@ function gup(url, name) {
         return results[1];
 }
 
-function startLogoutPolling() {
-    $('#loginText').show();
-    $('#logoutText').hide();
-    loggedIn = false;
-    $('#uName').text('Welcome ');
-    $('#imgHolder').attr('src', 'none.jpg');
-}
