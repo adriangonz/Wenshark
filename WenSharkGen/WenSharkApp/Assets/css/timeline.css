@@ -7,9 +7,9 @@
 
 .timeline-item {
 	position: relative;
-	padding: 15px;
+	padding: 10px;
 	margin: 12px 0 36px 40px;
-
+	
 	color: #fff;
 	background: #ccc; /* default background for browsers without gradient support */
 	box-shadow: 2px 2px 1px #aaa;
@@ -25,12 +25,38 @@
 	content: "";
 
 	position: absolute;
-	top: 25px;
+	bottom: 0px;
 	left: -38px; /* controls horizontal position */
-	bottom: auto; /* value = - border-top-width - border-bottom-width */
 
 	border-width: 30px 40px 0 0; /* vary these values to change the angle of the vertex */
 	border-style: solid;
 	border-color: transparent #ccc; 
 	box-shadow: 0 2px #aaa;
+}
+
+.timeline-item p {
+	display: inline-block;
+	margin-bottom: 0px;
+	margin-left: 5px;
+}
+
+.timeline-item .user, .timeline-item .song {
+	color: #76b400;
+	font-weight: bold;
+}
+
+.timeline-item .artist {
+	color: #aaa;
+	font-style: italic;
+}
+
+.timeline-item .quote {
+	margin: 0 0 5px 5px;
+	font-size: 26px;
+}
+.timeline-item .quote:before {
+	content: '"';
+}
+.timeline-item .quote:after {
+	content: '"';
 }
