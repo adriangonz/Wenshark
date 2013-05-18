@@ -46,17 +46,65 @@ namespace WenSharkApp.Controllers
             //Leo el form data y magia
             await Request.Content.ReadAsMultipartAsync(provider);
             SongCEN songcen = new SongCEN();
+            ItemCEN itCEN = new ItemCEN();
             return provider.FileData.Select((file, i) =>
                 {
                     try
                     {
                         //Saco los datos
                         string name = provider.FormData["name-" + i];
-                        int album = int.Parse(provider.FormData["album-" + i]);
-                        int artist = int.Parse(provider.FormData["artist-" + i]);
+                        string album = (provider.FormData["album-" + i]);
+                        string artist = (provider.FormData["artist-" + i]);
+                        int idAlbum = 5, idArtis = 1;
+                        IList<ItemEN> result = null;
+                        //Hacemos la busqueda de artista y de album
+                        
+                        if (artist != "")
+                        {
+                            result = itCEN.GetByName(artist);
+                            Boolean loTenemos = false;
+                            foreach (ItemEN it in result)
+                            {
+                                if (it is ArtistEN)
+                                {
+                                    idArtis = it.Id;
+                                    loTenemos = true;
+                                    break;
+                                }
+                            }
+                            //Si no lo tenemos los creamos
+                            if (!loTenemos)
+                            {
+                                ArtistCEN artCEN = new ArtistCEN();
+                                idArtis = (artCEN.Create(artist, "", "")).Id;
+                            }
+                        }
+                        if (album != "")
+                        {
+                            //Hacemos la SQL para buscar el album
+                            result = itCEN.GetByName(album);
+                            Boolean loTenemos = false;
+                            foreach (ItemEN it in result)
+                            {
+                                if (it is AlbumEN)
+                                {
+                                    idAlbum = it.Id;
+                                    loTenemos = true;
+                                    break;
+                                }
+                            }
+                            //Si no lo tenemos los creamos
+                            if (!loTenemos)
+                            {
+                                AlbumCEN albCEN = new AlbumCEN();
+                                idAlbum = (albCEN.Create(album, DateTime.Now, "", idArtis)).Id;//TODO que ponemos aqui, lo sacamos del mime
+                            }
+                            
+                        }
+
 
                         //Guardo la nueva cancion en la BD
-                        SongEN new_song = songcen.Create(name, "temp", "temp", artist, album);
+                        SongEN new_song = songcen.Create(name, "temp", "temp", idArtis, idAlbum);
                         
                         //Sobrescribo el nombre del fichero
                         var old_path = file.LocalFileName;

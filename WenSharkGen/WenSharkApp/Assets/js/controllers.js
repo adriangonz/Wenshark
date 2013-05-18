@@ -607,8 +607,8 @@ function UploadCtrl ($scope) {
 			for (var i = 0; i < $scope.songsToUpload.length; i++) {
 				formdata.append("file-" + i, $scope.songsToUpload[i].file);
 				formdata.append("name-" + i, $scope.songsToUpload[i].name);
-				formdata.append("album-" + i, 5);
-				formdata.append("artist-" + i, 1);
+				formdata.append("album-" + i, $scope.songsToUpload[i].album.name);
+				formdata.append("artist-" + i, $scope.songsToUpload[i].artist.name);
 			}
 			
 

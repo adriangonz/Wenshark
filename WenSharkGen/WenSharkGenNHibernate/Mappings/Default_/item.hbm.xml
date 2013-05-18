@@ -49,6 +49,7 @@
 		  </class>
 		  
 		  <query name="ItemENReadAllHQL">from ItemEN</query>
+		  <query name="ItemENgetByNameHQL"><![CDATA[FROM ItemEN WHERE name = :p_filter]]></query>
 		  <query name="ItemENsearchHQL"><![CDATA[FROM ItemEN WHERE name LIKE '%' || :p_filter || '%' ]]></query>
 		</hibernate-mapping>
 	

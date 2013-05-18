@@ -137,6 +137,9 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
       </operations>
       <operations name="getAll" operationType="ReadAll" type="Object" collectionType="List" typeObject="/0/@elements.4"/>
+      <operations name="getByName" operationType="ReadFilter" type="Object" collectionType="List" typeObject="/0/@elements.4" filter="FROM ItemEN WHERE name = :p_filter">
+        <arguments name="p_filter" isOrdered="true"/>
+      </operations>
       <operations name="search" operationType="ReadFilter" type="Object" collectionType="List" typeObject="/0/@elements.4" filter="FROM ItemEN WHERE name LIKE '%' || :p_filter || '%' ">
         <arguments name="p_filter" isOrdered="true"/>
       </operations>

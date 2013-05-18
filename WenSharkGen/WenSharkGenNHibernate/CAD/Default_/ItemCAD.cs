@@ -108,6 +108,36 @@ public System.Collections.Generic.IList<ItemEN> GetAll (int first, int size)
         return result;
 }
 
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> GetByName (string p_filter)
+{
+        System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ItemEN self where FROM ItemEN WHERE name = :p_filter";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ItemENgetByNameHQL");
+                query.SetParameter ("p_filter", p_filter);
+
+                result = query.List<WenSharkGenNHibernate.EN.Default_.ItemEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is WenSharkGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new WenSharkGenNHibernate.Exceptions.DataLayerException ("Error in ItemCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> Search (string p_filter)
 {
         System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> result;

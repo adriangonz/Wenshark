@@ -47,6 +47,10 @@ public System.Collections.Generic.IList<ItemEN> GetAll (int first, int size)
         list = _IItemCAD.GetAll (first, size);
         return list;
 }
+public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> GetByName (string p_filter)
+{
+        return _IItemCAD.GetByName (p_filter);
+}
 public System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> Search (string p_filter)
 {
         return _IItemCAD.Search (p_filter);

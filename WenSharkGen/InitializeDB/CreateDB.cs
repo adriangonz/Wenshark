@@ -148,7 +148,7 @@ public static void InitializeData ()
                 songcen.Create ("Kyur4 Th Ich", "lk_rm_18.mp3", "audio/mp3", linkin_park.Id, reanimation.Id);
                 songcen.Create ("One step closer", "lk_rm_19.mp3", "audio/mp3", linkin_park.Id, reanimation.Id);
                 songcen.Create ("Crawlin", "lk_rm_20.mp3", "audio/mp3", linkin_park.Id, reanimation.Id);
-
+                
                 //Las de hybrid
                 songcen.Create ("Papercut", "lk_ht_01.mp3", "audio/mp3", linkin_park.Id, hybrid_theory.Id);
                 songcen.Create ("One step closer", "lk_ht_02.mp3", "audio/mp3", linkin_park.Id, hybrid_theory.Id);
@@ -203,6 +203,10 @@ public static void InitializeData ()
                  *      }
                  * }
                  */
+                /*
+                ItemCEN artCEN = new ItemCEN();
+                IList<ItemEN> idart = artCEN.GetByName("Linkin Park");
+                Console.Out.WriteLine(idart[0].Id+" - "+linkin_park.Id);*/
                 /*PROTECTED REGION END*/
         }
         catch (Exception ex)

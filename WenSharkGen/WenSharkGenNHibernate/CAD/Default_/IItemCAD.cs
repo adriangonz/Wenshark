@@ -14,6 +14,9 @@ ItemEN GetByID (int id);
 System.Collections.Generic.IList<ItemEN> GetAll (int first, int size);
 
 
+System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> GetByName (string p_filter);
+
+
 System.Collections.Generic.IList<WenSharkGenNHibernate.EN.Default_.ItemEN> Search (string p_filter);
 }
 }

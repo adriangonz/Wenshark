@@ -140,6 +140,7 @@ ConceptualModel default {
  			/* Getters (por ID y todos) */
  			public getByID::ReadOID (p_oid : OID -> Item) : Object -> Item;
  			public getAll::ReadAll (/* No arguments */) : List<Object->Item>;
+ 			public getByName::ReadFilter (p_filter : String) : List<Object->Item> { filter = "FROM ItemEN WHERE name = :p_filter" };
  			
  			/* Busqueda por nombre */
  			public search::ReadFilter (p_filter : String) : List<Object->Item> { filter = "FROM ItemEN WHERE name LIKE '%' || :p_filter || '%' " };
