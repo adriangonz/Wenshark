@@ -691,7 +691,6 @@ function UploadCtrl ($scope) {
 				formdata.append("album-" + i, $scope.songsToUpload[i].album.name);
 				formdata.append("artist-" + i, $scope.songsToUpload[i].artist.name);
 			}
-			
 
 			$.ajax({
 				url: '/api/song',
@@ -700,9 +699,18 @@ function UploadCtrl ($scope) {
 				processData: false,
 				contentType: false,
 				success: function (data,status) {
-				    console.log("Repuesta");
-				    console.log(data);
-				    console.log(status);
+					//Look for errors on the response
+					//(each file creates one response)
+				    for(var i = 0; i < data.length; i++) {
+				    	if(data[i].StatusCode == 500) {
+				    		//If we find an error, stop everything
+				    		alert('500: Error interno');
+							$scope.uploading = false;
+							$scope.$apply();
+							return;
+				    	}
+				    }
+				    //If there is no error, everything is fine
 					$scope.uploading = false;
 					$scope.songsToUpload = [];
 					$scope.selected = null;
@@ -710,11 +718,6 @@ function UploadCtrl ($scope) {
 						'<span>Todo ha ido bien :)</span>' + 
 		  				'<a href="#" class="close">&times;</a>' + 
 					'</div>').insertBefore('.uploader');
-					$scope.$apply();
-				},
-				error: function (res) {
-					alert('500: Error interno');
-					$scope.uploading = false;
 					$scope.$apply();
 				}
 			});

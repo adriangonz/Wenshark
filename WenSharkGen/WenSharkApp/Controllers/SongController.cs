@@ -148,7 +148,7 @@ namespace WenSharkApp.Controllers
                     catch(System.Exception e) 
                     {
                         //Si algo falla devuelvo 500
-                        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                        return new HttpResponseMessage(HttpStatusCode.InternalServerError);
                     }
                 });
         }
@@ -157,7 +157,7 @@ namespace WenSharkApp.Controllers
         {
             SongCEN songCEN = new SongCEN();
             List<SongEN> resul = songCEN.GetAll(0, 10).ToList();
-
+            
 
             foreach (var song in resul)
             {
