@@ -228,6 +228,7 @@
     <Content Include="Assets\partials\artist.html" />
     <Content Include="Assets\partials\error.html" />
     <Content Include="Assets\partials\favorites.html" />
+    <Content Include="Assets\partials\home.html" />
     <Content Include="Assets\partials\loading.html" />
     <Content Include="Assets\partials\login.html" />
     <Content Include="Assets\partials\main.html" />

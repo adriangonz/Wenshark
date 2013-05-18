@@ -1,7 +1,8 @@
 /* Controllers for AngularJS */
 
 //Main controller of the app
-function MainCtrl ($scope, $timeout, $http, $location) {
+function MainCtrl($scope, $timeout, $http, $location) {
+    
 	$scope.search = function (query) {
 	    window.location.href = "/#/search/" + query;	
 	}
@@ -445,29 +446,109 @@ function MainCtrl ($scope, $timeout, $http, $location) {
 function SearchCtrl ($scope, $routeParams, $http) {
 	$scope.query = $routeParams.query;
 	$scope.loading = true;
+
+	$scope.showMore = {}
+	$scope.PAGESIZE = 5;
+
+	$scope.addMoreSearch = function (type,list) {
+
+	    $http
+            .get('/api/search?name=' + $scope.query + '&offset=' + list.length + '&' + type + '=')
+            .success(function (data) {
+                if (data.length < $scope.PAGESIZE) {
+                    console.log("No hay más páginas");
+                    $scope.showMore[type] = false;
+                }
+                list.push.apply(list,data);
+                console.log(list);
+            })
+            .error(function(data){
+                alert("PUMM!!!!");
+            })
+	    }
+
 	$http
 		.get('/api/search?name=' + $scope.query)
 		.success(function (data) {
-			$scope.songs = data.songs;
-			$scope.albums = data.albums;
-			$scope.artists = data.artists;
+		    $scope.songs = data.songs;
+		    $scope.songsF = data.songs;
+		    $scope.albumsF = $scope.albums = data.albums;
+			$scope.artistsF = $scope.artists = data.artists;
 			$scope.users = data.users;
 			console.log(data.users);
+			if ($scope.songs.length == $scope.PAGESIZE) {
+			    $scope.showMore["song"] = true;
+			}
+			if ($scope.artists.length == $scope.PAGESIZE) {
+			    $scope.showMore["artist"] = true;
+			}
+			if ($scope.albums.length == $scope.PAGESIZE) {
+			    $scope.showMore["album"] = true;
+			}
+			if ($scope.users.length == $scope.PAGESIZE) {
+			    $scope.showMore["user"] = true;
+			}
 
 			$(document).foundation('section', function () {
 				$scope.loading = false;
 			});
 		})
 		.error(function(data) {
-			$scope.songs = [];
-			$scope.albums = [];
-			$scope.artists = [];
+		    $scope.songs = [];
+		    $scope.songsF = [];
+		    $scope.albumsF = $scope.albums = [];
+		    $scope.artistsF = $scope.artists = [];
 			$scope.users = [];
 			
 			$(document).foundation('section', function () {
 				$scope.loading = false;
 			});
 		});
+	$scope.songsF = [];
+	$('#filtroCancionesId').change(function (e) {
+	    $scope.songsF = [];
+	    var text = $('#filtroCancionesId')[0].value.toLowerCase();
+	    if (text != "") {
+	        for (var i = 0; i < $scope.songs.length; i++) {
+	            var songName = $scope.songs[i].Name.toLowerCase();
+	            if (songName.indexOf(text) != -1) {
+	                $scope.songsF.push($scope.songs[i]);
+	            }
+	        }
+	    } else {
+	        $scope.songsF = $scope.songs;
+	    }
+	});
+	$scope.artistsF = [];
+	$('#filtroArtistasId').change(function (e) {
+	    $scope.artistsF = [];
+	    var text = $('#filtroArtistasId')[0].value.toLowerCase();
+	    if (text != "") {
+	        for (var i = 0; i < $scope.artists.length; i++) {
+	            var artistName = $scope.artists[i].Name.toLowerCase();
+	            if (artistName.indexOf(text) != -1) {
+	                $scope.artistsF.push($scope.artists[i]);
+	            }
+	        }
+	    } else {
+	        $scope.artistsF = $scope.artists;
+	    }
+	});
+	$scope.albumsF = [];
+	$('#filtroAlbumesId').change(function (e) {
+	    $scope.albumsF = [];
+	    var text = $('#filtroAlbumesId')[0].value.toLowerCase();
+	    if (text != "") {
+	        for (var i = 0; i < $scope.albums.length; i++) {
+	            var albumName = $scope.albums[i].Name.toLowerCase();
+	            if (albumName.indexOf(text) != -1) {
+	                $scope.albumsF.push($scope.albums[i]);
+	            }
+	        }
+	    } else {
+	        $scope.albumsF = $scope.albums;
+	    }
+	});
 
 	$scope.seguirPersona = function (idDest) {
 	    console.log("Seguir Persona " + idDest);
@@ -651,13 +732,15 @@ function UploadCtrl ($scope) {
 			        var tags = ID3.getAllTags(url);
 			        var songName = url;
 			        if (tags.title) { songName = tags.title; }
+			        var picturAlbum = "";
+			        if (tags.picture) { picturAlbum = "data:" + tags.picture.format + ";base64," + Base64.encodeBytes(tags.picture.data); }
 			        $scope.songsToUpload.push({
 			            id: size + i,
 			            name: songName,
 			            file: songFile,
 			            album: {
 			                name: tags.album,
-			                picture: ("data:" + tags.picture.format + ";base64," + Base64.encodeBytes(tags.picture.data))
+			                picture: (picturAlbum)
 			            },
 			            artist: {
 			                name: tags.artist
