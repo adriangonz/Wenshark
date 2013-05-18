@@ -25,6 +25,7 @@
 
 				<label for="upl-song-genre">Generos</label>
 				<input ng-disabled="uploading" id="upl-song-genre" type="text" placeholder="Generos de la cancion" ng-model="selected.genre.name"/>
+                <img id="imageAlbumLabel" src="{{selected.album.picture}}" />
 			</form>
 
 			<h2 class="subheader" ng-show="!songsToUpload.length">Empieza añadiendo canciones</h2>
