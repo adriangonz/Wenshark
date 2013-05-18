@@ -1,0 +1,32 @@
+<!-- Main partial view (from the old index) -->
+
+<!-- Content Slider -->
+<br />
+<div class="row">
+	<div id="featured">
+		<img src="/Assets/img/1200x500.Slide_Image.gif" alt="slide image" />
+	</div>
+</div> <!-- End Content Slider -->
+
+<!-- Popular songs -->
+<div class="row">
+    <h1 class="subheader" ng-hide="popularSongs">Aun no hay canciones. Anímate y sube alguna</h1>
+    <h2 class="header-popular" ng-show="popularSongs">Canciones populares</h2>
+    <hr />
+    <ul class="popular-songs">
+      <li ng-repeat="song in popularSongs">
+        <span class="popular-song-thumbnail">
+          <img ng-src="{{song.Album.Image}}" width="150"/>
+          <span class="popular-song-hover">
+            <span class="play-button" ng-click="addToPlaylist(song)">
+              <span class="play"></span>
+            </span>
+            <span class="popular-song-info">
+              <p class="popular-name" title="{{song.Name}}">{{song.Name}}</p>
+              <p class="popular-artist" title="{{song.Artist.Name}}"><a href="#/artist/song.Artist.Id">{{song.Artist.Name}}</a></p>
+            </span>
+          </span>
+        </span>
+      </li>
+    </ul>
+</div> <!-- End popular songs -->

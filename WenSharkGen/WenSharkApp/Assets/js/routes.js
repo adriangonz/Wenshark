@@ -8,7 +8,7 @@ angular.module('wenshark', [])
 			.when('/album/:id', {controller: AlbumCtrl, templateUrl: '/Assets/partials/album.html'})
 			.when('/profile/:id', {controller: ProfileCtrl, templateUrl: '/Assets/partials/profile.html'})
 			.when('/error', {templateUrl: '/Assets/partials/error.html'})
-			.when('/', {templateUrl: '/Assets/partials/main.html'})
+			.when('/', {controller: HomeCtrl, templateUrl: '/Assets/partials/home.html'})
 			.when('/upload', { controller: UploadCtrl, templateUrl: '/Assets/partials/upload.html' })
             .when('/playlist/:query', { controller: PlayListCtrl, templateUrl: '/Assets/partials/playListPage.html' })
             .when('/accestoken', { templateUrl: '/Assets/partials/loading.html' })//Para que Oauth no rediriga a error

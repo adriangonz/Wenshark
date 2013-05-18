@@ -11,7 +11,8 @@ function AlbumCtrl($scope, $routeParams, $http, $location) {
 			$scope.loading = false;
 		});
 	})
-	.error(function() {
+	.error(function(error) {
+		console.log(error);
 		$location.path('error');
 	});
 }

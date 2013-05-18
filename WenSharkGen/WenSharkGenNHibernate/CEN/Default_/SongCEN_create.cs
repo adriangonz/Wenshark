@@ -26,6 +26,7 @@ public WenSharkGenNHibernate.EN.Default_.SongEN Create (string name, string fnam
         songEN.Fname = fname;
         songEN.Mime = mime;
         songEN.Created = DateTime.Now;
+        songEN.ListenedTimes = 0;
 
         if (artist != -1) {
                 songEN.Artist = new ArtistEN ();
