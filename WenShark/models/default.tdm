@@ -252,7 +252,7 @@ ConceptualModel default {
 			public readOID::ReadOID (p_oid : OID -> Album) : Object -> Album;
 			public create (name : String, published : Date, image : String, artist : OID->Artist) : Object->Album;
  			public destroy::Destroy (p_oid : OID -> Album) : Void;
- 			public modify::Modifier (p_oid : OID -> Album, p_published : Date, p_name : String, p_created : Date) : Void;
+ 			public modify::Modifier (p_oid : OID -> Album, p_published : Date, p_name : String, p_created : Date, p_image : String) : Void;
  			
  			public getSongs  (album : Object->Album) : List<Object->Song>;
  			public getArtist (album : Object->Album) : Object->Artist;

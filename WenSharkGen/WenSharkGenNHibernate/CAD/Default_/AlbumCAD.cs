@@ -148,6 +148,9 @@ public void Modify (AlbumEN album)
 
                 albumEN.Created = album.Created;
 
+
+                albumEN.Image = album.Image;
+
                 session.Update (albumEN);
                 SessionCommit ();
         }

@@ -282,6 +282,7 @@
         <arguments name="p_published" type="Date" isOrdered="true"/>
         <arguments name="p_name" isOrdered="true"/>
         <arguments name="p_created" type="Date" isOrdered="true"/>
+        <arguments name="p_image" isOrdered="true"/>
       </operations>
       <operations name="getSongs" type="Object" collectionType="List" typeObject="/0/@elements.6">
         <arguments name="album" type="Object" typeObject="/0/@elements.8" isOrdered="true"/>

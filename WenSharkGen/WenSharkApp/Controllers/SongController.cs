@@ -17,6 +17,7 @@ using System.IO;
 using System.IO.MemoryMappedFiles;
 using System.Web.Mvc;
 using WenSharkCP.WensharkCP;
+using System.Drawing;
 
 namespace WenSharkApp.Controllers
 {
@@ -97,16 +98,29 @@ namespace WenSharkApp.Controllers
                             //Si no lo tenemos los creamos
                             if (!loTenemos)
                             {
-                                //Leo la metainfo para guardar la foto
-                                TagLib.File tagInfo = TagLib.File.Create(file.LocalFileName);
+                                //Setteo la ruta por defecto a la foto
                                 String pathToAlbum = "/Assets/img/albums/unknown.png";
+
+                                //Guardo el album y obtengo el id
+                                AlbumCEN albCEN = new AlbumCEN();
+                                AlbumEN albEn = albCEN.Create(album, DateTime.Now, pathToAlbum, idArtis);//TODO que ponemos aqui, lo sacamos del mime
+                                idAlbum = albEn.Id;
+
+                                //Leo la metainfo para guardar la foto
+                                TagLib.File tagInfo = TagLib.File.Create(file.LocalFileName, file.Headers.ContentType.MediaType, TagLib.ReadStyle.Average);
                                 if (tagInfo.Tag.Pictures.Count() > 0)
                                 {
-                                    //Hay minimo una imagen, o sea que
+                                    //Hay minimo una imagen, o sea que nos la guardamos
+                                    TagLib.IPicture p = tagInfo.Tag.Pictures[0];
+                                    MemoryStream stream = new MemoryStream(p.Data.Data);
+                                    ImageConverter ic = new ImageConverter();
+                                    Image im = (Image)ic.ConvertFrom(p.Data.Data);
+                                    var n_path = HttpContext.Current.Server.MapPath("~/Assets/img/albums/");
+                                    var n_name = idAlbum + defaultExtension(p.MimeType);
+                                    im.Save(n_path + n_name);
+                                    pathToAlbum = "/Assets/img/albums/" + n_name;
+                                    albCEN.Modify(idAlbum, albEn.Published, albEn.Name, albEn.Created, pathToAlbum);
                                 }
-
-                                AlbumCEN albCEN = new AlbumCEN();
-                                idAlbum = (albCEN.Create(album, DateTime.Now, pathToAlbum, idArtis)).Id;//TODO que ponemos aqui, lo sacamos del mime
                             }
                             
                         }

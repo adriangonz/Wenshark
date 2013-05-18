@@ -74,7 +74,7 @@ public void Destroy (int id)
         _IAlbumCAD.Destroy (id);
 }
 
-public void Modify (int p_oid, Nullable<DateTime> p_published, string p_name, Nullable<DateTime> p_created)
+public void Modify (int p_oid, Nullable<DateTime> p_published, string p_name, Nullable<DateTime> p_created, string p_image)
 {
         AlbumEN albumEN = null;
 
@@ -84,6 +84,7 @@ public void Modify (int p_oid, Nullable<DateTime> p_published, string p_name, Nu
         albumEN.Published = p_published;
         albumEN.Name = p_name;
         albumEN.Created = p_created;
+        albumEN.Image = p_image;
         //Call to AlbumCAD
 
         _IAlbumCAD.Modify (albumEN);
