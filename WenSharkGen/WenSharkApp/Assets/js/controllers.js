@@ -656,7 +656,8 @@ function UploadCtrl ($scope) {
 			            name: songName,
 			            file: songFile,
 			            album: {
-			                name: tags.album
+			                name: tags.album,
+			                picture: ("data:" + tags.picture.format + ";base64," + Base64.encodeBytes(tags.picture.data))
 			            },
 			            artist: {
 			                name: tags.artist
