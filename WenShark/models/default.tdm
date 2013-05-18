@@ -144,7 +144,6 @@ ConceptualModel default {
  			
  			/* Busqueda por nombre */
  			public search::ReadFilter (p_filter : String) : List<Object->Item> { filter = "FROM ItemEN WHERE name LIKE '%' || :p_filter || '%' " };
- 			
  		}
  	};
  	

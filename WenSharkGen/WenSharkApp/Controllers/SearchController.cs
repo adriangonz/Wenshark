@@ -38,6 +38,44 @@ namespace WenSharkApp.Controllers
         
             return this.Request.CreateResponse(HttpStatusCode.OK, "hola");
         }
+
+        public HttpResponseMessage getSearchSong(string name, int offset, string song)
+        {
+            SearchCP searchCP = new SearchCP();
+
+            List<SongEN> songs = searchCP.searchSong(name, offset);
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, songs);
+        }
+
+        public HttpResponseMessage getSearchAlbum(string name, int offset, string album)
+        {
+            SearchCP searchCP = new SearchCP();
+
+            List<AlbumEN> albums = searchCP.searchAlbum(name, offset);
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, albums);
+        }
+
+        public HttpResponseMessage getSearchArtist(string name, int offset, string artist)
+        {
+            SearchCP searchCP = new SearchCP();
+
+            List<ArtistEN> songs = searchCP.searchArtist(name, offset);
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, songs);
+        }
+
+        [Authorize]
+        public HttpResponseMessage getSearchUser(string name, int offset, string user)
+        {
+            SearchCP searchCP = new SearchCP();
+
+            int idUser = int.Parse(this.User.Identity.Name);
+            List<UserDTO> users = searchCP.searchUsers(idUser,name, offset);
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, users);
+        }
     }
 
     public class pru
