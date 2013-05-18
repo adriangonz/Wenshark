@@ -651,13 +651,15 @@ function UploadCtrl ($scope) {
 			        var tags = ID3.getAllTags(url);
 			        var songName = url;
 			        if (tags.title) { songName = tags.title; }
+			        var picturAlbum = "";
+			        if (tags.picture) { picturAlbum = "data:" + tags.picture.format + ";base64," + Base64.encodeBytes(tags.picture.data); }
 			        $scope.songsToUpload.push({
 			            id: size + i,
 			            name: songName,
 			            file: songFile,
 			            album: {
 			                name: tags.album,
-			                picture: ("data:" + tags.picture.format + ";base64," + Base64.encodeBytes(tags.picture.data))
+			                picture: (picturAlbum)
 			            },
 			            artist: {
 			                name: tags.artist
