@@ -7,9 +7,11 @@
 	<div class="section-container auto" data-section ng-hide="loading">
 		<section class="section active">
 			<p class="title"><a href="">Canciones</a></p>
+            
 			<div class="content">
 				<ul class="items-list" ng-show="songs.length">
-					<li class="song-thumb row th" ng-repeat="song in songs" ws-song></li>
+                    <li><input id="filtroCancionesId" class="filtro" type="text" placeholder="Filtrar..."/></li>
+					<li class="song-thumb row th" ng-repeat="song in songsF" ws-song></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!songs.length">No se han encontrado canciones :(</h2>
@@ -20,7 +22,8 @@
 			<p class="title"><a href="">Artistas</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="artists.length">
-					<li class="art-thumb row th" ng-repeat="artist in artists" ws-artist></li>
+                    <li><input id="filtroArtistasId" class="filtro" type="text" placeholder="Filtrar..."/></li>
+					<li class="art-thumb row th" ng-repeat="artist in artistsF" ws-artist></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!artists.length">No se han encontrado artistas :(</h2>
@@ -31,7 +34,8 @@
 			<p class="title"><a href="">Albumes</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="albums.length">
-					<li class="alb-thumb row th" ng-repeat="album in albums" ws-album></li>
+                    <li><input id="filtroAlbumesId" class="filtro" type="text" placeholder="Filtrar..."/></li>
+					<li class="alb-thumb row th" ng-repeat="album in albumsF" ws-album></li>
 				</ul>
 
 				<h2 class="subheader" ng-show="!albums.length">No se han encontrado albumes :(</h2>

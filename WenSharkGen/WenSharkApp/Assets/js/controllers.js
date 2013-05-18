@@ -448,9 +448,10 @@ function SearchCtrl ($scope, $routeParams, $http) {
 	$http
 		.get('/api/search?name=' + $scope.query)
 		.success(function (data) {
-			$scope.songs = data.songs;
-			$scope.albums = data.albums;
-			$scope.artists = data.artists;
+		    $scope.songs = data.songs;
+		    $scope.songsF = data.songs;
+		    $scope.albumsF = $scope.albums = data.albums;
+			$scope.artistsF = $scope.artists = data.artists;
 			$scope.users = data.users;
 			console.log(data.users);
 
@@ -459,15 +460,61 @@ function SearchCtrl ($scope, $routeParams, $http) {
 			});
 		})
 		.error(function(data) {
-			$scope.songs = [];
-			$scope.albums = [];
-			$scope.artists = [];
+		    $scope.songs = [];
+		    $scope.songsF = [];
+		    $scope.albumsF = $scope.albums = [];
+		    $scope.artistsF = $scope.artists = [];
 			$scope.users = [];
 			
 			$(document).foundation('section', function () {
 				$scope.loading = false;
 			});
 		});
+	$scope.songsF = [];
+	$('#filtroCancionesId').change(function (e) {
+	    $scope.songsF = [];
+	    var text = $('#filtroCancionesId')[0].value.toLowerCase();
+	    if (text != "") {
+	        for (var i = 0; i < $scope.songs.length; i++) {
+	            var songName = $scope.songs[i].Name.toLowerCase();
+	            if (songName.indexOf(text) != -1) {
+	                $scope.songsF.push($scope.songs[i]);
+	            }
+	        }
+	    } else {
+	        $scope.songsF = $scope.songs;
+	    }
+	});
+	$scope.artistsF = [];
+	$('#filtroArtistasId').change(function (e) {
+	    $scope.artistsF = [];
+	    var text = $('#filtroArtistasId')[0].value.toLowerCase();
+	    if (text != "") {
+	        for (var i = 0; i < $scope.artists.length; i++) {
+	            var artistName = $scope.artists[i].Name.toLowerCase();
+	            if (artistName.indexOf(text) != -1) {
+	                $scope.artistsF.push($scope.artists[i]);
+	            }
+	        }
+	    } else {
+	        $scope.artistsF = $scope.artists;
+	    }
+	});
+	$scope.albumsF = [];
+	$('#filtroAlbumesId').change(function (e) {
+	    $scope.albumsF = [];
+	    var text = $('#filtroAlbumesId')[0].value.toLowerCase();
+	    if (text != "") {
+	        for (var i = 0; i < $scope.albums.length; i++) {
+	            var albumName = $scope.albums[i].Name.toLowerCase();
+	            if (albumName.indexOf(text) != -1) {
+	                $scope.albumsF.push($scope.albums[i]);
+	            }
+	        }
+	    } else {
+	        $scope.albumsF = $scope.albums;
+	    }
+	});
 
 	$scope.seguirPersona = function (idDest) {
 	    console.log("Seguir Persona " + idDest);
