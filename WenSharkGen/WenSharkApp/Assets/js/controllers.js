@@ -1,7 +1,8 @@
 /* Controllers for AngularJS */
 
 //Main controller of the app
-function MainCtrl ($scope, $timeout, $http, $location) {
+function MainCtrl($scope, $timeout, $http, $location) {
+    
 	$scope.search = function (query) {
 	    window.location.href = "/#/search/" + query;	
 	}
@@ -445,6 +446,27 @@ function MainCtrl ($scope, $timeout, $http, $location) {
 function SearchCtrl ($scope, $routeParams, $http) {
 	$scope.query = $routeParams.query;
 	$scope.loading = true;
+
+	$scope.showMore = {}
+	$scope.PAGESIZE = 5;
+
+	$scope.addMoreSearch = function (type,list) {
+
+	    $http
+            .get('/api/search?name=' + $scope.query + '&offset=' + list.length + '&' + type + '=')
+            .success(function (data) {
+                if (data.length < $scope.PAGESIZE) {
+                    console.log("No hay más páginas");
+                    $scope.showMore[type] = false;
+                }
+                list.push.apply(list,data);
+                console.log(list);
+            })
+            .error(function(data){
+                alert("PUMM!!!!");
+            })
+	    }
+
 	$http
 		.get('/api/search?name=' + $scope.query)
 		.success(function (data) {
@@ -454,6 +476,18 @@ function SearchCtrl ($scope, $routeParams, $http) {
 			$scope.artistsF = $scope.artists = data.artists;
 			$scope.users = data.users;
 			console.log(data.users);
+			if ($scope.songs.length == $scope.PAGESIZE) {
+			    $scope.showMore["song"] = true;
+			}
+			if ($scope.artists.length == $scope.PAGESIZE) {
+			    $scope.showMore["artist"] = true;
+			}
+			if ($scope.albums.length == $scope.PAGESIZE) {
+			    $scope.showMore["album"] = true;
+			}
+			if ($scope.users.length == $scope.PAGESIZE) {
+			    $scope.showMore["user"] = true;
+			}
 
 			$(document).foundation('section', function () {
 				$scope.loading = false;

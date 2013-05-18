@@ -12,59 +12,71 @@ namespace WenSharkCP.WensharkCP
 {
     public class SearchCP : BasicCP
     {
-        public List<SongEN> searchSong(string name)
+        public const int PAGESIZE = 5; 
+
+        public List<SongEN> searchSong(string name,int offset=0)
         {
             SessionInitializeTransaction();
             SongCAD songCAD = new SongCAD(session);
             SongCEN songCEN = new SongCEN(songCAD);
 
-            List<SongEN> resul = songCEN.Search(name).ToList();
+            List<SongEN> all = songCEN.Search(name).ToList();
+            List<SongEN> resul = new List<SongEN>();
 
-            foreach (var song in resul)
-            {
+            for (int i = offset; i < all.Count && i < offset+PAGESIZE; i++)
+			{
+                SongEN song = all[i];
                 nullSong(song);
-            }
+                resul.Add(song);
+			}
+            
 
             SessionClose();
             return resul;
         }
 
-        public List<ArtistEN> searchArtist(string name)
+        public List<ArtistEN> searchArtist(string name, int offset = 0)
         {
             SessionInitializeTransaction();
             ArtistCAD artistCAD = new ArtistCAD(session);
             ArtistCEN artistCEN = new ArtistCEN(artistCAD);
 
-            List<ArtistEN> resul = artistCEN.Search(name).ToList();
+            List<ArtistEN> all = artistCEN.Search(name).ToList();
+            List<ArtistEN> resul = new List<ArtistEN>();
 
-            foreach (var item in resul)
+            for (int i = offset; i < all.Count && i < offset + PAGESIZE; i++)
             {
-                nullArtist(item);
+                ArtistEN artista = all[i];
+                nullArtist(artista);
+                resul.Add(artista);
             }
 
             SessionClose();
             return resul;
         }
 
-        public List<AlbumEN> searchAlbum(string name)
+        public List<AlbumEN> searchAlbum(string name, int offset = 0)
         {
             SessionInitializeTransaction();
-            List<AlbumEN> resul;
+            List<AlbumEN> all;
             AlbumCAD albumCAD = new AlbumCAD(session);
             AlbumCEN albumCEN = new AlbumCEN(albumCAD);
 
-            resul = albumCEN.Search(name).ToList();
+            all = albumCEN.Search(name).ToList();
+            List<AlbumEN> resul = new List<AlbumEN>();
 
-            foreach (var item in resul)
+            for (int i = offset; i < all.Count && i < offset + PAGESIZE; i++)
             {
-                nullAlbum(item);
+                AlbumEN album = all[i];
+                nullAlbum(album);
+                resul.Add(album);
             }
 
             SessionClose();
             return resul;
         }
 
-        public List<UserDTO> searchUsers(int idUser,string name)
+        public List<UserDTO> searchUsers(int idUser, string name, int offset = 0)
         {
             SessionInitializeTransaction();
             List<UserDTO> resulDTO = new List<UserDTO>();
@@ -76,8 +88,9 @@ namespace WenSharkCP.WensharkCP
 
             resulEN = userCEN.Search(name).ToList();
 
-            foreach (var item in resulEN)
+            for (int i = offset; i < resulEN.Count && i < offset + PAGESIZE; i++)
             {
+                UserEN item = resulEN[i];
                 UserDTO u = new UserDTO();
                 u.Name = item.Name;
                 u.Id = item.Id;
@@ -85,9 +98,9 @@ namespace WenSharkCP.WensharkCP
                 u.Follow = false;
 
                 //Esto es un poco ineficiente... hay que mejorarlo
-                for (int i = 0; i < user.Sigues.Count; i++)
+                for (int j = 0; j < user.Sigues.Count; j++)
                 {
-                    if (item.Id == user.Sigues[i].Id)
+                    if (item.Id == user.Sigues[j].Id)
                     {
                         u.Follow = true;
                         break;

@@ -13,20 +13,20 @@
                     <li><input id="filtroCancionesId" class="filtro" type="text" placeholder="Filtrar..."/></li>
 					<li class="song-thumb row th" ng-repeat="song in songsF" ws-song></li>
 				</ul>
-
+                <a class="button small-12" ng-click="addMoreSearch('song',songs)" ng-show="showMore['song']">Mostar mas resultados</a>
 				<h2 class="subheader" ng-show="!songs.length">No se han encontrado canciones :(</h2>
 			</div>
 		</section>
 
-		<section class="section">
+		<section class="section" >
 			<p class="title"><a href="">Artistas</a></p>
 			<div class="content">
 				<ul class="items-list" ng-show="artists.length">
                     <li><input id="filtroArtistasId" class="filtro" type="text" placeholder="Filtrar..."/></li>
 					<li class="art-thumb row th" ng-repeat="artist in artistsF" ws-artist></li>
 				</ul>
-
-				<h2 class="subheader" ng-show="!artists.length">No se han encontrado artistas :(</h2>
+                <a class="button small-12" ng-click="addMoreSearch('artist',artists)" ng-show="showMore['artist']">Mostar mas resultados</a>
+				<h2 class="subheader"  ng-show="!artists.length">No se han encontrado artistas :(</h2>
 			</div>
 		</section>
 
@@ -37,8 +37,8 @@
                     <li><input id="filtroAlbumesId" class="filtro" type="text" placeholder="Filtrar..."/></li>
 					<li class="alb-thumb row th" ng-repeat="album in albumsF" ws-album></li>
 				</ul>
-
-				<h2 class="subheader" ng-show="!albums.length">No se han encontrado albumes :(</h2>
+                <a class="button small-12" ng-click="addMoreSearch('album',albums)" ng-show="showMore['album']">Mostar mas resultados</a>
+				<h2 class="subheader"  ng-show="!albums.length">No se han encontrado albumes :(</h2>
 			</div>
 		</section>
 
@@ -48,8 +48,10 @@
                 <ul class="items-list" ng-show="users.length">
                     <li class="user-thumb row th" ng-repeat="user in users"  ng-show="users.length" ws-user></li>
                  </ul>
+                <a class="button small-12" ng-click="addMoreSearch('user',users)" ng-show="showMore['user']">Mostar mas resultados</a>
                 <h2 class="subheader" ng-show="!users.length">No se han encontrado usuarios :(</h2>
             </div>
         </section>
+
 	</div>
 </div>
