@@ -58,8 +58,8 @@ namespace WenSharkApp.Controllers
                         string artist = (provider.FormData["artist-" + i]);
                         int idAlbum = 5, idArtis = 1;
                         IList<ItemEN> result = null;
+
                         //Hacemos la busqueda de artista y de album
-                        
                         if (artist != "")
                         {
                             result = itCEN.GetByName(artist);
@@ -77,7 +77,7 @@ namespace WenSharkApp.Controllers
                             if (!loTenemos)
                             {
                                 ArtistCEN artCEN = new ArtistCEN();
-                                idArtis = (artCEN.Create(artist, "", "")).Id;
+                                idArtis = (artCEN.Create(artist, "Bio autogenerada", "/Assets/img/artists/unknown.png")).Id;
                             }
                         }
                         if (album != "")
@@ -97,8 +97,16 @@ namespace WenSharkApp.Controllers
                             //Si no lo tenemos los creamos
                             if (!loTenemos)
                             {
+                                //Leo la metainfo para guardar la foto
+                                TagLib.File tagInfo = TagLib.File.Create(file.LocalFileName);
+                                String pathToAlbum = "/Assets/img/albums/unknown.png";
+                                if (tagInfo.Tag.Pictures.Count() > 0)
+                                {
+                                    //Hay minimo una imagen, o sea que
+                                }
+
                                 AlbumCEN albCEN = new AlbumCEN();
-                                idAlbum = (albCEN.Create(album, DateTime.Now, "", idArtis)).Id;//TODO que ponemos aqui, lo sacamos del mime
+                                idAlbum = (albCEN.Create(album, DateTime.Now, pathToAlbum, idArtis)).Id;//TODO que ponemos aqui, lo sacamos del mime
                             }
                             
                         }

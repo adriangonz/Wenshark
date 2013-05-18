@@ -32,6 +32,9 @@ namespace WenSharkCP.WensharkCP
                 }
 
                 user.Playlist = null;
+                user.Seguidores = null;
+                user.Sigues = null;
+                user.Publication = null;
             }
             catch (Exception ex)
             {
