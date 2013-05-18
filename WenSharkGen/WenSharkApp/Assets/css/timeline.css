@@ -50,6 +50,10 @@
 	font-style: italic;
 }
 
+.timeline-item .artist:hover {
+	text-decoration: underline;
+}
+
 .timeline-item .quote {
 	margin: 0 0 5px 5px;
 	font-size: 26px;

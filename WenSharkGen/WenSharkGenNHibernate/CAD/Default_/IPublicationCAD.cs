@@ -16,6 +16,7 @@ void Destroy (int id);
 void Modify (PublicationEN publication);
 
 
+
 void SetItem (int p_publication, int p_item);
 
 void SetUser (int p_publication, int p_user);

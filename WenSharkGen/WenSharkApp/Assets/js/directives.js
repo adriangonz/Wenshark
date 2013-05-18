@@ -129,15 +129,30 @@
     return {
         restrict: 'A',
         template:
-            '<img src="http://localhost:5749/Assets/img/albums/reanimation.jpg" width="15" height="15">'+
-            '<p><span class="user">Adrian</span> shared this:</p>'+
+            '<img src="{{publication.User.Image}}" width="15" height="15">'+
+            '<p><a href="#/profile/{{publication.User.Id}}" class="user">{{publication.User.Name}}</a> shared this:</p>'+
             '<br>'+
             '<p class="quote">{{publication.Text}}</p>'+
-            '<div>'+
-                '<img class="left" src="http://localhost:5749/Assets/img/albums/reanimation.jpg" width="50" height="50">'+
-                '<div>'+
-                    '<p class="song">Gold on the no se que</p>'+
-                    '<p>by <span class="artist">The Black Keys</span></p>'+
+            '<div ng-switch on="publication.Item.Type">'+
+                '<div ng-switch-when="Song">'+
+                    '<img class="left" src="{{publication.Item.Album.Image}}" width="50" height="50">'+
+                    '<div>'+
+                        '<p class="song">{{publication.Item.Name}} - <a href="#/album/{{publication.Item.Album.Id}}">{{publication.Item.Album.Name}}</a>'+
+                        '<p>by <a href="#/artist/{{publication.Item.Artist.Id}}" class="artist">{{publication.Item.Artist.Name}}</a></p>'+
+                    '</div>'+
+                '</div>'+
+                '<div ng-switch-when="Album">'+
+                    '<img class="left" src="{{publication.Item.Image}}" width="50" height="50">'+
+                    '<div>'+
+                        '<p class="song"><a href="#/album/{{publication.Item.Id}}">{{publication.Item.Name}}</a></p>'+
+                        '<p>by <a href="#/artist/{{publication.Item.Artist.Id}}" class="artist">{{publication.Item.Artist.Name}}</a></p>'+
+                    '</div>'+
+                '</div>'+
+                '<div ng-switch-when="Artist">'+
+                    '<img class="left" src="{{publication.Item.Image}}" width="50" height="50">'+
+                    '<div>'+
+                        '<p class="song"><a href="#/artist/{{publication.Item.Id}}">{{publication.Item.Name}}</a></p>'+
+                    '</div>'+
                 '</div>'+
             '</div>'
     }

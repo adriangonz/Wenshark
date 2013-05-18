@@ -110,6 +110,9 @@ public void Modify (PublicationEN publication)
 
                 publicationEN.Text = publication.Text;
 
+
+                publicationEN.Created = publication.Created;
+
                 session.Update (publicationEN);
                 SessionCommit ();
         }

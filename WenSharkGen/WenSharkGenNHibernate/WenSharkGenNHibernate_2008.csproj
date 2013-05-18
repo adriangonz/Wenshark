@@ -145,6 +145,7 @@
 	<Compile Include="CEN\Default_\PublicationCEN.cs" />
 	<Compile Include="CAD\Default_\IPublicationCAD.cs" />
 	<Compile Include="CAD\Default_\PublicationCAD.cs" />
+			<Compile Include="CEN\Default_\PublicationCEN_Create.cs" />
 	
 	
 

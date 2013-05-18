@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="BasicCP.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="WensharkCP\TimelineCP.cs" />
     <Compile Include="WensharkCP\FavoritesCP.cs" />
     <Compile Include="WensharkCP\PlayListCP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
