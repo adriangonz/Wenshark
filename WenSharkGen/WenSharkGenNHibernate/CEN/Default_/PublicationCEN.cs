@@ -32,7 +32,7 @@ public IPublicationCAD get_IPublicationCAD ()
         return this._IPublicationCAD;
 }
 
-public int New_ (string p_text, Nullable<DateTime> p_created)
+public int New_ (string p_text)
 {
         PublicationEN publicationEN = null;
         int oid;
@@ -40,8 +40,6 @@ public int New_ (string p_text, Nullable<DateTime> p_created)
         //Initialized PublicationEN
         publicationEN = new PublicationEN ();
         publicationEN.Text = p_text;
-
-        publicationEN.Created = p_created;
 
         //Call to PublicationCAD
 
@@ -54,7 +52,7 @@ public void Destroy (int id)
         _IPublicationCAD.Destroy (id);
 }
 
-public void Modify (int p_oid, string p_text, Nullable<DateTime> p_created)
+public void Modify (int p_oid, string p_text)
 {
         PublicationEN publicationEN = null;
 
@@ -62,7 +60,6 @@ public void Modify (int p_oid, string p_text, Nullable<DateTime> p_created)
         publicationEN = new PublicationEN ();
         publicationEN.Id = p_oid;
         publicationEN.Text = p_text;
-        publicationEN.Created = p_created;
         //Call to PublicationCAD
 
         _IPublicationCAD.Modify (publicationEN);

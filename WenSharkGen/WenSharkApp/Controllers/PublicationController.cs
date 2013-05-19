@@ -34,7 +34,7 @@ namespace WenSharkApp.Controllers
 
             DateTime now = DateTime.Now;
 
-            int idPbl = pCEN.New_(text, DateTime.Now);
+            int idPbl = pCEN.New_(text);
             pCEN.SetUser(idPbl, id);
             pCEN.SetItem(idPbl, idItm);
 

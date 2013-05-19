@@ -10,7 +10,10 @@ using WenSharkGenNHibernate.EN.Default_;
 namespace WenSharkCP.WensharkCP {
     public class TimelineCP : BasicCP {
         
-        public List<PublicationEN> getByUser(int userId) {
+        /**
+         * Devuelve el timeline de la gente a la que sigue userID
+         */ 
+        public List<PublicationEN> getTimeline(int userId) {
 
             SessionInitializeTransaction();
 
@@ -22,6 +25,23 @@ namespace WenSharkCP.WensharkCP {
             foreach (var i in listaIds) {
                 publicaciones.AddRange(publCP.getByUser(i));
             }
+
+            SessionClose();
+
+            return publicaciones;
+        }
+
+        /**
+         * Devuelve el timeline de las publicaciones de userId
+         */ 
+        public List<PublicationEN> getUserTimeline(int userId) {
+
+            SessionInitializeTransaction();
+
+            UserCP userCP = new UserCP();
+
+            PublicationCP publCP = new PublicationCP();
+            List<PublicationEN> publicaciones = publCP.getByUser(userId);
 
             SessionClose();
 

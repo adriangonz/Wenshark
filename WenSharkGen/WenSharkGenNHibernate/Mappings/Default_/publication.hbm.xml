@@ -10,10 +10,6 @@
 					<property name="Text" type="string"> 
 						<column name="[text]"  not-null="true"/>
 					</property>
-					<property name="Created" type="date"> 
-						<column name="[created]"  not-null="true"/>
-					</property>
-			
 			
 			
 			
@@ -28,7 +24,6 @@
 								<column name="[FK_id_Item]"/>
 						</many-to-one>
 											 					
-					
 					
 					
 					

@@ -21,12 +21,6 @@ private string text;
  *
  */
 
-private Nullable<DateTime> created;
-
-/**
- *
- */
-
 private WenSharkGenNHibernate.EN.Default_.UserEN user;
 
 /**
@@ -49,11 +43,6 @@ public virtual string Text {
 }
 
 
-public virtual Nullable<DateTime> Created {
-        get { return created; } set { created = value;  }
-}
-
-
 public virtual WenSharkGenNHibernate.EN.Default_.UserEN User {
         get { return user; } set { user = value;  }
 }
@@ -73,25 +62,23 @@ public PublicationEN()
 
 
 
-public PublicationEN(int id, string text, Nullable<DateTime> created, WenSharkGenNHibernate.EN.Default_.UserEN user, WenSharkGenNHibernate.EN.Default_.ItemEN item)
+public PublicationEN(int id, string text, WenSharkGenNHibernate.EN.Default_.UserEN user, WenSharkGenNHibernate.EN.Default_.ItemEN item)
 {
-        this.init (id, text, created, user, item);
+        this.init (id, text, user, item);
 }
 
 
 public PublicationEN(PublicationEN publication)
 {
-        this.init (publication.Id, publication.Text, publication.Created, publication.User, publication.Item);
+        this.init (publication.Id, publication.Text, publication.User, publication.Item);
 }
 
-private void init (int id, string text, Nullable<DateTime> created, WenSharkGenNHibernate.EN.Default_.UserEN user, WenSharkGenNHibernate.EN.Default_.ItemEN item)
+private void init (int id, string text, WenSharkGenNHibernate.EN.Default_.UserEN user, WenSharkGenNHibernate.EN.Default_.ItemEN item)
 {
         this.Id = id;
 
 
         this.Text = text;
-
-        this.Created = created;
 
         this.User = user;
 

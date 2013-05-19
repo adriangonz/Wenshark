@@ -21,16 +21,31 @@ namespace WenSharkApp.Controllers
 
             int userId = int.Parse(this.User.Identity.Name);
 
-            List<PublicationEN> lpublis = timelineCP.getByUser(userId);
+            List<PublicationEN> lpublis = timelineCP.getTimeline(userId);
 
 
             List<SongEN> lsongs = timelineCP.getSongs(lpublis);
             List<AlbumEN> lalbums = timelineCP.getAlbums(lpublis);
             List<ArtistEN> lartists = timelineCP.getArtists(lpublis);
 
-            lpublis = lpublis.OrderByDescending(o => o.Created).ToList();
+            lpublis = lpublis.OrderByDescending(o => o.Id).ToList();
 
-            return this.Request.CreateResponse(HttpStatusCode.OK, new { songs = lsongs, albums = lalbums, artists = lartists, publications = lpublis } );
+            return this.Request.CreateResponse(HttpStatusCode.OK, new { songs = lsongs, albums = lalbums, artists = lartists, publications = lpublis });
+        }
+
+        public HttpResponseMessage getTimeline(int userId) {
+
+            TimelineCP timelineCP = new TimelineCP();
+
+            List<PublicationEN> lpublis = timelineCP.getUserTimeline(userId);
+
+            List<SongEN> lsongs = timelineCP.getSongs(lpublis);
+            List<AlbumEN> lalbums = timelineCP.getAlbums(lpublis);
+            List<ArtistEN> lartists = timelineCP.getArtists(lpublis);
+
+            lpublis = lpublis.OrderByDescending(o => o.Id).ToList();
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, new { songs = lsongs, albums = lalbums, artists = lartists, publications = lpublis });
         }
     }
 }
