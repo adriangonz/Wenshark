@@ -34,7 +34,7 @@
         restrict: 'A',
         template: 
             '<span class="song-img small-2 columns left">' + 
-                '<img src="{{song.Album.Image}}" width="50" />' + 
+                '<img ng-src="{{song.Album.Image}}" width="50" />' + 
             '</span>' + 
             '<span class="song-name small-5 columns left">' +
                 '<p class="name">{{song.Name}}</p>' + 
@@ -59,7 +59,7 @@
         restrict: 'A',
         template: 
             '<span class="small-2 columns left">' +
-                '<img src="{{album.Image}}" width="50" />' + 
+                '<img ng-src="{{album.Image}}" width="50" />' + 
             '</span>' + 
             '<span class="small-6 columns left">' + 
                 '<a href="#/album/{{album.Id}}">' + 
@@ -78,7 +78,7 @@
         restrict: 'A',
         template: 
             '<span class="small-2 columns left">' +
-                '<img src="{{artist.Image}}" width="50" />' + 
+                '<img ng-src="{{artist.Image}}" width="50" />' + 
             '</span>' + 
             '<span class="small-6 columns left">' + 
                 '<a href="#/artist/{{artist.Id}}">' + 
@@ -104,7 +104,7 @@
         restrict: 'A',
         template:
             '<span class="small-2 columns left">' +
-                '<img src="{{user.Id}}" width="50" />' +
+                '<img ng-src="{{user.Image}}" width="50" />' +
             '</span>' +
             '<span class="small-6 columns left">' +
                 '<a href="#/profile/{{user.Id}}">' +
