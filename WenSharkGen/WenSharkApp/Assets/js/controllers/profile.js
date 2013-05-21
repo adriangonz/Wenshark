@@ -24,6 +24,43 @@ function ProfileCtrl($scope, $routeParams, $http, $location) {
 		$location.path('error');
 	});
 
+	$http
+        .get('/api/timeline?userId=' + $routeParams.id)
+        .success(function (data) {
+            $scope.publications = data.publications;
+            for(var i = 0; i < $scope.publications.length; i++){
+            	$scope.publications[i].Item = $scope.getFullItem($scope.publications[i].Item, data);
+            }
+        })
+        .error(function (data) {
+            console.log('500: Error interno');
+        });
+
+    $scope.getFullItem = function(item, data) {
+
+    	switch(item.Type) {
+    	case "Song":
+    		for(var j = 0; j < data.songs.length; j++) {
+    			if(data.songs[j].Id == item.Id)
+    				return data.songs[j];
+    		}
+    		break;
+    	case "Album":
+    		for(var j = 0; j < data.albums.length; j++) {
+    			if(data.albums[j].Id == item.Id)
+    				return data.albums[j];
+    		}
+    		break;
+    	case "Artist":
+    		for(var j = 0; j < data.artists.length; j++) {
+    			if(data.artists[j].Id == item.Id)
+    				return data.artists[j];
+    		}
+    		break;
+    	}
+    	return {};
+    }
+
 	$scope.editingName = false;
 	var oldName = '';
 	//Some functions for editing

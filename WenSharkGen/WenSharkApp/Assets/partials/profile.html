@@ -38,4 +38,8 @@
 			</div>
 		</span>
 	</div>
+	<ul class="items-list" ng-show="publications.length">
+		<div class="timeline-item" ng-repeat="publication in publications" ws-publication></div>
+		<br ng-repeat="publication in publications">
+	</ul>
 </div>
