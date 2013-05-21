@@ -714,7 +714,7 @@ function UploadCtrl ($scope) {
 					$scope.uploading = false;
 					$scope.songsToUpload = [];
 					$scope.selected = null;
-					$('<div data-console.log class="console.log-box">' + 
+					$('<div data-alert class="alert-box">' + 
 						'<span>Todo ha ido bien :)</span>' + 
 		  				'<a href="#" class="close">&times;</a>' + 
 					'</div>').insertBefore('.uploader');
