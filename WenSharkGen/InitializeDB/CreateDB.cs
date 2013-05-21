@@ -164,9 +164,9 @@ public static void InitializeData ()
                 SongEN sE = songcen.Create ("Pushing me away", "lk_ht_12.mp3", "audio/mp3", linkin_park.Id, hybrid_theory.Id);
 
                 PublicationCEN pbCEN = new PublicationCEN ();
-                int pb1 = pbCEN.New_ ("Mirad como mola esto");
-                pbCEN.SetUser (pb1, idUserEjemplo1);
-                pbCEN.SetItem (pb1, sE.Id);
+                int pubId = pbCEN.New_ ("Mirad como mola esto");
+                pbCEN.SetUser(pubId, idUserEjemplo1);
+                pbCEN.SetItem(pubId, sE.Id);
                 //Alguna del fary
                 songcen.Create ("Apatrullando la ciudad", "apatrullando.mp3", "audio/mp3", fary.Id, que_grande_eres.Id);
 
