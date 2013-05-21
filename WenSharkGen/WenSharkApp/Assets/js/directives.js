@@ -135,7 +135,12 @@
             '<p class="quote">{{publication.Text}}</p>'+
             '<div ng-switch on="publication.Item.Type">'+
                 '<div ng-switch-when="Song">'+
-                    '<img class="left" src="{{publication.Item.Album.Image}}" width="50" height="50">'+
+                    '<span class="timeline-song-img">' + 
+                        '<img class="left" src="{{publication.Item.Album.Image}}" width="50" height="50">'+
+                        '<span class="timeline-song-hover" ng-click="addToPlaylist(publication.Item)">' +
+                            '<span class="timeline-song-play"><span class="tiny play"></span></span>' + 
+                        '</span>' +
+                    '</span>' +
                     '<div>'+
                         '<p class="song">{{publication.Item.Name}} - <a href="#/album/{{publication.Item.Album.Id}}">{{publication.Item.Album.Name}}</a>'+
                         '<p>by <a href="#/artist/{{publication.Item.Artist.Id}}" class="artist">{{publication.Item.Artist.Name}}</a></p>'+
