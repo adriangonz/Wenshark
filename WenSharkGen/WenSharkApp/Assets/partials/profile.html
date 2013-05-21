@@ -8,16 +8,20 @@
 		<span class="small-3 columns left">
 			<div class="img">
 				<img ng-src="{{user.Image}}" width="200" />
-				<div class="img-edit" ng-hide="editingName">
-					<i class="enclose-icon foundicon-edit" ng-click="editImage()" ng-show="isEditable"></i>
-				</div>
+				<span ng-show="isEditable">
+					<div class="img-edit" ng-hide="editingName">
+						<i class="enclose-icon foundicon-edit" ng-click="editImage()"></i>
+					</div>
+				</span>
 			</div>
 		</span>
 		<span class="small-9 columns">
 			<h1 class="name profile-name">
 				<span class="name-txt">{{user.Name}}</span>
-				<span ng-show="isEditable" ng-hide="editingImage">
-					<i class="foundicon-edit" ng-hide="editingName" ng-click="editName()"></i>
+				<span ng-show="isEditable">
+					<span ng-hide="editingImage">
+						<i class="foundicon-edit" ng-hide="editingName" ng-click="editName()"></i>
+					</span>
 				</span>
 			</h1>
 			<span class="edit-buttons" ng-show="editingName">
