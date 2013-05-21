@@ -32,6 +32,8 @@ namespace WenSharkApp.Controllers
             string text = data["description"].ToString();
             int idItm = int.Parse(data["item"].ToString());
 
+            DateTime now = DateTime.Now;
+
             int idPbl = pCEN.New_(text);
             pCEN.SetUser(idPbl, id);
             pCEN.SetItem(idPbl, idItm);

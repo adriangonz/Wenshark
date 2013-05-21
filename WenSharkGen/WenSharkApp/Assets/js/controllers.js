@@ -15,7 +15,7 @@ function MainCtrl($scope, $timeout, $http, $location) {
 		}
 	}
 	$scope.debug = function (string) {
-	    alert(string);
+	    console.log(string);
 	}
 	$scope.playlists = [];
 
@@ -30,7 +30,7 @@ function MainCtrl($scope, $timeout, $http, $location) {
                 $scope.loadingPlayList = false;
             })
             .error(function (data) {
-                alert('500: Error interno');
+                console.log('500: Error interno');
             });
 	}
 
@@ -79,7 +79,7 @@ function MainCtrl($scope, $timeout, $http, $location) {
 	            $location.path('/');
 	        },
 	        error: function (res) {
-	            alert('500: Error interno');
+	            console.log('500: Error interno');
 	            $location.path('/');
 	        }
 	    });
@@ -565,7 +565,7 @@ function SearchCtrl ($scope, $routeParams, $http) {
 		    }
 		})
 		.error(function (data) {
-		    alert("PUM");
+		    console.log("PUM");
 		});
 
 	}
@@ -585,7 +585,7 @@ function SearchCtrl ($scope, $routeParams, $http) {
 		    }
 		})
 		.error(function (data) {
-		    alert("PUM");
+		    console.log("PUM");
 		});
 	}
 
@@ -618,7 +618,7 @@ function SignUpCtrl($scope, $routeParams, $http) {
                     $('#usernameSignUp').removeClass('ng-valid');
                     $('#usernameSignUp').addClass('ng-invalid');
                 } else {
-                    alert(data);
+                    console.log(data);
                 }
             });
         }
@@ -714,10 +714,15 @@ function UploadCtrl ($scope) {
 					$scope.uploading = false;
 					$scope.songsToUpload = [];
 					$scope.selected = null;
-					$('<div data-alert class="alert-box">' + 
+					$('<div data-console.log class="console.log-box">' + 
 						'<span>Todo ha ido bien :)</span>' + 
 		  				'<a href="#" class="close">&times;</a>' + 
 					'</div>').insertBefore('.uploader');
+					$scope.$apply();
+				},
+				error: function (res) {
+					console.log('500: Error interno');
+					$scope.uploading = false;
 					$scope.$apply();
 				}
 			});
@@ -767,4 +772,66 @@ function UploadCtrl ($scope) {
 		
 
 	}
+}
+
+function TimelineCtrl($scope, $timeout, $http) {
+	$scope.publications = [];
+
+	$http
+        .get('/api/timeline')
+        .success(function (data) {
+            $scope.publications = data.publications;
+            for(var i = 0; i < $scope.publications.length; i++){
+            	$scope.publications[i].Item = $scope.getFullItem($scope.publications[i].Item, data);
+            }
+        })
+        .error(function (data) {
+            console.log('500: Error interno');
+        });
+
+    $scope.getFullItem = function(item, data) {
+
+    	switch(item.Type) {
+    	case "Song":
+    		for(var j = 0; j < data.songs.length; j++) {
+    			if(data.songs[j].Id == item.Id)
+    				return data.songs[j];
+    		}
+    		break;
+    	case "Album":
+    		for(var j = 0; j < data.albums.length; j++) {
+    			if(data.albums[j].Id == item.Id)
+    				return data.albums[j];
+    		}
+    		break;
+    	case "Artist":
+    		for(var j = 0; j < data.artists.length; j++) {
+    			if(data.artists[j].Id == item.Id)
+    				return data.artists[j];
+    		}
+    		break;
+    	}
+    	return {};
+    }
+
+    $scope.updateTimeline = function () {
+		$http
+        .get('/api/timeline')
+        .success(function (data) {
+            $scope.publications = data.publications;
+            for(var i = 0; i < $scope.publications.length; i++){
+            	$scope.publications[i].Item = $scope.getFullItem($scope.publications[i].Item, data);
+            }
+        })
+        .error(function (data) {
+            console.log('500: Error interno');
+        });
+	}
+
+	$scope.utOnTimeout = function () {
+    	$scope.updateTimeline();
+    	utTimeout = $timeout($scope.utOnTimeout, 5000);
+	}
+	var utTimeout = $timeout($scope.utOnTimeout, 5000);
+
 }

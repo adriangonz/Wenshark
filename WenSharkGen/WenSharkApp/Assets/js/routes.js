@@ -14,5 +14,6 @@ angular.module('wenshark', [])
             .when('/accestoken', { templateUrl: '/Assets/partials/loading.html' })//Para que Oauth no rediriga a error
             .when('/user', {})//borrar
             .when('/favorites', { templateUrl: '/Assets/partials/favorites.html'})
+            .when('/timeline', { controller: TimelineCtrl, templateUrl: '/Assets/partials/timeline.html'})
 			.otherwise({redirectTo: '/error'});
 	}]);

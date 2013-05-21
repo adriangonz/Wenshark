@@ -31,7 +31,7 @@ namespace WenSharkCP.WensharkCP
             foreach (var item in publications)
             {
                 nullItem(item.Item);
-                item.User = null;
+                nullUser(item.User);
             }
 
             SessionClose();
