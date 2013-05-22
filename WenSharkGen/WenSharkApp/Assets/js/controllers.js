@@ -507,7 +507,7 @@ function SearchCtrl ($scope, $routeParams, $http) {
 			});
 		});
 	$scope.songsF = [];
-	$('#filtroCancionesId').change(function (e) {
+	$('#filtroCancionesId').bind('input', function (e) {
 	    $scope.songsF = [];
 	    var text = $('#filtroCancionesId')[0].value.toLowerCase();
 	    if (text != "") {
@@ -522,7 +522,7 @@ function SearchCtrl ($scope, $routeParams, $http) {
 	    }
 	});
 	$scope.artistsF = [];
-	$('#filtroArtistasId').change(function (e) {
+	$('#filtroArtistasId').bind('input', function (e) {
 	    $scope.artistsF = [];
 	    var text = $('#filtroArtistasId')[0].value.toLowerCase();
 	    if (text != "") {
@@ -537,7 +537,7 @@ function SearchCtrl ($scope, $routeParams, $http) {
 	    }
 	});
 	$scope.albumsF = [];
-	$('#filtroAlbumesId').change(function (e) {
+	$('#filtroAlbumesId').bind('input', function (e) {
 	    $scope.albumsF = [];
 	    var text = $('#filtroAlbumesId')[0].value.toLowerCase();
 	    if (text != "") {
@@ -716,7 +716,7 @@ function UploadCtrl ($scope) {
 					$scope.uploading = false;
 					$scope.songsToUpload = [];
 					$scope.selected = null;
-					$('<div data-console.log class="console.log-box">' + 
+					$('<div data-alert class="alert-box">' + 
 						'<span>Todo ha ido bien :)</span>' + 
 		  				'<a href="#" class="close">&times;</a>' + 
 					'</div>').insertBefore('.uploader');

@@ -72,6 +72,7 @@ function ProfileCtrl($scope, $routeParams, $http, $location) {
 		oldName = $scope.user.Name;
 
 		$('.name-txt').attr('contenteditable', 'true');
+		$('.name-txt').focus();
 	}
 
 	$scope.cancelEditName = function() {
@@ -95,6 +96,7 @@ function ProfileCtrl($scope, $routeParams, $http, $location) {
   				'<a href="#" class="close">&times;</a>' + 
 			'</div>').insertAfter('.profile-name');
 			$scope.editingName = false;
+			$scope.user.Name = name;
 			$('.name-txt').attr('contenteditable', 'false');
 			$('#nameIdLoggin').html($scope.user.Name);
 			$.cookie("name", $scope.user.Name);

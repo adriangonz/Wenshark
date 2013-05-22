@@ -34,7 +34,7 @@
         restrict: 'A',
         template: 
             '<span class="song-img small-2 columns left">' + 
-                '<img src="{{song.Album.Image}}" width="50" />' + 
+                '<img ng-src="{{song.Album.Image}}" width="50" />' + 
             '</span>' + 
             '<span class="song-name small-5 columns left">' +
                 '<p class="name">{{song.Name}}</p>' + 
@@ -59,7 +59,7 @@
         restrict: 'A',
         template: 
             '<span class="small-2 columns left">' +
-                '<img src="{{album.Image}}" width="50" />' + 
+                '<img ng-src="{{album.Image}}" width="50" />' + 
             '</span>' + 
             '<span class="small-6 columns left">' + 
                 '<a href="#/album/{{album.Id}}">' + 
@@ -78,7 +78,7 @@
         restrict: 'A',
         template: 
             '<span class="small-2 columns left">' +
-                '<img src="{{artist.Image}}" width="50" />' + 
+                '<img ng-src="{{artist.Image}}" width="50" />' + 
             '</span>' + 
             '<span class="small-6 columns left">' + 
                 '<a href="#/artist/{{artist.Id}}">' + 
@@ -104,7 +104,7 @@
         restrict: 'A',
         template:
             '<span class="small-2 columns left">' +
-                '<img src="{{user.Id}}" width="50" />' +
+                '<img ng-src="{{user.Image}}" width="50" />' +
             '</span>' +
             '<span class="small-6 columns left">' +
                 '<a href="#/profile/{{user.Id}}">' +
@@ -129,27 +129,32 @@
     return {
         restrict: 'A',
         template:
-            '<img src="{{publication.User.Image}}" width="15" height="15">'+
+            '<img ng-src="{{publication.User.Image}}" width="15" height="15">'+
             '<p><a href="#/profile/{{publication.User.Id}}" class="user">{{publication.User.Name}}</a> shared this:</p>'+
             '<br>'+
             '<p class="quote">{{publication.Text}}</p>'+
             '<div ng-switch on="publication.Item.Type">'+
                 '<div ng-switch-when="Song">'+
-                    '<img class="left" src="{{publication.Item.Album.Image}}" width="50" height="50">'+
+                    '<span class="timeline-song-img">' + 
+                        '<img class="left" ng-src="{{publication.Item.Album.Image}}" width="50" height="50">'+
+                        '<span class="timeline-song-hover" ng-click="addToPlaylist(publication.Item)">' +
+                            '<span class="timeline-song-play"><span class="tiny play"></span></span>' + 
+                        '</span>' +
+                    '</span>' +
                     '<div>'+
                         '<p class="song">{{publication.Item.Name}} - <a href="#/album/{{publication.Item.Album.Id}}">{{publication.Item.Album.Name}}</a>'+
                         '<p>by <a href="#/artist/{{publication.Item.Artist.Id}}" class="artist">{{publication.Item.Artist.Name}}</a></p>'+
                     '</div>'+
                 '</div>'+
                 '<div ng-switch-when="Album">'+
-                    '<img class="left" src="{{publication.Item.Image}}" width="50" height="50">'+
+                    '<img class="left" ng-src="{{publication.Item.Image}}" width="50" height="50">'+
                     '<div>'+
                         '<p class="song"><a href="#/album/{{publication.Item.Id}}">{{publication.Item.Name}}</a></p>'+
                         '<p>by <a href="#/artist/{{publication.Item.Artist.Id}}" class="artist">{{publication.Item.Artist.Name}}</a></p>'+
                     '</div>'+
                 '</div>'+
                 '<div ng-switch-when="Artist">'+
-                    '<img class="left" src="{{publication.Item.Image}}" width="50" height="50">'+
+                    '<img class="left" ng-src="{{publication.Item.Image}}" width="50" height="50">'+
                     '<div>'+
                         '<p class="song"><a href="#/artist/{{publication.Item.Id}}">{{publication.Item.Name}}</a></p>'+
                     '</div>'+

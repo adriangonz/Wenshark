@@ -55,3 +55,7 @@ ul.genre-list li {
 .playlistDiv a {
     font-size: 18px;
 }
+
+.fav-header {
+	margin-top: 15px;
+}
