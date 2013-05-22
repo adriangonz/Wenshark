@@ -4,10 +4,23 @@
 			    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
 			    <property name="dialect">NHibernate.Dialect.MsSql2005Dialect</property>
 			    <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
-			    <property name="connection.connection_string">
+
+          <!--         
+          <property name="connection.connection_string">
             Data Source=(local)\sqlexpress;Initial Catalog=WenSharkGennhibernate;User Id=nhibernateUser;Password=nhibernatePass;
           </property>
-			    <property name="proxyfactory.factory_class">
+          -->
+          <!--
+          <property name="connection.connection_string">
+            Data Source=tcp:u8epazazac.database.windows.net,1433;Initial Catalog=WensharkDB;User ID=wenwen@u8epazazac;Password=Carrillo10!
+          </property>
+          -->
+
+          <property name="connection.connection_string">
+            Data Source=testbd.cloudapp.net,57500;Initial Catalog=WenSharkGennhibernate;User Id=wenwen;Password=wenwen;
+          </property>
+
+          <property name="proxyfactory.factory_class">
 			      NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu
 			    </property>
 			    

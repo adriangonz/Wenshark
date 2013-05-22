@@ -21,6 +21,7 @@ function MainCtrl($scope, $timeout, $http, $location) {
 
 	$scope.loadPlayListPanel = function () {
 	    $('#playListBar').css('display', 'inline');
+	    $('.wenshark-contenido').css('margin-left', '170px');
 	    $scope.loadingPlayList = true;
 	    $http
             .get('/api/playlist')
@@ -75,6 +76,7 @@ function MainCtrl($scope, $timeout, $http, $location) {
 	            $('#dropDownUserMenu').removeClass('open');
 	            $('#dropDownUserMenu').css("left", "-9999px");
 	            $('#playListBar').css('display', 'none');
+	            $('.wenshark-contenido').css('margin-left', '0');
 	            //console.log($scope.hideUserName);
 	            $location.path('/');
 	        },
