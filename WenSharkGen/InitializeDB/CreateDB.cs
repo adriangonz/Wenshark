@@ -21,10 +21,10 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        //SqlConnection cnn = new SqlConnection (@"Server=(local)\SQLEXPRESS; database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\SQLEXPRESS; database=master; integrated security=yes");
 
 
-        SqlConnection cnn = new SqlConnection(@"Server=testbd.cloudapp.net,57500; database=master; integrated security=false; User ID=wenwen;Password=wenwen;");
+       // SqlConnection cnn = new SqlConnection(@"Server=testbd.cloudapp.net,57500; database=master; integrated security=false; User ID=wenwen;Password=wenwen;");
     
 
         // Order T-SQL create user
