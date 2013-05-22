@@ -62,6 +62,6 @@ function PlayListCtrl($scope, $routeParams, $http, $location) {
     }
 
     $scope.playPlaylist = function () {
-        addToPlayListAndPlay($scope.songs);
+        $scope.addListToPlaylistAndPlay($scope.songs);
     }
 }
